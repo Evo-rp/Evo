@@ -13,11 +13,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Dumping database structure for fivem-cuberp_prod
-CREATE DATABASE IF NOT EXISTS `fivem-cuberp_prod` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
-USE `fivem-cuberp_prod`;
+-- Dumping database structure for fivem-evo_prod
+CREATE DATABASE IF NOT EXISTS `fivem-evo_prod` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
+USE `fivem-evo_prod`;
 
--- Dumping structure for table fivem-cuberp_prod.crafting_cooldowns
+-- Dumping structure for table fivem-evo_prod.crafting_cooldowns
 CREATE TABLE IF NOT EXISTS `crafting_cooldowns` (
   `bench` varchar(64) NOT NULL,
   `id` varchar(64) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `crafting_cooldowns` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table fivem-cuberp_prod.inventory
+-- Dumping structure for table fivem-evo_prod.inventory
 CREATE TABLE IF NOT EXISTS `inventory` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '0',
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table fivem-cuberp_prod.inventory_shop_logs
+-- Dumping structure for table fivem-evo_prod.inventory_shop_logs
 CREATE TABLE IF NOT EXISTS `inventory_shop_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL DEFAULT current_timestamp(),
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `inventory_shop_logs` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table fivem-cuberp_prod.meth_tables
+-- Dumping structure for table fivem-evo_prod.meth_tables
 CREATE TABLE IF NOT EXISTS `meth_tables` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `tier` int(11) NOT NULL DEFAULT 1,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `meth_tables` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table fivem-cuberp_prod.placed_meth_tables
+-- Dumping structure for table fivem-evo_prod.placed_meth_tables
 CREATE TABLE IF NOT EXISTS `placed_meth_tables` (
   `table_id` int(11) NOT NULL,
   `owner` bigint(20) DEFAULT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `placed_meth_tables` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table fivem-cuberp_prod.placed_props
+-- Dumping structure for table fivem-evo_prod.placed_props
 CREATE TABLE IF NOT EXISTS `placed_props` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `model` varchar(255) NOT NULL DEFAULT '',
