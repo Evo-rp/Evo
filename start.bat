@@ -1,0 +1,2 @@
+cd /d D:\fivem\Server
+D:\fivem\[artifacts]\FXServer.exe +exec configs/environment.cfg +exec configs/resources.cfg +exec configs/permissions.cfg +set gamename gta +set sv_enforceGameBuild 2944 +set onesync on
