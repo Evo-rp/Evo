@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>glock19x_mag4</modelName>
+			<txdName>glock19x_ext</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>glock19x_mag3</modelName>
+			<txdName>glock19x_ext</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>glock19xsupp</modelName>
+			<txdName>glock19x_ext</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>		
+		<Item>
+			<modelName>glock19xflashlight2</modelName>
+			<txdName>glock19x_ext</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>				
+		<Item>
+			<modelName>glock19x2</modelName>
+			<txdName>glock19x2</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="400"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
+

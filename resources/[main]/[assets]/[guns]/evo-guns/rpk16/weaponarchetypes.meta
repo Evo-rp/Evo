@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>markomods-rpk16</modelName>
+			<txdName>markomods-rpk16</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-mag1</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag2</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag3</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag4</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag5</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag6</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-mag7</modelName>
+			<txdName>markomods-rpk16-mags</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-stock1</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock2</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock3</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock4</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock5</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock6</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock7</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-stock8</modelName>
+			<txdName>markomods-rpk16-stocks</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-scope1</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope2</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope3</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope4</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope5</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope6</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope7</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-scope8</modelName>
+			<txdName>markomods-rpk16-scopes</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-laser1</modelName>
+			<txdName>markomods-rpk16-lasers</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-laser2</modelName>
+			<txdName>markomods-rpk16-lasers</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-laser3</modelName>
+			<txdName>markomods-rpk16-lasers</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-laser4</modelName>
+			<txdName>markomods-rpk16-lasers</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-barrel1</modelName>
+			<txdName>markomods-rpk16</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-barrel2</modelName>
+			<txdName>markomods-rpk16</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+
+		<Item>
+			<modelName>markomods-rpk16-grip1</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip1</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip2</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip3</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip4</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip5</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip6</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip7</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip8</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip9</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-grip10</modelName>
+			<txdName>markomods-rpk16-grips</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle1</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle2</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle3</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle4</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle5</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle6</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle7</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle8</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle9</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>markomods-rpk16-muzzle10</modelName>
+			<txdName>markomods-rpk16-muzzles</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
