@@ -122,7 +122,7 @@ function SetupQueues()
 
 					Phone.Email:Send(
 						plyr:GetData("Source"),
-						"unknown@OuterWorld.cum",
+						"unknown@Evo.cum",
 						os.time() * 1000,
 						string.format("You Were Chosen For A %s", v.name),
 						string.format(

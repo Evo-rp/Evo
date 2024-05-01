@@ -87,7 +87,7 @@ AddEventHandler("Phone:Server:RegisterMiddleware", function()
 		return {
 			{
 				app = "email",
-				alias = string.format("%s_%s%s@OuterWorld.cum", cData.First, cData.Last, cData.SID),
+				alias = string.format("%s_%s%s@Evo.cum", cData.First, cData.Last, cData.SID),
 			},
 		}
 	end)

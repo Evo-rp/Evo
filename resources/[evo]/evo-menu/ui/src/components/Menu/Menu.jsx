@@ -262,7 +262,7 @@ export default props => {
                         textOverflow: 'ellipsis',
                     }}
                 >
-                    {Boolean(menu.label) ? menu.label : 'OuterWorld RP'}
+                    {Boolean(menu.label) ? menu.label : 'Evo RP'}
                 </div>
             </div>
             <div className={classes.buttons}>
