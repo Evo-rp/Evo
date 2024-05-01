@@ -94,17 +94,17 @@
 
  _aptData = {
 	{
-		name = "Richard's Tower",
+		name = "Alta Street",
 		invEntity = 13,
-		coords = vector3(-1274.351, 315.095, 64.512),
+		coords = vector3(-271.25, -958.0, 31.22),
 		heading = 153.319,
-		length = 8.4,
-		width = 4.0,
+		length = 2.2,
+		width = 1.4,
 		options = {
-			heading = 0,
-			--debugPoly=true,
-			minZ = 63.21,
-			maxZ = 67.21,
+			heading = 30,
+			debugPoly=false,
+			minZ = 30.22,
+			maxZ = 32.82
 		},
 		interior = {
 			wakeup = {
