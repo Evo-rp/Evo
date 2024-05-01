@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 		background: theme.palette.secondary.dark,
 		position: 'absolute',
 		top: 48,
-		right: 0,
+		left: 0,
 		padding: 10,
 		fontSize: 22,
 		border: `1px solid ${theme.palette.border.divider}`,

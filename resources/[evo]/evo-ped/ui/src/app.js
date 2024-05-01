@@ -28,9 +28,9 @@ const render = () => {
 		},
 		palette: {
 			primary: {
-				main: '#E5A502',
-                light: '#E8A933',
-                dark: '#FA5800',
+				main: '#7702e5',
+				light: '#ff2100',
+				dark: '#7702e5',
 				contrastText: '#ffffff',
 			},
 			secondary: {
@@ -105,11 +105,11 @@ const render = () => {
 							width: 6,
 						},
 						'&::-webkit-scrollbar-thumb': {
-							background: '#FA5800',
+							background: '#7702e5',
 							transition: 'background ease-in 0.15s',
 						},
 						'&::-webkit-scrollbar-thumb:hover': {
-							background: '#E8A933',
+							background: '#56000017',
 						},
 						'&::-webkit-scrollbar-track': {
 							background: 'transparent',

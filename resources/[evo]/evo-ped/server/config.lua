@@ -33,8 +33,8 @@ _gangChains = {
 			},
 		},
 	},
-	pepega = {
-		prop = `pepega_chain`,
+	ferrari = {
+		prop = `ferrari_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
@@ -229,8 +229,28 @@ _hideFromStore = {
 			[1] = {},
 		},
 		[7] = {
-			[0] = {},
-			[1] = {},
+			[0] = {
+				["167"] = true,
+				["168"] = true,
+				["169"] = true,
+				["170"] = true,
+				["171"] = true,
+				["172"] = true,
+				["181"] = true,
+				["182"] = true,
+				["183"] = true,
+			},
+			[1] = {
+				["141"] = true,
+				["142"] = true,
+				["143"] = true,
+				["144"] = true,
+				["145"] = true,
+				["146"] = true,
+				["147"] = true,
+				["148"] = true,
+				["149"] = true,
+			},
 		},
 		[8] = {
 			[0] = {},

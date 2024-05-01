@@ -275,10 +275,10 @@ local TemplateData = {
 
 GlobalState["Ped:Pricing"] = {
 	CREATOR = 0,
-	BARBER = 100,
-	SHOP = 100,
-	TATTOO = 100,
-	SURGERY = 10000,
+	BARBER = 250,
+	SHOP = 50,
+	TATTOO = 1000,
+	SURGERY = 25000,
 }
 
 AddEventHandler("Ped:Shared:DependencyUpdate", RetrieveComponents)

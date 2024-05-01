@@ -57,7 +57,7 @@ AddEventHandler("Wardrobe:Client:SaveExisting", function(data)
 	end)
 end)
 
-AddEventHandler("Wardrobe:Client:DoSave", function(values, data)
+AddEventHandler("Wardrobe:Client:DoSave", function(values, data) 
 	Callbacks:ServerCallback("Wardrobe:Save", {
 		index = data,
 		name = values.name,
