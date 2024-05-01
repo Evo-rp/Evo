@@ -1,0 +1,23 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>apa_ss1_10_strm_0.ymap</Item>
+    <Item>interior_dynasty_milo_.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>custom_int_dynasty.ytyp</Item>
+    <Item>sunset_metadata_017_strm.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames>
+    <Item>gigz_int_office_dynasty_shell_col.ybn</Item>
+    <Item>hi@gigz_int_office_dynasty_shell_col.ybn</Item>
+    <Item>hi@ss1_10_0.ybn</Item>
+    <Item>ss1_10_0.ybn</Item>
+  </YbnFilenames>
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+</CodeWalkerProject>
