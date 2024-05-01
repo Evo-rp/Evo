@@ -37,7 +37,7 @@ AddEventHandler("onResourceStart", function(resource)
 ^8|__/   |__/      \_______/|__/ |__/ |__/ \_______/ \_____/\___/  \______/ |__/      |__/  \__/           
                                                                                                         
 ^7]])
-            print('^8Evo RP ^2V1.0^7 Framework^7 By ^1Koi & Aspect & nicxx & PixelRez ')
+            print('^8Evo RP ^2 '.. ver ..'^7 Framework^7 By ^1Koi & Aspect & nicxx & PixelRez ')
 			print("^3Asset Developers^7: ^6Panda_builds^7")
 
 			print([[
