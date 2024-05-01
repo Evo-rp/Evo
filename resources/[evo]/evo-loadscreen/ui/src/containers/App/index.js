@@ -8,7 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Loadscreen from '../Loadscreen';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/pro-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 library.add(fab, fas);
@@ -20,7 +20,7 @@ export default () => {
 		},
 		palette: {
 			primary: {
-				main: '#8a0000',
+				main: '#7702e5',
 				light: '#ff2100',
 				dark: '#560000',
 				contrastText: '#ffffff',

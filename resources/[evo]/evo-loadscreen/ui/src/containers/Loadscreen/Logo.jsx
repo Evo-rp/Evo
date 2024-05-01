@@ -2,10 +2,29 @@ import React from 'react';
 import { CircularProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Dot } from 'react-animated-dots';
+import Typewriter from "typewriter-effect";
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
-		height: '100%',
+		// height: '100%',
+		// width: '55%',
+		// position: 'absolute',
+		// top: 0,
+		// bottom: 0,
+		// left: 0,
+		// right: 0,
+		// margin: 'auto',
+		// textAlign: 'center',
+		// justifyContent: 'center',
+		// fontSize: 30,
+		// color: "#ffffff",
+		// zIndex: 1000,
+		// padding: 36,
+		// display: 'flex',
+		// flexDirection: 'column',
+		// justifyContent: 'flex-end',
+
+		height: 'fit-content',
 		width: '55%',
 		position: 'absolute',
 		top: 0,
@@ -15,15 +34,12 @@ const useStyles = makeStyles((theme) => ({
 		margin: 'auto',
 		textAlign: 'center',
 		fontSize: 30,
-		color: theme.palette.text.main,
+		color: '#ffffff',
 		zIndex: 1000,
-		padding: 36,
-		display: 'flex',
-		flexDirection: 'column',
-		justifyContent: 'flex-end',
+		padding: 36,	
 	},
 	img: {
-		maxWidth: 900,
+		maxWidth: 500,
 		width: '100%',
 	},
 	innerBody: {
@@ -37,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 		display: 'block',
 	},
 	splashBranding: {
-		color: theme.palette.primary.main,
+		color: '#7702e5',
 	},
 	splashTip: {
 		fontSize: '1vw',
@@ -45,17 +61,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 	splashTipHighlight: {
 		fontWeight: 500,
-		color: theme.palette.primary.main,
+		color: '#7702e5',
 		opacity: 1,
 	},
 	dot1: {
-		color: theme.palette.primary.main,
+		color: '#7702e5',
 	},
 	dot2: {
-		color: theme.palette.text.main,
+		color: '#ffffff',
 	},
 	dot3: {
-		color: theme.palette.primary.main,
+		color: '#7702e5',
 	},
 	'@keyframes blinker': {
 		'50%': {
@@ -69,17 +85,31 @@ export default (props) => {
 
 	return (
 		<div className={classes.wrapper}>
-			{/* <img className={classes.img} src={logo} /> */}
+			<img className={classes.img} src={'https://cdn.discordapp.com/attachments/1205299765646987296/1233585010938871838/logo.jpg?ex=662da111&is=662c4f91&hm=f573ee4858f2bd4bef40cf71e7a74d0d335fe4e5cb7c5850e2537a0fbced152c&'} />
 			<div className={classes.innerBody}>
 				<span className={classes.splashHeader}>
-					{
-						props.name && (
-							<b>
-								{props.name},{' '} 
-							</b>
-						)
-					}
-					Welcome To CubeRP
+					<Typewriter
+						onInit={(typewriter) => {
+							typewriter.typeString(props.name + ', Welcome to Evo RP')
+							.pauseFor(3000)
+							.deleteAll()
+							.typeString("You are loading into the server ...")
+							.pauseFor(2000)
+							.deleteAll()
+							.typeString("We 👂 your feedback 💬")
+							.pauseFor(2000)
+							.deleteAll()
+							.typeString("BING 💥 BONG")
+							.pauseFor(2000)
+							.deleteAll()
+							.typeString("STREETK 🔫 ")
+							.pauseFor(2000)
+							.deleteAll()
+							.typeString("Ak 40 to yo liva 🤭 ")
+							.pauseFor(2000)
+							.start()
+						}}
+					/>
 				</span>
 				<span className={classes.splashTip}>
 					{`Loading Into Server `}
