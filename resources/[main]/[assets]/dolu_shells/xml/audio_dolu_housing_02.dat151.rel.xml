@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dat151>
+  <Version value="25564071" />
+  <Items>
+    <Item type="Interior" ntOffset="0">
+      <Name>v_dolu_housing_02</Name>
+      <Unk0 value="0xAAAAA044" />
+      <Unk1 value="0xD4855127" />
+      <Unk2 value="0x00000000" />
+      <Rooms>
+        <Item>prefix_int_room_limbo</Item>
+        <Item>prefix_int_room_dolu_housing_02</Item>
+      </Rooms>
+    </Item>
+    <Item type="InteriorRoom" ntOffset="0">
+      <Name>prefix_int_room_limbo</Name>
+      <Flags0 value="0xAAAAAAAA" />
+      <MloRoom>limbo</MloRoom>
+      <Hash1 />
+      <Unk02 value="0" />
+      <Unk03 value="0.5" />
+      <Unk04 value="0.05" />
+      <Unk05 value="0" />
+      <Unk06>hash_25B9E10A</Unk06>
+      <Unk07 value="0" />
+      <Unk08 value="0" />
+      <Unk09 value="0" />
+      <Unk10 value="0.65" />
+      <Unk11 value="0" />
+      <Unk12 value="20" />
+      <Unk13>hash_43BD9A63</Unk13>
+      <Unk14>hash_D4855127</Unk14>
+    </Item>
+    <Item type="InteriorRoom" ntOffset="0">
+      <Name>prefix_int_room_dolu_housing_02</Name>
+      <Flags0 value="0xAAAAAAAA" />
+      <MloRoom>dolu_housing_02</MloRoom>
+      <Hash1 />
+      <Unk02 value="0" />
+      <Unk03 value="0.5" />
+      <Unk04 value="0.05" />
+      <Unk05 value="0" />
+      <Unk06>hash_25B9E10A</Unk06>
+      <Unk07 value="0" />
+      <Unk08 value="0" />
+      <Unk09 value="0" />
+      <Unk10 value="0.65" />
+      <Unk11 value="0" />
+      <Unk12 value="20" />
+      <Unk13>hash_43BD9A63</Unk13>
+      <Unk14>hash_D4855127</Unk14>
+    </Item>
+  </Items>
+</Dat151>

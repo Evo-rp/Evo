@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<naOcclusionInteriorMetadata>
+  <PortalInfoList itemType="naOcclusionPortalInfoMetadata">
+    <Item>
+      <InteriorProxyHash value="828390486" />
+      <PortalIdx value="0" />
+      <RoomIdx value="0" />
+      <DestInteriorHash value="828390486" />
+      <DestRoomIdx value="1" />
+      <PortalEntityList itemType="naOcclusionPortalEntityMetadata" />
+    </Item>
+    <Item>
+      <InteriorProxyHash value="828390486" />
+      <PortalIdx value="0" />
+      <RoomIdx value="1" />
+      <DestInteriorHash value="828390486" />
+      <DestRoomIdx value="0" />
+      <PortalEntityList itemType="naOcclusionPortalEntityMetadata" />
+    </Item>
+  </PortalInfoList>
+  <PathNodeList itemType="naOcclusionPathNodeMetadata">
+    <Item>
+      <Key value="1588774371" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="1" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+    <Item>
+      <Key value="-1588774369" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="0" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+    <Item>
+      <Key value="1588774372" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="1" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+    <Item>
+      <Key value="-1588774368" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="0" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+    <Item>
+      <Key value="1588774373" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="1" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+    <Item>
+      <Key value="-1588774367" />
+      <PathNodeChildList itemType="naOcclusionPathNodeChildMetadata">
+        <Item>
+          <PathNodeKey value="0" />
+          <PortalInfoIdx value="0" />
+        </Item>
+      </PathNodeChildList>
+    </Item>
+  </PathNodeList>
+</naOcclusionInteriorMetadata>
