@@ -5,6 +5,13 @@ import { makeStyles } from '@mui/styles';
 import { login } from '../../actions/loginActions';
 import logo from '../../assets/imgs/logo_banner.png';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faKeyboard, faMouse, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { yellow } from '@mui/material/colors';
+import { faArrowPointer } from '@fortawesome/pro-solid-svg-icons';
+import Typewriter from "typewriter-effect";
+
+
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
 		height: 'fit-content',
@@ -22,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 		padding: 36,
 	},
 	img: {
-		maxWidth: 400,
+		maxWidth: 650,
 		width: '100%',
 	},
 	innerBody: {
@@ -42,8 +49,17 @@ const useStyles = makeStyles((theme) => ({
 	},
 	splashTipHighlight: {
 		fontWeight: 500,
-		color: theme.palette.primary.main,
+		color: '#7702e5',
 		opacity: 1,
+
+	},
+	icon: {
+		paddingBottom: 2,
+		paddingRight: 7,
+		color: '#7702e5',
+	},
+	spaceAfterWord: {
+		marginRight: '40px',
 	},
 	'@keyframes blinker': {
 		'50%': {
@@ -62,13 +78,13 @@ const Splash = (props) => {
 	};
 
 	useEffect(() => {
-		['click', 'keydown', 'keyup'].forEach(function(e) {
+		['click', 'keydown', 'keyup'].forEach(function (e) {
 			window.addEventListener(e, Bleh);
 		});
 
 		// returned function will be called on component unmount
 		return () => {
-			['click', 'keydown', 'keyup'].forEach(function(e) {
+			['click', 'keydown', 'keyup'].forEach(function (e) {
 				window.removeEventListener(e, Bleh);
 			});
 		};
@@ -79,13 +95,20 @@ const Splash = (props) => {
 			<img className={classes.img} src={logo} />
 			<div className={classes.innerBody}>
 				<span className={classes.splashHeader}>
-					Welcome To <span className={classes.splashBranding}>OuterWorld Roleplay</span>
+					<Typewriter
+						onInit={(typewriter) => {
+							typewriter.typeString('Welcome to Evo RP ...').pauseFor(2000).start()
+						}}
+					/>
 				</span>
 				<span className={classes.splashTip}>
-					Press <span className={classes.splashTipHighlight}>ENTER</span>
-					{' / '}
+					<FontAwesomeIcon icon={faKeyboard} className={classes.icon} />
+					<span className={classes.splashTipHighlight}>ENTER</span>
+					<span className={classes.spaceAfterWord}></span>
+					<FontAwesomeIcon icon={faSquare} className={classes.icon} />
 					<span className={classes.splashTipHighlight}>SPACE</span>
-					{' / '}
+					<span className={classes.spaceAfterWord}></span>
+					<FontAwesomeIcon icon={faArrowPointer} className={classes.icon} />
 					<span className={classes.splashTipHighlight}>LEFT MOUSE</span> To Continue
 				</span>
 			</div>

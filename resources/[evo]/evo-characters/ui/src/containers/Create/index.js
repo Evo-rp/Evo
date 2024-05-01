@@ -223,6 +223,7 @@ const Create = (props) => {
 								renderInput={(params) => (
 									<TextField
 										{...params}
+										required
 										label="Country of Origin"
 										variant="outlined"
 									/>

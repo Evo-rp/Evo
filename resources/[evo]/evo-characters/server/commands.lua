@@ -6,25 +6,22 @@ function RegisterCommands()
 	}, 0)
 
 	Chat:RegisterAdminCommand("addrep", function(source, args, rawCommand)
-		local player = Fetch:SID(tonumber(args[1]))
+ 		local player = Fetch:SID(tonumber(args[1]))
 		if player ~= nil then
 			Reputation.Modify:Add(player:GetData("Source"), args[2], tonumber(args[3]))
-			Chat.Send.System:Single(
-				source,
-				string.format("%s Rep Added For %s To State ID %s", args[3], args[2], args[1])
-			)
+		Chat.Send.System:Single(source, string.format("%s Rep Added For %s To State ID %s", args[3], args[2], args[1]))
 		else
-			Chat.Send.System:Single(source, "Invalid Target")
+		Chat.Send.System:Single(source, "Invalid Target")
 		end
 	end, {
 		help = "Add Specified Reputation To Specified Player",
-		params = {
+	params = {
 			{
-				name = "Target",
-				help = "State ID of who you want to give the reputation to",
-			},
-			{
-				name = "ID",
+ 				name = "Target",
+ 				help = "State ID of who you want to give the reputation to",
+ 			},
+ 			{
+ 				name = "ID",
 				help = "ID of the reputation you want to give",
 			},
 			{
@@ -32,36 +29,33 @@ function RegisterCommands()
 				help = "Amount of reputation to give",
 			},
 		},
-	}, 3)
+ 	}, 3)
 
-	Chat:RegisterAdminCommand("remrep", function(source, args, rawCommand)
-		local player = Fetch:SID(tonumber(args[1]))
-		if player ~= nil then
-			Reputation.Modify:Remove(player:GetData("Source"), args[2], tonumber(args[3]))
-			Chat.Send.System:Single(
-				source,
-				string.format("%s Rep Removed For %s From State ID %s", args[3], args[2], args[1])
-			)
-		else
-			Chat.Send.System:Single(source, "Invalid Target")
-		end
-	end, {
-		help = "Remove Specified Reputation To Specified Player",
+ 	Chat:RegisterAdminCommand("remrep", function(source, args, rawCommand)
+ 		local player = Fetch:SID(tonumber(args[1]))
+ 		if player ~= nil then
+ 			Reputation.Modify:Remove(player:GetData("Source"), args[2], tonumber(args[3]))
+ 			Chat.Send.System:Single(source, string.format("%s Rep Removed For %s From State ID %s", args[3], args[2], args[1]))
+ 		else
+ 			Chat.Send.System:Single(source, "Invalid Target")
+ 		end
+ 	end, {
+ 		help = "Remove Specified Reputation To Specified Player",
 		params = {
-			{
+ 			{
 				name = "Target",
-				help = "State ID of who you want to remove the reputation from",
-			},
-			{
-				name = "ID",
+ 				help = "State ID of who you want to remove the reputation from",
+ 			},
+ 			{
+ 				name = "ID",
 				help = "ID of the reputation you want to take",
-			},
-			{
-				name = "Amount",
+ 			},
+ 			{
+ 				name = "Amount",
 				help = "Amount of reputation to take",
-			},
-		},
-	}, 3)
+ 			},
+ 		},
+	 	}, 3)
 
 	Chat:RegisterAdminCommand("phoneperm", function(source, args, rawCommand)
 		local player = Fetch:SID(tonumber(args[1]))
