@@ -320,7 +320,7 @@ QUEUE.Connect = function(self, source, playerName, setKickReason, deferrals)
 
 		local identifier = ExtractIdentifiers(source).license
 
-		if not identifier or identifier == "" then
+		if not identifier or identifier == "" and not GetConvar('sv_lan') then
 			deferrals.done(Config.Strings.NoIdentifier)
 			CancelEvent()
 			return
