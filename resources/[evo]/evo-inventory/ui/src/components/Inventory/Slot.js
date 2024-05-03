@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'inline-block',
 		boxSizing: 'border-box',
 		flexGrow: 0,
-		minWidth: '6.5vw',
-		flexBasis: '6.5vw',
+		width: 165,
+		flexBasis: 165,
 		zIndex: 1,
 		position: 'relative',
 		'&.mini': {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	slot: {
 		width: '100%',
-		height: '19.25vh',
+		height: 190,
 		backgroundColor: `${theme.palette.secondary.light}61`,
 		position: 'relative',
 		zIndex: 2,
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'opacity ease-in 0.15s, border ease-in 0.15s',
 	},
 	img: {
-		height: '17.25vh',
+		height: 190,
 		width: '100%',
 		zIndex: 3,
 		backgroundSize: '70%',
@@ -1187,7 +1187,7 @@ export default connect()((props) => {
 				)}
 				{Boolean(props.equipped) ? (
 					<div className={classes.equipped}>Equipped</div>
-				) : props.hotkeys && props.slot <= 5 ? (
+				) : props.hotkeys && props.slot <= 4 ? (
 					<div className={classes.hotkey}>
 						{Boolean(props.equipped) ? 'Equipped' : props.slot}
 					</div>

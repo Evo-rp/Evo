@@ -46,14 +46,14 @@ const useStyles = makeStyles((theme) => ({
 	},
 	inventoryGrid: {
 		display: 'grid',
-		gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+		gridTemplateColumns: '1fr 1fr 1fr 1fr',
 		overflowX: 'hidden',
 		overflowY: 'scroll',
-		maxHeight: 'calc(60vh - 90px)',
+		maxHeight: 'calc(70vh - 90px)',
 		height: 'fit-content',
 		userSelect: 'none',
 		'-webkit-user-select': 'none',
-		minWidth: 678,
+		minWidth: 688,
 		gridAutoRows: 'max-content',
 		gap: 6,
 		'&::-webkit-scrollbar': {
@@ -78,11 +78,11 @@ const useStyles = makeStyles((theme) => ({
 		position: 'absolute',
 		height: 'fit-content',
 		width: 'fit-content',
-		bottom: 10,
+		bottom: 6,
 		right: '1%',
 		margin: 'auto',
 		zIndex: 1,
-		fontSize: 16,
+		fontSize: 12,
 		textShadow: `0 0 10px ${theme.palette.secondary.dark}`,
 		'&::after': {
 			content: '"lbs"',
@@ -478,8 +478,12 @@ export default (props) => {
 								</div>
 								<LinearProgress
 									className={classes.inventoryWeightBar}
-									color="inherit"
+									color="info"
 									variant="determinate"
+									style={{
+										height: '2vh',
+										borderRadius: '.25vh'
+									}}
 									value={Math.floor(
 										(playerWeight /
 											playerInventory.capacity) *
@@ -567,8 +571,12 @@ export default (props) => {
 												className={
 													classes.inventoryWeightBar
 												}
-												color="inherit"
+												color="info"
 												variant="determinate"
+												style={{
+													height: '2vh',
+													borderRadius: '.25vh'
+												}}
 												value={
 													secondaryInventory.shop
 														? 0

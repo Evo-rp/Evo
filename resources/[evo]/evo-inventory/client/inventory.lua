@@ -45,6 +45,7 @@ function RetrieveComponents()
 	Vehicles = exports["evo-base"]:FetchComponent("Vehicles")
 	Sounds = exports["evo-base"]:FetchComponent("Sounds")
 	ListMenu = exports["evo-base"]:FetchComponent("ListMenu")
+	NPCDialog = exports["evo-base"]:FetchComponent("NPCDialog")
 
 	--Weapons = exports['evo-base']:FetchComponent('Weapons')
 end

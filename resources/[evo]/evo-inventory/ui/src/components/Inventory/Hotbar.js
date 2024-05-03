@@ -57,7 +57,7 @@ export default connect()((props) => {
 	return (
 		<Slide direction="up" in={hidden} className={classes.slide}>
 			<div>
-				{[...Array(5).keys()].map((value) => {
+				{[...Array(4).keys()].map((value) => {
 					return (
 						<Slot
 							mini
