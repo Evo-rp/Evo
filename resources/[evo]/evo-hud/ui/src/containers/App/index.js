@@ -16,6 +16,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 import Action from '../Action';
 import Hud from '../Hud';
+import NPCDialog from '../../components/NPCDialog';
 import Notifications from '../Notifications';
 import List from '../../components/List';
 import Input from '../../components/Input';
@@ -196,6 +197,7 @@ const App = ({ hidden }) => {
                 <DeathTexts />
                 <InfoOverlay />
                 <Hud />
+                <NPCDialog />
                 <Notifications />
                 <Action />
                 {isMeth && <Ingredients />}
