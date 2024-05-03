@@ -64,7 +64,7 @@ const SpawnIcon = (props) => {
                     <FontAwesomeIcon
                         className={`${classes.icon} ${props?.selectedSpawn?.id === props.spawn.id ? ' selected' : ''}`}
                         icon={props.spawn.icon ? props.spawn.icon : 'fas fa-location-dot'}
-                        color={props.spawn.label === 'Crastenburg Resort' ? '#fa790f' : 'white'}
+                        color={props.spawn.label === 'Alta Street' ? '#fa790f' : 'white'}
                         onClick={onClick}
                         onMouseEnter={() => props.selectSpawn(props.spawn)}
                         onMouseLeave={() => props.selectSpawn({})}

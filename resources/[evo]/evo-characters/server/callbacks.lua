@@ -17,7 +17,7 @@ function RegisterCallbacks()
 			Citizen.Wait(100)
 		end
 
-		local motd = GetConvar("motd", "Welcome")
+		local motd = GetConvar("motd", "Welcome to Evo RP")
 		Database.Game:find({
 			collection = "changelogs",
 			options = {
@@ -171,7 +171,6 @@ function RegisterCallbacks()
 			end
 			doc.ID = insertedIds[1]
 			TriggerEvent("Characters:Server:CharacterCreated", doc)
-			TriggerEvent("Characters:Client:CreatePaycheck", source)
 			Middleware:TriggerEvent("Characters:Created", source, doc)
 			cb(doc)
 
@@ -189,9 +188,6 @@ function RegisterCallbacks()
 					console = true,
 					file = true,
 					database = true,
-					discord = {
-						embed = true,
-					},
 				}
 			)
 		end)
@@ -258,6 +254,9 @@ function RegisterCallbacks()
 			query = {
 				User = player:GetData("AccountID"),
 				_id = data,
+				Deleted = {
+					["$ne"] = true,
+				},
 			},
 			options = {
 				projection = {
@@ -278,7 +277,6 @@ function RegisterCallbacks()
 				cb({
 					{
 						id = 1,
-						icon = 'shirt',
 						label = "Character Creation",
 						location = Apartment:GetInteriorLocation(results[1].Apartment or 1),
 					},
@@ -397,7 +395,7 @@ function RegisterMiddleware()
 							z = hasLastLocation.coords.z,
 							h = 0.0,
 						},
-						icon = "location-smile",
+						icon = "street-view",
 						event = "Characters:GlobalSpawn",
 					},
 				}
@@ -471,3 +469,9 @@ RegisterNetEvent(
 		_tempLastLocation[src] = coords
 	end
 )
+
+RegisterNetEvent('Characters:GetName', function()
+	local name = GetPlayerName(source)
+
+	TriggerClientEvent('Characters:RecieveName', source, name)
+end)

@@ -1,126 +1,143 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
-import { List, ListItem, Collapse, ListItemText } from '@mui/material';
+import { List, ListItem, Collapse, ListItemText, Paper, Card, CardContent, Typography, Button, CardActions, Zoom } from '@mui/material';
 import { makeStyles } from '@mui/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getCharacterSpawns, showCreator } from '../actions/characterActions';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 const useStyles = makeStyles((theme) => ({
-	wrapper: {
-		display: 'block',
-		padding: 25,
-		color: theme.palette.text.main,
-		borderBottom: `1px solid ${theme.palette.border.divider}`,
-		transition: 'background ease-in 0.15s',
-		userSelect: 'none',
-		'&:first-of-type': {
-			borderTop: `1px solid ${theme.palette.border.divider}`,
-		},
-		'&:hover': {
-			borderColor: '#2f2f2f',
-			transition: 'border-color ease-in 0.15s',
-			cursor: 'pointer',
-		},
-		'&.selected': {
-			background: theme.palette.secondary.light,
-		},
-	},
 	highlight: {
 		color: theme.palette.primary.main,
 	},
-	left: {
-		display: 'inline-block',
-		width: '75%',
-	},
-	right: {
-		display: 'inline-block',
-		width: '25%',
-		textAlign: 'right',
-	},
-	actionButton: {
-		display: 'inline-block',
-		width: '40%',
-	},
-	details: {
-		display: 'block',
-	},
 }));
 
-export default ({ character }) => {
+const Character = (props) => {
 	const classes = useStyles();
-	const dispatch = useDispatch();
 	const selected = useSelector((state) => state.characters.selected);
+	const state = useSelector((state) => state.characters);
 
-	const onClick = () => {
-		if (selected?.ID == character.ID) {
-			dispatch({
-				type: 'DESELECT_CHARACTER',
-			});
-		} else {
-			dispatch({
-				type: 'SELECT_CHARACTER',
-				payload: {
-					character: character,
-				},
-			});
-		}
-	};
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth);
+			setWindowHeight(window.innerHeight);
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		return () => {
+			window.removeEventListener('resize', handleResize);
+		};
+	}, []);
 
 	return (
-		<ListItem
-			button
-			className={`${classes.wrapper}${selected?.ID == character?.ID ? ' selected' : ''}`}
-			onClick={onClick}
+		<Zoom
+			// in={selected !== null}
+			in={true}
+			timeout={500}
 		>
-			<div>
-				<div>
-					<span className={classes.headerText}>
-						{character.First} {character.Last}
-					</span>
-				</div>
-				<div>
-					<span>
-						Last Played:{' '}
-						{+character.LastPlayed === -1 ? (
-							<span className={classes.highlight}>Never</span>
-						) : (
-							<span className={classes.highlight}>
-								<small>
-									<Moment date={+character.LastPlayed} format="M/D/YYYY h:mm:ss A" withTitle />
-								</small>
-							</span>
-						)}
-					</span>
-				</div>
-			</div>
-			<Collapse in={selected?.ID == character?.ID} collapsedSize={0}>
-				<div className={classes.details}>
-					<List>
-						<ListItem>
-							<ListItemText primary="State ID" secondary={character.SID} />
-						</ListItem>
-						{character?.Jobs?.length > 0 ? 
-							character.Jobs.map((job, index) => {
-								return (
-									<ListItem>
-										<ListItemText
-											primary={`Job #${index + 1}`}
-											secondary={job.Workplace ? `${job.Workplace.Name} - ${job.Grade.Name}` : `${job.Name} - ${job.Grade.Name}`}
-										/>
-									</ListItem>
-								)
-							})
-							:
-							<ListItem>
-								<ListItemText
-									primary="Job"
-									secondary="Unemployed"
-								/>
-							</ListItem>
+			<Card
+				style={{
+					backgroundColor: '#000',
+					position: 'absolute',
+					left: state.position.x * windowWidth - 125,
+					top: state.position.y * windowHeight - 220,
+					width: 250,
+				}}
+			>
+				<CardContent>
+					<Typography
+						textAlign={'center'}
+						variant={'h5'}
+						component={'div'}
+					>
+						{state.characters[state.characterIndex] ?
+							`${state.characters[state.characterIndex].First} ${state.characters[state.characterIndex].Last}` :
+							'New Character'
 						}
-					</List>
-				</div>
-			</Collapse>
-		</ListItem>
+					</Typography>
+
+					{state.characters[state.characterIndex] &&
+						<Typography
+							textAlign={'center'}
+							sx={{ mb: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+							color={'text.secondary'}
+						>
+							<CalendarMonthIcon sx={{ marginRight: '0.25rem' }} />
+							{new Date(state.characters[state.characterIndex]?.DOB).toLocaleDateString()}
+						</Typography>
+					}
+
+					<Typography
+						textAlign={'center'}
+						sx={{ mb: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+						color={'text.secondary'}
+					>
+						<AccessTimeIcon sx={{ marginRight: '0.25rem' }} />
+						<span>
+							Last Played:{' '}
+							{!state.characters[state.characterIndex] || +state.characters[state.characterIndex].LastPlayed === -1 ? (
+								<span className={classes.highlight}>Never</span>
+							) : (
+								<span className={classes.highlight}>
+									<small>
+										<Moment
+											date={+state.characters[state.characterIndex].LastPlayed}
+											format="M/D/YYYY h:mm:ss A"
+											withTitle
+										/>
+									</small>
+								</span>
+							)}
+
+						</span>
+					</Typography>
+				</CardContent>
+
+				<CardActions
+					sx={{ justifyContent: 'center' }}
+				>
+					<Button
+						color={'success'}
+						variant={'contained'}
+						size={'medium'}
+						startIcon={<FontAwesomeIcon icon={'fa-solid fa-circle-play'} />}
+						onClick={() => {
+							if (state.characters[state.characterIndex]) {
+								props.getCharacterSpawns(selected)
+							} else {
+								props.showCreator()
+							}
+						}}
+					>
+						{state.characters[state.characterIndex] ? 'Play' : 'Create'}
+					</Button>
+
+					{state.characters[state.characterIndex] &&
+						<Button
+							color={'error'}
+							variant={'contained'}
+							size={'medium'}
+							startIcon={<FontAwesomeIcon icon={'fas fa-trash'} />}
+							onClick={() => {
+								props.setOpen(true)
+							}}
+						>
+							Delete
+						</Button>
+					}
+				</CardActions>
+			</Card>
+		</Zoom>
 	);
 };
+
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps, { getCharacterSpawns, showCreator })(Character);

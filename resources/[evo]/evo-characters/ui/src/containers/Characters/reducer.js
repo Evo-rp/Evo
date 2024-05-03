@@ -1,12 +1,14 @@
 import {
 	APP_RESET,
 	SET_CHARACTERS,
+	SET_CHARACTER_DATA,
 	CREATE_CHARACTER,
 	DELETE_CHARACTER,
 	SELECT_CHARACTER,
 	DESELECT_CHARACTER,
 	SET_DATA,
 	UPDATE_PLAYED,
+	SET_UPDATE_SELECT
 } from '../../actions/types';
 
 export const initialState = {
@@ -90,6 +92,17 @@ export const initialState = {
 	changelog: null,
 	motd: '',
 	selected: null,
+	// selected: {
+	// 	First: 'James',
+	// 	Last: 'Williams',
+	// 	LastPlayed: 1618051388000,
+	// },
+	characterIndex: 0,
+	position: {
+		x: 0,
+		y: 0,
+	},
+	updateSelect: true
 };
 
 const charReducer = (state = initialState, action) => {
@@ -104,6 +117,23 @@ const charReducer = (state = initialState, action) => {
 				...state,
 				characters: state.characters.filter((c) => c.ID != action.payload.id),
 			};
+		case SET_CHARACTER_DATA:
+			if (state.updateSelect) {
+				return {
+					...state,
+					characterIndex: action.payload.index,
+					selected: state.characters[action.payload.index],
+					position: {
+						x: action.payload.x,
+						y: action.payload.y
+					}
+				};
+			}
+		case SET_UPDATE_SELECT:
+			return {
+				...state,
+				updateSelect: action.payload.state
+			}
 		case SELECT_CHARACTER:
 			return { ...state, selected: action.payload.character };
 		case DESELECT_CHARACTER:

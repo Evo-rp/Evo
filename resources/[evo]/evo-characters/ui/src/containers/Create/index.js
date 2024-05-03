@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { TextField, FormControl, MenuItem, Autocomplete } from '@mui/material';
+import { TextField, FormControl, MenuItem, Autocomplete, Paper, Typography, Grid, Stack, Button } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { getCodeList } from 'country-list';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import moment from 'moment';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { SET_STATE } from '../../actions/types';
 import { createCharacter } from '../../actions/characterActions';
@@ -14,19 +16,17 @@ import { STATE_CHARACTERS } from '../../util/States';
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
-		width: '50%',
-		height: 650,
+		width: 630,
+		height: 450,
 		position: 'absolute',
 		top: 0,
 		bottom: 0,
 		right: 0,
 		left: 0,
 		margin: 'auto',
-		background: theme.palette.secondary.dark,
+		background: theme.palette.secondary.main,
 	},
-	createForm: {
-		margin: 25,
-	},
+	createForm: { margin: 25 },
 	button: {
 		fontSize: 14,
 		lineHeight: '20px',
@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
 		width: '40%',
 		'&:disabled': {
 			opacity: 0.5,
-			cursor: 'not-allowed',
-		},
+			cursor: 'not-allowed'
+		}
 	},
 	positive: {
 		border: `2px solid ${theme.palette.success.dark}`,
@@ -53,8 +53,8 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'filter ease-in 0.15s',
 		'&:hover': {
 			background: theme.palette.success.main,
-			filter: 'brightness(0.7)',
-		},
+			filter: 'brightness(0.7)'
+		}
 	},
 	negative: {
 		border: `2px solid ${theme.palette.error.dark}`,
@@ -67,33 +67,40 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'filter ease-in 0.15s',
 		'&:hover': {
 			background: theme.palette.error.main,
-			filter: 'brightness(0.7)',
-		},
+			filter: 'brightness(0.7)'
+		}
 	},
 	form: {
 		display: 'flex',
 		justifyContent: 'space-evenly',
 		padding: '1% 0',
-		flexWrap: 'wrap',
+		flexWrap: 'wrap'
 	},
 	formControl: {
 		width: '45%',
 		display: 'block',
-		margin: 10,
+		margin: 10
 	},
 	formControlFull: {
 		width: '94%',
 		display: 'block',
-		margin: 10,
+		margin: 10
 	},
 	formControl2: {
 		width: '94%',
 		display: 'block',
-		margin: 10,
+		margin: 10
 	},
-	input: {
-		width: '100%',
-	},
+	input: { width: '100%' },
+	header: {
+		color: theme.palette.text.main,
+		position: 'absolute',
+		top: 20,
+		left: 42.5,
+		letterSpacing: 1,
+		textTransform: 'uppercase',
+		whiteSpace: 'nowrap'
+	}
 }));
 
 const genders = [
@@ -166,14 +173,35 @@ const Create = (props) => {
 		<LocalizationProvider dateAdapter={AdapterMoment}>
 			<div className={classes.wrapper}>
 				<div className={classes.createForm}>
-					<h1 style={{ marginLeft: 15 }}>Create Character</h1>
-					<hr style={{ marginBottom: 20 }} />
+					<div
+						className={classes.header}
+					>
+						<Typography
+							sx={{
+								textAlign: 'center',
+								fontWeight: 400,
+								fontSize: 20
+							}}
+						>
+							Create Character
+						</Typography>
+					</div>
 					<form
 						autoComplete="off"
 						id="createForm"
 						className={classes.form}
 						onSubmit={onSubmit}
 					>
+						<Typography
+							className={classes.formControlFull}
+							variant={'h5'}
+							sx={{ textTransform: 'uppercase', paddingTop: 2 }}
+							fontWeight={'bold'}
+							gutterBottom={true}
+						>
+							Welcome To Los Santos
+						</Typography>
+
 						<FormControl className={classes.formControl}>
 							<TextField
 								className={classes.input}
@@ -223,7 +251,6 @@ const Create = (props) => {
 								renderInput={(params) => (
 									<TextField
 										{...params}
-										required
 										label="Country of Origin"
 										variant="outlined"
 									/>
@@ -272,45 +299,57 @@ const Create = (props) => {
 								)}
 							/>
 						</FormControl>
-						<FormControl className={classes.formControl2}>
-							<TextField
-								className={classes.input}
-								required
-								label="Character Biography"
-								name="bio"
-								multiline
-								rows="4"
-								value={state.bio}
-								onChange={onChange}
-								variant="outlined"
-							/>
-						</FormControl>
 					</form>
 				</div>
-				<div
-					className={classes.actionData}
-					style={{ textAlign: 'center' }}
+
+				<Grid
+					container={true}
+					spacing={0}
+					direction={'column'}
+					alignItems={'center'}
+					justifyContent={'center'}
+					sx={{
+						position: 'absolute',
+						bottom: 0,
+						backgroundColor: 'rgba(217, 217, 217, 0.05)'
+					}}
 				>
-					<button
-						type="button"
-						className={`${classes.button} ${classes.negative}`}
-						onClick={() => {
-							props.dispatch({
-								type: SET_STATE,
-								payload: { state: STATE_CHARACTERS },
-							});
-						}}
+					<Stack
+						sx={{ padding: 2 }}
+						direction={'row'}
+						spacing={2}
 					>
-						Cancel
-					</button>
-					<button
-						type="submit"
-						className={`${classes.button} ${classes.positive}`}
-						form="createForm"
-					>
-						Create
-					</button>
-				</div>
+						<Button
+							variant="contained"
+							startIcon={<FontAwesomeIcon icon={['fas', 'circle-check']} />}
+							color="success"
+							square={true}
+							type="submit"
+							form="createForm"
+						>
+							Create Character
+						</Button>
+
+						<Button
+							variant="text"
+							startIcon={<FontAwesomeIcon icon={['fas', 'circle-xmark']} />}
+							sx={{
+								textDecoration: 'underline !important',
+								textUnderlineOffset: 5,
+								color: 'white'
+							}}
+							square={true}
+							onClick={() => {
+								props.dispatch({
+									type: SET_STATE,
+									payload: { state: STATE_CHARACTERS },
+								});
+							}}
+						>
+							Cancel
+						</Button>
+					</Stack>
+				</Grid>
 			</div>
 		</LocalizationProvider>
 	);

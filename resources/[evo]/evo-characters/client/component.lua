@@ -28,12 +28,13 @@ end)
 
 RegisterNetEvent("Characters:Client:SetData", function(key, data, cb)
 	if key ~= -1 then
-        LocalPlayer.state.Character:SetData(key, data)
+		LocalPlayer.state.Character:SetData(key, data)
 	else
-        LocalPlayer.state.Character = exports["evo-base"]:FetchComponent("DataStore"):CreateStore(1, "Character", data)
+		LocalPlayer.state.Character =
+			exports["evo-base"]:FetchComponent("DataStore"):CreateStore(1, "Character", data)
 	end
-    
-    exports["evo-base"]:FetchComponent("Player").LocalPlayer:SetData("Character", LocalPlayer.state.Character)
+
+	exports["evo-base"]:FetchComponent("Player").LocalPlayer:SetData("Character", LocalPlayer.state.Character)
 	TriggerEvent("Characters:Client:Updated", key)
 
 	if cb then
@@ -55,6 +56,7 @@ CHARACTERS = {
 			})
 			Citizen.Wait(500)
 			exports["evo-base"]:FetchComponent("Spawn"):Init()
+			TriggerServerEvent('Characters:GetName')
 		end)
 	end,
 	Update = function(self)

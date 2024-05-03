@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { CssBaseline, ThemeProvider, createTheme, StyledEngineProvider } from '@mui/material';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/pro-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import Loader from '../Loader';
@@ -44,9 +44,9 @@ export default () => {
 				dark: '#430b0b',
 			},
 			success: {
-				main: '#52984a',
+				main: '#4B6611',
 				light: '#60eb50',
-				dark: '#244a20',
+				dark: '#395008'
 			},
 			warning: {
 				main: '#f09348',
@@ -106,7 +106,11 @@ export default () => {
 		<StyledEngineProvider injectFirst>
 			<ThemeProvider theme={muiTheme}>
 				<CssBaseline />
-				{!hidden && <div className="App">{loading ? <Loader /> : display}</div>}
+				{!hidden &&
+					<div className="App">
+						{loading ? <Loader /> : display}
+					</div>
+				}
 			</ThemeProvider>
 		</StyledEngineProvider>
 	);

@@ -1,9 +1,10 @@
-import { APP_RESET, APP_SHOW, APP_HIDE, SET_STATE } from '../../actions/types';
+import { APP_RESET, APP_SHOW, APP_HIDE, SET_STATE, SET_NAME } from '../../actions/types';
 import { STATE_SPLASH } from '../../util/States';
 
 export const initialState = {
 	hidden: true,
 	state: STATE_SPLASH,
+	name: 'Aspect'
 };
 
 const appReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const appReducer = (state = initialState, action) => {
 				...initialState,
 				hidden: false,
 			};
+		case SET_NAME:
+			return {
+				...state,
+				name: action.payload.name
+			}
 		default:
 			return state;
 	}

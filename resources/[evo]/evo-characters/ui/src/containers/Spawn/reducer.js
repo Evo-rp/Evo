@@ -8,6 +8,15 @@ import {
 export const initialState = {
 	spawns: Array(),
 	selected: null,
+
+	// spawns: [
+	// 	{
+	// 		id: 1,
+	// 		label: "LSIA",
+	// 		icon: 'fas fa-location-dot',
+	// 		location: { x: -1044.84, y: -2749.85, z: 21.36, h: 0.0 },
+	// 	},
+	// ]
 };
 
 const spawnReducer = (state = initialState, action) => {
