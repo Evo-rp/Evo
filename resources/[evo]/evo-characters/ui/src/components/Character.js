@@ -38,8 +38,7 @@ const Character = (props) => {
 
 	return (
 		<Zoom
-			// in={selected !== null}
-			in={true}
+			in={selected !== null}
 			timeout={500}
 		>
 			<Card
