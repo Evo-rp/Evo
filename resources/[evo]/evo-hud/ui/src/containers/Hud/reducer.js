@@ -1,5 +1,5 @@
 export const initialState = {
-    showing: true,
+    showing: false,
     config: {
         statusIcons: true,
         statusNumbers: false,
