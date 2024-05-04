@@ -9,6 +9,7 @@ function RetrieveComponents()
 	Notification = exports["evo-base"]:FetchComponent("Notification")
 	PedInteraction = exports["evo-base"]:FetchComponent("PedInteraction")
 	Taxi = exports["evo-base"]:FetchComponent("Taxi")
+	Input = exports["evo-base"]:FetchComponent("Input")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -25,12 +26,8 @@ AddEventHandler("Core:Shared:Ready", function()
 		end
 		RetrieveComponents()
 
-		Keybinds:Add("taxi_increase_rate", "", "keyboard", "Taxi - Increase Rate", function()
-			Taxi.Rate:Increase()
-		end)
-
-		Keybinds:Add("taxi_decrease_rate", "", "keyboard", "Taxi - Decrease Rate", function()
-			Taxi.Rate:Decrease()
+		Keybinds:Add("taxi_increase_rate", "", "keyboard", "Taxi - Set Rate", function()
+			Taxi.Rate:Set()
 		end)
 
 		Keybinds:Add("taxi_reset_trip", "", "keyboard", "Taxi - Reset Trip", function()
@@ -110,33 +107,14 @@ _TAXI = {
 		end,
 	},
 	Rate = {
-		Increase = function(self)
-			if _rate < 1000 then
-				_rate = _rate + 1
-				SetResourceKvpInt("TAXI_RATE", _rate)
-				SendNUIMessage({
-					type = "SET_RATE",
-					data = {
-						rate = _rate,
-					},
-				})
-			else
-				Notification:Error("Rate Cannot Go Higher")
-			end
-		end,
-		Decrease = function(self)
-			if _rate > 0 then
-				_rate = _rate - 1
-				SetResourceKvpInt("TAXI_RATE", _rate)
-				SendNUIMessage({
-					type = "SET_RATE",
-					data = {
-						rate = _rate,
-					},
-				})
-			else
-				Notification:Error("Rate Cannot Go Lower")
-			end
+		Set = function(self)
+			Input:Show("Taxi", "Set Rate", {
+				{
+					id = "rate",
+					type = "number",
+					options = {},
+				},
+			}, "Taxi:SetRate", {})
 		end,
 	},
 	Trip = {
@@ -147,3 +125,17 @@ _TAXI = {
 		end,
 	},
 }
+
+AddEventHandler('Taxi:SetRate', function(values, data)
+	if tonumber(values.rate) < 1000 then
+		SetResourceKvpInt("TAXI_RATE", tonumber(values.rate))
+		SendNUIMessage({
+			type = "SET_RATE",
+			data = {
+				rate = tonumber(values.rate),
+			},
+		})
+	else
+		Notification:Error("Rate cannot be higher than 1000 or higher")
+	end
+end)
