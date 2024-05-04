@@ -1,5 +1,5 @@
 export const initialState = {
-    showing: true,
+    showing: false,
     ignition: true,
     speed: 0,
     speedMeasure: 'MPH',

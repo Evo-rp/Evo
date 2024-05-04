@@ -4,15 +4,17 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
     location: {
-        position: 'absolute',
-        //bottom: 100,
-        left: '45%',
+        position: 'fixed',
+        top: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     locationFoot: {
-        position: 'absolute',
-        bottom: '2%',
-        left: '1%',
+        position: 'fixed',
+        top: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     highlight: {
