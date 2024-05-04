@@ -742,7 +742,7 @@ _entityTypes = {
 		capacity = 200,
 		shop = true,
 		itemSet = 19,
-		name = "Winery",
+		name = "Panning",
 	},
 
 	{
