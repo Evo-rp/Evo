@@ -796,15 +796,15 @@ _shops = {
 	},
 	{
 		shopId = 51,
-		name = "Winery",
+		name = "Goldpan",
 		entityId = 76,
-		icon = "wine-bottle",
-		npc = "u_m_o_finguru_01",
+		icon = "person",
+		npc = "a_m_y_vinewood_02",
 		coords = {
-			x = -1911.636,
-			y = 2074.202,
-			z = 139.387,
-			h = 133.093,
+			x = 1956.636,
+			y = 710.202,
+			z = 163.387,
+			h = 248.093,
 		},
 	},
 	{

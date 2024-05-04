@@ -190,7 +190,9 @@ Config.ShopItemSets = {
 		"rolling_paper",
 	},
 	[19] = {
-		"wine_bottle",
+		"sifting_pan",
+		"bucket",
+		"goldmold",
 	},
 	[20] = {
 		"fishing_rod",

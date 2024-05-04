@@ -59,6 +59,19 @@ function RegisterRandomItems()
 		SetPedArmour(GetPlayerPed(source), 100)
 	end)
 
+	Inventory.Items:RegisterUse("sifting_pan", "RandomItems", function(source, item)
+		TriggerClientEvent('goldpan:start', source)
+	end)
+
+	Inventory.Items:RegisterUse("bucket", "RandomItems", function(source, item)
+		TriggerClientEvent('bucket:start', source)
+	end)
+
+	Inventory.Items:RegisterUse("goldmold", "RandomItems", function(source, item)
+		TriggerClientEvent('moldbars:start', source)
+	end)
+
+
 	Inventory.Items:RegisterUse("pdarmor", "RandomItems", function(source, item)
 		Inventory.Items:RemoveSlot(item.Owner, item.Name, 1, item.Slot, item.invType)
 		SetPedArmour(GetPlayerPed(source), 100)
