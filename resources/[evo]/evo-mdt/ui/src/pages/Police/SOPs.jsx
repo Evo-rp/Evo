@@ -13,7 +13,7 @@ export default () => {
 
 	return (
 		<div className={classes.wrapper}>
-			<iframe src={process.env.REACT_POLICE_SOP} title="evo-sops" width="100%" height="100%"></iframe>
+			<iframe src={'https://docs.google.com/document/d/1ai28Ct2v7e0VLLMzX59TcKbCvvul-M5YAj2C3U8aBug/edit?usp=sharing'} title="evo-sops" width="100%" height="100%"></iframe>
 		</div>
 	);
 };
