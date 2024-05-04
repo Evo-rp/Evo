@@ -175,6 +175,19 @@ export const initialState = {
 						// },
 						params: '',
 					},
+					gallery: {
+						storeLabel: 'Gallery',
+						label: 'Gallery',
+						icon: ['fa', 'image'],
+						name: 'gallery',
+						color: '#00aced',
+						canUninstall: true,
+						unread: 0,
+						// restricted: {
+						// 	state: 'PHONE_VPN',
+						// },
+						params: '',
+					},
 					irc: {
 						storeLabel: 'IRC',
 						label: 'IRC',
