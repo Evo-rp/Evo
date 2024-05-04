@@ -60,18 +60,18 @@ const App = ({ hidden }) => {
             fontFamily: ['Oswald'],
         },
         palette: {
-            primary: {
-                main: '#E5A502',
-                light: '#E8A933',
-                dark: '#FA5800',
-                contrastText: '#ffffff',
-            },
-            secondary: {
-                main: '#141414',
-                light: '#1c1c1c',
-                dark: '#0f0f0f',
-                contrastText: '#ffffff',
-            },
+			primary: {
+				main: '#7702e5',
+				light: '#ff2100',
+				dark: '#560000',
+				contrastText: '#ffffff',
+			},
+			secondary: {
+				main: '#141414',
+				light: '#1c1c1c',
+				dark: '#0f0f0f',
+				contrastText: '#ffffff',
+			},
             error: {
                 main: '#6e1616',
                 light: '#a13434',
