@@ -59,6 +59,10 @@ export default (props) => {
         })
     }
 
+    const takePicture = () => {
+        Nui.send('takePicture')
+    }
+
     return (
         <div className={classes.wrapper}>
             <div className={classes.inner}>
@@ -73,6 +77,7 @@ export default (props) => {
                             >
                                 <IconButton
                                     className={classes.headerAction}
+                                    onClick={() => takePicture()}
                                 >
                                     <FontAwesomeIcon icon={['fas', 'plus']} />
                                 </IconButton>
