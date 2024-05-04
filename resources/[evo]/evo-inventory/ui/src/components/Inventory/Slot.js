@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'inline-block',
 		boxSizing: 'border-box',
 		flexGrow: 0,
-		width: 165,
-		flexBasis: 165,
+		minWidth: '6.5vw',
+		flexBasis: '6.5vw',
 		zIndex: 1,
 		position: 'relative',
 		'&.mini': {
@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	slot: {
 		width: '100%',
-		height: 190,
+		height: '19.25vh',
 		backgroundColor: `${theme.palette.secondary.light}61`,
 		position: 'relative',
 		zIndex: 2,
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'opacity ease-in 0.15s, border ease-in 0.15s',
 	},
 	img: {
-		height: 190,
+		height: '17.25vh',
 		width: '100%',
 		zIndex: 3,
 		backgroundSize: '70%',
