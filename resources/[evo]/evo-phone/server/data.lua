@@ -175,6 +175,18 @@ _appData = {
 		requirements = {},
 	},
 	{
+		name = "gallery",
+		storeLabel = "Gallery",
+		label = "Gallery",
+		icon = { "fa", "image" },
+		color = "#00aced",
+		params = "",
+		canUninstall = true,
+		store = true,
+		unread = 0,
+		requirements = {},
+	},
+	{
 		name = "irc",
 		storeLabel = "IRC",
 		label = "IRC",
