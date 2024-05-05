@@ -322,9 +322,11 @@ export default (props) => {
 	}, [qry.draft]);
 
 	useEffect(() => {
-		setTimeout(() => {
-			setState({...state, notes: Templates[type]})
-		}, 500) 
+		if (state.notes === '') {
+			setTimeout(() => {
+				setState({...state, notes: Templates[type]})
+			}, 500) 
+		}
 	}, []);
 
 	const onSave = () => {
