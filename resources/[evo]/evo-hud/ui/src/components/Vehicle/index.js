@@ -8,15 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         position: 'absolute',
-        left: 0,
-        right: 1400,
-        marginRight: 150,
+        left: '0%',
+        right: '65%', 
+        marginRight: '10%', 
         margin: 'auto',
         width: 'fit-content',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
         fontSize: 30,
         color: theme.palette.text.main,
-        //textAlign: 'center',
     },
     speed: {},
     speedText: {
