@@ -140,7 +140,6 @@ export default (props) => {
 
 	let qry = qs.parse(location.search.slice(1));
 	const initialState = {
-		type: ReportTypes.filter((r) => hasPermission(r.requiredCreatePermission, false))?.[0]?.value,
 		title: '',
 		notes: '',
 		tagInput: '',
@@ -165,11 +164,92 @@ export default (props) => {
 	const [loadDraft, setLoadDraft] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [state, setState] = useState(initialState);
+	const [type, setType] = useState(ReportTypes.filter((r) => hasPermission(r.requiredCreatePermission, false))?.[0]?.value)
 	const [form, setForm] = useState(false);
 	const [editing, setEditing] = useState(null);
 	const [officers, setOfficers] = useState(Array());
 	const [people, setPeople] = useState(Array());
 	const [tags, setTags] = useState(Array());
+
+	const Templates = {
+		0: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Location(s):<br /><br />
+	
+			EMS Involved (If none remove line.):<br />
+	
+			Witnesses Involved (If none remove line.):<br />
+	
+			Vehicles Involved (If none remove line. [Plate] [Model]):<br /><br />
+	
+			Officers Statements:<br /><br />
+	
+			Evidence Taken on Scene/Into Locker:<br />
+	
+			Extra Notes/Pictures:<br /><br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		1: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Details:<br /><br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		2: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Location(s):<br /><br />
+	
+			Details:<br />
+	
+			Witnesses Involved (If none remove line.):<br />
+	
+			Officers Statements:<br /><br />
+	
+			Evidence Taken on Scene/Into Locker:<br />
+	
+			Extra Notes/Pictures:<br /><br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		3: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Details:<br /><br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		4: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Details:<br /><br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		10: `
+			Date: ${moment().format('MM/DD/yy')}<br />
+			Time: ${moment().format('HH:mm')} | ${new Date().toLocaleTimeString('en', {timeZoneName: 'short'}).split(' ')[2]}<br /><br />
+	
+			Injuries:<br />
+	
+			Details:<br />
+	
+			People Involved:<br />
+	
+			Signed, [Callsign] (Officer Name)
+		`,
+		20: ``,
+		21: ``,
+		25: ``,
+	};
 
 	useEffect(() => {
 		const f = async (id) => {
@@ -409,7 +489,7 @@ export default (props) => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 
-		if (state.type == 0 && state.suspects.length == 0) {
+		if (type == 0 && state.suspects.length == 0) {
 			toast.error('Must Select Suspect');
 		} else if (state.title == '') {
 			toast.error('Must Add Report Title');
@@ -423,7 +503,7 @@ export default (props) => {
 							type: 'report',
 							ID: state._id,
 							Report: {
-								type: state.type,
+								type: type,
 								title: state.title,
 								notes: state.notes,
 								time: state.time,
@@ -444,7 +524,7 @@ export default (props) => {
 						await Nui.send('Create', {
 							type: 'report',
 							doc: {
-								type: state.type,
+								type: type,
 								title: state.title,
 								notes: state.notes,
 								time: Date.now(),
@@ -478,8 +558,8 @@ export default (props) => {
 		}
 	};
 
-	const reportOfficerName = GetOfficerNameFromReportType(state.type);
-	const reportOfficerType = GetOfficerJobFromReportType(state.type);
+	const reportOfficerName = GetOfficerNameFromReportType(type);
+	const reportOfficerType = GetOfficerJobFromReportType(type);
 
 	return (
 		<div className={classes.wrapper}>
@@ -498,7 +578,7 @@ export default (props) => {
 								>
 									Add Evidence
 								</Button>
-								{state.type === 0 && (
+								{type === 0 && (
 									<Button
 										className={classes.positiveButton}
 										variant="outlined"
@@ -539,12 +619,18 @@ export default (props) => {
 					<TextField
 						select
 						fullWidth
-						label="Report Type"
+						label="Report Type [This will remove anything in the MDT Notes currently]"
 						disabled={Boolean(state?._id)}
 						name="type"
 						className={classes.editorField}
-						value={state.type}
-						onChange={(e) => setState({ ...state, type: e.target.value })}
+						value={type}
+						onChange={(e) => {
+							setType(e.target.value)
+
+							setTimeout(() => {
+								setState({ ...state, notes: Templates[e.target.value] })
+							}, 100)
+						}}
 					>
 						{ReportTypes.filter((r) => hasPermission(r.requiredCreatePermission, false)).map((option) => (
 							<MenuItem key={option.value} value={option.value}>
@@ -560,7 +646,7 @@ export default (props) => {
 						value={state.title}
 						onChange={(e) => setState({ ...state, title: e.target.value })}
 					/>
-					{state.type === 0 && (
+					{type === 0 && (
 						<OfficerSearch
 							disableSelf
 							label={`Primary Officers`}
@@ -587,7 +673,7 @@ export default (props) => {
 							onInputChange={(e, nv) => setState({ ...state, primariesInput: nv })}
 						/>
 					)}
-					{state.type === 0 && (
+					{type === 0 && (
 						<OfficerSearch
 							label="Assisting Officers"
 							placeholder="200, 201, 202 etc..."
@@ -650,7 +736,7 @@ export default (props) => {
 						}}
 						onInputChange={(e, nv) => setState({ ...state, tagInput: nv })}
 					/>
-					{state.type !== 0 && (
+					{type !== 0 && (
 						<OfficerSearch
 							disableSelf
 							job={reportOfficerType}
@@ -678,7 +764,7 @@ export default (props) => {
 							onInputChange={(e, nv) => setState({ ...state, primariesInput: nv })}
 						/>
 					)}
-					{state.type !== 0 && (
+					{type !== 0 && (
 						<PersonSearch
 							label="People Involved"
 							placeholder="John Doe, Jane Doe etc..."
@@ -715,7 +801,7 @@ export default (props) => {
 									/>
 								);
 						  })
-						: state.type === 0 && (
+						: type === 0 && (
 								<Alert variant="outlined" severity="info" style={{ margin: 25 }}>
 									Please Add A Suspect To Your Report
 								</Alert>
