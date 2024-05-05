@@ -244,7 +244,7 @@ export default (props) => {
 	
 			People Involved:<br />
 	
-			Signed, [Callsign] (Officer Name)
+			Signed, [Callsign] (Name)
 		`,
 		20: ``,
 		21: ``,
@@ -322,11 +322,11 @@ export default (props) => {
 	}, [qry.draft]);
 
 	useEffect(() => {
-		if (state.notes === '') {
-			setTimeout(() => {
+		setTimeout(() => {
+			if (state.notes === '') {
 				setState({...state, notes: Templates[type]})
-			}, 500) 
-		}
+			}
+		}, 750) 
 	}, []);
 
 	const onSave = () => {
