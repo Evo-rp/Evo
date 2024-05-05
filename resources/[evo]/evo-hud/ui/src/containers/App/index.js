@@ -92,21 +92,6 @@ const App = ({ hidden }) => {
                 light: '#3d2257',
                 dark: '#501778',
             },
-            success: {
-                main: '#52984a',
-                light: '#60eb50',
-                dark: '#244a20',
-            },
-            warning: {
-                main: '#f09348',
-                light: '#f2b583',
-                dark: '#b05d1a',
-            },
-            info: {
-                main: '#6a329f',
-                light: '#8d51c7',
-                dark: '#390b64',
-            },
             text: {
                 main: '#ffffff',
                 alt: '#A7A7A7',
