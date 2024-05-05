@@ -4,20 +4,21 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
     location: {
-        position: 'fixed',
-        top: 0,
-        left: '50%',
-        transform: 'translateX(-50%)',
+        position: 'absolute',
+        top: -15, 
+        left: '50%', 
+        transform: 'translateX(-50%)', 
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     locationFoot: {
-        position: 'fixed',
-        top: 0,
-        left: '50%',
-        transform: 'translateX(-50%)',
+        position: 'absolute',
+        top: -15,
+        left: '50%', 
+        transform: 'translateX(-50%)', 
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     highlight: {
+        fontSize: 24,
         color: theme.palette.primary.main,
     },
     highlight2: {
@@ -25,14 +26,15 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 15,
     },
     areaWrap: {
+        opacity: 0,
         display: 'block',
-        fontSize: 15,
-        position: 'absolute',
-        top: 0,
+        fontSize: 20,
+        position: 'relative',
+        top: 5,
     },
     direction: {
-        fontSize: 15,
-        lineHeight: '15px',
+        fontSize: 23,
+        lineHeight: '30px',
         color: theme.palette.text.main,
         display: 'inline-block',
         width: 20,
@@ -41,12 +43,10 @@ const useStyles = makeStyles((theme) => ({
     locationMain: {
         color: theme.palette.text.alt,
         fontSize: 15,
-        marginLeft: 45,
-        
     },
     locationSecondary: {
         color: theme.palette.text.main,
-        fontSize: 15,
+        fontSize: 20,
         marginLeft: 5,
     },
     '@keyframes flash': {
@@ -75,7 +75,7 @@ export default () => {
     return (
         <div
             className={
-                inVehicle || isShifted ? classes.location : classes.locationFoot
+                inVehicle || isShifted ? classes.locationFoot : classes.location
             }
         >
             <div className={classes.areaWrap}>
