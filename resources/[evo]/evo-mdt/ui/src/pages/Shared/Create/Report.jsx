@@ -321,6 +321,12 @@ export default (props) => {
 		setLoadDraft(false);
 	}, [qry.draft]);
 
+	useEffect(() => {
+		setTimeout(() => {
+			setState({...state, notes: Templates[type]})
+		}, 500) 
+	}, []);
+
 	const onSave = () => {
 		setLoading(true);
 		if (qry.draft && drafts.filter((d) => d.draft == +qry.draft).length > 0) {
