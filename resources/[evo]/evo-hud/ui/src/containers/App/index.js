@@ -62,8 +62,8 @@ const App = ({ hidden }) => {
         palette: {
 			primary: {
 				main: '#7702e5',
-				light: '#ff2100',
-				dark: '#560000',
+				light: '#9639ed',
+				dark: '#2f0656',
 				contrastText: '#ffffff',
 			},
 			secondary: {
@@ -88,9 +88,9 @@ const App = ({ hidden }) => {
                 dark: '#b05d1a',
             },
             info: {
-                main: '#4056b3',
-                light: '#247ba5',
-                dark: '#175878',
+                main: '#6a329f',
+                light: '#3d2257',
+                dark: '#501778',
             },
             success: {
                 main: '#52984a',
@@ -103,9 +103,9 @@ const App = ({ hidden }) => {
                 dark: '#b05d1a',
             },
             info: {
-                main: '#247ba5',
-                light: '#247ba5',
-                dark: '#175878',
+                main: '#6a329f',
+                light: '#8d51c7',
+                dark: '#390b64',
             },
             text: {
                 main: '#ffffff',
