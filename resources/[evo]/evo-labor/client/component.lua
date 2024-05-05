@@ -29,6 +29,7 @@ function RetrieveComponents()
 	NetSync = exports["evo-base"]:FetchComponent("NetSync")
 	Vehicles = exports["evo-base"]:FetchComponent("Vehicles")
 	Animations = exports["evo-base"]:FetchComponent("Animations")
+	Weapons = exports['evo-base']:FetchComponent("Weapons")
 end
 
 AddEventHandler("Core:Shared:Ready", function()

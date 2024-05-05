@@ -103,52 +103,69 @@ end
 
 
 AddEventHandler("Inventory:Client:HideInDumpster", function(entity, data)
-	-- print(entity.endCoords, entity.entity, data)
 	local data = {
 		identifier = entity.entity,
 		locked = math.random(1, 3),
 	}
-	Callbacks:ServerCallback("Inventory:Dumpster:HidePlayer", data, function(s, l)
-		if not s then
-			Notification:Error("You're not in the right state to hide in the dumpster.")
-			return
-		end
-		if data.identifier == nil or type(data.identifier) == "boolean" then
-			Notification:Error("This is not a dumpster. Try again.")
-			return
-		end
-		if not l then
-			Notification:Error("Dumpster is locked.")
-			return
-		end
-		LocalPlayer.state.inDumpster = true
-		_insideCurrentDumpster = data.identifier
-		AttachEntityToEntity(
-			LocalPlayer.state.ped,
-			_insideCurrentDumpster,
-			-1,
-			0.0,
-			-0.2,
-			2.0,
-			0.0,
-			0.0,
-			0.0,
-			true,
-			true,
-			true,
-			false,
-			2,
-			true
-		)
-		Animations.Emotes:Play("laydown_garbage", false, nil, true)
-		SetEntityVisible(LocalPlayer.state.ped, false, 0)
-		_insideDumpster = true
-		_isLocked = false
 
-		TriggerEvent("Inventory:Client:DumpsterHideThread")
-
-		if not LocalPlayer.state.isCuffed and not LocalPlayer.state.isDead then
-			Action:Show("{keybind}secondary_action{/keybind} Exit Trash")
+	Progress:Progress({
+		name = "hide_dumpster",
+		duration = 30000,
+		label = "Climbing into dumpster",
+		useWhileDead = false,
+		canCancel = true,
+		ignoreModifier = true,
+		controlDisables = {
+			disableMovement = true,
+			disableCarMovement = true,
+			disableMouse = false,
+			disableCombat = true,
+		},
+	}, function(cancelled)
+		if not cancelled then
+			Callbacks:ServerCallback("Inventory:Dumpster:HidePlayer", data, function(s, l)
+				if not s then
+					Notification:Error("You're not in the right state to hide in the dumpster.")
+					return
+				end
+				if data.identifier == nil or type(data.identifier) == "boolean" then
+					Notification:Error("This is not a dumpster. Try again.")
+					return
+				end
+				if not l then
+					Notification:Error("Dumpster is locked.")
+					return
+				end
+				LocalPlayer.state.inDumpster = true
+				_insideCurrentDumpster = data.identifier
+				AttachEntityToEntity(
+					LocalPlayer.state.ped,
+					_insideCurrentDumpster,
+					-1,
+					0.0,
+					-0.2,
+					2.0,
+					0.0,
+					0.0,
+					0.0,
+					true,
+					true,
+					true,
+					false,
+					2,
+					true
+				)
+				Animations.Emotes:Play("laydown_garbage", false, nil, true)
+				SetEntityVisible(LocalPlayer.state.ped, false, 0)
+				_insideDumpster = true
+				_isLocked = false
+		
+				TriggerEvent("Inventory:Client:DumpsterHideThread")
+		
+				if not LocalPlayer.state.isCuffed and not LocalPlayer.state.isDead then
+					Action:Show("{keybind}secondary_action{/keybind} Exit Trash")
+				end
+			end)
 		end
 	end)
 end)
