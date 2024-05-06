@@ -16,6 +16,9 @@ function WeaponsComponents()
 	Interaction = exports["evo-base"]:FetchComponent("Interaction")
 	Inventory = exports["evo-base"]:FetchComponent("Inventory")
 	Sounds = exports["evo-base"]:FetchComponent("Sounds")
+	Buffs = exports["evo-base"]:FetchComponent("Buffs")
+
+
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -28,6 +31,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Interaction",
 		"Inventory",
 		"Sounds",
+		"Buffs"
 	}, function(error)
 		if #error > 0 then
 			return
