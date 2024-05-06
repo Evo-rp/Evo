@@ -5,101 +5,7 @@ import { makeStyles, withTheme } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const useStyles = makeStyles((theme) => ({
-    status: {
-    position: 'absolute',
-    bottom: '0.26vmin',
-    right: 0,
-    left: 0,
-    marginLeft: '1.77vmin',
-    fontSize: '2.77vmin',
-    width: 'fit-content',
-    maxWidth: '332.40vmin',
-    textAlign: 'center',
-    filter: 'drop-shadow(0 0 0.18vmin #000000)',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    display: 'flex',
-    '& svg': {
-      margin: '0.46vmin',
-    },
-  },
-    iconWrapper: {
-        position: 'relative',
-        height: 50,
-        width: 50,
-        fontSize: 15,
-        '&:not(:last-of-type)': {
-            marginRight: 20,
-        },
-        '&.low': {
-            animation: '$flash linear 1s infinite',
-        },
-    },
-    iconProg: {
-        position: 'absolute',
-        height: 1,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 'auto',
-        zIndex: 5,
-    },
-    barBg: {
-        position: 'absolute',
-        height: 7,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 'auto',
-        zIndex: 5,
-        boxShadow: '0 0 5px #000',
-        background: theme.palette.secondary.dark,
-        border: `1px solid ${theme.palette.border.divider}`,
-    },
-    bar: {
-        maxWidth: '100%',
-        height: '100%',
-        transition: 'width ease-in 0.15s',
-    },
-    iconAvatar: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 'auto',
-        // backgroundImage: `linear-gradient(to top, ${theme.palette.secondary.dark}7a, transparent)`,
-        '& svg, & span': {
-            position: 'absolute',
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            margin: 'auto',
-            fontSize: 15,
-            textShadow: '0 0 5px #000',
-            color: theme.palette.text.main,
-        },
-    },
-    errorIcon: {
-        color: theme.palette.error.light,
-    },
-    '@keyframes flash': {
-        '0%': {
-            opacity: 1,
-        },
-        '50%': {
-            opacity: 0.1,
-        },
-        '100%': {
-            opacity: 1,
-        },
-    },
-}));
-
 export default withTheme(() => {
-    const classes = useStyles();
     const theme = useTheme();
 
     const config = useSelector((state) => state.hud.config);
@@ -110,6 +16,101 @@ export default withTheme(() => {
     const statuses = useSelector((state) => state.status.statuses);
     const fuelHide = useSelector((state) => state.vehicle.fuelHide);
     const fuel = useSelector((state) => state.vehicle.fuel);
+
+    const useStyles = makeStyles((theme) => ({
+        status: {
+            position: 'absolute',
+            margin: 'auto',
+            fontSize: 30,
+            textAlign: 'center',
+            filter: 'drop-shadow(0 0 2px #000000)',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            display: 'flex',
+            left: 10,
+            right: 0,
+            bottom: 5,
+            flexDirection: 'row',
+            padding: 5
+        },
+        iconWrapper: {
+            position: 'relative',
+            height: 50,
+            width: 50,
+            '&:not(:last-of-type)': {
+                marginRight: 10,
+            },
+            '&.low': {
+                animation: '$flash linear 1s infinite',
+            },
+        },
+        iconProg: {
+            position: 'absolute',
+            height: 5,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            margin: 'auto',
+            zIndex: 5,
+        },
+        barBg: {
+            position: 'absolute',
+            height: 50,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            margin: 'auto',
+            zIndex: 5,
+            boxShadow: '0 0 5px #000',
+            background: theme.palette.secondary.dark,
+            border: `1px solid ${theme.palette.border.divider}`,
+            zIndex: 0,
+            borderRadius: '50%',
+            transform: 'rotate(-180deg)',
+            overflow: 'hidden'
+        },
+        bar: {
+            maxWidth: '100%',
+            height: '100%',
+            transition: 'width ease-in 0.15s',
+        },
+        iconAvatar: {
+            position: 'absolute',
+            top: 0,
+            zIndex: 1,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            margin: 'auto',
+            '& svg, & span': {
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
+                margin: 'auto',
+                fontSize: 50 / 2.2727,
+                textShadow: '0 0 5px #000',
+                color: theme.palette.text.main,
+            },
+        },
+        errorIcon: {
+            color: theme.palette.error.light,
+        },
+        '@keyframes flash': {
+            '0%': {
+                opacity: 1,
+            },
+            '50%': {
+                opacity: 0.1,
+            },
+            '100%': {
+                opacity: 1,
+            },
+        },
+    }));
+
+    const classes = useStyles();
 
     const GetFuel = () => {
         if (!inVeh || fuelHide) return null;
@@ -135,9 +136,9 @@ export default withTheme(() => {
                             className={classes.bar}
                             style={{
                                 background: theme.palette.warning.main,
-                                width: `${fuel}%`,
+                                height: `${fuel}%`,
                             }}
-                        ></div>
+                        />
                     </div>
                 </div>
             </CSSTransition>
@@ -149,20 +150,20 @@ export default withTheme(() => {
             return (
                 <CSSTransition key="health" timeout={500} classNames="fade">
                     <div className={classes.iconWrapper}>
+                        <div className={classes.barBg}>
+                            <div
+                                className={classes.bar}
+                                style={{
+                                    background: 'red',
+                                    height: `100%`,
+                                }}
+                            />
+                        </div>
                         {(config.statusIcons || config.statusNumbers) && (
                             <div className={classes.iconAvatar}>
                                 <FontAwesomeIcon icon="skull-crossbones" />
                             </div>
                         )}
-                        <div className={classes.barBg}>
-                            <div
-                                className={classes.bar}
-                                style={{
-                                    background: 'white',
-                                    width: `100%`,
-                                }}
-                            ></div>
-                        </div>
                     </div>
                 </CSSTransition>
             );
@@ -188,9 +189,9 @@ export default withTheme(() => {
                                 className={classes.bar}
                                 style={{
                                     background: theme.palette.success.main,
-                                    width: `${health}%`,
+                                    height: `${health}%`,
                                 }}
-                            ></div>
+                            />
                         </div>
                     </div>
                 </CSSTransition>
@@ -203,6 +204,16 @@ export default withTheme(() => {
         return (
             <CSSTransition key="armor" timeout={500} classNames="fade">
                 <div className={classes.iconWrapper}>
+                    <div className={classes.barBg}>
+                        <div
+                            className={classes.bar}
+                            style={{
+                                background: theme.palette.info.main,
+                                height: `${armor}%`,
+                            }}
+                        />
+                    </div>
+
                     {(config.statusIcons || config.statusNumbers) && (
                         <div className={classes.iconAvatar}>
                             {config.statusNumbers ? (
@@ -212,71 +223,60 @@ export default withTheme(() => {
                             )}
                         </div>
                     )}
-                    <div className={classes.barBg}>
-                        <div
-                            className={classes.bar}
-                            style={{
-                                background: theme.palette.info.main,
-                                width: `${armor}%`,
-                            }}
-                        ></div>
-                    </div>
                 </div>
             </CSSTransition>
         );
     };
 
-    const elements = statuses
-        .sort((a, b) => a.options.id - b.options.id)
-        .map((status, i) => {
-            if (
-                (status.value >= 90 && status?.options?.hideHigh) ||
-                (status.value == 0 && status?.options?.hideZero) ||
-                (isDead && !status?.options?.visibleWhileDead)
-            )
-                return null;
+    const elements = statuses.sort((a, b) => a.options.id - b.options.id).map((status, i) => {
+        if (
+            (status.value >= 90 && status?.options?.hideHigh) ||
+            (status.value == 0 && status?.options?.hideZero) ||
+            (isDead && !status?.options?.visibleWhileDead)
+        )
+            return null;
 
-            return (
-                <CSSTransition
-                    key={`status-${i}`}
-                    timeout={500}
-                    classNames="fade"
+        return (
+            <CSSTransition
+                key={`status-${i}`}
+                timeout={500}
+                classNames="fade"
+            >
+                <div
+                    className={`${classes.iconWrapper}${
+                        ((!status.inverted && status.value <= 10) ||
+                            (status.inverted && status.value >= 90)) &&
+                        status.flash
+                            ? ' low'
+                            : ''
+                    }`}
                 >
-                    <div
-                        className={`${classes.iconWrapper}${
-                            ((!status.inverted && status.value <= 10) ||
-                                (status.inverted && status.value >= 90)) &&
-                            status.flash
-                                ? ' low'
-                                : ''
-                        }`}
-                    >
-                        {(config.statusIcons || config.statusNumbers) && (
-                            <div className={classes.iconAvatar}>
-                                {config.statusNumbers ? (
-                                    <span>{status.value}</span>
-                                ) : (
-                                    <FontAwesomeIcon
-                                        icon={status.icon ?? 'question'}
-                                    />
-                                )}
-                            </div>
-                        )}
-                        <div className={classes.barBg}>
-                            <div
-                                className={classes.bar}
-                                style={{
-                                    background: status.color
-                                        ? status.color
-                                        : theme.palette.text.main,
-                                    width: `${status.value}%`,
-                                }}
-                            ></div>
+                    {(config.statusIcons || config.statusNumbers) && (
+                        <div className={classes.iconAvatar}>
+                            {config.statusNumbers ? (
+                                <span>{status.value}</span>
+                            ) : (
+                                <FontAwesomeIcon
+                                    icon={status.icon ?? 'question'}
+                                />
+                            )}
                         </div>
+                    )}
+                    <div className={classes.barBg}>
+                        <div
+                            className={classes.bar}
+                            style={{
+                                background: status.color
+                                    ? status.color
+                                    : theme.palette.text.main,
+                                height: `${status.value}%`,
+                            }}
+                        />
                     </div>
-                </CSSTransition>
-            );
-        });
+                </div>
+            </CSSTransition>
+        );
+    });
 
     elements.unshift(GetArmor());
     elements.unshift(GetHealth());

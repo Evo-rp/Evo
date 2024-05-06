@@ -60,58 +60,54 @@ const App = ({ hidden }) => {
             fontFamily: ['Oswald'],
         },
         palette: {
-			primary: {
-				main: '#7702e5',
-				light: '#9639ed',
-				dark: '#2f0656',
-				contrastText: '#ffffff',
+            primary: {
+                main: '#7702e5',
+                light: '#081320',
+                dark: '#87DA21',
+                contrastText: '#ffffff',
 			},
 			secondary: {
-				main: '#141414',
+				main: '#000817',
 				light: '#1c1c1c',
 				dark: '#0f0f0f',
 				contrastText: '#ffffff',
 			},
-            error: {
-                main: '#6e1616',
-                light: '#a13434',
-                dark: '#430b0b',
-            },
-            success: {
-                main: '#52984a',
-                light: '#60eb50',
-                dark: '#244a20',
-            },
-            warning: {
-                main: '#f09348',
-                light: '#f2b583',
-                dark: '#b05d1a',
-            },
-            info: {
-                main: '#6a329f',
-                light: '#3d2257',
-                dark: '#501778',
-            },
-            text: {
-                main: '#ffffff',
-                alt: '#A7A7A7',
-                info: '#919191',
-                light: '#ffffff',
-                dark: '#000000',
-            },
-            alt: {
-                green: '#008442',
-                greenDark: '#064224',
-            },
-            border: {
-                main: '#e0e0e008',
-                light: '#ffffff',
-                dark: '#26292d',
-                input: 'rgba(255, 255, 255, 0.23)',
-                divider: 'rgba(255, 255, 255, 0.12)',
-            },
-            mode: 'dark',
-        },
+			error: {
+				main: '#6e1616',
+				light: '#a13434',
+				dark: '#430b0b',
+			},
+			success: {
+				main: '#52984a',
+				light: '#60eb50',
+				dark: '#244a20',
+			},
+			warning: {
+				main: '#f09348',
+				light: '#f2b583',
+				dark: '#b05d1a',
+			},
+			info: {
+				main: '#247ba5',
+				light: '#247ba5',
+				dark: '#175878',
+			},
+			text: {
+				main: '#ffffff',
+				alt: '#cecece',
+				info: '#919191',
+				light: '#ffffff',
+				dark: '#000000',
+			},
+			border: {
+				main: '#e0e0e008',
+				light: '#ffffff',
+				dark: '#26292d',
+				input: 'rgba(255, 255, 255, 0.23)',
+				divider: 'rgba(255, 255, 255, 0.12)',
+			},
+			mode: 'dark',
+		},
         components: {
             MuiCssBaseline: {
                 styleOverrides: {

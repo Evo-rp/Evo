@@ -1,227 +1,212 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { Fade, useTheme } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import ReactHtmlParser from 'react-html-parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    CircularProgressbarWithChildren,
+    buildStyles,
+} from 'react-circular-progressbar';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         position: 'absolute',
-        left: '0%',
-        right: '65%', 
-        marginRight: '10%', 
+        display: 'flex',
+        left: 0,
+        right: 0,
+        bottom: 50,
         margin: 'auto',
         width: 'fit-content',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
         fontSize: 30,
         color: theme.palette.text.main,
+        textAlign: 'center',
+        height: 125,
+        width: 125,
     },
-    speed: {},
-    speedText: {
-        fontSize: 20,
-        color: theme.palette.text.main,
-        display: 'inline-block',
-        transition: 'color ease-in 0.15s',
-        '& .filler': {
-            color: theme.palette.text.alt,
+    fuelGauge: {
+        position: 'absolute',
+        height: 125,
+        width: 125,
+        left: -50,
+        top: -35,
+    },
+    fuelIcon: {
+        fontSize: 12,
+        position: 'absolute',
+        bottom: 5,
+        left: 22,
+    },
+    nosGauge: {
+        position: 'absolute',
+        height: 125,
+        width: 125,
+        right: -20,
+        top: 0,
+    },
+    nosIcon: {
+        fontSize: 12,
+        position: 'absolute',
+        bottom: 5,
+        right: 22,
+    },
+    speed: {
+        fontSize: 40,
+        lineHeight: '30px',
+
+        '& small': {
+            fontSize: 16,
+            display: 'block',
         },
     },
-    speedTextOff: {
-        fontSize: 25,
-        color: theme.palette.primary.main,
-        textTransform: 'uppercase',
-        display: 'inline-block',
-    },
-    speedMeasure: {
-        fontSize: 20,
+    off: {
+        fontSize: 18,
         color: theme.palette.text.alt,
-        marginLeft: 10,
-    },
-    icons: {
-        display: 'flex',
-        gridGap: 0,
-        justifyContent: 'center',
-    },
-    seatbeltIcon: {
-        fontSize: 20,
-        color: theme.palette.warning.dark,
-        animation: '$flash linear 1s infinite',
     },
     checkEngine: {
-        margin: '0 30px',
-        fontSize: 25,
+        width: 'fit-content',
+        height: 'fit-cotnent',
+        position: 'absolute',
+        bottom: 30,
+        fontSize: 18,
+        color: theme.palette.error.light,
+        animation: 'flash linear 1s infinite',
+    },
+    seatBelt: {
+        width: 'fit-content',
+        height: 'fit-cotnent',
+        position: 'absolute',
+        height: 30,
+        width: 30,
+        top: -30,
+        right: 20,
+        fontSize: 18,
         color: theme.palette.warning.dark,
-        animation: '$flash linear 1s infinite',
+        animation: 'flash linear 3s infinite',
     },
-    cruiseIcon: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.primary.main,
-    },
-    fuel100: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.success.dark,
-    },
-    fuel75: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.success.main,
-    },
-    fuel50: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.warning.main,
-    },
-    fuel25: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.error.main,
-        animation: '$flash linear 1.5s infinite',
-    },
-    fuel10: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.error.main,
-        animation: '$flash linear 1s infinite',
-    },
-    fuel0: {
-        margin: '0 15px',
-        fontSize: 25,
-        color: theme.palette.error.main,
-        animation: '$flash linear 0.5s infinite',
-    },
-    iconWrapper: {
-        position: 'relative',
-        height: 50,
-        width: 50,
-        '&.low': {
-            animation: '$flash linear 0.5s infinite',
-        },
-    },
-    iconProg: {
+    cruise: {
+        width: 'fit-content',
+        height: 'fit-cotnent',
         position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 'auto',
-        zIndex: 5,
-    },
-    iconAvatar: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        margin: 'auto',
-        background: theme.palette.secondary.dark,
-        '& svg': {
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            margin: 'auto',
-            color: theme.palette.text.main,
-        },
-    },
-    '@keyframes flash': {
-        '0%': {
-            opacity: 1,
-        },
-        '50%': {
-            opacity: 0.1,
-        },
-        '100%': {
-            opacity: 1,
-        },
+        bottom: 30,
+        left: 40,
+        fontSize: 18,
+        color: theme.palette.info.light,
     },
 }));
 
 export default () => {
     const classes = useStyles();
+    const theme = useTheme();
 
     const config = useSelector((state) => state.hud.config);
+
     const showing = useSelector((state) => state.vehicle.showing);
     const ignition = useSelector((state) => state.vehicle.ignition);
     const speed = useSelector((state) => state.vehicle.speed);
     const speedMeasure = useSelector((state) => state.vehicle.speedMeasure);
     const seatbelt = useSelector((state) => state.vehicle.seatbelt);
-    const checkEngine = useSelector(state => state.vehicle.checkEngine);
+    const checkEngine = useSelector((state) => state.vehicle.checkEngine);
     const seatbeltHide = useSelector((state) => state.vehicle.seatbeltHide);
     const cruise = useSelector((state) => state.vehicle.cruise);
-    const [speedStr, setSpeedStr] = useState(speed.toString());
 
-    useEffect(() => {
-        if (speed === 0) {
-            setSpeedStr(`<span class="filler">000</span>`);
-        } else if (speed < 10) {
-            setSpeedStr(`<span class="filler">00</span>${speed.toString()}`);
-        } else if (speed < 100) {
-            setSpeedStr(`<span class="filler">0</span>${speed.toString()}`);
-        } else {
-            setSpeedStr(speed.toString());
-        }
-    }, [speed]);
+    const fuelHide = useSelector((state) => state.vehicle.fuelHide);
+    const fuel = useSelector((state) => state.vehicle.fuel);
+
+    const rpm = useSelector((state) => state.vehicle.rpm);
+
+    const nos = useSelector((state) => state.vehicle.nos);
+
+    const isShiftedUp = () => {
+        return (
+            config.layout == 'default' ||
+            config.layout == 'center' ||
+            (config.layout == 'minimap' && config.buffsAnchor2) ||
+            (config.layout == 'condensed' &&
+                config.condenseAlignment == 'center')
+        );
+    };
 
     return (
         <Fade in={showing}>
             <div
                 className={classes.wrapper}
-                style={{
-                    bottom:
-                        config.statusIcons || config.statusNumbers ? 50 : 20,
-                }}
+                style={{ bottom: isShiftedUp() ? 65 : 0 }}
             >
-                <Fade in={ignition}>
-                    <div className={classes.icons}>
-                        <Fade in={!seatbelt && !seatbeltHide}>
-                            <span>
-                                <FontAwesomeIcon
-                                    className={classes.seatbeltIcon}
-                                    style={{ gridColumn: 1 }}
-                                    icon={['fas', 'triangle-exclamation']}
-                                />
-                            </span>
-                        </Fade>
-                        <Fade in={checkEngine}>
-                            <span>
-                                <FontAwesomeIcon
-                                    className={classes.checkEngine}
-                                    style={{ gridColumn: 1 }}
-                                    icon={['fas', 'car-burst']}
-                                />
-                            </span>
-                        </Fade>
-                        {cruise && (
-                            <Fade in={cruise}>
-                                <span>
-                                    <FontAwesomeIcon
-                                        className={classes.cruiseIcon}
-                                        style={{ gridColumn: 1 }}
-                                        icon={['fas', 'gauge']}
-                                    />
-                                </span>
-                            </Fade>
-                        )}
+                {ignition && !Boolean(fuelHide) && (
+                    <div className={classes.fuelGauge}>
+                        <CircularProgressbarWithChildren
+                            value={fuel}
+                            strokeWidth={4}
+                            circleRatio={0.25}
+                            styles={buildStyles({
+                                strokeLinecap: 'butt',
+                                rotation: 0.635,
+                                position: 'relative',
+                                trailColor: theme.palette.secondary.dark,
+                                pathColor:
+                                    fuel >= 50
+                                        ? theme.palette.success.main
+                                        : fuel >= 25
+                                        ? theme.palette.warning.main
+                                        : theme.palette.error.main,
+                            })}
+                        >
+                            <FontAwesomeIcon
+                                className={classes.fuelIcon}
+                                icon={['fas', 'gas-pump']}
+                            />
+                        </CircularProgressbarWithChildren>
                     </div>
-                </Fade>
-                <div className={classes.speed}>
-                    {ignition ? (
-                        <div>
-                            <span className={classes.speedText}>
-                                {ReactHtmlParser(speedStr)}
-                            </span>
-                            <span className={classes.speedMeasure}>
-                                {speedMeasure}
-                            </span>
+                )}
+
+                {Boolean(ignition) ? (
+                    <>
+                        <div className={classes.speed}>
+                            {speed}
+                            <small>{speedMeasure}</small>
                         </div>
-                    ) : (
-                        <span className={classes.speedTextOff}>Off</span>
-                    )}
-                </div>
+                        {Boolean(checkEngine) && (
+                            <span className={classes.checkEngine}>
+                                <FontAwesomeIcon
+                                    icon={['fas', 'engine-warning']}
+                                />
+                            </span>
+                        )}
+                        <img
+                            className={classes.seatBelt}
+                            src={Boolean(seatbeltHide) ? 'https://cdn.discordapp.com/attachments/1232668415429312603/1236811344737734727/PNhLT1bTcFMAAAAASUVORK5CYII.png?ex=66395dd3&is=66380c53&hm=1e6cc9af73d50333ae81cfb5f2eb30af5a1481f261a44cc572f065838856e182&' : 'https://cdn.discordapp.com/attachments/1232668415429312603/1236811390774415411/8GDc19TnAwkJ8AAAAASUVORK5CYII.png?ex=66395dde&is=66380c5e&hm=5c4ce713061a971187d61c367233db90073c9fb622af0fbe0c8b2017e62062eb&'}
+                        />
+                        {Boolean(cruise) && (
+                            <span className={classes.cruise}>
+                                <FontAwesomeIcon icon={['fas', 'gauge']} />
+                            </span>
+                        )}
+                    </>
+                ) : null}
+                {ignition && nos > 0 && (
+                    <div className={classes.nosGauge}>
+                        <CircularProgressbarWithChildren
+                            value={nos}
+                            strokeWidth={4}
+                            counterClockwise
+                            circleRatio={0.25}
+                            styles={buildStyles({
+                                strokeLinecap: 'butt',
+                                rotation: -0.635,
+                                position: 'relative',
+                                trailColor: theme.palette.secondary.dark,
+                                pathColor: '#0078ec',
+                            })}
+                        >
+                            <FontAwesomeIcon
+                                className={classes.nosIcon}
+                                icon="wine-bottle"
+                            />
+                        </CircularProgressbarWithChildren>
+                    </div>
+                )}
             </div>
         </Fade>
     );

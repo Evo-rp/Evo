@@ -1,13 +1,13 @@
 export const initialState = {
     showing: false,
     ignition: true,
-    speed: 0,
+    speed: 100,
     speedMeasure: 'MPH',
     seatbelt: false,
     seatbeltHide: false,
-    cruise: false,
-    checkEngine: false,
-    fuel: 100,
+    cruise: true,
+    checkEngine: true,
+    fuel: 10,
     fuelHide: false,
 };
 

@@ -1,5 +1,5 @@
 export const initialState = {
-    showing: true,
+    showing: false,
     location: {
         main: 'Alta St',
         cross: 'Forum Dr',

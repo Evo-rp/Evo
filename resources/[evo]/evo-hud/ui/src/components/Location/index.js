@@ -5,16 +5,14 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles((theme) => ({
     location: {
         position: 'absolute',
-        top: -15, 
-        left: '50%', 
-        transform: 'translateX(-50%)', 
+        bottom: 50,
+        left: '16%',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     locationFoot: {
         position: 'absolute',
-        top: -15,
-        left: '50%', 
-        transform: 'translateX(-50%)', 
+        bottom: '7.5%',
+        left: '1%',
         filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
     },
     highlight: {
@@ -33,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
         top: 5,
     },
     direction: {
-        fontSize: 23,
+        fontSize: 25,
         lineHeight: '30px',
         color: theme.palette.text.main,
         display: 'inline-block',
@@ -42,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     locationMain: {
         color: theme.palette.text.alt,
-        fontSize: 15,
+        fontSize: 25,
     },
     locationSecondary: {
         color: theme.palette.text.main,
