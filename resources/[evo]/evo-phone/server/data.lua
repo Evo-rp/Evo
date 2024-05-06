@@ -187,6 +187,18 @@ _appData = {
 		requirements = {},
 	},
 	{
+		name = "doj",
+		storeLabel = "DOJ",
+		label = "DOJ",
+		icon = { "fa", "gavel" },
+		color = "#4154B6",
+		params = "",
+		canUninstall = true,
+		store = true,
+		unread = 0,
+		requirements = {},
+	},
+	{
 		name = "irc",
 		storeLabel = "IRC",
 		label = "IRC",

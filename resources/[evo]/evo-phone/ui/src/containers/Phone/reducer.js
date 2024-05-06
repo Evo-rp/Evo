@@ -188,6 +188,19 @@ export const initialState = {
 						// },
 						params: '',
 					},
+					doj: {
+						storeLabel: 'DOJ',
+						label: 'DOJ',
+						icon: ['fa', 'gavel'],
+						name: 'doj',
+						color: '#4154B6',
+						canUninstall: true,
+						unread: 0,
+						// restricted: {
+						// 	state: 'PHONE_VPN',
+						// },
+						params: '',
+					},
 					irc: {
 						storeLabel: 'IRC',
 						label: 'IRC',

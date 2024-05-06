@@ -62,6 +62,7 @@ export const initialState = {
 					'blueline',
 					'twitter',
 					'gallery',
+					'doj',
 					'leoassist',
 					'bank',
 					'email',
@@ -89,6 +90,7 @@ export const initialState = {
 					'blueline',
 					'twitter',
 					'gallery',
+					'doj',
 					'leoassist',
 					'bank',
 					'calculator',
@@ -733,6 +735,7 @@ export const initialState = {
 			'bank',
 			'twitter',
 			'gallery',
+			'doj',
 			'adverts',
 			'redline',
 			'blueline',
@@ -752,6 +755,7 @@ export const initialState = {
 			'bank',
 			'twitter',
 			'gallery',
+			'doj',
 			'adverts',
 			'redline',
 			'blueline',
@@ -1264,6 +1268,19 @@ export const initialState = {
 			},
 		],
 		images: [],
+		// doj: [
+		// 	{
+		// 		Name: 'Aspect Dev',
+		// 		number: 12345678,
+		// 		Rank: 'County Clerk'
+		// 	},
+		// 	{
+		// 		Name: 'Nicx Dev',
+		// 		number: 12345678,
+		// 		Rank: 'Judge'
+		// 	}
+		// ],
+		doj: [],
 		bankAccounts: [
 			{
 				_id: '607d92c911dadf71307bbc86',
