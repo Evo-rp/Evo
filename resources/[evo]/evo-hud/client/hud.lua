@@ -715,27 +715,22 @@ function StartVehicleThreads()
 
 end
 
--- Citizen.CreateThread(function()
--- 	SetMapZoomDataLevel(0, 0.96, 0.9, 0.08, 0.0, 0.0) -- Level 0
--- 	SetMapZoomDataLevel(1, 1.6, 0.9, 0.08, 0.0, 0.0) -- Level 1
--- 	SetMapZoomDataLevel(2, 8.6, 0.9, 0.08, 0.0, 0.0) -- Level 2
--- 	SetMapZoomDataLevel(3, 12.3, 0.9, 0.08, 0.0, 0.0) -- Level 3
--- 	SetMapZoomDataLevel(4, 22.3, 0.9, 0.08, 0.0, 0.0) -- Level 4
--- end)
+local x = -0.005
+local y = -0.015
 
 Citizen.CreateThread(function()
-	SetRadarZoom(1200)
-end)
+	RequestStreamedTextureDict("circlemap", false)
+	while not HasStreamedTextureDictLoaded("circlemap") do
+		Wait(100)
+	end
 
--- function DoRadarFix()
--- 	Citizen.CreateThread(function()
--- 		Citizen.Wait(300)
--- 		SetRadarZoom(_zoomLevels[6])
--- 		Citizen.Wait(300)
--- 		SetRadarZoom(_zoomLevels[4])
--- 		Citizen.Wait(300)
--- 		SetRadarZoom(_zoomLevels[1])
--- 		Citizen.Wait(300)
--- 		SetRadarZoom(_zoomLevels[_zoomLevel])
--- 	end)
--- end
+	AddReplaceTexture("platform:/textures/graphics", "radarmasksm", "circlemap", "radarmasksm")
+    SetMinimapClipType(1)
+    SetMinimapComponentPosition('minimap', 'L', 'B', -0.022, -0.026, 0.16, 0.245)
+    SetMinimapComponentPosition('minimap_mask', 'L', 'B', x + 0.21, y + 0.09, 0.071, 0.164)
+    SetMinimapComponentPosition('minimap_blur', 'L', 'B', -0.032, -0.04, 0.18, 0.22)
+    ThefeedSpsExtendWidescreenOn()
+    SetRadarBigmapEnabled(true, false)
+    Wait(150)
+    SetRadarBigmapEnabled(false, false)
+end)

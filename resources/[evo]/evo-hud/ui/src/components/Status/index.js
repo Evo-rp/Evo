@@ -29,9 +29,9 @@ export default withTheme(() => {
             display: 'flex',
             left: 10,
             right: 0,
-            bottom: 5,
+            bottom: 2.5,
             flexDirection: 'row',
-            padding: 5
+            padding: 2.5
         },
         iconWrapper: {
             position: 'relative',

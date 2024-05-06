@@ -174,10 +174,12 @@ export default () => {
                                 />
                             </span>
                         )}
-                        <img
-                            className={classes.seatBelt}
-                            src={Boolean(seatbeltHide) ? 'https://cdn.discordapp.com/attachments/1232668415429312603/1236811344737734727/PNhLT1bTcFMAAAAASUVORK5CYII.png?ex=66395dd3&is=66380c53&hm=1e6cc9af73d50333ae81cfb5f2eb30af5a1481f261a44cc572f065838856e182&' : 'https://cdn.discordapp.com/attachments/1232668415429312603/1236811390774415411/8GDc19TnAwkJ8AAAAASUVORK5CYII.png?ex=66395dde&is=66380c5e&hm=5c4ce713061a971187d61c367233db90073c9fb622af0fbe0c8b2017e62062eb&'}
-                        />
+                        {!seatbeltHide && !seatbelt && (
+                            <img
+                                className={classes.seatBelt}
+                                src={'https://cdn.discordapp.com/attachments/1232668415429312603/1236811390774415411/8GDc19TnAwkJ8AAAAASUVORK5CYII.png?ex=66395dde&is=66380c5e&hm=5c4ce713061a971187d61c367233db90073c9fb622af0fbe0c8b2017e62062eb&'}
+                            />
+                        )}
                         {Boolean(cruise) && (
                             <span className={classes.cruise}>
                                 <FontAwesomeIcon icon={['fas', 'gauge']} />
