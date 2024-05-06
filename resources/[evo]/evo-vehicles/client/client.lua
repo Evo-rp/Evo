@@ -38,6 +38,8 @@ function RetrieveComponents()
 	Hud = exports["evo-base"]:FetchComponent("Hud")
 	UISounds = exports["evo-base"]:FetchComponent("UISounds")
 	Weapons = exports["evo-base"]:FetchComponent("Weapons")
+	Buffs = exports["evo-base"]:FetchComponent("Buffs")
+
 end
 
 local vehicleDoorNames = {
@@ -80,6 +82,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Hud",
 		"UISounds",
 		"Weapons",
+		"Buffs"
 	}, function(error)
 		if #error > 0 then
 			return
