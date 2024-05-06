@@ -299,6 +299,7 @@ _JOBS = {
 							WorkplaceId = (hasJob.Workplace and hasJob.Workplace.Id or false),
 							GradeId = hasJob.Grade.Id,
 							GradeLevel = hasJob.Grade.Level,
+							GradeName = hasJob.Grade.Name,
 							First = char:GetData("First"),
 							Last = char:GetData("Last"),
 							Callsign = char:GetData("Callsign"),
@@ -461,6 +462,7 @@ _JOBS = {
 			end
 
 			local onDutyPlayers = {}
+			local charData = {}
 			local totalCount = 0
 			local workplaceCounts = false
 
@@ -468,6 +470,15 @@ _JOBS = {
 				if v ~= nil and v.Id == jobId then
 					totalCount = totalCount + 1
 					table.insert(onDutyPlayers, v.Source)
+					local player = Fetch:Source(v.Source)
+					local char = player:GetData('Character')
+
+					table.insert(charData, {
+						Name = v.First .. ' ' .. v.Last,
+						Rank = v.GradeName,
+						Number = char:GetData('Phone')
+					})
+
 					if v.WorkplaceId then
 						if not workplaceCounts then
 							workplaceCounts = {}
@@ -487,6 +498,7 @@ _JOBS = {
 				Count = totalCount,
 				WorkplaceCounts = workplaceCounts,
 				DutyPlayers = onDutyPlayers,
+				CharacterData = charData,
 			}
 
 			GlobalState[string.format("Duty:%s", jobId)] = totalCount
