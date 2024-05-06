@@ -1,4 +1,6 @@
-
+RegisterNetEvent("Characters:Client:Spawn", function()
+    Blips:Add("GoldPan", "Goldpanning Utilities", { x = 1956.636, y = 710.202, z = 163.387 }, 478, 46, 0.9)
+end)
 
 RegisterNetEvent('bucket:start')
 AddEventHandler('bucket:start', function()
@@ -6,10 +8,9 @@ AddEventHandler('bucket:start', function()
     if waterLevel > 0 and waterLevel < 0.8 then
         SkillCheckBucket()
     else
-        Notification:Error("You aren't in shallow enough fill your bucket", 2000)
+        Notification:Error("You aren't in shallow enough water fill your bucket", 2000)
     end
 end)
-
 
 function SkillCheckBucket()
     local p = promise.new()
@@ -70,8 +71,6 @@ function SkillCheckBucket()
     return Citizen.Await(p)
 end
 
-
-
 RegisterNetEvent('goldpan:start')
 AddEventHandler('goldpan:start', function()
     if Inventory.Check.Player:HasItem('gravel', 5) then
@@ -85,7 +84,6 @@ AddEventHandler('goldpan:start', function()
         Notification:Error("You don't have a enough gravel", 2000)
     end
 end)
-
 
 function SkillCheckPanning()
     local p = promise.new()
@@ -128,7 +126,6 @@ function SkillCheckPanning()
     return Citizen.Await(p)
 end
 
-
 local SmeltingCoords = {
     position = vector3(1110.89, -2008.9, 30.94),
     size = vector3(5.0, 5.0, 4.0),
@@ -149,8 +146,6 @@ AddEventHandler('moldbars:start', function()
         Notification:Error("You don't have enough gold nuggets", 2000)
     end
 end)
-
-
 
 function SmeltBars()
     local p = promise.new()
