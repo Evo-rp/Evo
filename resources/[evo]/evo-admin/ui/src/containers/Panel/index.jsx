@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Admin, Staff } from '../Groups';
+import { Admin, Developer, Staff } from '../Groups';
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
@@ -24,14 +24,17 @@ const useStyles = makeStyles((theme) => ({
 export default withRouter(() => {
 	const classes = useStyles();
 	const hidden = useSelector((state) => state.app.hidden);
-	const permission = useSelector(state => state.app.permission);
+	const permissionName = useSelector(state => state.app.permissionName);
 	const opacityMode = useSelector(state => state.app.opacity);
 
 	const getPanel = () => {
-		switch (permission) {
+		switch (permissionName) {
 			case "Owner":
+			case "Developer":
+				return <Developer />;
 			case "Admin":
 				return <Admin />;
+			case "Staff":
 			default:
 				return <Staff />;
 		};
@@ -39,9 +42,9 @@ export default withRouter(() => {
 
 	return (
 		<Slide direction="up" in={!hidden}>
-			<Paper
+			<Paper 
 				elevation={20}
-				className={classes.wrapper}
+				className={classes.wrapper} 
 				style={{ opacity: opacityMode ? '60%' : null }}>
 				<div className={classes.inner}>
 					<ToastContainer
@@ -53,7 +56,7 @@ export default withRouter(() => {
 						transition={Flip}
 						pauseOnHover={false}
 					/>
-					{getPanel(permission)}
+					{getPanel(permissionName)}
 				</div>
 			</Paper>
 		</Slide>

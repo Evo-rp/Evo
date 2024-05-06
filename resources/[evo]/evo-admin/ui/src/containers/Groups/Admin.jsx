@@ -14,9 +14,6 @@ import {
 	DisconnectedPlayers,
 	PlayerView,
 	CurrentVehicle,
-	Vehicles,
-	VehicleView,
-	Characters,
 } from '../../pages';
 
 import Titlebar from '../../components/Titlebar';
@@ -29,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 		height: '100%',
 	},
 	content: {
-		height: '97%',
+		height: '100%',
 		overflowY: 'auto',
 		overflowX: 'hidden',
 	},
@@ -50,33 +47,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
 	const classes = useStyles();
-	const permission = useSelector((state) => state.app.permission);
+	const permissionName = useSelector((state) => state.app.permissionName);
 
 	return (
 		<div className={classes.container}>
-			<Grid container className={classes.maxHeight}>
-				<Grid item xs={12}>
-					<Titlebar />
-				</Grid>
-				<Grid item xs={3} className={classes.wrapper}>
-					<Navbar links={links(permission)} />
-				</Grid>
-				<Grid item xs={9} className={classes.wrapper}>
-					<div className={classes.content}>
-						<Switch>
-							<Route exact path="/" component={Dashboard} />
+            <Grid container className={classes.maxHeight}>
+                <Grid item xs={12}>
+                    <Titlebar />
+                </Grid>
+                <Grid item xs={3} className={classes.wrapper}>
+                    <Navbar links={links(permissionName)} />
+                </Grid>
+                <Grid item xs={9} className={classes.wrapper}>
+                    <div className={classes.content}>
+                        <Switch>
+                            <Route exact path="/" component={Dashboard} />
 							<Route exact path="/players" component={Players} />
 							<Route exact path="/disconnected-players" component={DisconnectedPlayers} />
 							<Route exact path="/current-vehicle" component={CurrentVehicle} />
 							<Route exact path="/player/:id" component={PlayerView} />
-							<Route exact path="/vehicles" component={Vehicles} />
-							<Route exact path="/players-characters" component={Characters} />
-							<Route exact path="/vehicle/:id" component={VehicleView} />
-							<Route component={Error} />
-						</Switch>
-					</div>
-				</Grid>
-			</Grid>
+                            <Route component={Error} />
+                        </Switch>
+                    </div>
+                </Grid>
+            </Grid>
 		</div>
 	);
 };

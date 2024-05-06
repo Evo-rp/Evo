@@ -1,26 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/styles';
-import { Avatar } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
-	user: {
-		display: 'flex',
-		gap: 10,
-		marginRight: 10,
+	callsign: {
+		fontSize: 14,
+		color: theme.palette.primary.main,
 	},
-	inner: {
-		textAlign: 'right',
-		'& small': {
-			display: 'block',
-			color: theme.palette.text.alt,
-		},
-	},
-	avatar: {
-		top: 0,
-		bottom: 0,
-		margin: 'auto',
-	}
 }));
 
 export default () => {
@@ -29,16 +15,13 @@ export default () => {
 	const permissionName = useSelector(state => state.app.permissionName)
 
 	return (
-		<div className={classes.user}>
-			<div className={classes.inner}>
-				<small>
-					{permissionName ?? 'Staff'}
-				</small>
-				<span>
-					{user?.Name}
-				</span>
-			</div>
-			<Avatar className={classes.avatar} src={user?.Avatar} />
-		</div>
+		<>
+			<small>
+				{permissionName ?? 'Staff'}
+			</small>
+			<span>
+				{user?.Name} ({user?.AccountID})
+			</span>
+		</>
 	);
 };

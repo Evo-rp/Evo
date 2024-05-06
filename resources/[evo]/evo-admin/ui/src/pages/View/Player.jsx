@@ -11,7 +11,10 @@ import {
 	InputAdornment,
 	IconButton,
 	ButtonGroup,
-	ListItemAvatar,
+	FormGroup,
+	FormControlLabel,
+	Switch,
+	Chip,
 	MenuItem,
 	ListItemButton,
 } from '@material-ui/core';
@@ -25,8 +28,6 @@ import { Loader, Modal } from '../../components';
 import Nui from '../../util/Nui';
 import { useSelector } from 'react-redux';
 import { round } from 'lodash';
-
-import { CurrencyFormat } from '../../util/Parser';
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
@@ -49,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'background ease-in 0.15s',
 		border: `1px solid ${theme.palette.border.divider}`,
 		margin: 7.5,
-		transition: 'filter ease-in 0.15s',
-		'&:hover': {
+        transition: 'filter ease-in 0.15s',
+        '&:hover': {
 			filter: 'brightness(0.8)',
 			cursor: 'pointer',
 		},
@@ -122,8 +123,8 @@ export default ({ match }) => {
 			setLoading(true);
 			try {
 				let res = await (await Nui.send('GetPlayer', parseInt(match.params.id))).json();
-
-
+	
+				
 				if (res) {
 					setPlayer(res);
 				} else toast.error('Unable to Load');
@@ -131,7 +132,7 @@ export default ({ match }) => {
 				// setPlayer({
 				// 	AccountID: 1,
 				// 	Source: 1,
-				// 	Name: 'Dr Nick',
+				// 	Name: 'Mysticz',
 				// 	Level: 100,
 				// 	Identifier: '7888128828188291',
 				// 	StaffGroup: 'Staff',
@@ -159,7 +160,7 @@ export default ({ match }) => {
 				// setPlayer({
 				// 	AccountID: 1,
 				// 	Source: 1,
-				// 	Name: 'Dr Nick',
+				// 	Name: 'Mysticz',
 				// 	Level: 100,
 				// 	Identifier: '7888128828188291',
 				// 	StaffGroup: 'Staff',
@@ -192,16 +193,14 @@ export default ({ match }) => {
 		fetch(true);
 	};
 
+	const openForumUrl = () => {
+		Nui.copyClipboard(`https://mythicrp.com/members/${player.AccountID}/`);
+		toast.success('Copied URL');
+	};
 
 	const copyCoords = () => {
 		Nui.copyClipboard(`vector3(${round(player.Character.Coords?.x, 3)}, ${round(player.Character.Coords?.y, 3)}, ${round(player.Character.Coords?.z, 3)})`);
 		toast.success('Copied Coordinates');
-	};
-
-	const viewVehicle = () => {
-		if (permissionLevel >= 75) {
-			history.push(`/vehicle/${player?.Vehicle?.Entity}`);
-		}
 	};
 
 	const onAction = async (action) => {
@@ -298,14 +297,6 @@ export default ({ match }) => {
 		}
 	}
 
-	const formatJobs = (jobs) => {
-		if (jobs && jobs.length > 0) {
-			return jobs.map(j => `${j.Name} - ${j.Grade.Name}`).join('; ');
-		} else {
-			return "No Jobs"
-		}
-	};
-
 	return (
 		<div>
 			{loading || (!player && !err) ? (
@@ -346,6 +337,9 @@ export default ({ match }) => {
 								{/* <Button onClick={startBan} disabled={(user?.Source === player.Source) || (permissionLevel < player.Level) || (permissionLevel < 75)}>
 									Ban
 								</Button> */}
+								{/* <Button onClick={openForumUrl}>
+									Copy Forum URL
+								</Button> */}
 								<Button onClick={onRefresh}>
 									Refresh
 								</Button>
@@ -354,7 +348,7 @@ export default ({ match }) => {
 								</Button>}
 							</ButtonGroup>
 						</Grid>
-						{player.Disconnected && <Grid item xs={12}>
+						{player.Disconnected &&	<Grid item xs={12}>
 							<ListItem>
 								<ListItemButton onClick={onDisconnectedClick}>
 									<ListItemText
@@ -371,38 +365,11 @@ export default ({ match }) => {
 										primary="Player Name"
 										secondary={`${player.Name} ${player.Source == user.Source ? '(You)' : ''}`}
 									/>
-									<ListItemAvatar>
-										<Avatar src={player.Avatar} />
-									</ListItemAvatar>
 								</ListItem>
 								<ListItem>
 									<ListItemText
 										primary="Player Account"
 										secondary={player.AccountID}
-									/>
-								</ListItem>
-								<ListItem>
-									<ListItemText
-										primary="Discord ID"
-										secondary={player.Discord}
-									/>
-								</ListItem>
-								<ListItem>
-									<ListItemText
-										primary="Discord @"
-										secondary={player.Mention}
-									/>
-								</ListItem>
-								<ListItem>
-									<ListItemText
-										primary="Server Source"
-										secondary={player.Source}
-									/>
-								</ListItem>
-								<ListItem>
-									<ListItemText
-										primary="Game Name"
-										secondary={player.GameName}
 									/>
 								</ListItem>
 								{player.StaffGroup && <ListItem>
@@ -423,24 +390,6 @@ export default ({ match }) => {
 										secondary={player.Identifier}
 									/>
 								</ListItem>
-								{player?.Vehicle && <ListItem onClick={viewVehicle}>
-									<ListItemText
-										primary="Inside Vehicle"
-										secondary={`${player?.Vehicle?.Make ?? 'Unknown'} ${player?.Vehicle?.Model ?? 'Unknown'}`}
-									/>
-								</ListItem>}
-								{player?.Vehicle && <ListItem onClick={viewVehicle}>
-									<ListItemText
-										primary="Inside Vehicle Identifiers"
-										secondary={`${player?.Vehicle?.VIN} - ${player?.Vehicle?.Plate}`}
-									/>
-								</ListItem>}
-								{player?.Vehicle?.Driver && <ListItem onClick={viewVehicle}>
-									<ListItemText
-										primary="Is Driver"
-										secondary={"Yes"}
-									/>
-								</ListItem>}
 							</List>
 						</Grid>
 						<Grid item xs={6}>
@@ -491,72 +440,6 @@ export default ({ match }) => {
 									</List>
 								</>
 							)}
-						</Grid>
-						<Grid className={classes.wrapper} container spacing={2}>
-							<Grid item xs={12}>
-								<h2 style={{ marginBottom: 0 }}>{player?.Character ? "Player's Other Characters" : "Player's Characters"}</h2>
-							</Grid>
-							<Grid item xs={12}>
-								<List>
-									{player.Characters?.sort((a, b) => Number(a.Deleted) - Number(b.Deleted)).map(c => {
-										return (
-											<ListItem className={classes.listItemWrapper} disabled={c.Deleted}>
-												<Grid container>
-													<Grid item xs={2}>
-														<ListItemText
-															primary="State ID"
-															secondary={`${c.SID}`}
-														/>
-													</Grid>
-													<Grid item xs={3}>
-														<ListItemText
-															primary="Name"
-															secondary={`${c.First} ${c.Last}`}
-														/>
-													</Grid>
-													<Grid item xs={3}>
-														<ListItemText
-															primary="Last Played"
-															secondary={moment(c.LastPlayed * 1000).fromNow()}
-														/>
-													</Grid>
-													<Grid item xs={4}>
-														<ListItemText
-															primary="Jobs"
-															secondary={formatJobs(c.Jobs)}
-														/>
-													</Grid>
-													<Grid item xs={2}>
-														<ListItemText
-															primary="Cash"
-															secondary={CurrencyFormat.format(c.Cash)}
-														/>
-													</Grid>
-													<Grid item xs={3}>
-														<ListItemText
-															primary="Main Bank Account"
-															secondary={c.BankAccount}
-														/>
-													</Grid>
-													<Grid item xs={3}>
-														<ListItemText
-															primary="Phone #"
-															secondary={c.Phone}
-														/>
-													</Grid>
-													<Grid item xs={4}>
-														<ListItemText
-															primary="DOB"
-															secondary={moment(c.DOB * 1000).format('LL')}
-														/>
-													</Grid>
-												</Grid>
-											</ListItem>
-										)
-									})}
-
-								</List>
-							</Grid>
 						</Grid>
 					</Grid>
 					<Modal

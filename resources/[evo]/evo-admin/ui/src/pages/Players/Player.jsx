@@ -40,23 +40,20 @@ export default ({ player }) => {
 
 	return (
 		<ListItem className={classes.wrapper} button onClick={onClick}>
-			<ListItemAvatar>
-				<Avatar src={player.Avatar} />
-			</ListItemAvatar>
 			<Grid container>
-				<Grid item xs={4}>
+                <Grid item xs={2}>
 					<ListItemText
 						primary="Account"
 						secondary={`${player.AccountID}`}
 					/>
 				</Grid>
-				<Grid item xs={4}>
+				<Grid item xs={5}>
 					<ListItemText
 						primary="Player Name"
 						secondary={`${player.Name}`}
 					/>
 				</Grid>
-				<Grid item xs={4}>
+                <Grid item xs={5}>
 					<ListItemText
 						primary="Character"
 						secondary={player.Character ? `${player.Character.First} ${player.Character.Last} (${player.Character.SID})` : 'Not Logged In'}

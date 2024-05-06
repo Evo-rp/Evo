@@ -90,7 +90,7 @@ export default (props) => {
                 {
                     AccountID: 1,
                     Source: 1,
-                    Name: 'Dr Nick',
+                    Name: 'Mysticz',
                     Character: {
                         First: 'Walter',
                         Last: 'Western',

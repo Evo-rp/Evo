@@ -4,14 +4,14 @@ export const initialState = {
 	opacity: false,
 	user: process.env.NODE_ENV != 'production' ? {
 		Source: 2,
-		Name: 'Dr Nick',
+		Name: 'Mysticz',
 		AccountID: 1,
 		Identifier: '789723918798237',
 		Groups: [7],
 		Level: 99,
 	} : null,
-	permission: "Owner",
-	permissionName: 'Owner',
+	permission: 7,
+	permissionName: 'Developer',
 	permissionLevel: 100,
 };
 

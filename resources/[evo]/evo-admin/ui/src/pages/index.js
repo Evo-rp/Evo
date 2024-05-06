@@ -1,25 +1,19 @@
-import Dashboard from "./Dashboard";
+import Dashboard from './Dashboard';
 
-import Players from "./Players";
-import PlayerView from "./View/Player";
+import Players from './Players';
+import PlayerView from './View/Player';
 
-import DisconnectedPlayers from "./DisconnectedPlayers";
+import DisconnectedPlayers from './DisconnectedPlayers';
 
-import Error from "./Error";
+import Error from './Error';
 
-import CurrentVehicle from "./View/CurrentVehicle";
-import Vehicles from "./Vehicles";
-import VehicleView from "./View/Vehicle";
-import Characters from "./Characters";
+import CurrentVehicle from './View/CurrentVehicle';
 
 export {
-  Dashboard,
-  Players,
-  DisconnectedPlayers,
-  CurrentVehicle,
-  PlayerView,
-  Vehicles,
-  VehicleView,
-  Characters,
-  Error,
+    Dashboard,
+    Players,
+    DisconnectedPlayers,
+    CurrentVehicle,
+    PlayerView,
+    Error,
 };
