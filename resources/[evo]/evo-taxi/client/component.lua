@@ -108,13 +108,16 @@ _TAXI = {
 	},
 	Rate = {
 		Set = function(self)
-			Input:Show("Taxi", "Set Rate", {
-				{
-					id = "rate",
-					type = "number",
-					options = {},
-				},
-			}, "Taxi:SetRate", {})
+			local vehicle = GetVehiclePedIsIn(PlayerPedId(), false)
+			if DoesEntityExist(vehicle) and IsVehicleModel(vehicle, GetHashKey("taxi")) then
+				Input:Show("Taxi", "Set Rate", {
+					{
+						id = "rate",
+						type = "number",
+						options = {},
+					},
+				}, "Taxi:SetRate", {})
+			end
 		end,
 	},
 	Trip = {
