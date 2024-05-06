@@ -5,6 +5,7 @@ function RetrieveComponents()
 	Logger = exports["evo-base"]:FetchComponent("Logger")
 	Notification = exports["evo-base"]:FetchComponent("Notification")
 	Hud = exports["evo-base"]:FetchComponent("Hud")
+    Buffs = exports["sandbox-base"]:FetchComponent("Buffs")
 	Targeting = exports["evo-base"]:FetchComponent("Targeting")
 	Status = exports["evo-base"]:FetchComponent("Status")
 	--Hospital = exports["evo-base"]:FetchComponent("Hospital")
@@ -36,6 +37,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Sounds",
 		"Animations",
         "Weapons",
+        "Buffs"
 	}, function(error)
 		if #error > 0 then
 			return
@@ -69,9 +71,8 @@ end)
 
 RegisterNetEvent("Characters:Client:Spawned", function()
     StartThreads()
-    Hud:RegisterStatus("godmode", 0, 100, "shield-quartered", "#FFBB04", false, false, {
-        hideZero = true,
-    })
+    
+    Buffs:RegisterBuff("godmode", "shield-quartered", "#FFBB04", -1, "permanent")
 end)
 
 RegisterNetEvent("Characters:Client:Logout", function()
