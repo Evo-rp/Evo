@@ -830,6 +830,13 @@ function RunParachuteUpdate()
 			RemoveWeaponFromPed(LocalPlayer.state.ped, -72657034)
 		end
 
+		if hasChute then
+			Buffs:ApplyUniqueBuff("parachute", -1)
+		else
+			Buffs:RemoveBuffType("parachute")
+
+		end
+
 		TriggerEvent("Status:Client:Update", "parachute", hasChute and 100 or 0)
 	end
 end
@@ -858,6 +865,12 @@ end)
 
 AddEventHandler("Weapons:Client:SwitchedWeapon", function()
 	RunParachuteUpdate()
+end)
+
+RegisterNetEvent("Characters:Client:Spawn")
+AddEventHandler("Characters:Client:Spawn", function()
+	Citizen.Wait(1000)
+	Buffs:RegisterBuff("parachute", "parachute-box", "#A72929", -1, "permanent")
 end)
 
 RegisterNetEvent("Characters:Client:Spawn")
