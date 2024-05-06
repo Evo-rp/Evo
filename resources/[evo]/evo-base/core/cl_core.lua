@@ -32,6 +32,7 @@ function COMPONENTS.Core.Init(self)
 
 	LocalPlayer.state.ped = PlayerPedId()
 	LocalPlayer.state.myPos = GetEntityCoords(LocalPlayer.state.ped)
+	LocalPlayer.state.inPauseMenu = IsPauseMenuActive()
 
 	SetScenarioTypeEnabled("WORLD_VEHICLE_STREETRACE", false)
 	SetScenarioTypeEnabled("WORLD_VEHICLE_SALTON_DIRT_BIKE", false)
@@ -45,6 +46,10 @@ function COMPONENTS.Core.Init(self)
 	SetScenarioTypeEnabled("WORLD_VEHICLE_EMPTY", false)
 	SetScenarioTypeEnabled("WORLD_VEHICLE_BUSINESSMEN", false)
 	SetScenarioTypeEnabled("WORLD_VEHICLE_BIKE_OFF_ROAD_RACE", false)
+	SetStaticEmitterEnabled("LOS_SANTOS_VANILLA_UNICORN_01_STAGE", false)
+	SetStaticEmitterEnabled("LOS_SANTOS_VANILLA_UNICORN_02_MAIN_ROOM", false)
+	SetStaticEmitterEnabled("LOS_SANTOS_VANILLA_UNICORN_03_BACK_ROOM", false)
+	SetStaticEmitterEnabled("collision_9qv4ecm", false) -- Tequila
 
 	Citizen.CreateThread(function()
 		while _baseThreading do
@@ -55,7 +60,10 @@ function COMPONENTS.Core.Init(self)
 				SetEntityProofs(LocalPlayer.state.ped, false, false, false, false, false, true, false, false)
 				SetPedDropsWeaponsWhenDead(LocalPlayer.state.ped, false)
 				SetPedAmmoToDrop(LocalPlayer.state.ped, 0)
-				TriggerEvent("Weapons:Client:Attach")
+
+				if GetEntityMaxHealth(ped) ~= 200 then
+					SetEntityMaxHealth(ped, 200)
+				end
 			end
 		end
 	end)
@@ -71,6 +79,7 @@ function COMPONENTS.Core.Init(self)
 		while _baseThreading do
 			Citizen.Wait(100)
 			LocalPlayer.state.myPos = GetEntityCoords(LocalPlayer.state.ped)
+			LocalPlayer.state.inPauseMenu = IsPauseMenuActive()
 		end
 	end)
 
@@ -120,34 +129,27 @@ function COMPONENTS.Core.Init(self)
 			HideHudComponentThisFrame(20)
 			--DontTiltMinimapThisFrame()
 
-			SetVehicleDensityMultiplierThisFrame(0.3)
-			SetPedDensityMultiplierThisFrame(0.8)
-			SetRandomVehicleDensityMultiplierThisFrame(0.4)
-			SetParkedVehicleDensityMultiplierThisFrame(0.5)
-			SetScenarioPedDensityMultiplierThisFrame(0.8, 0.8)
+			if not LocalPlayer.state.wepTest then
+				SetVehicleDensityMultiplierThisFrame(0.3)
+				SetPedDensityMultiplierThisFrame(0.8)
+				SetRandomVehicleDensityMultiplierThisFrame(0.4)
+				SetParkedVehicleDensityMultiplierThisFrame(0.5)
+				SetScenarioPedDensityMultiplierThisFrame(0.8, 0.8)
+			end
 			NetworkSetFriendlyFireOption(true)
 
 			if IsPedInCover(LocalPlayer.state.ped, 0) and not IsPedAimingFromCover(LocalPlayer.state.ped) then
 				DisablePlayerFiring(LocalPlayer.state.ped, true)
 			end
 
-			-- disables pistol whip
-			if GetSelectedPedWeapon(LocalPlayer.state.ped) ~= GetHashKey("WEAPON_UNARMED") then
-				if IsPedArmed(LocalPlayer.state.ped, 6) then
-					DisableControlAction(1, 140, true)
-					DisableControlAction(1, 141, true)
-					DisableControlAction(1, 142, true)
-				end
-			end
-
 			-- should disable any vehicle rewards
 			DisablePlayerVehicleRewards(LocalPlayer.state.ped)
 
-			-- should disable headshots
-			SetPedSuffersCriticalHits(LocalPlayer.state.ped, false)
-
 			-- set lockrange to 2.0
 			SetPlayerLockonRangeOverride(LocalPlayer.state.PlayerID, 2.0)
+
+			-- disable distance cop sirens
+			DistantCopCarSirens(false)
 
 			Citizen.Wait(1)
 		end
@@ -218,6 +220,16 @@ end
 
 Citizen.CreateThread(function()
 	while not exports or exports[GetCurrentResourceName()] == nil do
+		Citizen.Wait(1)
+	end
+    
+	local ped = PlayerPedId()
+	FreezeEntityPosition(ped, true)
+	SetEntityVisible(ped, false)
+	SetPlayerVisibleLocally(ped, false)
+
+	DoScreenFadeOut(500)
+	while IsScreenFadingOut() do
 		Citizen.Wait(1)
 	end
 
