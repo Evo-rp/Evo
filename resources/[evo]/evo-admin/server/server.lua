@@ -15,6 +15,7 @@ function RetrieveComponents()
 	Tasks = exports["evo-base"]:FetchComponent("Tasks")
 	Pwnzor = exports["evo-base"]:FetchComponent("Pwnzor")
 	WebAPI = exports["evo-base"]:FetchComponent("WebAPI")
+	Vehicles = exports["evo-base"]:FetchComponent("Vehicles")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -34,6 +35,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Tasks",
 		"Pwnzor",
 		"WebAPI",
+		"Vehicles",
 	}, function(error)
 		if #error > 0 then
 			return
@@ -64,6 +66,9 @@ AddEventHandler("Core:Shared:Ready", function()
 					AccountID = player:GetData('AccountID'),
 					Identifier = player:GetData('Identifier'),
 					Groups = player:GetData('Groups'),
+					Discord = player:GetData("Discord"),
+					Mention = player:GetData("Mention"),
+					Avatar = player:GetData("Avatar"),
 				}, highestGroup, highestGroupName, highestLevel)
 			end
 		end, 5)
@@ -71,6 +76,22 @@ AddEventHandler("Core:Shared:Ready", function()
 end)
 
 function RegisterChatCommands()
+	Chat:RegisterAdminCommand("weptest", function(source, args, rawCommand)
+		if GlobalState.IsProduction then
+			Execute:Client(source, "Notification", "Error", "Cannot Use This On Production Servers")
+			return
+		end
+		TriggerClientEvent("Admin:Client:DamageTest", source, args[1] == "1")
+	end, {
+		help = "[Admin] Start Weapon Damage Testing",
+		params = {
+			{
+				name = "Mode",
+				help = "0 = Body Shots, 1 = Headshots",
+			},
+		},
+	}, 1)
+
 	Chat:RegisterAdminCommand("admin", function(source, args, rawCommand)
 		TriggerClientEvent("Admin:Client:Menu:Open", source)
 	end, {
@@ -145,7 +166,7 @@ function RegisterChatCommands()
 		},
 	}, 1)
 
-	Chat:RegisterAdminCommand("noclip", function(source, args, rawCommand)
+	Chat:RegisterStaffCommand("noclip", function(source, args, rawCommand)
 		TriggerClientEvent("Admin:Client:NoClip", source, false)
 	end, {
 		help = "[Admin] Toggle NoClip",

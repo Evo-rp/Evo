@@ -1,4 +1,3 @@
---lol
 local lastSpectateLocation
 local isSpectateEnabled = false
 local storedTargetPed

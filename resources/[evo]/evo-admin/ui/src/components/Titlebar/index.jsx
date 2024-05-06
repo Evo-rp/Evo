@@ -57,14 +57,6 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		marginRight: 10,
 	},
-	user: {
-		marginRight: 10,
-		textAlign: 'right',
-		'& small': {
-			display: 'block',
-			color: theme.palette.text.alt,
-		},
-	},
 	callsign: {
 		fontSize: 14,
 		color: theme.palette.primary.main,
@@ -120,10 +112,10 @@ export default () => {
 			className={classes.navbar}
 		>
 			<Toolbar disableGutters>
-				<div 
+				<div
 					className={classes.title}
 					onMouseEnter={() => hoverChange(true)}
-        			onMouseLeave={() => hoverChange(false)}
+					onMouseLeave={() => hoverChange(false)}
 				>
 					<div className={classes.navLinks}>
 						<Link to="/" className={classes.logoLink}>
@@ -136,20 +128,18 @@ export default () => {
 					</div>
 				</div>
 				<div className={classes.right}>
-					<div className={classes.user}>
-						<Account />
-					</div>
+					<Account />
 					<Divider orientation="vertical" flexItem />
 					{permissionLevel >= 100 && <Tooltip title="Toggle Invisibility">
 						<IconButton onClick={goInvisible}>
-							<FontAwesomeIcon icon={['fas', 'eye-slash']}/>
+							<FontAwesomeIcon icon={['fas', 'eye-slash']} />
 						</IconButton>
 					</Tooltip>}
-					{permissionLevel >= 100 && <Tooltip title="Toggle Player Ids">
+					<Tooltip title="Toggle Player Ids">
 						<IconButton onClick={toggleIds}>
 							<FontAwesomeIcon icon={['fas', 'id-badge']} />
 						</IconButton>
-					</Tooltip>}
+					</Tooltip>
 					<Tooltip title="View Self Player Data">
 						<IconButton onClick={viewSelf}>
 							<FontAwesomeIcon icon={['fas', 'user-large']} />

@@ -10,8 +10,8 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/pro-solid-svg-icons';
+import { far } from '@fortawesome/pro-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { HashRouter } from 'react-router-dom';
 
@@ -118,7 +118,7 @@ export default () => {
 				styleOverrides: {
 					root: {
 						height: '90%',
-						width: '60%',
+						width: '85%',
 						margin: 'auto',
 					},
 				},
@@ -175,7 +175,7 @@ export default () => {
 						right: 0,
 						margin: 'auto',
 						height: '90%',
-						width: '60%',
+						width: '85%',
 						borderRadius: 10,
 						overflowY: 'auto',
 						overflowX: 'hidden',

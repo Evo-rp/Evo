@@ -1,9 +1,7 @@
-import Admin from './Admin';
 import Staff from './Staff';
-import Developer from './Developer';
+import Admin from './Admin';
 
 export {
 	Admin,
     Staff,
-    Developer,
 };

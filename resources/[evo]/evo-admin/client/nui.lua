@@ -110,6 +110,25 @@ RegisterNUICallback('BanPlayer', function(data, cb)
     Callbacks:ServerCallback('Admin:BanPlayer', data, cb)
 end)
 
+RegisterNUICallback('GetVehicleList', function(data, cb)
+    Callbacks:ServerCallback('Admin:GetVehicleList', data, cb)
+end)
+
+RegisterNUICallback('GetVehicle', function(data, cb)
+    Callbacks:ServerCallback('Admin:GetVehicle', data, cb)
+end)
+
+RegisterNUICallback('ActionVehicle', function(data, cb)
+    if data and data.model then
+        data.numSeats = GetVehicleModelNumberOfSeats(data.model)
+    end
+    Callbacks:ServerCallback('Admin:VehicleAction', data, cb)
+end)
+
+RegisterNUICallback('GetAllPlayersByCharacter', function(data, cb)
+    Callbacks:ServerCallback('Admin:GetAllPlayersByCharacter', data, cb)
+end)
+
 RegisterNUICallback('CurrentVehicleAction', function(data, cb)
     local insideVehicle = GetVehiclePedIsIn(LocalPlayer.state.ped, true)
     if insideVehicle and insideVehicle > 0 and DoesEntityExist(insideVehicle) then
@@ -209,7 +228,7 @@ end)
 RegisterNUICallback('ToggleIDs', function(data, cb)
     cb('OK')
 
-    if LocalPlayer.state.isDev then
+    if LocalPlayer.state.isStaff then
         ToggleAdminPlayerIDs()
     end
 end)

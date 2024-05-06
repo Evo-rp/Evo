@@ -59,7 +59,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		end)
 
 		Keybinds:Add("admin_debug3", "", "keyboard", "[Admin] Debug IDs", function()
-			if LocalPlayer.state.isDev then
+			if LocalPlayer.state.isStaff then
 				ToggleAdminPlayerIDs()
 			end
 		end)
