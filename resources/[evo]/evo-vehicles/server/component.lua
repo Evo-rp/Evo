@@ -433,6 +433,10 @@ VEHICLE = {
                 end
             end)
         end,
+
+        GetAllActive = function(self)
+            return ACTIVE_OWNED_VEHICLES
+        end,
         
         Spawn = function(self, source, VIN, coords, heading, cb)
             Vehicles.Owned:GetVIN(VIN, function(vehicle)
