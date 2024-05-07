@@ -4,7 +4,7 @@ RegisterNUICallback('DOJ:GetData', function(data, cb)
     _DOJ = {}
 
     Callbacks:ServerCallback('Jobs:GetActiveDuty', 'government', function(res)
-        if res.CharacterData then
+        if res then
             for k, v in ipairs(res.CharacterData) do
                 table.insert(_DOJ, {
                     Rank = v.Rank,
