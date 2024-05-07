@@ -17,6 +17,12 @@ Config.StartItems = {
 	{ name = "sandwich_blt", count = 5 },
 	{ name = "bandage", count = 5 },
 	{ name = "coffee", count = 2 },
+
+	-- Remove after Beta
+	{ name = "lockpick", count = 10 },
+	{ name = "vpn", count = 1 },
+	{ name = "lsundg_invite", count = 1 },
+	{ name = "laptop", count = 1 },
 }
 
 Config.ShopItemSets = {
