@@ -1,22 +1,26 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Grid } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
-    location: {
-        position: 'absolute',
-        bottom: 50,
-        left: '16%',
-        filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
+    container: {
+        padding: '0 5px',
+        background: `${theme.palette.secondary.dark}80`,
+        borderLeft: `4px solid ${theme.palette.primary.main}`,
+        display: 'flex',
+        minWidth: 248,
     },
-    locationFoot: {
-        position: 'absolute',
-        bottom: '7.5%',
-        left: '1%',
-        filter: `drop-shadow(0 0 2px ${theme.palette.secondary.dark}e0)`,
+    containerNoBg: {
+        padding: '0 5px',
+        display: 'flex',
+        minWidth: 248,
+        filter: 'drop-shadow(1px 2px 1px #000)',
+    },
+    street: {
+        padding: 5,
     },
     highlight: {
-        fontSize: 24,
         color: theme.palette.primary.main,
     },
     highlight2: {
@@ -24,27 +28,27 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 15,
     },
     areaWrap: {
-        opacity: 0,
         display: 'block',
-        fontSize: 20,
+        fontSize: 16,
         position: 'relative',
         top: 5,
     },
     direction: {
-        fontSize: 25,
-        lineHeight: '30px',
-        color: theme.palette.text.main,
-        display: 'inline-block',
-        width: 20,
+        display: 'block',
+        fontSize: 40,
+        padding: 5,
+        paddingLeft: 0,
+        borderRight: `1px solid ${theme.palette.border.divider}`,
+        width: 35,
         textAlign: 'center',
     },
     locationMain: {
-        color: theme.palette.text.alt,
-        fontSize: 25,
+        color: theme.palette.text.main,
+        fontSize: 22,
     },
     locationSecondary: {
-        color: theme.palette.text.main,
-        fontSize: 20,
+        color: theme.palette.text.alt,
+        fontSize: 18,
         marginLeft: 5,
     },
     '@keyframes flash': {
@@ -62,35 +66,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default () => {
     const classes = useStyles();
-    const time = useSelector((state) => state.location.time);
+    const config = useSelector((state) => state.hud.config);
     const isShowing = useSelector((state) => state.location.showing);
     const location = useSelector((state) => state.location.location);
-    const inVehicle = useSelector((state) => state.vehicle.showing);
-    const isShifted = useSelector((state) => state.location.shifted);
     const isBlindfolded = useSelector((state) => state.app.blindfolded);
 
     if (!isShowing || isBlindfolded) return null;
     return (
         <div
             className={
-                inVehicle || isShifted ? classes.locationFoot : classes.location
+                config.hideCompassBg ? classes.containerNoBg : classes.container
             }
+            style={{
+                marginBottom:
+                    config.layout == 'minimap' || config.layout == 'center'
+                        ? 8
+                        : 0,
+            }}
         >
-            <div className={classes.areaWrap}>
-                <span className={classes.area}>{location.area}</span>
-            </div>
-            <div className={classes.locationMain}>
-                <span className={classes.direction}>{location.direction}</span>
-                <span className={classes.highlight}> | </span>
-                {location.main}
-                <span className={classes.locationSecondary}>
-                    {location.cross !== '' ? (
-                        <span>
-                            <span className={classes.highlight}> x </span>
-                            {location.cross}
-                        </span>
-                    ) : null}
-                </span>
+            <div className={classes.direction}>{location.direction}</div>
+            <div className={classes.street}>
+                <div className={classes.locationMain}>
+                    {location.main}
+                    <span className={classes.locationSecondary}>
+                        {location.cross !== '' && !config.hideCrossStreet ? (
+                            <span>
+                                <span className={classes.highlight}> x </span>
+                                {location.cross}
+                            </span>
+                        ) : null}
+                    </span>
+                </div>
+                <div className={classes.areaWrap}>
+                    <span className={classes.area}>{location.area}</span>
+                </div>
             </div>
         </div>
     );

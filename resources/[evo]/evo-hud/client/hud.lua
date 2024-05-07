@@ -1,6 +1,7 @@
 local _toggled = false
 local _paused = false
 local _vehToggled = false
+local _overlayToggled = false
 local _statuses = {}
 local _statusCount = 0
 
@@ -26,6 +27,33 @@ local _zoomLevels = {
 
 -- 	SetRadarZoom(_zoomLevels[_zoomLevel])
 -- end)
+
+function GetMinimapAnchor()
+	local minimap = {}
+	local resX, resY = GetActiveScreenResolution()
+	local aspectRatio = GetAspectRatio()
+	local scaleX = 1/resX
+	local scaleY = 1/resY
+	local minimapRawX, minimapRawY
+	SetScriptGfxAlign(string.byte('L'), string.byte('B'))
+	if IsBigmapActive() then
+		minimapRawX, minimapRawY = GetScriptGfxPosition(-0.003975, 0.022 + (-0.460416666))
+		minimap.width = scaleX*(resX/(2.52*aspectRatio))
+		minimap.height = scaleY*(resY/(2.3374))
+	else
+		minimapRawX, minimapRawY = GetScriptGfxPosition(-0.0045, 0.002 + (-0.188888))
+		minimap.width = scaleX*(resX/(4*aspectRatio))
+		minimap.height = scaleY*(resY/(5.674))
+	end
+	ResetScriptGfxAlign()
+	minimap.leftX = minimapRawX
+	minimap.rightX = minimapRawX+minimap.width
+	minimap.topY = minimapRawY
+	minimap.bottomY = minimapRawY+minimap.height
+	minimap.X = minimapRawX+(minimap.width/2)
+	minimap.Y = minimapRawY+(minimap.height/2)
+	return minimap
+end
 
 AddEventHandler("Hud:Shared:DependencyUpdate", RetrieveComponents)
 function RetrieveComponents()
@@ -71,6 +99,12 @@ AddEventHandler("Core:Shared:Ready", function()
 		end
 		RetrieveComponents()
 		-- Hud.Minimap:Set()
+
+		
+		SendNUIMessage({
+			type = "UPDATE_MM_POS",
+			data = { position = GetMinimapAnchor() },
+		})
 
 		Keybinds:Add("show_interaction", "F1", "keyboard", "Hud - Show Interaction Menu", function()
 			Interaction:Show()
@@ -153,6 +187,15 @@ function deepcopy(orig)
 	return copy
 end
 
+function hasValue(tbl, value)
+	for k, v in ipairs(tbl) do
+		if v == value or (type(v) == "table" and hasValue(v, value)) then
+			return true
+		end
+	end
+	return false
+end
+
 HUD = {
 	_required = { "IsDisabled", "IsDisabledAllowDead", "Show", "Hide", "Toggle", "Vehicle", "RegisterStatus" },
 	IsDisabled = function(self)
@@ -217,25 +260,6 @@ HUD = {
 		end
 		Hud.Vehicle:Hide()
 	end,
-	XHair = function(self, state)
-		SendNUIMessage({
-			type = "ARMED",
-			data = {
-				state = state,
-			},
-		})
-	end,
-	Scope = function(self, state)
-		if state then
-			SendNUIMessage({
-				type = "SHOW_SCOPE",
-			})
-		else
-			SendNUIMessage({
-				type = "HIDE_SCOPE",
-			})
-		end
-	end,
 	Toggle = function(self)
 		SendNUIMessage({
 			type = "TOGGLE_HUD",
@@ -250,7 +274,7 @@ HUD = {
 				Hud.Vehicle:Hide()
 			end
 		else
-			if Phone ~= nil and not Phone:IsOpen() then
+			if Phone ~= nil and not Phone:IsOpen() and not hasValue(LocalPlayer.state.Character:GetData("States"), "GPS") then
 				DisplayRadar(false)
 			end
 			Hud.Vehicle:Hide()
@@ -259,9 +283,32 @@ HUD = {
 	ShiftLocation = function(self, status)
 		SendNUIMessage({
 			type = "SHIFT_LOCATION",
-			data = { shift = status },
+			data = { shift = status, position = GetMinimapAnchor() },
 		})
 	end,
+	Overlay = {
+		Show = function(self, data)
+			if _overlayToggled then
+				return
+			end
+
+			SendNUIMessage({
+				type = "SHOW_OVERLAY",
+				data = { data },
+			})
+			_overlayToggled = true
+		end,
+		Hide = function(self, data)
+			if not _overlayToggled then
+				return
+			end
+
+			SendNUIMessage({
+				type = "HIDE_OVERLAY",
+			})
+			_overlayToggled = false
+		end,
+	},
 	Vehicle = {
 		Show = function(self)
 			if _vehToggled then
@@ -270,6 +317,9 @@ HUD = {
 
 			SendNUIMessage({
 				type = "SHOW_VEHICLE",
+				data = {
+					position = GetMinimapAnchor()
+				}
 			})
 			_vehToggled = true
 			StartVehicleThreads()
@@ -452,11 +502,42 @@ HUD = {
 				type = "CLEAR_FLASHBANGED",
 			})
 		end,
-	}
+	},
+	UpdateVoip = function(self, level, talking)
+		SendNUIMessage({
+			type = "SET_VOIP_LEVEL",
+			data = {
+				level = level,
+				talking = talking,
+			}
+		})
+	end,
+	NOS = function(self, level)
+		SendNUIMessage({
+			type = "UPDATE_NOS",
+			data = {
+				nos = level,
+			}
+		})
+	end,
 }
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
 	exports["evo-base"]:RegisterComponent("Hud", HUD)
+end)
+
+
+AddEventHandler("Characters:Client:Updated", function(key)
+	if key == "States" then
+		if not IsPedInAnyVehicle(PlayerPedId(), true) then
+			DisplayRadar(
+				LocalPlayer.state.phoneOpen or hasValue(LocalPlayer.state.Character:GetData("States"), "GPS")
+			)
+			Hud:ShiftLocation(
+				LocalPlayer.state.phoneOpen or hasValue(LocalPlayer.state.Character:GetData("States"), "GPS")
+			)
+		end
+	end
 end)
 
 function GetLocation()
@@ -651,7 +732,19 @@ function StartVehicleThreads()
 			Citizen.Wait(100)
 		end
 
-		DisplayRadar(false)
+		DisplayRadar(hasValue(LocalPlayer.state.Character:GetData("States"), "GPS"))
+	end)
+
+	Citizen.CreateThread(function()
+		while _vehToggled do
+			if GLOBAL_VEH then
+				SendNUIMessage({
+					type = "UPDATE_RPM",
+					data = { rpm = GetVehicleCurrentRpm(GLOBAL_VEH) },
+				})
+				Citizen.Wait(10)
+			end
+		end
 	end)
 
 	if GetPedInVehicleSeat(GLOBAL_VEH, -1) ~= LocalPlayer.state.ped then
@@ -715,36 +808,33 @@ function StartVehicleThreads()
 
 end
 
-local x = -0.005
-local y = -0.015
+-- Citizen.CreateThread(function()
+-- 	SetMapZoomDataLevel(0, 0.96, 0.9, 0.08, 0.0, 0.0) -- Level 0
+-- 	SetMapZoomDataLevel(1, 1.6, 0.9, 0.08, 0.0, 0.0) -- Level 1
+-- 	SetMapZoomDataLevel(2, 8.6, 0.9, 0.08, 0.0, 0.0) -- Level 2
+-- 	SetMapZoomDataLevel(3, 12.3, 0.9, 0.08, 0.0, 0.0) -- Level 3
+-- 	SetMapZoomDataLevel(4, 22.3, 0.9, 0.08, 0.0, 0.0) -- Level 4
+-- end)
 
 Citizen.CreateThread(function()
-	RequestStreamedTextureDict("circlemap", false)
-	while not HasStreamedTextureDictLoaded("circlemap") do
-		Wait(100)
-	end
-
-	AddReplaceTexture("platform:/textures/graphics", "radarmasksm", "circlemap", "radarmasksm")
-    SetMinimapClipType(1)
-    SetMinimapComponentPosition('minimap', 'L', 'B', -0.022, -0.026, 0.16, 0.245)
-    SetMinimapComponentPosition('minimap_mask', 'L', 'B', x + 0.21, y + 0.09, 0.071, 0.164)
-    SetMinimapComponentPosition('minimap_blur', 'L', 'B', -0.032, -0.04, 0.18, 0.22)
-    ThefeedSpsExtendWidescreenOn()
-    SetRadarBigmapEnabled(true, false)
-    Wait(150)
-    SetRadarBigmapEnabled(false, false)
+	SetRadarZoom(1200)
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(500)
-        ped = PlayerPedId()
-        if not IsPedInAnyVehicle(ped, false) then
-            if IsPedUsingActionMode(ped) then
-                SetPedUsingActionMode(ped, -1, -1, 1)
-            end
-        else
-            Citizen.Wait(3000)
-        end
-    end
+-- function DoRadarFix()
+-- 	Citizen.CreateThread(function()
+-- 		Citizen.Wait(300)
+-- 		SetRadarZoom(_zoomLevels[6])
+-- 		Citizen.Wait(300)
+-- 		SetRadarZoom(_zoomLevels[4])
+-- 		Citizen.Wait(300)
+-- 		SetRadarZoom(_zoomLevels[1])
+-- 		Citizen.Wait(300)
+-- 		SetRadarZoom(_zoomLevels[_zoomLevel])
+-- 	end)
+-- end
+
+AddEventHandler("Keybinds:Client:KeyUp:cancel_action", function()
+	if _overlayToggled then
+		Hud.Overlay.Hide()
+	end
 end)

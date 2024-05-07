@@ -35,7 +35,7 @@ end)
 local blindfoldObject = nil
 function SetupBlindfold()
 	local ped = PlayerPedId()
-	local model = GetHashKey("prop_food_bag2")
+	local model = GetHashKey("prop_head_bag")
 
 	if not IsModelValid(model) then
 		return
@@ -68,12 +68,12 @@ function SetupBlindfold()
 		blindfoldObject,
 		ped,
 		boneid,
-		0.325,
-		0.075,
+		-0.01,
+		0.045,
 		1.9081958235745e-16,
 		223.0,
 		-94.0,
-		150.0,
+		-52.0,
 		1,
 		1,
 		0,

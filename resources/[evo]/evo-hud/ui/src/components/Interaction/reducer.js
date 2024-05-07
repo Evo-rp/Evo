@@ -1,6 +1,16 @@
 export const initialState = {
-    show: false,
-    menuItems: Array(),
+    // show:  process.env.NODE_ENV != 'production',
+    show:  false,
+    menuItems:  process.env.NODE_ENV == 'production' ? Array() : [
+        {
+            id: 1,
+			label: 'Test',
+			icon: 'x',
+			shouldShow: true,
+			action: 'd',
+			labelFunc: null,
+        }
+    ],
     layer: 0,
 };
 

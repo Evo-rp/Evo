@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         height: '100%',
         width: '100%',
-        background: '#000000e6',
+        background: '#1a0e0e50',
     },
 }));
 

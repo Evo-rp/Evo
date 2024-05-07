@@ -410,8 +410,12 @@ end
 function _doCleanup(action)
 	DeleteEntity(prop_net)
 	DeleteEntity(propTwo_net)
-	DeleteEntity(NetToObj(prop_net))
-	DeleteEntity(NetToObj(propTwo_net))
+	if NetworkDoesEntityExistWithNetworkId(prop_net) then
+		DeleteEntity(NetToObj(prop_net))
+	end
+	if NetworkDoesEntityExistWithNetworkId(propTwo_net) then
+		DeleteEntity(NetToObj(propTwo_net))
+	end
 
 	if action and action.animation then
 		if action.animation.animDict ~= nil and action.animation.anim ~= nil then

@@ -95,7 +95,14 @@ function GetObject()
 					pos["x"],
 					pos["y"],
 					pos["z"] + 1,
-					"Obj: " .. ped .. " Model: " .. GetEntityModel(ped) .. " Heading: " .. GetEntityHeading(ped)
+					"Obj: "
+						.. ped
+						.. " Model: "
+						.. GetEntityModel(ped)
+						.. " Heading: "
+						.. GetEntityHeading(ped)
+						.. "\n\n"
+						.. string.format("Entity Coords: %s, %s, %s", pos["x"], pos["y"], pos["z"])
 				)
 			end
 		end
@@ -184,13 +191,8 @@ Citizen.CreateThread(function()
 			local RPos2 = GetOffsetFromEntityInWorldCoords(GetPlayerPed(-1), -2.0, 0.0, 0.0)
 
 			local x, y, z = table.unpack(GetEntityCoords(GetPlayerPed(-1), true))
-			local currentStreetHash, intersectStreetHash = GetStreetNameAtCoord(
-				x,
-				y,
-				z,
-				currentStreetHash,
-				intersectStreetHash
-			)
+			local currentStreetHash, intersectStreetHash =
+				GetStreetNameAtCoord(x, y, z, currentStreetHash, intersectStreetHash)
 			currentStreetName = GetStreetNameFromHashKey(currentStreetHash)
 
 			drawTxt(0.8, 0.50, 0.4, 0.4, 0.30, "Heading: " .. GetEntityHeading(GetPlayerPed(-1)), 55, 155, 55, 255)
@@ -238,8 +240,8 @@ Citizen.CreateThread(function()
 			DrawLine(RPos, RPos2, 255, 255, 255, 115)
 
 			local nearped = getNPC()
-            local veh = GetVehicle()
-            local nearobj = GetObject()
+			local veh = GetVehicle()
+			local nearobj = GetObject()
 		else
 			Citizen.Wait(5000)
 		end

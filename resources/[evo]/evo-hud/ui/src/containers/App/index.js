@@ -12,7 +12,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { far } from '@fortawesome/pro-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import "react-circular-progressbar/dist/styles.css";
 
 import Action from '../Action';
 import Hud from '../Hud';
@@ -22,19 +21,19 @@ import List from '../../components/List';
 import Input from '../../components/Input';
 import Confirm from '../../components/Confirm';
 import InfoOverlay from '../../components/InfoOverlay';
+import Overlay from '../../components/Overlay';
 import { Progress, ThirdEye, GemTable } from '../../components';
 
 import Interaction from '../../components/Interaction';
 
 import LCD from '../../assets/fonts/lcd.ttf';
-import SniperScope from '../../components/SniperScope';
-import Crosshair from '../../components/Crosshair';
 import Dead from './Dead';
 import Blindfold from './Blindfold';
 import Ingredients from '../../components/Meth';
 import DeathTexts from './DeathTexts';
 import Arcade from '../Arcade';
 import Flashbang from './Flashbang';
+import Settings from '../Settings';
 
 library.add(fab, fas, far);
 
@@ -57,57 +56,61 @@ const App = ({ hidden }) => {
 
     const muiTheme = createTheme({
         typography: {
-            fontFamily: ['Oswald'],
+            fontFamily: ['Source Sans Pro'],
         },
         palette: {
             primary: {
                 main: '#7702e5',
-                light: '#081320',
-                dark: '#87DA21',
+                light: '#9035e6',
+                dark: '#9902e5',
                 contrastText: '#ffffff',
-			},
-			secondary: {
-				main: '#000817',
-				light: '#1c1c1c',
-				dark: '#0f0f0f',
-				contrastText: '#ffffff',
-			},
-			error: {
-				main: '#6e1616',
-				light: '#a13434',
-				dark: '#430b0b',
-			},
-			success: {
-				main: '#52984a',
-				light: '#60eb50',
-				dark: '#244a20',
-			},
-			warning: {
-				main: '#f09348',
-				light: '#f2b583',
-				dark: '#b05d1a',
-			},
-			info: {
-				main: '#247ba5',
-				light: '#247ba5',
-				dark: '#175878',
-			},
-			text: {
-				main: '#ffffff',
-				alt: '#cecece',
-				info: '#919191',
-				light: '#ffffff',
-				dark: '#000000',
-			},
-			border: {
-				main: '#e0e0e008',
-				light: '#ffffff',
-				dark: '#26292d',
-				input: 'rgba(255, 255, 255, 0.23)',
-				divider: 'rgba(255, 255, 255, 0.12)',
-			},
-			mode: 'dark',
-		},
+            },
+            secondary: {
+                main: '#141414',
+                light: '#1c1c1c',
+                dark: '#0f0f0f',
+                contrastText: '#ffffff',
+            },
+            error: {
+                main: '#6e1616',
+                light: '#a13434',
+                dark: '#430b0b',
+            },
+            success: {
+                main: '#52984a',
+                light: '#60eb50',
+                dark: '#244a20',
+            },
+            warning: {
+                main: '#f09348',
+                light: '#f2b583',
+                dark: '#b05d1a',
+            },
+            info: {
+                main: '#4056b3',
+                light: '#247ba5',
+                dark: '#175878',
+            },
+            text: {
+                main: '#ffffff',
+                alt: '#A7A7A7',
+                info: '#919191',
+                light: '#ffffff',
+                dark: '#000000',
+            },
+            alt: {
+                green: '#008442',
+                greenDark: '#064224',
+            },
+            border: {
+                main: '#e0e0e008',
+                light: '#ffffff',
+                dark: '#26292d',
+                input: 'rgba(255, 255, 255, 0.23)',
+                divider: 'rgba(255, 255, 255, 0.12)',
+            },
+            mode: 'dark',
+        },
         components: {
             MuiCssBaseline: {
                 styleOverrides: {
@@ -140,6 +143,21 @@ const App = ({ hidden }) => {
                                 margin: 0,
                             },
                     },
+                    '*': {
+                        '&::-webkit-scrollbar': {
+                            width: 6,
+                        },
+                        '&::-webkit-scrollbar-thumb': {
+                            background: 'rgba(0, 0, 0, 0.5)',
+                            transition: 'background ease-in 0.15s',
+                        },
+                        '&::-webkit-scrollbar-thumb:hover': {
+                            background: '#ffffff17',
+                        },
+                        '&::-webkit-scrollbar-track': {
+                            background: 'transparent',
+                        },
+                    },
                     '@keyframes critical': {
                         '0%, 49%': {
                             backgroundColor: '#0f0f0f',
@@ -154,6 +172,17 @@ const App = ({ hidden }) => {
                         },
                         '50%, 100%': {
                             borderColor: `#de3333`,
+                        },
+                    },
+                    '@keyframes flash': {
+                        '0%': {
+                            opacity: 1,
+                        },
+                        '50%': {
+                            opacity: 0.1,
+                        },
+                        '100%': {
+                            opacity: 1,
                         },
                     },
                 },
@@ -177,6 +206,7 @@ const App = ({ hidden }) => {
                 <Flashbang />
                 <DeathTexts />
                 <InfoOverlay />
+                <Overlay />
                 <Hud />
                 <NPCDialog />
                 <Notifications />
@@ -188,9 +218,8 @@ const App = ({ hidden }) => {
                 {progShowing && <Progress />}
                 <ThirdEye />
                 <Interaction />
-                <Crosshair />
-                <SniperScope />
                 <GemTable />
+                <Settings />
             </ThemeProvider>
         </StyledEngineProvider>
     );

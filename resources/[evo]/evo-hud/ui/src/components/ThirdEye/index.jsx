@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         textShadow: '0 0 5px #000',
         '&:hover': {
-            color: theme.palette.primary.main,
+            color: theme.palette.primary.light,
             cursor: 'pointer',
         },
         '& svg': {

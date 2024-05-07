@@ -10,11 +10,28 @@ AddEventHandler("Vehicles:Client:ExitVehicle", function(currentVehicle, currentS
 end)
 
 AddEventHandler("Characters:Client:Spawn", function()
+	SendNUIMessage({
+		type = "SET_CONFIG",
+		data = {
+			config = LocalPlayer.state.Character:GetData("HUDConfig"),
+		},
+	})
+
 	Hud:Show()
-	DisplayRadar(false)
+
+	DisplayRadar(hasValue(LocalPlayer.state.Character:GetData("States"), "GPS"))
+	Hud:ShiftLocation(hasValue(LocalPlayer.state.Character:GetData("States"), "GPS"))
 end)
 
 RegisterNetEvent("UI:Client:Reset", function(manual)
+	if LocalPlayer.state.Character ~= nil then
+		SendNUIMessage({
+			type = "SET_CONFIG",
+			data = {
+				config = LocalPlayer.state.Character:GetData("HUDConfig"),
+			},
+		})
+	end
 	SendNUIMessage({
 		type = "UI_RESET",
 		data = {},
@@ -134,6 +151,16 @@ AddEventHandler("Targeting:Client:CloseMenu", function()
 	})
 end)
 
+RegisterNetEvent("UI:Client:Configure", function()
+	SetNuiFocus(true, true)
+	SendNUIMessage({
+		type = "TOGGLE_SETTINGS",
+		data = {
+			state = true,
+		},
+	})
+end)
+
 RegisterNUICallback("targetingAction", function(data, cb)
 	SetNuiFocus(false, false)
 	SendNUIMessage({
@@ -142,4 +169,15 @@ RegisterNUICallback("targetingAction", function(data, cb)
 	})
 	TriggerEvent("Targeting:Client:MenuSelect", data and data.event, data and data.data or {})
 	cb("ok")
+end)
+
+RegisterNUICallback("CloseUI", function(data, cb)
+	SetNuiFocus(false, false)
+	cb("OK")
+end)
+
+RegisterNUICallback("SaveConfig", function(data, cb)
+	Callbacks:ServerCallback("HUD:SaveConfig", data, function(s)
+		cb(s)
+	end)
 end)

@@ -54,22 +54,10 @@ RegisterNUICallback('NPCResponse', function(data, cb)
         NPCDialog:Close()
     end
 
-    -- if data.action then
-    --     data.action()
-    -- end
-
     if data.event then
         TriggerEvent(data.event, data.params)
     end
 end)
-
--- RegisterCommand('OpenDialog', function()
---     NPCDialog:Open()
--- end)
-
--- RegisterCommand('CloseDialog', function()
---     NPCDialog:Close()
--- end)
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
 	exports["evo-base"]:RegisterComponent("NPCDialog", NPCDialog)

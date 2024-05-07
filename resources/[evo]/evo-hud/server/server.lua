@@ -8,6 +8,7 @@ function RetrieveComponents()
 	Callbacks = exports["evo-base"]:FetchComponent("Callbacks")
 	Inventory = exports["evo-base"]:FetchComponent("Inventory")
 	Execute = exports["evo-base"]:FetchComponent("Execute")
+	Middleware = exports["evo-base"]:FetchComponent("Middleware")
 	RegisterChatCommands()
 end
 
@@ -19,11 +20,64 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Callbacks",
 		"Inventory",
 		"Execute",
+		"Middleware",
 	}, function(error)
 		if #error > 0 then
 			return
 		end -- Do something to handle if not all dependencies loaded
 		RetrieveComponents()
+
+		Middleware:Add("Characters:Creating", function(source, cData)
+			return {
+				{
+					HUDConfig = {
+						layout = "center",
+						statusType = "legacy",
+						buffsAnchor = "compass",
+						vehicle = "default",
+						buffsAnchor2 = true,
+						showRPM = true,
+						hideCrossStreet = false,
+						hideCompassBg = true,
+						minimapAnchor = true,
+						transparentBg = true,
+					},
+				},
+			}
+		end)
+		Middleware:Add("Characters:Spawning", function(source)
+			local char = Fetch:Source(source):GetData("Character")
+			local config = char:GetData("HUDConfig")
+			if not config then
+				char:SetData("HUDConfig", {
+					layout = "default",
+					statusType = "numbers",
+					buffsAnchor = "compass",
+					vehicle = "default",
+					buffsAnchor2 = true,
+					showRPM = true,
+					hideCrossStreet = false,
+					hideCompassBg = false,
+					minimapAnchor = true,
+					transparentBg = true,
+				})
+			end
+		end, 1)
+
+		Callbacks:RegisterServerCallback("HUD:SaveConfig", function(source, data, cb)
+			local plyr = Fetch:Source(source)
+			if plyr ~= nil then
+				local char = plyr:GetData("Character")
+				if char ~= nil then
+					char:SetData("HUDConfig", data)
+					cb(true)
+				else
+					cb(false)
+				end
+			else
+				cb(false)
+			end
+		end)
 
 		Callbacks:RegisterServerCallback("HUD:RemoveBlindfold", function(source, data, cb)
 			local plyr = Fetch:Source(source)
@@ -95,17 +149,23 @@ function RegisterChatCommands()
 		help = "Resets UI",
 	})
 
-	Chat:RegisterAdminCommand("testblindfold", function(source, args, rawCommand)
-		local plyr = Fetch:Source(source)
-		if plyr ~= nil then
-			local char = plyr:GetData("Character")
-			if char ~= nil then
-				Player(source).state.isBlindfolded = not Player(source).state.isBlindfolded
-			end
-		end
+	Chat:RegisterCommand("hud", function(source, args, rawCommand)
+		TriggerClientEvent("UI:Client:Configure", source, true)
 	end, {
-		help = "Test Blindfold",
+		help = "Open HUD Config Menu",
 	})
+
+	-- Chat:RegisterAdminCommand("testblindfold", function(source, args, rawCommand)
+	-- 	local plyr = Fetch:Source(source)
+	-- 	if plyr ~= nil then
+	-- 		local char = plyr:GetData("Character")
+	-- 		if char ~= nil then
+	-- 			Player(source).state.isBlindfolded = not Player(source).state.isBlindfolded
+	-- 		end
+	-- 	end
+	-- end, {
+	-- 	help = "Test Blindfold",
+	-- })
 
 	-- Chat:RegisterAdminCommand("notif", function(source, args, rawCommand)
 	-- 	exports["evo-base"]:FetchComponent("Execute"):Client(source, "Notification", "Success", "This is a test, lul")
