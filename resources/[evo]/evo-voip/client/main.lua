@@ -6,6 +6,8 @@ CURRENT_VOICE_MODE_DATA = nil
 VOIP_SETTINGS = nil
 PLAYER_TALKING = false
 
+_inDebug = false
+
 _characterLoaded = false
 
 USING_MEGAPHONE = false
@@ -72,7 +74,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		end)
 
 		Keybinds:Add("voip_radio", "CAPITAL", "keyboard", "Voice - Radio - Push to Talk", function()
-			if _characterLoaded and PLAYER_CONNECTED then
+			if _characterLoaded and PLAYER_CONNECTED and not LocalPlayer.state.isDead and not LocalPlayer.state.isCuffed and not LocalPlayer.state.isHardCuffed then
 				RadioKeyDown()
 			end
 		end, function()
@@ -110,24 +112,13 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 	CURRENT_VOICE_MODE = 2
 	CURRENT_VOICE_MODE_DATA = VOIP_CONFIG.Modes[CURRENT_VOICE_MODE]
+	Hud:UpdateVoip(2, false)
 
-	StartVOIPGridThreads()
-
-	Hud:RegisterStatus("VOIP", 100, 100, "microphone-slash", "#a13434", false, false, {
-		id = 1,
-		hideHigh = false,
-		visibleWhileDead = true,
-	})
+	local address, port = GetVOIPMumbleAddress()
+	MumbleSetServerAddress(address, port)
 
 	Citizen.SetTimeout(5000, function()
 		UpdateVOIPIndicatorStatus()
-	end)
-
-	Citizen.CreateThread(function()
-		while _characterLoaded do
-			GLOBAL_PED = PlayerPedId()
-			Citizen.Wait(5000)
-		end
 	end)
 
 	Citizen.CreateThread(function()
@@ -144,8 +135,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 		end
 	end)
 
-	local address, port = GetVOIPMumbleAddress()
-	MumbleSetServerAddress(address, port)
+	StartVOIPGridThreads()
 end)
 
 RegisterNetEvent("Characters:Client:Logout")
@@ -162,16 +152,25 @@ AddEventHandler("VOIP:Client:ConnectionState", function(state)
 	if state then
 		Logger:Info("VOIP", "Connected to Mumble Server")
 
-		MumbleClearVoiceTarget(1)
-		MumbleClearVoiceTargetPlayers(1)
-
-		for i = 1, 4 do
-			MumbleClearVoiceTarget(i)
+		while not LocalPlayer.state.voiceChannel do
+			print("Waiting to Be Assigned Voice Channel")
+			Citizen.Wait(100)
 		end
+	
+		MumbleClearVoiceTarget(1)
+		MumbleSetVoiceTarget(1)
+	
+		print("Assigned Voice Channel", LocalPlayer.state.voiceChannel)
+		MumbleSetVoiceChannel(LocalPlayer.state.voiceChannel)
+	
+		while MumbleGetVoiceChannelFromServerId(PLAYER_SERVER_ID) ~= LocalPlayer.state.voiceChannel do
+			Citizen.Wait(250)
+			MumbleSetVoiceChannel(LocalPlayer.state.voiceChannel)
+		end
+	
+		MumbleAddVoiceTargetChannel(1, LocalPlayer.state.voiceChannel)
 
-		--MumbleSetAudioInputDistance(CURRENT_VOICE_MODE_DATA.Range + 0.0)
-		NetworkSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
-		--MumbleSetAudioOutputDistance(50.0)
+		MumbleSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
 	else
 		Logger:Warn("VOIP", "Disconnected from Mumble Server")
 		StopUsingMegaphone()
@@ -191,6 +190,9 @@ function UpdateVOIPIndicatorStatus()
 	local indicatorIcon = "microphone-slash"
 	local fillPercent = 100
 
+	local stage = CURRENT_VOICE_MODE
+	local talking = 0
+
 	if PLAYER_CONNECTED then
 		indicatorColor = "#ababab"
 		indicatorIcon = "microphone"
@@ -204,36 +206,28 @@ function UpdateVOIPIndicatorStatus()
 		end
 
 		if PLAYER_TALKING then
-			indicatorColor = "#eb7d34"
+			talking = 1
 		end
 
 		if RADIO_TALKING then
-			indicatorColor = "#c326eb"
+			talking = 2
 		end
 
 		fillPercent = (100 / #VOIP_CONFIG.Modes) * CURRENT_VOICE_MODE
 
 		if USING_MEGAPHONE then
 			indicatorIcon = "megaphone"
-			fillPercent = 100
+			stage = 3
 		end
 
 		if USING_MICROPHONE then
 			indicatorIcon = "microphone-stand"
-			fillPercent = 100
+			stage = 3
 		end
 	end
 
-	Hud:RegisterStatus(
-		"VOIP",
-		fillPercent,
-		100,
-		indicatorIcon,
-		indicatorColor,
-		false,
-		true,
-		{ id = 1, visibleWhileDead = true }
-	)
+	
+	Hud:UpdateVoip(stage, talking, indicatorIcon)
 end
 
 _fuckingVOIP = {
@@ -252,10 +246,10 @@ _fuckingVOIP = {
 		CURRENT_VOICE_MODE = newMode
 		CURRENT_VOICE_MODE_DATA = VOIP_CONFIG.Modes[CURRENT_VOICE_MODE]
 		--MumbleSetAudioInputDistance(CURRENT_VOICE_MODE_DATA.Range + 0.0)
-		NetworkSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
+		MumbleSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
 		UpdateVOIPIndicatorStatus()
 
-		LocalPlayer.state:set("proximity", CURRENT_VOICE_MODE_DATA.Range, true)
+		LocalPlayer.state:set("proximity", CURRENT_VOICE_MODE_DATA.Range, false)
 		Logger:Trace("VOIP", "New Voice Range: " .. CURRENT_VOICE_MODE)
 	end,
 	ToggleVoice = function(self, plySource, enabled, voiceType, volume)
@@ -269,17 +263,15 @@ _fuckingVOIP = {
 		if enabled and voiceType and SUBMIX_DATA and SUBMIX_DATA[voiceType] then
 			MumbleSetSubmixForServerId(plySource, SUBMIX_DATA[voiceType])
 		else
+			MumbleSetVolumeOverrideByServerId(plySource, -1.0)
 			MumbleSetSubmixForServerId(plySource, -1)
 		end
 	end,
-	GetGrid = function(self)
-		return GetCurrentVOIPGrid()
-	end,
 	MicClicks = function(self, on, isLocal)
 		if on then
-			Sounds.Do.Play:One("mic_click_on.ogg", VOIP_SETTINGS?.RadioClickVolume or 1.0)
+			Sounds.Do.Play:One("mic_click_on.ogg", 0.1 * (VOIP_SETTINGS?.RadioClickVolume or 1.0))
 		else
-			Sounds.Do.Play:One("mic_click_off.ogg", VOIP_SETTINGS?.RadioClickVolume or 1.0)
+			Sounds.Do.Play:One("mic_click_off.ogg", 0.1 * (VOIP_SETTINGS?.RadioClickVolume or 1.0))
 		end
 	end,
 	SetPlayerTargets = function(self, ...)
@@ -366,10 +358,6 @@ function GetVolumeForVoiceType(type)
 	return false
 end
 
--- 	-- sets how far the player can talk
--- 	MumbleSetAudioInputDistance(Cfg.voiceModes[mode][1] + 0.0)
--- 	LocalPlayer.state:set('proximity', Cfg.voiceModes[mode][1] + 0.0, true)
-
--- 	-- this sets how far the player can hear.
--- 	MumbleSetAudioOutputDistance(Cfg.voiceModes[#Cfg.voiceModes][1] + 0.0)
--- end)
+RegisterNetEvent("VOIP:Client:ToggleDebugMode", function()
+	_inDebug = not _inDebug
+end)

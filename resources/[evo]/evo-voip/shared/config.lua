@@ -9,11 +9,11 @@ VOIP_CONFIG = {
 			Name = 'Speaking',
 		},
 		{
-			Range = 7.0,
+			Range = 12.0,
 			Name = 'Shouting',
 		},
 	},
-	MegaphoneRange = 50.0,
+	MegaphoneRange = 35.0,
 	MicrophoneRange = 40.0,
     DefaultSettings = {
         RadioClickOnLocal = true,

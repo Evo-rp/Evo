@@ -17,13 +17,26 @@ local radioRanges = {
 	}
 }
 
-function GetRadioSubmixType(playerCoords, playerVeh)
+function GetRadioSubmixType(isExtendo, playerCoords, playerVeh)
 	if RADIO_CHANNEL >= 100 then -- Shitty Radio
 		local isInVehicle = playerVeh and playerVeh > 0
-		local dist = #(GetEntityCoords(LocalPlayer.state.ped) - playerCoords)
+		
+		local myCoords = GetEntityCoords(LocalPlayer.state.ped)
+		if LocalPlayer.state.tpLocation then
+			myCoords = vector3(LocalPlayer.state.tpLocation.x, LocalPlayer.state.tpLocation.y, LocalPlayer.state.tpLocation.z)
+		end
 
-		if playerVeh and playerVeh > 0 then
-			dist *= 0.75
+		local dist = #(myCoords - playerCoords)
+		if isExtendo then
+			dist *= 0.5
+
+			if playerVeh and playerVeh > 0 then
+				dist *= 0.35
+			end
+		else
+			if playerVeh and playerVeh > 0 then
+				dist *= 0.75
+			end
 		end
 
 		local filter = false
@@ -58,12 +71,9 @@ RegisterNetEvent('VOIP:Radio:Client:SyncRadioData', function(radioData, coordsDa
 	end
 end)
 
-RegisterNetEvent('VOIP:Radio:Client:SetPlayerTalkState', function(targetSource, isTalking, playerCoords, inVeh)
-	if VOIP == nil then
-		return
-	end
+RegisterNetEvent('VOIP:Radio:Client:SetPlayerTalkState', function(targetSource, isTalking, isExtendo, playerCoords, inVeh)
 	if isTalking then
-		local submix, vol = GetRadioSubmixType(playerCoords, inVeh)
+		local submix, vol = GetRadioSubmixType(isExtendo, playerCoords, inVeh)
 
 		VOIP:ToggleVoice(targetSource, isTalking, submix, vol)
 	else
@@ -108,7 +118,7 @@ function RadioKeyDown()
 		LoadAnim('random@arrests')
 		Logger:Trace('VOIP', 'Starting Radio Broadcast')
 		VOIP:SetPlayerTargets(RADIO_DATA, PLAYER_TALKING and CALL_DATA or {})
-		TriggerServerEvent('VOIP:Radio:Server:SetTalking', true)
+		TriggerServerEvent('VOIP:Radio:Server:SetTalking', true, LocalPlayer.state.radioType == 2)
 		RADIO_TALKING = true
 		VOIP:MicClicks(true)
 		UpdateVOIPIndicatorStatus()
@@ -119,8 +129,8 @@ function RadioKeyDown()
 				SetControlNormal(1, 249, 1.0)
 				SetControlNormal(2, 249, 1.0)
 
-				if not IsEntityPlayingAnim(GLOBAL_PED, 'random@arrests', 'generic_radio_chatter', 3) then
-					TaskPlayAnim(GLOBAL_PED, 'random@arrests', 'generic_radio_chatter', 8.0, 0.0, -1, 49, 0, false, false, false)
+				if not IsEntityPlayingAnim(LocalPlayer.state.ped, 'random@arrests', 'generic_radio_chatter', 3) then
+					TaskPlayAnim(LocalPlayer.state.ped, 'random@arrests', 'generic_radio_chatter', 8.0, 0.0, -1, 49, 0, false, false, false)
 				end
 			end
 

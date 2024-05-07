@@ -58,7 +58,7 @@ _fuckingVOIPRadio = {
 			end
 			TriggerClientEvent('VOIP:Radio:Client:SetPlayerRadio', source, radioChannel)
 		end,
-		SetTalking = function(self, source, talking)
+		SetTalking = function(self, source, talking, extendo)
 			local plyVoice = voiceData[source]
 			if not plyVoice then return end
 	
@@ -69,14 +69,14 @@ _fuckingVOIPRadio = {
 			local pedCoords = GetEntityCoords(ped)
 			local pedVeh = GetVehiclePedIsIn(ped, false)
 
-			local tpCoords = Player(source)?.state?.tpLocation
+			local tpCoords = Player(source).state?.tpLocation
 			if tpCoords then
 				pedCoords = vector3(tpCoords.x, tpCoords.y, tpCoords.z)
 			end
 		
 			for player, _ in pairs(radioChannelData) do
 				if player ~= source then
-					TriggerClientEvent('VOIP:Radio:Client:SetPlayerTalkState', player, source, talking, pedCoords, pedVeh)
+					TriggerClientEvent('VOIP:Radio:Client:SetPlayerTalkState', player, source, talking, extendo, pedCoords, pedVeh)
 				end
 			end
 		end,
@@ -84,15 +84,15 @@ _fuckingVOIPRadio = {
 }
 
 AddEventHandler('Proxy:Shared:ExtendReady', function(component)
-    if component == 'VOIP' then
-        exports['evo-base']:ExtendComponent(component, _fuckingVOIPRadio)
-    end
+	if component == 'VOIP' then
+		exports['evo-base']:ExtendComponent(component, _fuckingVOIPRadio)
+	end
 end)
 
 RegisterServerEvent('VOIP:Radio:Server:SetChannel', function(targetChannel)
 	VOIP.Radio:SetChannel(source, targetChannel)
 end)
 
-RegisterServerEvent('VOIP:Radio:Server:SetTalking', function(isTalking)
-	VOIP.Radio:SetTalking(source, isTalking)
+RegisterServerEvent('VOIP:Radio:Server:SetTalking', function(isTalking, extendo)
+	VOIP.Radio:SetTalking(source, isTalking, extendo)
 end)

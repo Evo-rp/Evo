@@ -1,7 +1,7 @@
 function GetVOIPMumbleAddress()
-    local externalAddress = GetConvar('voice_externalAddress', 'false')
-    local externalPort = GetConvarInt('voice_externalPort', 0)
-    if externalAddress ~= 'false' and externalPort > 0 then
+    local externalAddress = GlobalState.MumbleAddress
+    local externalPort = GlobalState.MumblePort
+    if externalAddress and externalPort > 0 then
         return externalAddress, externalPort
     else
         local defaultEndpoint = GetCurrentServerEndpoint()

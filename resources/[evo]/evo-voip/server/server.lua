@@ -2,6 +2,18 @@ voiceData = {}
 radioData = {}
 callData = {}
 
+local mappedChannels = {}
+
+function firstFreeChannel()
+    for i = 1, 2048 do
+        if not mappedChannels[i] then
+            return i
+        end
+    end
+
+    return 0
+end
+
 function GetDefaultPlayerVOIPData(source)
 	return {
 		Radio = 0,
@@ -10,13 +22,6 @@ function GetDefaultPlayerVOIPData(source)
 		LastCall = 0,
 	}
 end
-
--- temp fix before an actual fix is added
-CreateThread(function()
-	for i = 1, 1024 do
-		MumbleCreateChannel(i)
-	end
-end)
 
 AddEventHandler("VOIP:Shared:DependencyUpdate", RetrieveComponents)
 function RetrieveComponents()
@@ -47,12 +52,22 @@ AddEventHandler("Core:Shared:Ready", function()
 		RetrieveComponents()
 		RegisterMiddleware()
 
+		local mAddress = GetConvar("ext_mumble_address", "")
+		if mAddress ~= "" then
+			GlobalState.MumbleAddress = mAddress
+			GlobalState.MumblePort = GetConvarInt("ext_mumble_port", 64738)
+		end
+
 		--RegisterChatCommands()
 		Inventory.Items:RegisterUse("radio", "VOIP", function(source, itemData)
 			TriggerClientEvent("Radio:Client:OpenUI", source, 1)
 		end)
 
 		Inventory.Items:RegisterUse("radio_shitty", "VOIP", function(source, itemData)
+			TriggerClientEvent("Radio:Client:OpenUI", source, 3)
+		end)
+
+		Inventory.Items:RegisterUse("radio_extendo", "VOIP", function(source, itemData)
 			TriggerClientEvent("Radio:Client:OpenUI", source, 2)
 		end)
 
@@ -63,20 +78,26 @@ AddEventHandler("Core:Shared:Ready", function()
 end)
 
 function RegisterMiddleware()
-	Middleware:Add("Characters:Spawning", function(source)
-		VOIP:AddPlayer(source)
-	end, 3)
-
-	Middleware:Add("Characters:Logout", function(source)
-		VOIP:RemovePlayer(source)
-	end, 3)
+	Middleware:Add('Characters:Spawning', function(source)
+        VOIP:AddPlayer(source)
+    end, 3)
 end
 
 _fuckingVOIP = {
 	AddPlayer = function(self, source)
 		if not voiceData[source] then
 			voiceData[source] = GetDefaultPlayerVOIPData()
-			--Player(source).state:set('routingBucket', 0, true)
+
+			local plyState = Player(source).state
+
+			if plyState then
+				local chan = firstFreeChannel()
+				if chan > 0 then
+					mappedChannels[chan] = source
+
+					plyState:set("voiceChannel", chan, true)
+				end
+			end
 		end
 	end,
 	RemovePlayer = function(self, source)
@@ -93,9 +114,18 @@ _fuckingVOIP = {
 
 			voiceData[source] = nil
 		end
+
+		local aChannel = Player(source).state.voiceChannel
+		if aChannel then
+			mappedChannels[aChannel] = nil
+		end
 	end,
 }
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
 	exports["evo-base"]:RegisterComponent("VOIP", _fuckingVOIP)
+end)
+
+AddEventHandler("Characters:Server:PlayerLoggedOut", function(source)
+	VOIP:RemovePlayer(source)
 end)

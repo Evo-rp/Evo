@@ -33,13 +33,6 @@ RegisterNetEvent('VOIP:Phone:Client:RemovePlayerFromCall', function(plySource)
 	UpdateVOIPIndicatorStatus()
 end)
 
-RegisterNetEvent('VOIP:Phone:Client:SetPlayerTalkState', function(targetSource, enabled)
-	if targetSource ~= PLAYER_SERVER_ID then
-		CALL_DATA[targetSource] = enabled
-		VOIP:ToggleVoice(targetSource, enabled, 'phone')
-	end
-end)
-
 RegisterNetEvent('VOIP:Phone:Client:SetPlayerCall', function(callChannel)
 	CALL_CHANNEL = callChannel
 
@@ -48,6 +41,13 @@ RegisterNetEvent('VOIP:Phone:Client:SetPlayerCall', function(callChannel)
 	end
 
 	UpdateVOIPIndicatorStatus()
+end)
+
+RegisterNetEvent('VOIP:Phone:Client:SetPlayerTalkState', function(targetSource, enabled)
+	if targetSource ~= PLAYER_SERVER_ID then
+		CALL_DATA[targetSource] = enabled
+		VOIP:ToggleVoice(targetSource, enabled, 'phone')
+	end
 end)
 
 AddEventHandler('VOIP:Client:TalkingState', function(state)

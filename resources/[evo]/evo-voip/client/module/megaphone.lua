@@ -8,7 +8,7 @@ function StartUsingMegaphone()
             while _characterLoaded and USING_MEGAPHONE and (not CALL_CHANNEL or CALL_CHANNEL <= 0) and not LocalPlayer.state.isDead and not USING_MICROPHONE do
                 TriggerServerEvent('VOIP:Server:Megaphone:SetPlayerState', true)
 
-                NetworkSetTalkerProximity(VOIP_CONFIG.MegaphoneRange + 0.0)
+                MumbleSetTalkerProximity(VOIP_CONFIG.MegaphoneRange + 0.0)
                 Citizen.Wait(7500)
             end
 
@@ -24,7 +24,7 @@ function StopUsingMegaphone()
         USING_MEGAPHONE = false
         TriggerServerEvent('VOIP:Server:Megaphone:SetPlayerState', false)
 
-        NetworkSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
+        MumbleSetTalkerProximity(CURRENT_VOICE_MODE_DATA.Range + 0.0)
         Animations.Emotes:ForceCancel()
         UpdateVOIPIndicatorStatus()
     end
