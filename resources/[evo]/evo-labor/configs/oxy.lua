@@ -71,12 +71,12 @@ _selectedOxyPickup = math.random(#_oxyPickups)
 
 _oxyStarts = {
 	["0"] = {
-		coords = vector3(-782.746, -2241.357, 4.936),
-		heading = 308.365,
+		coords = vector3(-614.648, -2245.721, 5.248),
+		heading = 49.651,
 	},
 	["1"] = {
-		coords = vector3(-1812.773, -380.581, 45.009),
-		heading = 78.845,
+		coords = vector3(-1939.323, -405.482, 38.183),
+		heading = 137.906,
 	},
 	["2"] = {
 		coords = vector3(2328.276, 2569.873, 45.677),
@@ -87,8 +87,8 @@ _oxyStarts = {
 		heading = 182.728,
 	},
 	["4"] = {
-		coords = vector3(2685.413, 3515.209, 52.304),
-		heading = 66.673,
+		coords = vector3(2970.001, 3479.511, 70.442),
+		heading = 269.473,
 	},
 	["5"] = {
 		coords = vector3(2573.559, 3903.360, 39.941),
