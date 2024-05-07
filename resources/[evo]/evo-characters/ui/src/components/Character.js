@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import Moment from 'react-moment';
-import { List, ListItem, Collapse, ListItemText, Paper, Card, CardContent, Typography, Button, CardActions, Zoom } from '@mui/material';
+import { Card, CardContent, Typography, Button, CardActions, Zoom } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getCharacterSpawns, showCreator } from '../actions/characterActions';
@@ -69,7 +69,7 @@ const Character = (props) => {
 							color={'text.secondary'}
 						>
 							<CalendarMonthIcon sx={{ marginRight: '0.25rem' }} />
-							{new Date(state.characters[state.characterIndex]?.DOB).toLocaleDateString()}
+							<Moment unix format={'ll'}>{state.characters[state.characterIndex]?.DOB}</Moment>
 						</Typography>
 					}
 

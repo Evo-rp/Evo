@@ -178,7 +178,6 @@ RegisterNUICallback("CreateCharacter", function(data, cb)
 			data = { state = "STATE_CHARACTERS" },
 		})
 		SendNUIMessage({ type = "LOADING_HIDE" })
-		SetResourceKvpInt(character.SID .. "_HUD_SCALE", 35)
 	end)
 end)
 

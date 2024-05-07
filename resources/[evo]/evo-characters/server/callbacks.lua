@@ -119,7 +119,7 @@ function RegisterCallbacks()
 			Last = data.last,
 			Phone = pNumber,
 			Gender = tonumber(data.gender),
-			Bio = data.bio,
+			Bio = '',
 			Origin = data.origin,
 			DOB = data.dob,
 			LastPlayed = -1,
