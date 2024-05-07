@@ -2,11 +2,11 @@ COMPONENTS.Discord = {
 	_name = "base",
 	RichPresence = function(self)
 		SetDiscordAppId(COMPONENTS.Convar.DISCORD_APP.value)
-		-- SetDiscordRichPresenceAsset("logo")
-		-- SetDiscordRichPresenceAssetText("Join Today")
-		-- SetDiscordRichPresenceAssetSmall("logo")
-		-- SetDiscordRichPresenceAction(0, "Doing Stuffs ", "https://discord.gg/EcsYBTuGb4")
-		-- SetDiscordRichPresenceAction(1, "Join Our Discord", "https://discord.gg/EcsYBTuGb4")
+		SetDiscordRichPresenceAsset("evorp")
+		SetDiscordRichPresenceAssetText("Join Today")
+		SetDiscordRichPresenceAssetSmall("green")
+		SetDiscordRichPresenceAction(0, "Connect ", "https://cfx.re/join/gprj5m")
+		SetDiscordRichPresenceAction(1, "Join Our Discord", "https://discord.gg/evo-rp")
 
 		Citizen.CreateThread(function()
 			while true do
