@@ -127,8 +127,8 @@ AddEventHandler("Queue:Server:SessionActive", function(source, data)
 
 			TriggerClientEvent("Player:Client:SetData", source, COMPONENTS.Players[source]:GetData())
 
-			Player(source).state.isStaff = COMPONENTS.Players[source].Permissions:IsStaff()
-			Player(source).state.isAdmin = COMPONENTS.Players[source].Permissions:IsAdmin()
+            Player(source).state.isStaff = COMPONENTS.Players[source].Permissions:IsStaff()
+            Player(source).state.isAdmin = COMPONENTS.Players[source].Permissions:IsAdmin()
 			Player(source).state.isDev = COMPONENTS.Players[source].Permissions:GetLevel() >= 100
 		end
 	end)
@@ -199,9 +199,9 @@ function PlayerClass(source, data)
 		IsStaff = function(self)
 			for k, v in ipairs(_data:GetData("Groups")) do
 				if
-					COMPONENTS.Config.Groups[v] ~= nil
-					and type(COMPONENTS.Config.Groups[v].Permission) == "table"
-					and (COMPONENTS.Config.Groups[v].Permission.Group == "staff" or COMPONENTS.Config.Groups[v].Permission.Group == "admin")
+					COMPONENTS.Config.Groups[tostring(v)] ~= nil
+					and type(COMPONENTS.Config.Groups[tostring(v)].Permission) == "table"
+					and (COMPONENTS.Config.Groups[tostring(v)].Permission.Group == "staff" or COMPONENTS.Config.Groups[v].Permission.Group == "admin")
 				then
 					return true
 				end
@@ -211,9 +211,9 @@ function PlayerClass(source, data)
 		IsAdmin = function(self)
 			for k, v in ipairs(_data:GetData("Groups")) do
 				if
-					COMPONENTS.Config.Groups[v] ~= nil
-					and type(COMPONENTS.Config.Groups[v].Permission) == "table"
-					and COMPONENTS.Config.Groups[v].Permission.Group == "admin"
+					COMPONENTS.Config.Groups[tostring(v)] ~= nil
+					and type(COMPONENTS.Config.Groups[tostring(v)].Permission) == "table"
+					and COMPONENTS.Config.Groups[tostring(v)].Permission.Group == "admin"
 				then
 					return true
 				end
@@ -237,7 +237,7 @@ function PlayerClass(source, data)
 		end,
 	}
 
-	local identifier = ExtractIdentifiers(source).license
+	local steam = GetPlayerSteam(source) -- Because the Identifier is Stored in Decimal (When you need hex)
 	for k, v in ipairs(_data:GetData("Groups")) do
 		if
 			COMPONENTS.Config.Groups[tostring(v)] ~= nil
@@ -245,8 +245,8 @@ function PlayerClass(source, data)
 			and COMPONENTS.Config.Groups[tostring(v)].Permission.Group
 		then
 			ExecuteCommand(
-				("add_principal identifier.%s group.%s"):format(
-					identifier,
+				("add_principal identifier.steam:%s group.%s"):format(
+					steam,
 					COMPONENTS.Config.Groups[tostring(v)].Permission.Group
 				)
 			)
@@ -264,37 +264,4 @@ function GetPlayerSteam(source)
 		end
 	end
 	return false
-end
-
-function ExtractIdentifiers(src)
-	local identifiers = {
-		steam = "",
-		ip = "",
-		discord = "",
-		license = "",
-		xbl = "",
-		live = ""
-	}
-  
-	--Loop over all identifiers
-	for i = 0, GetNumPlayerIdentifiers(src) - 1 do
-		local id = GetPlayerIdentifier(src, i)
-  
-		--Convert it to a nice table.
-		if string.find(id, "steam") then
-			identifiers.steam = id
-		elseif string.find(id, "ip") then
-			identifiers.ip = id
-		elseif string.find(id, "discord") then
-			identifiers.discord = id
-		elseif string.find(id, "license") then
-			identifiers.license = id
-		elseif string.find(id, "xbl") then
-			identifiers.xbl = id
-		elseif string.find(id, "live") then
-			identifiers.live = id
-		end
-	end
-  
-	return identifiers
 end
