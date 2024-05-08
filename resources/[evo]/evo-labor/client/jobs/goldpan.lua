@@ -108,11 +108,14 @@ function SkillCheckPanning()
                 },
             }, function(cancelled)
                 if not cancelled then
-                    Callbacks:ServerCallback("Goldpan:GetReward", {}, function(callback)
-                        if callback then
-                            Notification:Info("You found " .. callback, 2000)
-                        end
-                    end)
+                    local chance = math.random(1, 10)
+                    if chance < 3 then
+                        Callbacks:ServerCallback("Goldpan:GetReward", {}, function(callback)
+                            if callback then
+                                Notification:Info("You found " .. callback, 2000)
+                            end
+                        end)
+                    end
                 end
             end)
         end,
