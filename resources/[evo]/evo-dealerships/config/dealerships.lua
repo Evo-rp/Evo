@@ -206,17 +206,17 @@ _dealerships = {
                 }
             },
             catalog = {
-                -- {
-                --     type = 'box',
-                --     center = vector3(-51.73, -1095.03, 27.27),
-                --     length = 1,
-                --     width = 1,
-                --     options = {
-                --         heading = 28,
-                --         minZ = 26.27,
-                --         maxZ = 28.27
-                --     },
-                -- },
+                {
+                    type = 'box',
+                    center = vector3(133.97, -3013.55, 10.7),
+                    length = 0.4,
+                    width = 0.4,
+                    options = {
+                        heading = 345,
+                        minZ = 10.3,
+                        maxZ = 10.7
+                    },
+                },
             },
             -- Array of different BOX zones for targeting interaction
             employeeInteracts = {
