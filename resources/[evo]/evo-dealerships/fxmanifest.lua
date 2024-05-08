@@ -25,6 +25,7 @@ client_scripts({
 	"client/rentals.lua",
 	"client/bike_stand.lua",
 	"client/gov_fleets.lua",
+	"client/testdrive.lua",
 })
 
 shared_scripts({

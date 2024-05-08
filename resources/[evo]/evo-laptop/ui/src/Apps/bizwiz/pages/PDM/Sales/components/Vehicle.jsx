@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { ListItem, ListItemText, Grid, ListItemSecondaryAction, IconButton } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { CurrencyFormat } from '../../../../../../util/Parser';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import TestDrive from "../TestDrive";
+
+import Nui from '../../../../../../util/Nui';
 
 import Moment from 'react-moment';
 
@@ -17,10 +20,12 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-import { vehicleCategories } from '../data';
+
+import {vehicleCategories} from '../data'
 
 export default ({ vehicle, dealerData, onClick }) => {
 	const classes = useStyles();
+    const [testDrive, setTestDrive] = useState(false);
 
 	const onInternalClick = () => {
 		onClick();
@@ -28,14 +33,38 @@ export default ({ vehicle, dealerData, onClick }) => {
 
     const onSecondary = (e) => {
         e.stopPropagation();
-		console.log(vehicle.vehicle);
+		setTestDrive(true);
     };
 
 	const priceMult = 1 + (dealerData?.profitPercentage / 100);
 	const salePrice = vehicle?.data?.price * priceMult;
 
+	const startTestDrive = async (data) => {
+		setTestDrive(false);
+		try {
+            let res = await (
+                await Nui.send('DealershipStartTestDrive', {
+                    ...data,
+                    vehicle: vehicle.vehicle,
+                })
+            ).json();
+
+            if (res && res.success) {
+                console.log(res?.message ?? 'Vehicle has been delivered for test drive.');
+				setTestDrive(false);
+            } else {
+                console.log(res?.message ?? 'Error Initiating Sale');
+            };
+            setTestDrive(false);
+        } catch (err) {
+            console.log(err);
+            console.log('Error Initiating Sale');
+            setTestDrive(false);
+        }
+	}
+
 	return (
-		<ListItem className={classes.wrapper} button onClick={onInternalClick}>
+		<><ListItem className={classes.wrapper} button onClick={onInternalClick}>
 			<Grid container spacing={1}>
 				<Grid item xs={3}>
 					<ListItemText primary={'Vehicle Make/Model'} secondary={`${vehicle?.data?.make} ${vehicle?.data?.model}`} />
@@ -79,5 +108,13 @@ export default ({ vehicle, dealerData, onClick }) => {
 				</Grid>
 			</Grid>
 		</ListItem>
+		<TestDrive 
+                open={testDrive} 
+                vehicle={vehicle} 
+                onClose={() => setTestDrive(false)}
+                onSubmit={startTestDrive}
+            />
+		</>
+		
 	);
 };

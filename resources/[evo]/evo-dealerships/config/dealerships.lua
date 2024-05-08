@@ -170,7 +170,12 @@ _dealerships = {
         storage = {
             Type = 1,
             Id = 'pdm_delivery',
-        }
+        },
+        testdrive = {
+			coords = vector4(-23.651, -1094.333, 27.305, 340.060),
+			timer = 1000 * 60 * 1.5,
+			setplayerback = false,
+		},
     },
     ['tuna'] = {
         id = 'tuna',
@@ -272,5 +277,10 @@ _dealerships = {
             Type = 1,
             Id = 'tuna_delivery',
         },
+        testdrive = {
+			coords = vector4(145.530, -2991.769, 7.031, 84.926),
+			timer = 1000 * 60 * 1.5,
+			setplayerback = false,
+		},
     },
 }

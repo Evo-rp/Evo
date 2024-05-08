@@ -1,8 +1,136 @@
+local _activeTestDrives = {}
+local maxActive = 10
+local _hasStartedCountdown = false
+
 RegisterNetEvent('Dealerships:Server:StartSale', function(dealership, type, data)
     
 end)
 
+RegisterNetEvent('Vehicles:Server:TestDriveTime', function(dealership, timeRemaining)
+	local _src = source
+	local vehicle = _activeTestDrives[dealership].veh
+	if _hasStartedCountdown == false then
+		_hasStartedCountdown = true
+		local vehState = Entity(vehicle).state
+		Execute:Client(_src, "Notification", "Info", "Test Drive Time Remaining", timeRemaining, "car")
+		repeat
+			Wait(1000)
+			timeRemaining = timeRemaining - 1000
+			if timeRemaining <= 0 then
+				EndTestDrive(Entity(vehicle), dealership, _src)
+				timeRemaining = 0
+				break
+			end
+		until timeRemaining == 0
+	end
+end)
+
+function EndTestDrive(vehicle, dealership, _src)
+	if vehicle ~= nil and vehicle ~= 0 then
+		if vehicle and DoesEntityExist(vehicle) then
+			Vehicles:Delete(vehicle, function(success)
+				if success then
+					_activeTestDrives[dealership] = nil
+					_hasStartedCountdown = false
+					if _dealerships[dealership].testdrive.setplayerback then
+						SetEntityCoords(
+							GetPlayerPed(_src),
+							_dealerships[dealership].testdrive.coords.x,
+							_dealerships[dealership].testdrive.coords.y,
+							_dealerships[dealership].testdrive.coords.z,
+							0,
+							0,
+							0,
+							false
+						)
+					end
+				end
+			end)
+		else
+			Execute:Client(_src, "Notification", "Error", "Cannot find vehicle to return. Test drive cancelled.", 3000, "car")
+			if _dealerships[dealership].testdrive.setplayerback then
+				SetEntityCoords(
+					GetPlayerPed(_src),
+					_dealerships[dealership].testdrive.coords.x,
+					_dealerships[dealership].testdrive.coords.y,
+					_dealerships[dealership].testdrive.coords.z,
+					0,
+					0,
+					0,
+					false
+				)
+			end
+			_hasStartedCountdown = false
+			_activeTestDrives[dealership] = nil
+		end
+	else
+		Execute:Client(_src, "Notification", "Error", "Cannot find vehicle to return. Test drive cancelled.", 3000, "car")
+		if _dealerships[dealership].testdrive.setplayerback then
+			SetEntityCoords(
+				GetPlayerPed(_src),
+				_dealerships[dealership].testdrive.coords.x,
+				_dealerships[dealership].testdrive.coords.y,
+				_dealerships[dealership].testdrive.coords.z,
+				0,
+				0,
+				0,
+				false
+			)
+		end
+		_hasStartedCountdown = false
+		_activeTestDrives[dealership] = nil
+	end
+end
+
 function RegisterVehicleSaleCallbacks()
+
+    Callbacks:RegisterServerCallback('Dealerships:Sales:TestDrive', function(source, testDriveData, cb)
+		local dealership = testDriveData?.dealership
+        local data = testDriveData?.data
+		if dealership and data then
+			local spawn = _dealerships[dealership].testdrive.coords
+			local timer = _dealerships[dealership].testdrive.timer
+			local model = data.vehicle
+			if _activeTestDrives[dealership] == nil then
+				Vehicles:SpawnTemp(
+					source,
+					GetHashKey(model),
+					vector3(spawn.x, spawn.y, spawn.z),
+					spawn.w,
+					function(spawnedVehicle, VIN, plate)
+						if spawnedVehicle then
+							Vehicles.Keys:Add(source, VIN)
+
+							_activeTestDrives[dealership] = {
+								veh = spawnedVehicle,
+								net = NetworkGetNetworkIdFromEntity(spawnedVehicle),
+								VIN = VIN,
+								plate = plate,
+							}
+
+							Execute:Client( source, "Notification", "Success", "Your Test Drive Vehicle Was Provided", 5000, "car")
+							Entity(spawnedVehicle).state.testDrive = os.time() + timer
+							Entity(spawnedVehicle).state.testDriveDealership = dealership
+
+						else
+							Execute:Client(source, "Notification", "Error", "Test Drive Vehicle Failed To Spawn", 5000, "car")
+						end
+					end,
+					{
+						Make = "Test Drive",
+						Model = model,
+						Value = 999999,
+					}
+				)
+			else
+				Execute:Client(source, "Notification", "Error", "We Already Gave You a Test Drive Vehicle", 5000, "car")
+			end
+			cb(true, 'Initiating Test Drive')
+		else
+            cb(false, 'Error Initiating Test Drive')
+		end
+	end)
+
     Callbacks:RegisterServerCallback('Dealerships:Sales:StartSale', function(source, saleData, cb)
         local dealership = saleData?.dealership
         local type = saleData?.type
