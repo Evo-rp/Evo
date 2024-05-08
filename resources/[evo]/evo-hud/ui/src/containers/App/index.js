@@ -13,7 +13,8 @@ import { fas } from '@fortawesome/pro-solid-svg-icons';
 import { far } from '@fortawesome/pro-regular-svg-icons';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
-import Action from '../Action';
+import ActionBoxed from '../Action/ActionBoxed';
+import ActionLegacy from '../Action/ActionLegacy';
 import Hud from '../Hud';
 import NPCDialog from '../../components/NPCDialog';
 import Notifications from '../Notifications';
@@ -22,7 +23,7 @@ import Input from '../../components/Input';
 import Confirm from '../../components/Confirm';
 import InfoOverlay from '../../components/InfoOverlay';
 import Overlay from '../../components/Overlay';
-import { Progress, ThirdEye, GemTable } from '../../components';
+import { ProgressBoxed, ProgressLegacy, ThirdEye, GemTable } from '../../components';
 
 import Interaction from '../../components/Interaction';
 
@@ -50,6 +51,7 @@ const LCDFont = {
 const App = ({ hidden }) => {
     const progShowing = useSelector((state) => state.progress.showing);
     const isLis = useSelector((state) => state.list.showing);
+    const config = useSelector((state) => state.hud.config);
     const isInp = useSelector((state) => state.input.showing);
     const isConf = useSelector((state) => state.confirm.showing);
     const isMeth = useSelector((state) => state.meth.showing);
@@ -197,6 +199,24 @@ const App = ({ hidden }) => {
         },
     });
 
+    const getProgressBar = () => {
+        switch (config.progressBar) {
+            case 'boxed':
+                return <ProgressBoxed />
+            default:
+                return <ProgressLegacy />;
+        }
+    }
+
+    const getAction = () => {
+        switch (config.actionStyle) {
+            case 'boxed':
+                return <ActionBoxed />;
+            default:
+                return <ActionLegacy />;
+        }
+    }
+
     return (
         <StyledEngineProvider injectFirst>
             <ThemeProvider theme={muiTheme}>
@@ -210,12 +230,12 @@ const App = ({ hidden }) => {
                 <Hud />
                 <NPCDialog />
                 <Notifications />
-                <Action />
+                {getAction()}
                 {isMeth && <Ingredients />}
                 {isLis && <List />}
                 {isInp && <Input />}
                 {isConf && <Confirm />}
-                {progShowing && <Progress />}
+                {progShowing && getProgressBar()}
                 <ThirdEye />
                 <Interaction />
                 <GemTable />

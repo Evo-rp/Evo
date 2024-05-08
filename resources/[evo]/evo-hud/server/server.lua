@@ -34,6 +34,8 @@ AddEventHandler("Core:Shared:Ready", function()
 						layout = "center",
 						statusType = "legacy",
 						buffsAnchor = "compass",
+						progressBar = "legacy",
+						actionStyle = "legacy",
 						vehicle = "default",
 						buffsAnchor2 = true,
 						showRPM = true,

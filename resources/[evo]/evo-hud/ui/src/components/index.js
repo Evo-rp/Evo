@@ -1,6 +1,7 @@
 import Location from './Location';
-import Progress from './Progress';
+import ProgressBoxed from './Progress/ProgressBoxed';
+import ProgressLegacy from './Progress/ProgressLegacy';
 import ThirdEye from './ThirdEye';
 import GemTable from './GemTable';
 
-export { Location, Progress, ThirdEye, GemTable };
+export { Location, ProgressBoxed, ProgressLegacy, ThirdEye, GemTable };

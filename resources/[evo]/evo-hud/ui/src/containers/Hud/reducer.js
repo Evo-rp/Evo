@@ -21,6 +21,8 @@ export const initialState = {
         buffsAnchor: "compass",
         largeBars: false,
         vehicle: "default",
+        progressBar: "legacy",
+        actionStyle: "legacy",
         buffsAnchor2: true,
         showRPM: true,
         hideCrossStreet: false,
