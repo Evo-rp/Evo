@@ -168,7 +168,7 @@ CraftingTables = {
 			{
 				result = { name = "goldbar", count = 1 },
 				items = {
-					{ name = "goldore", count = 1 },
+					{ name = "goldore", count = 4 },
 				},
 				time = 5000,
 				animation = "mechanic",
@@ -176,7 +176,7 @@ CraftingTables = {
 			{
 				result = { name = "silverbar", count = 1 },
 				items = {
-					{ name = "silverore", count = 1 },
+					{ name = "silverore", count = 3 },
 				},
 				time = 5000,
 				animation = "mechanic",
@@ -184,7 +184,7 @@ CraftingTables = {
 			{
 				result = { name = "ironbar", count = 3 },
 				items = {
-					{ name = "ironore", count = 1 },
+					{ name = "ironore", count = 2 },
 				},
 				time = 5000,
 				animation = "mechanic",
