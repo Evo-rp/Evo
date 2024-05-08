@@ -292,14 +292,12 @@ _qualifications = {
 		name = "PD Interceptor Cert.",
 		restrict = {
 			job = 'police',
-			workplace = 'sasp',
 		}
 	},
 	['PD_BIKE'] = {
 		name = "PD Bike Cert.",
 		restrict = {
 			job = 'police',
-			workplace = 'sasp',
 		}
 	},
 	['PD_SWAT'] = {
@@ -322,6 +320,12 @@ _qualifications = {
 	},
 	['PD_AR'] = {
 		name = "PD AR",
+		restrict = {
+			job = 'police',
+		}
+	},
+	['PD_DIVING'] = {
+		name = 'Scuba Cert.',
 		restrict = {
 			job = 'police',
 		}
