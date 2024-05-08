@@ -85,7 +85,6 @@ export default (props) => {
 
 	return (
 		<div className={classes.wrapper}>
-			<img className={classes.img} src={'https://cdn.discordapp.com/attachments/1205299765646987296/1233585010938871838/logo.jpg?ex=662da111&is=662c4f91&hm=f573ee4858f2bd4bef40cf71e7a74d0d335fe4e5cb7c5850e2537a0fbced152c&'} />
 			<div className={classes.innerBody}>
 				<span className={classes.splashHeader}>
 					<Typewriter

@@ -30,102 +30,90 @@ function CHAT.RegisterCommand(self, command, callback, suggestion, arguments, jo
 	end
 
 	RegisterCommand(command, function(source, args, rawCommand)
-		local pData = exports["evo-base"]:FetchComponent("Fetch"):Source(source)
-		if pData ~= nil then
-			-- TODO : Implement character specific data for commands (IE Jobs)
-			local myDuty = Player(source).state.onDuty
+        local pData = exports['evo-base']:FetchComponent('Fetch'):Source(source)
+        if pData ~= nil then
+            -- TODO : Implement character specific data for commands (IE Jobs)
+            local myDuty = Player(source).state.onDuty
 
-			local argsStr = ""
-			if #args > 0 then
-				argsStr = "\n\nArguments:\n"
-			end
-			for k, v in ipairs(args) do
-				argsStr = argsStr .. string.format("%s\n", v)
-			end
+            local argsStr = ""
+            if #args > 0 then
+                argsStr = "\n\nArguments:\n"
+            end
+            for k, v in ipairs(args) do
+                argsStr = argsStr .. string.format("%s\n", v)
+            end
 
-			if commands[command].job ~= nil then
-				for k, v in pairs(commands[command].job) do
-					if myDuty and myDuty == v.Id then
-						if Jobs.Permissions:HasJob(source, v.Id, v.Workplace, v.Grade, v.Level) then
-							if
-								(#args <= commands[command].args and #args == commands[command].args)
-								or commands[command].args == -1
-							then
-								local char = pData:GetData("Character")
-								Logger:Info(
-									"Commands",
-									string.format(
-										"%s (%s [%s]) Used A Job Command: %s.%s",
-										char
-												and string.format(
-													"%s %s (SID %s)",
-													char:GetData("First"),
-													char:GetData("Last"),
-													char:GetData("SID")
-												)
-											or "No Character",
-										pData:GetData("Name"),
-										pData:GetData("AccountID"),
-										command,
-										argsStr
-									),
-									{
-										console = false,
-										file = true,
-										database = true,
-									},
-									{
-										args = args,
-									}
-								)
+            if commands[command].job ~= nil then
+                for k, v in pairs(commands[command].job) do
+                    if myDuty and myDuty == v.Id then
+                        if Jobs.Permissions:HasJob(source, v.Id, v.Workplace, v.Grade, v.Level) then
+                            if ((#args <= commands[command].args and #args == commands[command].args) or commands[command].args == -1) then
+                                local char = pData:GetData('Character')
+                                Logger:Info(
+                                    "Commands",
+                                    string.format(
+                                        "%s (%s [%s]) Used A Job Command: %s.%s",
+                                        char and string.format('%s %s (SID %s)', char:GetData('First'), char:GetData('Last'), char:GetData('SID')) or 'No Character',
+                                        pData:GetData("Name"),
+                                        pData:GetData("AccountID"),
+                                        command,
+                                        argsStr
+                                    ),
+                                    {
+                                        console = false,
+                                        file = true,
+                                        database = true,
+                                        discord = {
+                                            embed = true,
+                                            webhook = GetConvar('discord_jobcommands_webhook', ''),
+                                        }
+                                    },
+                                    {
+                                        args = args
+                                    }
+                                )
 
-								callback(source, args, rawCommand)
-							else
-								Chat.Send.Server:Single(source, "Invalid Number Of Arguments")
-							end
-						end
-					end
-				end
-			else
-				if
-					(#args <= commands[command].args and #args == commands[command].args)
-					or commands[command].args == -1
-				then
-					local char = pData:GetData("Character")
-					Logger:Info(
-						"Commands",
-						string.format(
-							"%s (%s [%s]) Used A Command: %s.%s",
-							char
-									and string.format(
-										"%s %s (SID %s)",
-										char:GetData("First"),
-										char:GetData("Last"),
-										char:GetData("SID")
-									)
-								or "No Character",
-							pData:GetData("Name"),
-							pData:GetData("AccountID"),
-							command,
-							argsStr
-						),
-						{
-							console = false,
-							file = true,
-							database = true,
-						},
-						{
-							args = args,
-						}
-					)
+                                callback(source, args, rawCommand)
+                            else
+                                Chat.Send.Server:Single(source, 'Invalid Number Of Arguments')
+                            end
+                        end
+                    end
+                end
+            else
+                if ((#args <= commands[command].args and #args == commands[command].args) or commands[command].args == -1) then
+                    local char = pData:GetData('Character')
+                    Logger:Info(
+                        "Commands",
+                        string.format(
+                            "%s (%s [%s]) Used A Command: %s.%s",
+                            char and string.format('%s %s (SID %s)', char:GetData('First'), char:GetData('Last'), char:GetData('SID')) or 'No Character',
+                            pData:GetData("Name"),
+                            pData:GetData("AccountID"),
+                            command,
+                            argsStr
+                        ),
+                        {
+                            console = false,
+                            file = true,
+                            database = true,
+                            discord = {
+                                embed = true,
+                                webhook = GetConvar('discord_commands_webhook', ''),
+                            }
+                        },
+                        {
+                            args = args
+                        }
+                    )
 
-					callback(source, args, rawCommand)
-				else
-					Chat.Send.Server:Single(source, "Invalid Number Of Arguments")
-				end
-			end
-		end
-	end, false)
+                    callback(source, args, rawCommand)
+                else
+                    Chat.Send.Server:Single(source, 'Invalid Number Of Arguments')
+                end
+            end
+        end
+    end, false)
 end
 
 function CHAT.RegisterAdminCommand(this, command, callback, suggestion, arguments)
