@@ -838,3 +838,17 @@ AddEventHandler("Keybinds:Client:KeyUp:cancel_action", function()
 		Hud.Overlay.Hide()
 	end
 end)
+
+Citizen.CreateThread(function()
+    while true do
+        Citizen.Wait(500)
+        ped = PlayerPedId()
+        if not IsPedInAnyVehicle(ped, false) then
+            if IsPedUsingActionMode(ped) then
+                SetPedUsingActionMode(ped, -1, -1, 1)
+            end
+        else
+            Citizen.Wait(3000)
+        end
+    end
+end)
