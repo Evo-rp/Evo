@@ -265,5 +265,4 @@ RegisterNetEvent("Characters:Client:Spawned", function()
 	SendNUIMessage({ type = "APP_HIDE" })
 	SendNUIMessage({ type = "LOADING_HIDE" })
 	LocalPlayer.state.loggedIn = true
-	Notification:Info("Tax is set to 15% " 2000)
 end)

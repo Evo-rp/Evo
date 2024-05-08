@@ -145,7 +145,7 @@ export default ({ onNav }) => {
                         className={classes.editField}
                         label="Image"
                         name="imgLink"
-                        helperText="Imgur Links Only!"
+                        helperText="No Imgur links!"
                         type="text"
                         fullWidth
                         required

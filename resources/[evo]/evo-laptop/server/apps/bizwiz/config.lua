@@ -387,79 +387,79 @@ _bizWizTypes = {
 
 _bizWizConfig = {
 	pdm = {
-		logo = "https://i.imgur.com/EU7HQji.png",
+		logo = "https://lobfile.com/file/t6rNtAs2.webp",
 		type = "dealerships",
 	},
 	tuna = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "dealership_mechanic",
 	},
 	hayes = {
-		logo = "https://i.imgur.com/tgShkKW.png",
+		logo = "https://lobfile.com/file/Gyh6kPep.png",
 		type = "mechanic",
 	},
 	realestate = {
-		logo = "https://i.imgur.com/XbKVB4k.png",
+		logo = "https://lobfile.com/file/4qAZumxW.png",
 		type = "realestate",
 	},
 	autoexotics = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "mechanic",
 	},
 	ottos = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "mechanic",
 	},
 	bennys = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "mechanic",
 	},
 	harmony = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "mechanic",
 	},
 	casino = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "casino",
 	},
 	burgershot = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	uwu = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	demonetti_storage = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	sagma = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	pepega_pawn = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	gentry = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	pipedowncigar = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	tacoshop = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	bluffs = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
 	["bluffs_mechanic"] = {
-		logo = "https://i.imgur.com/aSXFH3P.png",
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "mechanic",
 	},
 }
