@@ -6,6 +6,7 @@ function RetrieveComponents()
 	Characters = exports["evo-base"]:FetchComponent("Characters")
 	Action = exports["evo-base"]:FetchComponent("Action")
 	Ped = exports["evo-base"]:FetchComponent("Ped")
+	Notification = exports["evo-base"]:FetchComponent("Notification")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -14,6 +15,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Characters",
 		"Action",
 		"Ped",
+		"Notification"
 	}, function(error)
 		if #error > 0 then
 			return
