@@ -2,8 +2,7 @@ RegisterNetEvent("Characters:Client:Spawn", function()
     Blips:Add("GoldPan", "Goldpanning Utilities", { x = 1956.636, y = 710.202, z = 163.387 }, 478, 46, 0.9)
 end)
 
-RegisterNetEvent('bucket:start')
-AddEventHandler('bucket:start', function()
+Callbacks:RegisterClientCallback("Labor:Goldpanning:StartBucket", function(data, cb)
     local waterLevel = GetEntitySubmergedLevel(PlayerPedId())
     if waterLevel > 0 and waterLevel < 0.8 then
         SkillCheckBucket()
@@ -71,8 +70,7 @@ function SkillCheckBucket()
     return Citizen.Await(p)
 end
 
-RegisterNetEvent('goldpan:start')
-AddEventHandler('goldpan:start', function()
+Callbacks:RegisterClientCallback("Labor:Goldpanning:StartSifting", function(data, cb)
     if Inventory.Check.Player:HasItem('gravel', 5) then
         local waterLevel = GetEntitySubmergedLevel(PlayerPedId())
         if waterLevel > 0 and waterLevel < 0.8 then
@@ -135,8 +133,7 @@ local SmeltingCoords = {
     heading = 325,
 }
 
-RegisterNetEvent('moldbars:start')
-AddEventHandler('moldbars:start', function()
+Callbacks:RegisterClientCallback("Labor:Goldpanning:StartMoulding", function(data, cb)
     if Inventory.Check.Player:HasItem('goldnugget', 20) then
         local playerPos = GetEntityCoords(PlayerPedId())
         local distance = #(playerPos - SmeltingCoords.position)
