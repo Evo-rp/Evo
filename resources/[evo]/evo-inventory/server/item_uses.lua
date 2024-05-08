@@ -60,17 +60,17 @@ function RegisterRandomItems()
 	end)
 
 	Inventory.Items:RegisterUse("sifting_pan", "RandomItems", function(source, item)
-		TriggerClientEvent('goldpan:start', source)
+		Callbacks:ClientCallback(source, 'Labor:Goldpanning:StartSifting', {}, function() end)
 	end)
 
 	Inventory.Items:RegisterUse("bucket", "RandomItems", function(source, item)
-		TriggerClientEvent('bucket:start', source)
+		Callbacks:ClientCallback(source, "Labor:Goldpanning:StartBucket", {}, function() end)
 	end)
 
 	Inventory.Items:RegisterUse("goldmold", "RandomItems", function(source, item)
 		TriggerClientEvent('moldbars:start', source)
+		Callbacks:ClientCallback(source, 'Labor:Goldpanning:StartMoulding', {}, function() end)
 	end)
-
 
 	Inventory.Items:RegisterUse("pdarmor", "RandomItems", function(source, item)
 		Inventory.Items:RemoveSlot(item.Owner, item.Name, 1, item.Slot, item.invType)
