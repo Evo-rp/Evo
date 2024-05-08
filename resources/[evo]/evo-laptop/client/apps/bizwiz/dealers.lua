@@ -92,3 +92,17 @@ RegisterNUICallback("PDMGetOwner", function(data, cb)
         end
     )
 end)
+
+RegisterNUICallback("DealershipStartTestDrive", function(data, cb)
+	Callbacks:ServerCallback("Dealerships:Sales:TestDrive", {
+		dealership = LocalPlayer.state.onDuty,
+		data = {
+			vehicle = data.vehicle,
+		},
+	}, function(success, message)
+		cb({
+			success = success,
+			message = message,
+		})
+	end)
+end)

@@ -5,7 +5,7 @@ export const initialState = {
 		playerJobPerms: null,
 		JobData: null,
 		externalJobs: [],
-		onDuty: 'realestate',
+		onDuty: 'pdm',
 		myGroup: {
 			ID: 1,
 			Name: "Team Name",
