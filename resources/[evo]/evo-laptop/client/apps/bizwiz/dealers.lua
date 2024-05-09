@@ -106,3 +106,15 @@ RegisterNUICallback("DealershipStartTestDrive", function(data, cb)
 		})
 	end)
 end)
+
+RegisterNUICallback('DealershipRestock', function(data, cb)
+    Callbacks:ServerCallback("Dealerships:Stock:Add", {
+        dealership = LocalPlayer.state.onDuty,
+        data = data
+    }, function(success, message)
+        cb({
+            success = success,
+            message = message
+        })
+    end)
+end)

@@ -149,7 +149,7 @@ _bizWizTypes = {
 		},
 		{
 			id = "PDM/Sales",
-			icon = { "fas", "cars" },
+			icon = { "fas", "car" },
 			label = "Vehicle Stock",
 			permission = "dealership_sell",
 		},
@@ -234,7 +234,7 @@ _bizWizTypes = {
 		},
 		{
 			id = "PDM/Sales",
-			icon = { "fas", "cars" },
+			icon = { "fas", "car" },
 			label = "Vehicle Stock",
 			permission = "dealership_sell",
 		},
