@@ -1,11 +1,11 @@
 _gangChains = {
-	rlg = {
+	atk = {
 		prop = `atk_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 178,
+				drawableId = 259,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -22,12 +22,12 @@ _gangChains = {
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 168,
+				drawableId = 259,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 142,
+				drawableId = 178,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -230,7 +230,7 @@ _hideFromStore = {
 		},
 		[7] = {
 			[0] = {
-				["167"] = true,
+				["259"] = true,
 				["168"] = true,
 				["169"] = true,
 				["170"] = true,
@@ -241,8 +241,8 @@ _hideFromStore = {
 				["183"] = true,
 			},
 			[1] = {
-				["141"] = true,
-				["142"] = true,
+				["178"] = true,
+				["250"] = true,
 				["143"] = true,
 				["144"] = true,
 				["145"] = true,
