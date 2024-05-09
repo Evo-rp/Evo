@@ -105,7 +105,7 @@ export default (props) => {
 							}}
 							current={ped.customization.face.face1.texture}
 							min={0}
-							max={91}
+							max={46}
 						/>
 					</ElementBox>
 					<ElementBox label={'Face 2'} bodyClass={classes.body}>
@@ -129,7 +129,7 @@ export default (props) => {
 							}}
 							current={ped.customization.face.face2.texture}
 							min={0}
-							max={91}
+							max={46}
 						/>
 					</ElementBox>
 					<ElementBox label={'Mixes'} bodyClass={classes.body}>
