@@ -131,6 +131,50 @@ function RegisterVehicleSaleCallbacks()
 		end
 	end)
 
+    Callbacks:RegisterServerCallback('Dealerships:Stock:Add', function(source, stockData, cb)
+        local dealership = stockData?.dealership
+        local data = stockData?.data
+        local char = Fetch:Source(source):GetData('Character')
+
+        if dealership and data then
+            local f = Banking.Accounts:GetOrganization(dealership)
+            if f.Balance >= tonumber(data.price) then
+                local payment = Banking.Balance:Charge(f.Account, (data.price / 4) * 3, {
+                    type = "bill",
+                    title = "Purchased Vehicle Restock",
+                    description = string.format(
+                        'Purchased Vehicle Stock - %s %s By %s %s (%s)',
+                        data.vehicle.data.make,
+                        data.vehicle.data.model,
+                        char:GetData('First'),
+                        char:GetData('Last'),
+                        char:GetData('SID')
+                    )
+                })
+
+                if payment then
+                    local res = Dealerships.Stock:Increase(dealership, data.vehicle.vehicle, data.amount)
+
+                    if res and res.success then
+                        if res.existed then
+                            print('What goes here ?')
+                            cb(false, 'Doesnt exist ?')
+                        else
+							Phone.Notification:Add(source, "You stocked [" .. data.vehicle.data.make .. " " .. data.vehicle.data.model .. "]", false, os.time() * 1000, 3000, "bank", {})      
+                            cb(true, 'Successfully stocked vehicle.')
+                        end
+                    else
+                        Execute:Client(source, 'Notification', 'Error', 'Error...', 5000, 'car-building')
+                        cb(false, 'Error with increasing stock..')
+                    end
+                else
+                    Execute:Client(source, 'Notification', 'Not enough money in business account.', 'Error...', 5000, 'car-building')
+                    cb(false, 'Not enough money..')
+                end
+            end
+        end
+    end)
+
     Callbacks:RegisterServerCallback('Dealerships:Sales:StartSale', function(source, saleData, cb)
         local dealership = saleData?.dealership
         local type = saleData?.type
