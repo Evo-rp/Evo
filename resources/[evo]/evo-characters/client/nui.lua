@@ -90,7 +90,7 @@ RegisterNUICallback("GetData", function(data, cb)
 			RenderScriptCams(true, false, 1, true, true)
 			SetCamFov(cam2, 80.0)
 
-			-- TransitionFromBlurred(500)
+			TransitionFromBlurred(500)
 			DestroyCam(cam)
 			cam = cam2
 
