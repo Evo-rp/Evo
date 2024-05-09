@@ -17,7 +17,7 @@ _itemsSource["unique"] = {
 	{
 		name = "whitestar_mask",
 		label = "Whitestar mask",
-		description = "WC",
+		description = "Whitestar",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
@@ -32,7 +32,7 @@ _itemsSource["unique"] = {
 	{
 		name = "whitestar_mask2",
 		label = "Whitestar mask (hang around)",
-		description = "WC",
+		description = "Whitestar",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
