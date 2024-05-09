@@ -936,6 +936,11 @@ export const initialState = {
 				label: 'Test',
 			},
 			{
+				id: "PDM/Sales",
+				icon: [ "fas", "car" ],
+				label: "Vehicle Stock",
+			},
+			{
 				id: 'Casino/BigWin',
 				icon: ["fas", "file-lines"],
 				label: 'Dyn 8',
