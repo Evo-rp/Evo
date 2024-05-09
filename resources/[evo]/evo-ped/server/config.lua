@@ -17,36 +17,36 @@ _gangChains = {
 			},
 		},
 	},
-	wc = {
-		prop = `whitestar_mask`,
+	lss = {
+		prop = `lss_chain`,
 		type = "component",
-		componentId = 1,
+		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 311,
+				drawableId = 259,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 289,
+				drawableId = 178,
 				textureId = 0,
 				paletteId = 0,
 			},
 		},
 	},
-	wc2 = {
-		prop = `whitestar_mask_1`,
+	ferrari = {
+		prop = `ferrari_chain`,
 		type = "component",
-		componentId = 1,
+		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 311,
-				textureId = 1,
+				drawableId = 169,
+				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 289,
-				textureId = 1,
+				drawableId = 143,
+				textureId = 0,
 				paletteId = 0,
 			},
 		},
@@ -206,12 +206,8 @@ _hideFromStore = {
 	},
 	components = {
 		[1] = {
-			[0] = {
-				["311"] = true
-			},
-			[1] = {
-				["289"] = true
-			},
+			[0] = {},
+			[1] = {},
 		},
 		[2] = {
 			[0] = {},
