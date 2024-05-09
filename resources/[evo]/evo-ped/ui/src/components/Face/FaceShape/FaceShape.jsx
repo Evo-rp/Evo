@@ -94,7 +94,7 @@ export default (props) => {
 							}}
 							current={ped.customization.face.face1.index}
 							min={0}
-							max={46}
+							max={91}
 						/>
 						<Ticker
 							label={'Skin'}
@@ -118,7 +118,7 @@ export default (props) => {
 							}}
 							current={ped.customization.face.face2.index}
 							min={0}
-							max={46}
+							max={91}
 						/>
 						<Ticker
 							label={'Skin'}
