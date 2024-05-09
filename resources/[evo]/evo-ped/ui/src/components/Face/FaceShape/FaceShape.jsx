@@ -78,7 +78,7 @@ export default (props) => {
 							}}
 							current={ped.customization.face.face3.index}
 							min={0}
-							max={46}
+							max={91}
 						/>
 					</ElementBox>
 				</>
