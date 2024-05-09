@@ -73,16 +73,14 @@ RegisterNetEvent("Characters:Client:Logout", function()
 end)
 
 RegisterNetEvent("UI:Client:Reset", function(apps)
+	chatInputActive = false
+	chatInputActivating = false
+	SetNuiFocus(false)
 	SendNUIMessage({
 		type = "ON_SCREEN_STATE_CHANGE",
-		data = {
-			shouldHide = true,
-			inputting = false,
-		},
+		data = { shouldHide = true, inputting = false },
 	})
-	SendNUIMessage({
-		type = "ON_CLEAR",
-	})
+	SendNUIMessage({ type = "ON_CLEAR" })
 end)
 
 CHAT = {
