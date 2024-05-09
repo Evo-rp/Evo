@@ -83,8 +83,7 @@ function OpenVehicleCustoms(canInstallPerformance, costMultiplier, settings)
 	end, true)
 
 	customsMenu.Add:Text("Press SHIFT to Toggle Control of the Camera", { "pad", "code", "center", "textLarge" })
-	costElementId =
-		customsMenu.Add:Text("Current Total: $0", { "pad", "center", "code", "textLarge", "colorSuccess", "bold" })
+	costElementId = customsMenu.Add:Text("Current Total: $0", { "pad", "center", "code", "textLarge", "colorSuccess", "bold" })
 
 	SetVehicleModKit(CUST_VEH, 0)
 	Notification.Persistent:Standard("veh_customs", "Current Total: $" .. 0)
