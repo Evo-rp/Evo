@@ -1,8 +1,8 @@
 _itemsSource["unique"] = {
 	{
-		name = "rlg_chain",
-		label = "RLG Chain",
-		description = "Redline Gang Gang",
+		name = "atk_chain",
+		label = "ATK Chain",
+		description = "Aim To Kill",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
@@ -12,7 +12,7 @@ _itemsSource["unique"] = {
 		closeUi = true,
 		metalic = false,
 		weight = 0,
-		gangChain = "rlg",
+		gangChain = "atk",
 	},
 	{
 		name = "lss_chain",

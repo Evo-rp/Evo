@@ -1,16 +1,16 @@
 _gangChains = {
 	rlg = {
-		prop = `rlg_chain`,
+		prop = `atk_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 167,
+				drawableId = 178,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 141,
+				drawableId = 250,
 				textureId = 0,
 				paletteId = 0,
 			},
