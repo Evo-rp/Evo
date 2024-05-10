@@ -112,7 +112,16 @@ RegisterNetEvent('VOIP:Radio:Client:RemovePlayerFromRadio', function(targetSourc
 	end
 end)
 
+local RADIO_COOLDOWN_TIME = 2000
+local lastRadioPress = 0
+
 function RadioKeyDown()
+	local currentTime = GetGameTimer()
+
+	if currentTime - lastRadioPress < RADIO_COOLDOWN_TIME then return end
+
+	lastRadioPress = currentTime
+
 	if not RADIO_TALKING and RADIO_CHANNEL and RADIO_CHANNEL > 0 and not LocalPlayer.state.isDead then
 		StopUsingMegaphone()
 		LoadAnim('random@arrests')
