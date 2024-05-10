@@ -99,8 +99,8 @@ AddEventHandler("Core:Shared:Ready", function()
 		PedInteraction:Add(
 			"govt-services",
 			`a_f_m_eastsa_02`,
-			vector3(-551.5311, -191.3187, 37.219245),
-			216.18592,
+			vector3(-551.196, -203.182, 38.227),
+			351.18592,
 			25.0,
 			govServices,
 			"bell-concierge"
