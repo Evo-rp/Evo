@@ -1294,6 +1294,188 @@ _mechanicShopStorageCrafting = {
 		},
 	},
 	{
+		job = "dreamworks",
+		partCrafting = {
+			{
+				label = "Make Parts",
+				targeting = {
+					actionString = "Crafting",
+					icon = "toolbox",
+					poly = {
+						coords = vector3(-726.39, -1505.64, 5.06),
+						w = 1.0,
+						l = 5.0,
+						options = {
+							heading = 293,
+							--debugPoly=true,
+							minZ = 4.06,
+							maxZ = 6.66,
+						},
+					},
+				},
+				recipes = {
+					repairPartRecipes.repair_part_electronics,
+					repairPartRecipes.repair_part_axle,
+					repairPartRecipes.repair_part_injectors,
+					repairPartRecipes.repair_part_clutch,
+					repairPartRecipes.repair_part_brakes,
+					repairPartRecipes.repair_part_transmission,
+					repairPartRecipes.repair_part_rad,
+					repairPartRecipes.repair_part_injectors_hg,
+					repairPartRecipes.repair_part_clutch_hg,
+					repairPartRecipes.repair_part_brakes_hg,
+					repairPartRecipes.repair_part_transmission_hg,
+					repairPartRecipes.repair_part_rad_hg,
+					repairPartRecipes.lockpick,
+					repairPartRecipes.adv_lockpick,
+					repairPartRecipes.repairkit,
+					repairPartRecipes.repairkitadv,
+					repairPartRecipes.carclean,
+
+					repairPartRecipes.upgrade_engine1,
+					repairPartRecipes.upgrade_engine2,
+					repairPartRecipes.upgrade_engine3,
+					repairPartRecipes.upgrade_engine4,
+					repairPartRecipes.upgrade_brakes1,
+					repairPartRecipes.upgrade_brakes2,
+					repairPartRecipes.upgrade_brakes3,
+					repairPartRecipes.upgrade_brakes4,
+					repairPartRecipes.upgrade_transmission1,
+					repairPartRecipes.upgrade_transmission2,
+					repairPartRecipes.upgrade_transmission3,
+					repairPartRecipes.upgrade_transmission4,
+					repairPartRecipes.upgrade_suspension1,
+					repairPartRecipes.upgrade_suspension2,
+					repairPartRecipes.upgrade_suspension3,
+					repairPartRecipes.upgrade_suspension4,
+					repairPartRecipes.upgrade_turbo,
+				},
+			},
+		},
+		partStorage = {
+			{
+				id = "dreamworks-parts-storage-1",
+				type = "box",
+				coords = vector3(-755.39, -1516.27, 5.06),
+				length = 2.0,
+				width = 2.6,
+				options = {
+					heading = 23,
+					--debugPoly=true,
+					minZ = 4.06,
+					maxZ = 6.86,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 122,
+						owner = "dreamworks-parts-storage-1",
+					},
+				},
+			},
+			{
+				id = "dreamworks-parts-storage-2",
+				type = "box",
+				coords = vector3(-764.27, -1522.74, 5.06),
+				length = 1.6,
+				width = 2.4,
+				options = {
+					heading = 293,
+					--debugPoly=true,
+					minZ = 4.06,
+					maxZ = 6.26,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 123,
+						owner = "dreamworks-parts-storage-2",
+					},
+				},
+			},
+			{
+				id = "dreamworks-parts-storage-3",
+				type = "box",
+				coords = vector3(-751.32, -1530.63, 5.06),
+				length = 1.6,
+				width = 3.2,
+				options = {
+					heading = 203,
+					--debugPoly=true,
+					minZ = 4.06,
+					maxZ = 6.26,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 123,
+						owner = "dreamworks-parts-storage-3",
+					},
+				},
+			},
+			{
+				id = "dreamworks-parts-storage-4",
+				type = "box",
+				coords = vector3(-722.64, -1518.13, 5.06),
+				length = 1.6,
+				width = 3.2,
+				options = {
+					heading = 288,
+					--debugPoly=true,
+					minZ = 4.06,
+					maxZ = 6.26,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 123,
+						owner = "dreamworks-parts-storage-4",
+					},
+				},
+			},
+			{
+				id = "dreamworks-parts-storage-5",
+				type = "box",
+				coords = vector3(-724.27, -1511.46, 5.06),
+				length = 1.6,
+				width = 3.2,
+				options = {
+					heading = 293,
+					--debugPoly=true,
+					minZ = 4.06,
+					maxZ = 6.26,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 123,
+						owner = "dreamworks-parts-storage-5",
+					},
+				},
+			},
+			{
+				id = "dreamworks-parts-storage-6",
+				type = "box",
+				coords = vector3(-728.77, -1504.35, 5.08),
+				length = 1.6,
+				width = 1.2,
+				options = {
+					heading = 153,
+					--debugPoly=true,
+					minZ = 4.08,
+					maxZ = 6.28,
+				},
+				data = {
+					business = "dreamworks",
+					inventory = {
+						invType = 123,
+						owner = "dreamworks-parts-storage-6",
+					},
+				},
+			},
+		},
+	},
+	{
 		job = "ottos",
 		partCrafting = {
 			{

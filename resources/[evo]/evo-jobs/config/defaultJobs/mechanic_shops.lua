@@ -537,3 +537,47 @@ table.insert(_defaultJobData, {
 		},
 	},
 })
+
+table.insert(_defaultJobData, {
+    Type = 'Company',
+    LastUpdated = 1655656716,
+    Id = 'dreamworks',
+    Name = 'Dreamworks',
+    Salary = 600,
+    SalaryTier = 1,
+    Grades = {
+        {
+            Id = 'mechanic',
+            Name = 'Mechanic',
+            Level = 1,
+            Permissions = {
+				JOB_STORAGE = true,
+				JOB_CRAFTING = true,
+            },
+        },
+        {
+            Id = 'headmechanic',
+            Name = 'Head Mechanic',
+            Level = 2,
+            Permissions = {
+				JOB_STORAGE = true,
+				JOB_CRAFTING = true,
+                JOB_HIRE = true,
+                JOB_FIRE = true,
+            },
+        },
+        {
+            Id = 'owner',
+            Name = 'Owner',
+            Level = 99,
+            Permissions = {
+                JOB_MANAGEMENT = true,
+                JOB_MANAGE_EMPLOYEES = true,
+                JOB_HIRE = true,
+                JOB_FIRE = true,
+                JOB_STORAGE = true,
+				JOB_CRAFTING = true,
+            },
+        },
+    }
+})
