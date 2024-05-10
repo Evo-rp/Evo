@@ -26,7 +26,7 @@ end
 AddEventHandler("Characters:Client:Spawn", function()
 	Citizen.CreateThread(function()
 		SetTextChatEnabled(false)
-		SetNuiFocus(false)
+		SetNuiFocus(false, false)
 
 		while LocalPlayer.state.loggedIn do
 			Citizen.Wait(1)
@@ -43,7 +43,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 			if chatInputActivating then
 				if not IsControlPressed(0, 245) then
-					SetNuiFocus(true)
+					SetNuiFocus(true, true)
 					chatInputActivating = false
 				end
 			end
@@ -75,7 +75,7 @@ end)
 RegisterNetEvent("UI:Client:Reset", function(apps)
 	chatInputActive = false
 	chatInputActivating = false
-	SetNuiFocus(false)
+	SetNuiFocus(false, false)
 	SendNUIMessage({
 		type = "ON_SCREEN_STATE_CHANGE",
 		data = { shouldHide = true, inputting = false },
@@ -233,7 +233,7 @@ end)
 
 RegisterNUICallback("chatResult", function(data, cb)
 	chatInputActive = false
-	SetNuiFocus(false)
+	SetNuiFocus(false, false)
 
 	if not data.cancelled then
 		local id = PlayerId()
