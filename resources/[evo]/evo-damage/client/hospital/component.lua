@@ -61,11 +61,25 @@ AddEventHandler("Core:Shared:Ready", function()
 			},
 		}, 'suitcase-medical', 'CODE_HUMAN_MEDIC_KNEEL')
 
-		Polyzone.Create:Box('hospital-check-in-zone', vector3(-436.09, -326.23, 34.91), 2.0, 3.0, {
-			heading = 338,
+		Polyzone.Create:Box('hospital-check-in-zone-1', vector3(1146.37, -1538.66, 35.03), 2.8, 1.2, {
+			heading = 0,
 			--debugPoly=true,
-			minZ = 33.91,
-			maxZ = 36.31
+			minZ = 32.63,
+  			maxZ = 36.63
+		}, {})
+
+		Polyzone.Create:Box('hospital-check-in-zone-2', vector3(1129.59, -1534.96, 35.03), 2.8, 1.2, {
+			heading = 3,
+			--debugPoly=true,
+			minZ = 32.63,
+			maxZ = 36.63
+		}, {})
+
+		Polyzone.Create:Box('hospital-check-in-zone-3', vector3(1142.82, -1537.74, 39.5), 2.8, 1.2, {
+			heading = 88,
+			--debugPoly=true,
+			minZ = 37.1,
+			maxZ = 41.1
 		}, {})
 
 		Targeting.Zones:AddBox("icu-checkout", "bell-concierge", vector3(-492.49, -336.15, 69.52), 0.8, 7.2, {
