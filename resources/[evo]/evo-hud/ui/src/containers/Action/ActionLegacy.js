@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     wrapper: {
         color: theme.palette.text.main,
         textShadow: '0 0 3px #000000',
-        borderBottom: `3px solid ${theme.palette.info.main}`,
+        borderBottom: `3px solid ${theme.palette.primary.main}`,
         padding: 10,
         height: 'fit-content',
         position: 'absolute',
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
             position: 'absolute',
             left: -15,
             bottom: -15,
-            color: theme.palette.info.main,
+            color: theme.palette.primary.main,
             fontSize: 28,
             zIndex: 100,
         },
