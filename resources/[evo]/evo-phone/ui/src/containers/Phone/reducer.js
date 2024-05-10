@@ -314,24 +314,24 @@ export const initialState = {
 						// 	},
 						// },
 					},
-					// leoassist: {
-					// 	storeLabel: 'LEO Assist',
-					// 	label: 'LEO Assist',
-					// 	name: 'leoassist',
-					// 	icon: 'siren-on',
-					// 	color: '#1258a3',
-					// 	hidden: true,
-					// 	store: false,
-					// 	canUninstall: true,
-					// 	restricted: false,
-					// 	unread: 0,
-					// 	params: '',
-					// 	restricted: {
-					// 		job: {
-					// 			police: true,
-					// 		},
-					// 	},
-					// },
+					leoassist: {
+						storeLabel: 'LEO Assist',
+						label: 'LEO Assist',
+						name: 'leoassist',
+						icon: 'siren-on',
+						color: '#1258a3',
+						hidden: true,
+						store: false,
+						canUninstall: true,
+						restricted: false,
+						unread: 0,
+						params: '',
+						restricted: {
+							job: {
+								police: true,
+							},
+						},
+					},
 					comanager: {
 						storeLabel: 'Company Manager',
 						label: 'Company Manager',
