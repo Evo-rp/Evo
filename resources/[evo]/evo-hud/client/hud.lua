@@ -839,16 +839,30 @@ AddEventHandler("Keybinds:Client:KeyUp:cancel_action", function()
 	end
 end)
 
-Citizen.CreateThread(function()
+-- [Disables weird run after shooting] --
+CreateThread(function()
     while true do
-        Citizen.Wait(500)
-        ped = PlayerPedId()
-        if not IsPedInAnyVehicle(ped, false) then
-            if IsPedUsingActionMode(ped) then
-                SetPedUsingActionMode(ped, -1, -1, 1)
+        Wait(500)
+        if not IsPedInAnyVehicle(PlayerPedId(), false) then
+            if IsPedUsingActionMode(PlayerPedId()) then
+                SetPedUsingActionMode(PlayerPedId(), -1, -1, 1)
             end
         else
-            Citizen.Wait(3000)
+            Wait(3000)
         end
     end
 end)
+
+-- [Disables Pistol Whipping] --
+CreateThread(function()
+    while true do
+        Wait(1)
+        if IsPedArmed(PlayerPedId(), 6) then
+            DisableControlAction(1, 140, true)
+            DisableControlAction(1, 141, true)
+            DisableControlAction(1, 142, true)
+        else
+            Wait(1500)
+        end
+    end
+end) 
