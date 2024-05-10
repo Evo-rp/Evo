@@ -6,15 +6,6 @@ Citizen.CreateThread(function()
 	SendNUIMessage({type = "APP_SHOW"})
 end)
 
-RegisterNetEvent('Characters:RecieveName', function(name)
-	SendNUIMessage({
-		type = "SET_NAME",
-		data = {
-			name = name
-		}
-	})
-end)
-
 function loadModel(model)
 	if IsModelInCdimage(model) then
 		while not HasModelLoaded(model) do
