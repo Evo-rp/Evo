@@ -853,6 +853,8 @@ function DoMove(source, data, cb)
 	
 		if entityFrom.shop then
 			local cost = math.ceil((item.price * tonumber(data.countTo)))
+			if cost < 0 then return end
+
 			local paymentType = (cash >= cost and 'cash' or (Banking.Balance:Has(char:GetData("BankAccount"), cost) and 'bank' or nil))
 			if entityFrom.free or paymentType ~= nil then
 				if -- Check if the item is either not a gun, or if it is that they have a Weapons license
