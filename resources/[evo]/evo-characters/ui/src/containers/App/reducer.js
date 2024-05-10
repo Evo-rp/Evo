@@ -4,7 +4,6 @@ import { STATE_SPLASH } from '../../util/States';
 export const initialState = {
 	hidden: true,
 	state: STATE_SPLASH,
-	name: 'Aspect'
 };
 
 const appReducer = (state = initialState, action) => {
@@ -20,11 +19,6 @@ const appReducer = (state = initialState, action) => {
 				...initialState,
 				hidden: false,
 			};
-		case SET_NAME:
-			return {
-				...state,
-				name: action.payload.name
-			}
 		default:
 			return state;
 	}
