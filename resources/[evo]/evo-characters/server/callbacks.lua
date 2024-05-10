@@ -125,8 +125,7 @@ function RegisterCallbacks()
 			LastPlayed = -1,
 			Jobs = {},
 			SID = Sequence:Get("Character"),
-			-- Cash = 5000,
-			Cash = 500000, -- For beta only 
+			Cash = 5000,
 			New = true,
 			Licenses = {
 				Drivers = {

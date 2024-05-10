@@ -17,12 +17,6 @@ Config.StartItems = {
 	{ name = "sandwich_blt", count = 5 },
 	{ name = "bandage", count = 5 },
 	{ name = "coffee", count = 2 },
-
-	-- Remove after Beta
-	{ name = "lockpick", count = 10 },
-	{ name = "vpn", count = 1 },
-	{ name = "lsundg_invite", count = 1 },
-	{ name = "laptop", count = 1 },
 }
 
 Config.ShopItemSets = {
@@ -61,7 +55,8 @@ Config.ShopItemSets = {
 		"drill",
 	}, -- Hardware
 	[3] = { "cup", "bun", "patty", "pickle" }, -- Burger Shot Supplies
-	[4] = { "armor", "heavyarmor", "WEAPON_PISTOL", "WEAPON_COMBATPISTOL", "AMMO_PISTOL", "WEAPON_BAT" }, -- Ammunation
+	-- [4] = { "armor", "heavyarmor", "WEAPON_PISTOL", "WEAPON_COMBATPISTOL", "AMMO_PISTOL", "WEAPON_BAT" }, -- Ammunation Old
+	[4] = { "armor", "WEAPON_PISTOL", "AMMO_PISTOL", "WEAPON_BAT" }, -- Ammunation
 	[5] = { -- Electronics Store
 		"phone",
 		"radio_shitty",
