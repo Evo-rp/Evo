@@ -84,11 +84,13 @@ function SkillCheckPanning()
                 },
             }, function(cancelled)
                 if not cancelled then
-                    local chance = math.random(1, 10)
-                    if chance < 3 then
+                    Callbacks:ServerCallback('Goldpan:RemoveGravel', {}, function(callback) end)
+                    local chance = math.random(1, 20)
+                    print(chance)
+                    if chance < 10 then
                         Callbacks:ServerCallback("Goldpan:GetReward", {}, function(callback)
                             if callback then
-                                Notification:Info("You found " .. callback, 2000)
+                                Notification:Info("You found some gold", 2000)
                             end
                         end)
                     end
@@ -111,7 +113,7 @@ local SmeltingCoords = {
     heading = 325,
 }
 
-function RegisterCallbacks()
+AddEventHandler('Labor:Client:Setup', function()
     Callbacks:RegisterClientCallback("Labor:Goldpanning:StartMoulding", function(data, cb)
         if Inventory.Check.Player:HasItem('goldnugget', 20) then
             local playerPos = GetEntityCoords(PlayerPedId())
@@ -147,7 +149,7 @@ function RegisterCallbacks()
             Notification:Error("You don't have a enough gravel", 2000)
         end
     end)
-end
+end)
 
 function SmeltBars()
     local p = promise.new()
