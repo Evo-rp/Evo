@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 1000,
         boxSizing: 'border-box',
         border: `1px solid ${theme.palette.border.input}`,
+        userSelect: 'none'
     },
     input: {
         position: 'relative',
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'stretch',
         width: '100%',
         backgroundColor: theme.palette.secondary.dark,
+        userSelect: 'none'
     },
     prefix: {
         fontSize: '1.6vh',
@@ -33,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'uppercase',
         fontWeight: 'bold',
         display: 'inline-block',
+        userSelect: 'none'
     },
     textarea: {
         fontSize: '1.35vh',
@@ -49,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
         flex: 1,
         backgroundColor: 'transparent',
         resize: 'none',
+        userSelect: 'none'
     },
     suggestionsWrapper: {
         fontSize: 16,
@@ -179,7 +183,7 @@ export default () => {
                     >
                         ➤
                     </span>{' '}
-                    <textarea
+                    {/* <textarea
                         className={classes.textarea}
                         type="text"
                         autoFocus="autofocus"
@@ -190,7 +194,20 @@ export default () => {
                         onKeyDown={onKeyDown}
                         onChange={onChange}
                         onBlur={onBlur}
-                    ></textarea>
+                    /> */}
+
+                    <input
+                        className={classes.textarea}
+                        type="text"
+                        autoFocus="autofocus"
+                        spellCheck="false"
+                        rows="1"
+                        value={value}
+                        ref={inputRef}
+                        onKeyDown={onKeyDown}
+                        onChange={onChange}
+                        onBlur={onBlur}
+                    />
                 </div>
             </div>
             {isCommand && (
