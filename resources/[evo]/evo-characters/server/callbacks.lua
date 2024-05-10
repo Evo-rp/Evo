@@ -469,9 +469,3 @@ RegisterNetEvent(
 		_tempLastLocation[src] = coords
 	end
 )
-
-RegisterNetEvent('Characters:GetName', function()
-	local name = GetPlayerName(source)
-
-	TriggerClientEvent('Characters:RecieveName', source, name)
-end)
