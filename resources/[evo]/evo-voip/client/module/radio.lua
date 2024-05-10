@@ -112,7 +112,7 @@ RegisterNetEvent('VOIP:Radio:Client:RemovePlayerFromRadio', function(targetSourc
 	end
 end)
 
-local RADIO_COOLDOWN_TIME = 2000
+local RADIO_COOLDOWN_TIME = 1500
 local lastRadioPress = 0
 
 function RadioKeyDown()
@@ -131,6 +131,7 @@ function RadioKeyDown()
 		RADIO_TALKING = true
 		VOIP:MicClicks(true)
 		UpdateVOIPIndicatorStatus()
+
 		Citizen.CreateThread(function()
 			while RADIO_TALKING and _characterLoaded do
 				Citizen.Wait(0)
