@@ -1,9 +1,9 @@
 Citizen.CreateThread(function()
-	while GetIsLoadingScreenActive() do
+	while GetIsLoadingScreenActive() or not HasCollisionLoadedAroundEntity(PlayerPedId()) do
 		Citizen.Wait(0)
 	end
+
 	SendNUIMessage({type = "APP_SHOW"})
-	TriggerServerEvent('Characters:GetName')
 end)
 
 RegisterNetEvent('Characters:RecieveName', function(name)
