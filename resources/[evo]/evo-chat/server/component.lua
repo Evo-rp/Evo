@@ -432,3 +432,79 @@ function stringsplit(inputstr, sep)
 	end
 	return t
 end
+
+RegisterNetEvent("txAdmin:events:scheduledRestart", function(eventData)
+    if eventData.secondsRemaining == 1800 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 30 minute.",
+		})
+    elseif eventData.secondsRemaining == 1500 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 25 minute.",
+		})
+    elseif eventData.secondsRemaining == 1200 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 20 minute.",
+		})
+    elseif eventData.secondsRemaining == 900 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 15 minute.",
+		})
+    elseif eventData.secondsRemaining == 600 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 10 minute.",
+		})
+    elseif eventData.secondsRemaining == 300 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 5 minute.",
+		})
+    elseif eventData.secondsRemaining == 240 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 4 minute.",
+		})
+    elseif eventData.secondsRemaining == 180 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 3 minute.",
+		})
+    elseif eventData.secondsRemaining === 120 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 2 minute.",
+		})
+    elseif eventData.secondsRemaining == 60 then
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server is restarting in 1 minute.",
+		})
+
+        Wait(1000)
+
+		TriggerClientEvent("chat:addMessage", -1, {
+			time = os.time(),
+			type = "server",
+			message = "Server restarting.",
+		})
+    end
+end)
+
+CreateThread(function()
+    SetConvar("txAdmin-hideDefaultScheduledRestartWarning", "true");
+end)
