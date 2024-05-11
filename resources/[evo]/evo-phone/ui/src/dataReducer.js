@@ -1267,7 +1267,7 @@ export const initialState = {
 				likes: Array(),
 			},
 		],
-		images: [],
+		gallery: [],
 		// doj: [
 		// 	{
 		// 		Name: 'Aspect Dev',
