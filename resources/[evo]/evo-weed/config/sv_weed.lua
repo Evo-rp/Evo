@@ -61,31 +61,31 @@ GroundTypes = {
 
 Locations = {
 	["0"] = {
-		coords = vector3(928.000, -1487.463, 29.494),
+		coords = vector3(301.754, -670.998, 48.118), -- done
 		heading = 86.731,
 	},
 	["1"] = {
-		coords = vector3(928.000, -1487.463, 29.494),
+		coords = vector3(596.585, 90.818, 93.124), -- done
 		heading = 86.731,
 	},
 	["2"] = {
-		coords = vector3(497.536, -1959.389, 23.820),
+		coords = vector3(569.736, -1022.136, 33.56), -- done
 		heading = 305.063,
 	},
 	["3"] = {
-		coords = vector3(497.536, -1959.389, 23.820),
+		coords = vector3(569.736, -1022.136, -31.312), -- done
 		heading = 305.063,
 	},
 	["4"] = {
-		coords = vector3(-3107.755, 304.206, 4.071),
+		coords = vector3(-3107.755, 304.206, 4.071), -- done
 		heading = 11.543,
 	},
 	["5"] = {
-		coords = vector3(-3107.755, 304.206, 4.071),
+		coords = vector3(569.736, -1022.136, 33.56), -- done
 		heading = 11.543,
 	},
 	["6"] = {
-		coords = vector3(928.000, -1487.463, 29.494),
+		coords = vector3(569.736, -1022.136, -31.312), -- done
 		heading = 86.731,
 	},
 }

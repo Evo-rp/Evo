@@ -4,7 +4,7 @@ local _joiners = {}
 local _active = nil
 
 AddEventHandler("Labor:Server:Startup", function()
-	GlobalState["CokeRuns"] = vector4(425.063, -231.299, 54.968, 269.634)
+	GlobalState["CokeRuns"] = vector4(390.118, -327.374, 49.701, 147.711)
 	GlobalState["CokeRunActive"] = false
 	GlobalState["CokeRunCD"] = false
 

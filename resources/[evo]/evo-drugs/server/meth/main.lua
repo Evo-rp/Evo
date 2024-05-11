@@ -84,9 +84,9 @@ _DRUGS.Meth = {
 
 AddEventHandler("Drugs:Server:Startup", function()
     Vendor:Create("MethSeller", "ped", "Rob Tools", `A_M_M_RurMeth_01`, {
-        coords = vector3(1532.717, 6331.944, 23.273),
+        coords = vector3(329.749, 737.327, 179.799),
         heading = 205.563,
-        scenario = "WORLD_HUMAN_GARDENER_LEAF_BLOWER"
+        scenario = "parkbench_smoke_ranger_loop"
     }, _toolsForSale, "badge-dollar", "View Offers")
 
     local tables = MySQL.query.await('SELECT * FROM placed_meth_tables WHERE expires > ?', { os.time() })
