@@ -482,7 +482,7 @@ RegisterNetEvent("txAdmin:events:scheduledRestart", function(eventData)
 			type = "server",
 			message = "Server is restarting in 3 minute.",
 		})
-    elseif eventData.secondsRemaining === 120 then
+    elseif eventData.secondsRemaining == 120 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
