@@ -558,7 +558,7 @@ function RegisterCommands()
 			},
 			{
 				name = "Image",
-				help = "Item Image URL - Imgur",
+				help = "Item Image URL",
 			},
 			{
 				name = "Amount",
