@@ -126,27 +126,27 @@ _customsLocations = {
 			maxZ = 43.92,
 		},
 	},
-	-- MISSION ROW PD
+	-- VESPUCCI PD
 	{
-		type = 0,
-		name = "MRPD Garage",
-		restrictClass = { 18 },
-		restrictJobs = {
-			police = true, -- Only allow Police
-		},
-		blip = false,
-		costMultiplier = 0.5,
-		zone = {
-			type = "box",
-			center = vector3(451.35, -975.69, 25.7),
-			length = 16.0,
-			width = 5.0,
-			heading = 270,
-			minZ = 24.7,
-			maxZ = 28.7,
-		},
-		settings = _policeCustomSettings,
-	},
+        type = 0,
+        name = 'Vinewood Garage',
+        restrictClass = { 18 },
+        restrictJobs = {
+            police = true,
+        },
+        blip = false,
+        costMultiplier = 0.5,
+        zone = {
+            type = 'box',
+            center = vector3(556.74, 5.85, 70.61),
+            length = 3.8,
+            width = 6.4,
+			heading = 340,
+			minZ = 69.61,
+			maxZ = 73.61,
+        },
+        settings = _policeCustomSettings,
+    },
 	{
 		type = 0,
 		name = "Sandy Sheriff Garage",
@@ -315,26 +315,25 @@ _customsLocations = {
 		},
 	},
 	{
-		type = 0,
-		name = "MRPD Helipad",
-		restrictClass = { 15, 16 },
-		restrictJobs = {
-			ems = true,
-			police = true,
-		},
-		blip = false,
-		costMultiplier = 0.5,
-		zone = {
-			type = "box",
-			center = vector3(449.15, -981.34, 43.69),
-			length = 10.0,
-			width = 10.0,
+        type = 0,
+        name = 'Vinewood PD Helipad',
+        restrictClass = { 15, 16 },
+        restrictJobs = {
+            medical = true,
+            police = true,
+        },
+        blip = false,
+        costMultiplier = 0.5,
+        zone = {
+            type = 'box',
+            center = vector3(580.07, 12.65, 103.23),
+            length = 11.4,
+            width = 11.6,
 			heading = 0,
-			--debugPoly=true,
-			minZ = 42.69,
-			maxZ = 46.69,
-		},
-	},
+			minZ = 102.23,
+			maxZ = 106.43,
+        } 
+    },
 	{
 		type = 0,
 		name = "SSPD Helipad",

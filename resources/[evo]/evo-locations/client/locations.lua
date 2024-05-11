@@ -11,14 +11,14 @@ local _logoutLocations = {
         },
     },
     {
-        center = vector3(477.96, -981.89, 30.69),
-        length = 5.0,
+        center = vector3(620.07, 11.73, 83.64), 2.4,
+        length = 2.4,
         width = 3.6,
         options = {
-            heading = 0,
+            heading = 340,
             --debugPoly=true,
-            minZ = 29.69,
-            maxZ = 32.09
+            minZ = 82.64,
+            maxZ = 85.24
         },
     },
     {

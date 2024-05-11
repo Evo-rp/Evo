@@ -10,17 +10,17 @@ Config = {
 	},
 	Armories = {
 		{
-			id = "mrpd-armory",
-			name = "MRPD Armory",
+			id = "vpd-armory",
+			name = "VPD Armory",
 			type = "box",
-			coords = vector3(483.22, -995.18, 30.69),
-			length = 1.4,
-			width = 6.6,
+			coords = vector3(603.76, 6.14, 87.8),
+			length = 4.6,
+			width = 1,
 			options = {
-				heading = 0,
+				heading = 340,
 				--debugPoly = true,
-				minZ = 29.69,
-				maxZ = 32.49,
+				minZ = 86.8,
+				maxZ = 89.6
 			},
 			data = {
 				inventory = {

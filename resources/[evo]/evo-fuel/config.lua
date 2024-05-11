@@ -430,15 +430,15 @@ Config = {
 			maxZ = 40.67,
 			restricted = 'aircraft',
 		},
-		{ -- Mission Row PD Helipad
-			center = vector3(449.27, -981.0, 43.69),
-			length = 12.4,
-			width = 12.8,
-			heading = 0,
-			minZ = 42.69,
-			maxZ = 46.69,
-			restricted = 'aircraft',
-		},
+		-- { -- Mission Row PD Helipad
+		-- 	center = vector3(449.27, -981.0, 43.69),
+		-- 	length = 12.4,
+		-- 	width = 12.8,
+		-- 	heading = 0,
+		-- 	minZ = 42.69,
+		-- 	maxZ = 46.69,
+		-- 	restricted = 'aircraft',
+		-- },
 
 		{ -- Pillbox Helipad
 			center = vector3(352.65, -589.56, 74.16),
