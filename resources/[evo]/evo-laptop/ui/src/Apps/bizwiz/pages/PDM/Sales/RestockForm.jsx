@@ -61,7 +61,7 @@ export default ({ open, vehicle, onSubmit, onClose }) => {
                     startAdornment: (
                         <InputAdornment position="start">
                             <FontAwesomeIcon
-                                icon={['fas', 'dollar-sign']}
+                                icon={['fas', 'car']}
                             />
                         </InputAdornment>
                     ),
