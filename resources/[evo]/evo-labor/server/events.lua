@@ -1,6 +1,6 @@
 local _houseLocs = {
 	{
-		coords = vector3(850.425, -2504.266, 39.686),
+		coords = vector3(-463.675, -1734.908, 18.804),
 		heading = 88.629,
 	},
 }
@@ -10,7 +10,7 @@ local _locations = {
 	houseRobbery = rando,
 	oxy = _oxyStarts[tostring(os.date("%w"))],
 	corner = {
-		coords = vector3(-25.504, -1291.002, 28.510),
+		coords = vector3(703.286, -1210.108, 26.582),
 		heading = 129.002,
 	},
 }
