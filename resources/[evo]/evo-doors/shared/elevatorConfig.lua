@@ -483,69 +483,69 @@ _elevatorConfig = {
             },
         }
     },
-    -- Vinewood PD / LSPDM / Right Elevator
-    { 
-        name = 'Vinewood Police Department',
-        canLock = {
-            policeGeneralLocking["onDuty"],
-        },
-        floors = {
-            [-1] = {
-                defaultLocked = true,
-                name = 'Roof | Helipad',
-                coords = vector4(597.807, -17.604, 101.344, 339.863),
-                zone = {
-                    center = vector3(599.55, -15.66, 101.34), 
-                    length = 0.2, 
-                    width = 0.4,
-                    heading = 340,
-                    minZ = 101.14,
-                    maxZ = 101.74,
-                    ----debugpoly = true,
-                },
-            },
-            [1] = {
-                defaultLocked = true,
-                name = 'Floor 2 | Rollcall & Captains Office', 
-                coords = vector4(608.181, -10.215, 87.802, 340.314), 
-                zone = { 
-                    center = vector3(609.95, -8.04, 87.8), 
-                    length = 0.2,
-                    width = 0.4,
-                    heading = 339.0,
-                    minZ = 87.65,
-                    maxZ = 88.25,
-                    ----debugpoly = true,
-                },
-            },
-            [2] = {
-                defaultLocked = true,
-                name = 'Floor 1 | Main Lobby',
-                coords = vector4(608.040, -10.147, 83.642, 341.245),  
-                zone = { 
-                    center = vector3(609.92, -8.09, 83.64),  
-                    length = 0.2,
-                    width = 0.4,
-                    heading = 339.0,
-                    minZ = 83.49,
-                    maxZ = 84.09,
-                    ----debugpoly = true,
-                },
-            },
-            [3] = {
-                defaultLocked = true,
-                name = 'Floor -1 | Cells & Garage', 
-                coords = vector4(608.096, -9.857, 75.045, 338.345), 
-                zone = {
-                    center = vector3(609.92, -8.07, 75.05),
-                    length = 0.2,
-                    width = 0.4,
-                    heading = 339.0,
-                    minZ = 74.9,
-                    maxZ = 75.5,
-                    ----debugpoly = true,
-                },
-            },
-        }
-    },
+    -- -- Vinewood PD / LSPDM / Right Elevator
+    -- { 
+    --     name = 'Vinewood Police Department',
+    --     canLock = {
+    --         policeGeneralLocking["onDuty"],
+    --     },
+    --     floors = {
+    --         [-1] = {
+    --             defaultLocked = true,
+    --             name = 'Roof | Helipad',
+    --             coords = vector4(597.807, -17.604, 101.344, 339.863),
+    --             zone = {
+    --                 center = vector3(599.55, -15.66, 101.34), 
+    --                 length = 0.2, 
+    --                 width = 0.4,
+    --                 heading = 340,
+    --                 minZ = 101.14,
+    --                 maxZ = 101.74,
+    --                 ----debugpoly = true,
+    --             },
+    --         },
+    --         [1] = {
+    --             defaultLocked = true,
+    --             name = 'Floor 2 | Rollcall & Captains Office', 
+    --             coords = vector4(608.181, -10.215, 87.802, 340.314), 
+    --             zone = { 
+    --                 center = vector3(609.95, -8.04, 87.8), 
+    --                 length = 0.2,
+    --                 width = 0.4,
+    --                 heading = 339.0,
+    --                 minZ = 87.65,
+    --                 maxZ = 88.25,
+    --                 ----debugpoly = true,
+    --             },
+    --         },
+    --         [2] = {
+    --             defaultLocked = true,
+    --             name = 'Floor 1 | Main Lobby',
+    --             coords = vector4(608.040, -10.147, 83.642, 341.245),  
+    --             zone = { 
+    --                 center = vector3(609.92, -8.09, 83.64),  
+    --                 length = 0.2,
+    --                 width = 0.4,
+    --                 heading = 339.0,
+    --                 minZ = 83.49,
+    --                 maxZ = 84.09,
+    --                 ----debugpoly = true,
+    --             },
+    --         },
+    --         [3] = {
+    --             defaultLocked = true,
+    --             name = 'Floor -1 | Cells & Garage', 
+    --             coords = vector4(608.096, -9.857, 75.045, 338.345), 
+    --             zone = {
+    --                 center = vector3(609.92, -8.07, 75.05),
+    --                 length = 0.2,
+    --                 width = 0.4,
+    --                 heading = 339.0,
+    --                 minZ = 74.9,
+    --                 maxZ = 75.5,
+    --                 ----debugpoly = true,
+    --             },
+    --         },
+    --     }
+    -- },
 }
