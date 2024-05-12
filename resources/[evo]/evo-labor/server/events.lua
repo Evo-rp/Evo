@@ -1,6 +1,6 @@
 local _houseLocs = {
 	{
-		coords = vector3(-463.675, -1734.908, 18.804),
+		coords = vector3(-463.675, -1735.998, 18.804),
 		heading = 88.629,
 	},
 }
