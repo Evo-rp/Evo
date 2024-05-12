@@ -40,6 +40,33 @@ _mechanicShops = {
 	},
 
 	{
+        job = 'dreamworks',
+        zone = {
+            type = 'box',
+            center = vector3(-744.94, -1476.06, 5.0),
+            length = 102.8,
+            width = 118.4,
+            options = {
+                heading = 50,
+                --debugPoly=true,
+                minZ = 2.0,
+                maxZ = 15.4
+            }
+        },
+        dutyPoint = {
+            center = vector3(-765.8, -1520.73, 5.06),
+            length = 2.2,
+            width = 0.8,
+            options = {
+                heading = 23,
+                --debugPoly=true,
+                minZ = 4.31,
+                maxZ = 5.91
+            }
+        },
+    },
+
+	{
 		job = "redline",
 		zone = {
 			type = "box",
