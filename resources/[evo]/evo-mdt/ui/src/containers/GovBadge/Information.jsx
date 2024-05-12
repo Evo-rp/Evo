@@ -15,7 +15,7 @@ const DepartmentData = {
         name: 'Blaine County\n Sheriff\'s Office',
         color: '#755613',
     },
-    sasp: {
+    sast: {
         name: 'San Andreas Highway Patrol',
         color: '#C0C0C0',
     },

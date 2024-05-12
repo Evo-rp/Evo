@@ -31,7 +31,7 @@ export default ({ badge }) => {
                 return LSPDBadge;
             case 'lscso':
                 return SheriffBadge;
-            case 'sasp':
+            case 'sast':
                 return StateBadge;
             case 'safd':
                 return MedicalServices;

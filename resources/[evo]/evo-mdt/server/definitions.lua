@@ -264,7 +264,7 @@ _permissions = {
 		name = "Manage Interceptor Trials",
 		restrict = {
 			job = 'police',
-			workplace = 'sasp',
+			workplace = 'sast',
 		}
 	},
 }

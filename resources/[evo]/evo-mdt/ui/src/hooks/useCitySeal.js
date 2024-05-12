@@ -26,7 +26,7 @@ export default () => {
 						return LSSeal;
 					case 'lscso':
 						return SheriffBadge;
-					case 'sasp':
+					case 'sast':
 						return StateBadge;
 					default:
 						return SASeal;

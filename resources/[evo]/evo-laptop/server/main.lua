@@ -107,6 +107,7 @@ function RetrieveComponents()
 	Sequence = exports["evo-base"]:FetchComponent("Sequence")
 	Phone = exports["evo-base"]:FetchComponent("Phone")
 	Laptop = exports["evo-base"]:FetchComponent("Laptop")
+	Admin = exports["evo-base"]:FetchComponent("Admin")
 	RegisterChatCommands()
 end
 
