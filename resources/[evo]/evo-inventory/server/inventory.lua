@@ -19,6 +19,8 @@ local _defInvSettings = {
 	useBank = true,
 }
 
+local taxRate = 0.15 -- 15%
+
 function split(pString, pPattern)
 	local Table = {}  -- NOTE: use {n = 0} in Lua-5.0
 	local fpat = "(.-)" .. pPattern
@@ -464,41 +466,38 @@ function DoMerge(source, data, cb)
 	
 		if entityFrom.shop then
 			local cost = math.ceil((item.price * tonumber(data.countTo)))
-			local paymentType = (cash >= cost and 'cash' or (Banking.Balance:Has(char:GetData("BankAccount"), cost) and 'bank' or nil))
+			local taxAmount = cost * taxRate
+			local totalCost = cost + taxAmount
+			
+			local paymentType = (cash >= totalCost and 'cash' or (Banking.Balance:Has(char:GetData("BankAccount"), totalCost) and 'bank' or nil))
 			if entityFrom.free or paymentType ~= nil then
-				if -- Check if the item is either not a gun, or if it is that they have a Weapons license
-					(item.type ~= 2
-					or (
-						item.type == 2
-						and (not item.requiresLicense or item.requiresLicense and Weapons:IsEligible(source))
-					))
-					and (not item.qualification or hasValue(char:GetData("Qualifications"), item.qualification))
-				then
+				if (item.type ~= 2 or (item.type == 2 and (not item.requiresLicense or item.requiresLicense and Weapons:IsEligible(source)))) and (not item.qualification or hasValue(char:GetData("Qualifications"), item.qualification)) then
 					local paid = entityFrom.free
-	
+		
 					if not paid then
 						if paymentType == 'cash' then
-							paid = Wallet:Modify(source, -(math.abs(cost)))
+							paid = Wallet:Modify(source, -(math.abs(totalCost)))
 						else
-							paid = Banking.Balance:Charge(char:GetData("BankAccount"), cost, {
+							paid = Banking.Balance:Charge(char:GetData("BankAccount"), totalCost, {
 								type = 'bill',
 								title = 'Store Purchase',
-								description = string.format('Bought x%s %s', data.countTo, item.label),
+								description = string.format('Bought x%s %s (including 15%% tax)', data.countTo, item.label),
 								data = {}
 							})
 							Phone.Notification:Add(source, "Bill Payment Successful", false, os.time() * 1000, 3000, "bank", {})
 						end
-	
+		
 						if paid then
 							pendingShopDeposits[storeBankAccounts[entityFrom.id]] = pendingShopDeposits[storeBankAccounts[entityFrom.id]] or { amount = 0, transactions = 0 }
-							pendingShopDeposits[storeBankAccounts[entityFrom.id]].amount += math.floor( (cost * STORE_SHARE_AMOUNT) )
+							pendingShopDeposits[storeBankAccounts[entityFrom.id]].amount += math.floor((cost * STORE_SHARE_AMOUNT))
 							pendingShopDeposits[storeBankAccounts[entityFrom.id]].transactions += 1
-	
+		
 							pendingShopDeposits[_govAccount] = pendingShopDeposits[_govAccount] or { amount = 0, transactions = 0, tax = true }
-							pendingShopDeposits[_govAccount].amount += math.ceil(cost * (1.0 - STORE_SHARE_AMOUNT))
+							pendingShopDeposits[_govAccount].amount += math.ceil(totalCost * (1.0 - STORE_SHARE_AMOUNT))
 							pendingShopDeposits[_govAccount].transactions += 1
 						end
 					end
+				
 	
 					if paid then
 						local insData = Inventory:CreateItem(char:GetData("SID"), data.name, data.countTo, data.slotTo, {}, data.invTypeTo, false)
@@ -854,41 +853,36 @@ function DoMove(source, data, cb)
 		if entityFrom.shop then
 			local cost = math.ceil((item.price * tonumber(data.countTo)))
 			if cost < 0 then return end
-
-			local paymentType = (cash >= cost and 'cash' or (Banking.Balance:Has(char:GetData("BankAccount"), cost) and 'bank' or nil))
+			local taxAmount = cost * taxRate
+			local totalCost = cost + taxAmount
+			local paymentType = (cash >= totalCost and 'cash' or (Banking.Balance:Has(char:GetData("BankAccount"), totalCost) and 'bank' or nil))
 			if entityFrom.free or paymentType ~= nil then
-				if -- Check if the item is either not a gun, or if it is that they have a Weapons license
-					(item.type ~= 2
-					or (
-						item.type == 2
-						and (not item.requiresLicense or item.requiresLicense and Weapons:IsEligible(source))
-					))
-					and (not item.qualification or hasValue(char:GetData("Qualifications"), item.qualification))
-				then
+				if (item.type ~= 2 or (item.type == 2 and (not item.requiresLicense or item.requiresLicense and Weapons:IsEligible(source)))) and (not item.qualification or hasValue(char:GetData("Qualifications"), item.qualification)) then
 					local paid = entityFrom.free
 					if not paid then
 						if paymentType == 'cash' then
-							paid = Wallet:Modify(source, -(math.abs(cost)))
+							paid = Wallet:Modify(source, -(math.abs(totalCost)))
 						else
-							paid = Banking.Balance:Charge(char:GetData("BankAccount"), cost, {
+							paid = Banking.Balance:Charge(char:GetData("BankAccount"), totalCost, {
 								type = 'bill',
 								title = 'Store Purchase',
-								description = string.format('Bought x%s %s', data.countTo, item.label),
+								description = string.format('Bought x%s %s (including 15%% tax)', data.countTo, item.label),
 								data = {}
 							})
-							Phone.Notification:Add(source, "Bill Payment Successful", string.format('Bought x%s %s', data.countTo, item.label), os.time() * 1000, 3000, "bank", {})
+							Phone.Notification:Add(source, "Bill Payment Successful", string.format('Bought x%s %s (including 15%% tax)', data.countTo, item.label), os.time() * 1000, 3000, "bank", {})
 						end
-
+		
 						if paid then
 							pendingShopDeposits[storeBankAccounts[entityFrom.id]] = pendingShopDeposits[storeBankAccounts[entityFrom.id]] or { amount = 0, transactions = 0 }
-							pendingShopDeposits[storeBankAccounts[entityFrom.id]].amount += math.floor( (cost * STORE_SHARE_AMOUNT) )
+							pendingShopDeposits[storeBankAccounts[entityFrom.id]].amount += math.floor((cost * STORE_SHARE_AMOUNT))
 							pendingShopDeposits[storeBankAccounts[entityFrom.id]].transactions += 1
-	
+		
 							pendingShopDeposits[_govAccount] = pendingShopDeposits[_govAccount] or { amount = 0, transactions = 0, tax = true }
-							pendingShopDeposits[_govAccount].amount += math.ceil(cost * (1.0 - STORE_SHARE_AMOUNT))
+							pendingShopDeposits[_govAccount].amount += math.ceil(totalCost * (1.0 - STORE_SHARE_AMOUNT))
 							pendingShopDeposits[_govAccount].transactions += 1
 						end
 					end
+
 	
 					if paid then
 						local insData = Inventory:CreateItem(char:GetData("SID"), data.name, data.countTo, data.slotTo, {}, data.invTypeTo, false)
