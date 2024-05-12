@@ -1,48 +1,20 @@
 function CreateGaragePolyZones()
-	Polyzone.Create:Box("doors_mrpd_garage_enter", vector3(452.44, -1004.72, 28.56), 28.0, 5.4, {
-		heading = 0,
-		minZ = 24.36,
-		maxZ = 29.36,
+	Polyzone.Create:Box('doors_vinewoodpd_garage1', vector3(527.12, -26.11, 70.63), 19.2, 6.2, {
+		heading = 30,
+		----debugpoly=true,
+		minZ = 69.21,
+		maxZ = 74.01
 	}, {
-		door_garage_id = "mrpd_garage_enter",
+		door_garage_id = 'vinewood_PD_garageleft',
 	})
-	Polyzone.Create:Box("doors_mrpd_garage_exit", vector3(431.42, -1004.69, 25.7), 27.2, 5.4, {
-		heading = 0,
-		minZ = 24.1,
-		maxZ = 29.1,
+	
+	Polyzone.Create:Box('doors_vinewoodpd_garage2', vector3(532.62, -22.07, 70.61), 5.2, 17.6, {
+		heading = 296,
+		----debugpoly=true,
+		minZ = 69.21,
+		maxZ = 74.01
 	}, {
-		door_garage_id = "mrpd_garage_exit",
-	})
-
-	Polyzone.Create:Box("doors_mrpd_bollards_exit", vector3(415.39, -1021.02, 29.14), 6.8, 27.2, {
-		heading = 0,
-		minZ = 28.14,
-		maxZ = 32.14,
-	}, {
-		door_garage_id = "mrpd_bollards_exit",
-	})
-	Polyzone.Create:Box("doors_mrpd_bollards_enter", vector3(413.39, -1027.79, 28.99), 6.8, 27.2, {
-		heading = 0,
-		minZ = 27.99,
-		maxZ = 31.99,
-	}, {
-		door_garage_id = "mrpd_bollards_enter",
-	})
-
-	Polyzone.Create:Poly("doors_mrpd_reargate", {
-		vector2(489.58059692383, -1029.5452880859),
-		vector2(497.54434204102, -1029.5280761719),
-		vector2(497.94250488281, -1013.8116455078),
-		vector2(488.74029541016, -1013.7899780273),
-		vector2(488.68612670898, -1017.1776733398),
-		vector2(479.84219360352, -1017.140625),
-		vector2(479.42630004883, -1023.64453125),
-		vector2(486.17926025391, -1023.1638183594),
-	}, {
-		minZ = 27.1,
-		maxZ = 31.99,
-	}, {
-		door_garage_id = "mrpd_reargate",
+		door_garage_id = 'vinewood_PD_garageright',
 	})
 
 	Polyzone.Create:Box("doors_sspd_garage", vector3(1858.3, 3685.7, 33.97), 24.0, 8.8, {
