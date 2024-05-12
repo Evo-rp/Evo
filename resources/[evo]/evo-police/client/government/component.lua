@@ -1,6 +1,6 @@
 local govDutyPoints = {
 	{
-		center = vector3(-587.98, -206.59, 38.23),
+		center = vector3(-587.98, -206.59, 37.23),
 		length = 0.8,
 		width = 0.8,
 		options = {
