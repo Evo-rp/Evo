@@ -321,13 +321,14 @@ export default (props) => {
 		setLoadDraft(false);
 	}, [qry.draft]);
 
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		if (state.notes === '') {
-	// 			setState({...state, notes: Templates[type]})
-	// 		}
-	// 	}, 750) 
-	// }, []);
+	useEffect(() => {
+		setTimeout(() => {
+			console.log(state.notes)
+			if (state.notes === '') {
+				setState({...state, notes: Templates[type]})
+			}
+		}, 1500) 
+	}, []);
 
 	const onSave = () => {
 		setLoading(true);

@@ -72,20 +72,12 @@ export default ({ property, upgradeData, onClick, onSecondaryClick, onViewInfoCl
 	const onCopyId = async (e) => {
         e.stopPropagation();
 
-		try {
-            let res = await (
-                await Nui.send('Dyn8CopyID', property._id)
-            ).json();
-
-            if (res) {
-				alert('Copied Successfully');
-            } else {
-				alert('Error Copying Property');
-            };
-        } catch (err) {
-            console.log(err);
-			alert('Error Copying Property');
-        }
+		const el = document.createElement('textarea');
+        el.value = property._id;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
     };
 
 	const onViewingInfo = () => {
