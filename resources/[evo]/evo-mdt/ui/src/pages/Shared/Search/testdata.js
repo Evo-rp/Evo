@@ -9,7 +9,7 @@ export const People = [
 		Qualifications: ['fto', 'air1'],
 		Job: {
 			Workplace: {
-				Id: 'sasp',
+				Id: 'sast',
 				Name: 'San Andreas State Police',
 			},
 			Name: 'Police',
@@ -347,7 +347,7 @@ export const Report = new Array(10).fill({
 			Origin: 'United States',
 			Job: {
 				Workplace: {
-					Id: 'sasp',
+					Id: 'sast',
 					Name: 'San Andreas State Police',
 				},
 				Name: 'Police',

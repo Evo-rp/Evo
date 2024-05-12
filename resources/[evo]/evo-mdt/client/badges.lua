@@ -6,7 +6,7 @@ local badgeModels = {
     ['lscso'] = `xrp_prop_pdbadge_2`,
     ['safd'] = `xrp_prop_pdbadge_3`,
     ['doj'] = `xrp_prop_pdbadge_4`,
-    ['sasp'] = `xrp_prop_pdbadge_2`,
+    ['sast'] = `xrp_prop_pdbadge_2`,
     ['sapr'] = `xrp_prop_pdbadge_2`,
 }
 

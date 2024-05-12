@@ -90,7 +90,7 @@ function ApplyStylingToBlip(blip, data)
     -- else
 
     if data.Job == 'police' then
-        if data.Workplace == 'sasp' then
+        if data.Workplace == 'sast' then
             SetBlipColour(blip, 55)
         elseif data.Workplace == 'lscso' then
             SetBlipColour(blip, 31)

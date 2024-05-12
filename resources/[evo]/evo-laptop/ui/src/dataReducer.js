@@ -85,6 +85,7 @@ export const initialState = {
 					'bizwiz',
 					'teams',
 					'lsunderground',
+					'gangs',
 				],
 				installed: [
 					'settings',
@@ -93,6 +94,7 @@ export const initialState = {
 					'internet',
 					'teams',
 					'lsunderground',
+					'gangs',
 				],
 			},
 			Apps: {
@@ -662,7 +664,7 @@ export const initialState = {
 				},
 				{
 					Name: 'San Andreas State Police',
-					Id: 'sasp',
+					Id: 'sast',
 					Grades: [
 						{
 							Name: 'State Trooper',
