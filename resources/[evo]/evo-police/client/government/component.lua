@@ -99,7 +99,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		PedInteraction:Add(
 			"govt-services",
 			`a_f_m_eastsa_02`,
-			vector3(-551.196, -203.182, 38.227),
+			vector3(-551.196, -203.182, 37.239),
 			351.18592,
 			25.0,
 			govServices,
