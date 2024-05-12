@@ -68,30 +68,10 @@ local hospitalCheckin = {
 
 function Init()
 	PedInteraction:Add(
-		"hospital-check-in-1",
+		"hospital-check-in",
 		`u_f_m_miranda_02`,
-		vector3(1125.869, -1531.991, 34.033),
-		344.011,
-		25.0,
-		hospitalCheckin,
-		"notes-medical",
-		"WORLD_HUMAN_CLIPBOARD"
-	)
-	PedInteraction:Add(
-		"hospital-check-in-2",
-		`s_f_y_scrubs_01`,
-		vector3(1144.530, -1543.017, 34.033),
-		274.930,
-		25.0,
-		hospitalCheckin,
-		"notes-medical",
-		"WORLD_HUMAN_CLIPBOARD"
-	)
-	PedInteraction:Add(
-		"hospital-check-in-3",
-		`s_f_y_scrubs_01`,
-		vector3(1135.842, -1539.658, 38.504),
-		2.759,
+		vector3(-437.484, -323.269, 33.911),
+		162.630,
 		25.0,
 		hospitalCheckin,
 		"notes-medical",
@@ -104,35 +84,25 @@ function Init()
 				icon = "stretcher",
 				text = "Lay in Bed",
 				event = "Hospital:Client:FindBed",
-				minDist = 1.5,
+				minDist = 2.0,
 				isEnabled = function()
 					return LocalPlayer.state.isEscorting == nil
 						and LocalPlayer.state.myEscorter == nil
 						and not LocalPlayer.state.isHospitalized
 				end,
 			},
-		}, 1.5)
+		}, 3.0)
 	end
 
 	for k, v in ipairs(Config.BedPolys) do
-		Targeting.Zones:AddBox(
-			string.format("hospitalbed-%s", k),
-			"stretcher",
-			v.center,
-			v.length,
-			v.width,
-			v.options,
+		Targeting.Zones:AddBox(string.format("hospitalbed-%s", k), "stretcher", v.center, v.length, v.width, v.options, {
 			{
-				{
-					icon = "stretcher",
-					text = "Lay Down",
-					event = "Hospital:Client:LaydownAnimation",
-					data = v.laydown,
-				},
+				icon = "stretcher",
+				text = "Lay Down",
+				event = "Hospital:Client:LaydownAnimation",
+				data = v.laydown,
 			},
-			1.5,
-			true
-		)
+		}, 3.0, true)
 	end
 end
 
@@ -146,7 +116,7 @@ AddEventHandler("Hospital:Client:LaydownAnimation", function(hitting, coords)
 		Citizen.Wait(250)
 	end
 
-	-- print("Out of Bed")
+	print("Out of Bed")
 	LocalPlayer.state:set("isHospitalized", false, true)
 end)
 
@@ -182,10 +152,12 @@ AddEventHandler("Hospital:Client:HiddenRevive", function(entity, data)
 	end)
 end)
 
+AddEventHandler("Characters:Client:Spawn", function()
+	LocalPlayer.state:set("isHospitalized", false, true)
+end)
+
 RegisterNetEvent("Characters:Client:Logout", function()
-	if LocalPlayer.state.isHospitalized then
-		LocalPlayer.state:set("isHospitalized", false, true)
-	end
+	LocalPlayer.state:set("isHospitalized", false, true)
 end)
 
 AddEventHandler("Hospital:Client:CheckIn", function()
