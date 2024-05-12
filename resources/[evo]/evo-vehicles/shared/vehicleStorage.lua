@@ -1279,6 +1279,34 @@ _vehicleStorage = {
 		},
 	},
 
+	["ranger_station_restricted"] = {
+		name = "Ranger Station Parking",
+		vehType = 0,
+		restricted = {
+			{ JobId = "police", WorkplaceId = false }, -- Allow All Police Workplaces
+		},
+		fleet = { -- HQ is where fleet vehicles originate from
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+		},
+		coords = vector3(374.130, 795.816, 187.289),
+		zone = {
+			type = "poly",
+			points = {
+				vector2(375.84881591797, 793.15234375),
+				vector2(375.75524902344, 800.48608398438),
+				vector2(372.85089111328, 800.17462158203),
+				vector2(372.64340209961, 793.27056884766)
+			},
+			minZ = 186.29,
+			maxZ = 189.09
+		},
+		spaces = {
+			vector4(374.107, 795.704, 187.130, 179.673),
+		},
+	},
+
 	["vpd_helipad"] = {
 		name = "MRPD Helipad",
 		vehType = 2,

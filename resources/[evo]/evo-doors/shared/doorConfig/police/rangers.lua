@@ -1,0 +1,86 @@
+addDoorsListToConfig({
+    {
+        id = "ranger_station_1",
+        model = -117185009,
+        double = "ranger_station_1",
+        coords = vector3(386.859, 792.810, 187.697),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_2",
+        model = -117185009,
+        double = "ranger_station_2",
+        coords = vector3(388.607, 798.934, 187.675),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_3",
+        model = -117185009,
+        double = "ranger_station_3",
+        coords = vector3(379.562, 792.861, 190.490),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_4",
+        model = 517369125,
+        double = "ranger_station_4",
+        coords = vector3(383.450, 799.155, 187.462),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_5",
+        model = 517369125,
+        double = "ranger_station_5",
+        coords = vector3(382.012, 796.826, 187.462),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_6",
+        model = 517369125,
+        double = "ranger_station_6",
+        coords = vector3(377.902, 796.693, 187.462),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+    {
+        id = "ranger_station_7",
+        model = 1704212348,
+        double = "ranger_station_7",
+        coords = vector3(384.553, 796.989, 190.490),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+})

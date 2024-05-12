@@ -30,6 +30,26 @@ Config = {
 			},
 		},
 		{
+			id = "rangers-armory",
+			name = "Ranger Station Armory",
+			type = "box",
+			coords = vector3(387.35, 800.16, 187.46),
+			length = 1.2,
+			width = 2.4,
+			options = {
+				heading = 0,
+				--debugPoly = true,
+				minZ = 186.46,
+				maxZ = 188.66
+			},
+			data = {
+				inventory = {
+					invType = 27,
+					owner = "mrpd-armory",
+				},
+			},
+		},
+		{
 			id = "sspd-armory",
 			name = "Sandy PD Armory",
 			type = "box",
