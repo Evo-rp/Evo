@@ -421,6 +421,27 @@ _customsLocations = {
 		--fitment = 'ottos',
 	},
 	{
+        type = 0,
+        name = 'Dreamworks Garage',
+        restrictClass = false,
+        restrictJobs = {
+            dreamworks = true,
+        },
+        canInstallPerformance = false,
+        costMultiplier = 0.75,
+        blip = false,
+        zone = {
+            type = 'box',
+            center = vector3(-757.92, -1530.8, 5.06),
+            length = 5.8,
+            width = 4.8,
+            heading = 23,
+            --debugPoly=true,
+            minZ = 4.06,
+            maxZ = 7.06
+        }
+    },
+	{
 		type = 0,
 		name = "Benny's Garage",
 		restrictClass = false,

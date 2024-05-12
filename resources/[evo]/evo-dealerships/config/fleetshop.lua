@@ -6,8 +6,8 @@ _fleetConfig = {
 		bankAccount = "police",
 		interactionPed = {
 			model = `s_f_y_cop_01`,
-			coords = vector3(447.019, -996.985, 29.690),
-			heading = 265.797,
+			coords = vector3(593.469, -19.503, 73.000),
+			heading = 18.756,
 			scenario = "WORLD_HUMAN_COP_IDLES",
 			range = 15.0,
 		},
