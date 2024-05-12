@@ -78,6 +78,7 @@ _trashCans = {
 				owner = "pd-trash-4",
 			},
 		},
+	},
 	-- },
 	-- {
 	-- 	id = "pd-trash-5",
