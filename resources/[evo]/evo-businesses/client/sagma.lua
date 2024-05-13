@@ -322,18 +322,18 @@ function RunTableThread()
 end
 
 local gemConfig = {
-	['diamond'] = '',
-	['emerald'] = '',
-	['sapphire'] = '',
-	['ruby'] = '',
-	['amethyst'] = '',
-	['citrine'] = '',
-	['opal'] = '',
+	['diamond'] = 'bzzz_prop_mine_diamond_b',
+	['emerald'] = 'bzzz_prop_mine_emerald_b',
+	['sapphire'] = 'bzzz_prop_mine_sapphire_b',
+	['ruby'] = 'bzzz_prop_mine_ruby_b',
+	['amethyst'] = 'bzzz_prop_mine_crystal_b',
+	['citrine'] = 'bzzz_prop_mine_garnet_b',
+	['opal'] = 'bzzz_prop_mine_coal_b',
 }
 
 function ActivateTable(tableId, color, quality, item)
-	RequestModel("mythicgem")
-	while not HasModelLoaded("mythicgem") do
+	RequestModel(gemConfig[item.Name])
+	while not HasModelLoaded(gemConfig[item.Name]) do
 		Wait(0)
 	end
 
@@ -346,26 +346,24 @@ function ActivateTable(tableId, color, quality, item)
 	local obj = -1
 	local loopcount = 0
 	while loopcount < 5 do
-		obj = GetClosestVehicle(GetEntityCoords(LocalPlayer.state.ped), 10.0, `mythicgem`, 0)
+		obj = GetClosestObjectOfType(GetEntityCoords(LocalPlayer.state.ped), 10.0, gemConfig[item.Name], 0)
 		loopcount = loopcount + 1
 		DeleteEntity(obj)
 	end
+
 	DoScreenFadeOut(1000)
 	FreezeEntityPosition(LocalPlayer.state.ped, true)
 	Wait(1000)
-	local dirtLevel = (15 - math.floor(quality / 6.66)) + 0.0
 
 	HUD.GemTable:Open(quality)
 	Inventory.StaticTooltip:Open(item)
 
-	_gemObj = CreateVehicle(`mythicgem`, _tableConfig[tableId].createCoords, 0, 0)
+	_gemObj = CreateObject(gemConfig[item.Name], _tableConfig[tableId].createCoords, false, false)
+
 	FreezeEntityPosition(_gemObj, true)
 	SetEntityCollision(_gemObj, false, false)
-	SetVehicleDirtLevel(_gemObj, dirtLevel)
-	SetVehicleColours(_gemObj, color, 0)
-	SetVehicleExtraColours(_gemObj, 0, false)
 	_tableCam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
-	SetCamCoord(_tableCam, GetOffsetFromEntityInWorldCoords(_gemObj, 0.45, 0.0, 0.12))
+	SetCamCoord(_tableCam, GetOffsetFromEntityInWorldCoords(_gemObj, -0.75, 0.0, 0.12))
 
 	SetCamRot(_tableCam, -20.0, 0.0, _tableConfig[tableId].createCoords[4] + 90.0, 2)
 	SetCamFov(_tableCam, 50.0)
