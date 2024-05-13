@@ -321,6 +321,16 @@ function RunTableThread()
 	end)
 end
 
+local gemConfig = {
+	['diamond'] = '',
+	['emerald'] = '',
+	['sapphire'] = '',
+	['ruby'] = '',
+	['amethyst'] = '',
+	['citrine'] = '',
+	['opal'] = '',
+}
+
 function ActivateTable(tableId, color, quality, item)
 	RequestModel("mythicgem")
 	while not HasModelLoaded("mythicgem") do
