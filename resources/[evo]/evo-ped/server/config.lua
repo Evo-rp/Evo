@@ -16,7 +16,7 @@ _gangChains = {
 			},
 		},
 	},
-	lss = {
+	vagos = {
 		prop = `vagos_chain`,
 		type = "component",
 		componentId = 7,
