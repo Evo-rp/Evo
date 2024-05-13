@@ -99,7 +99,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 	Blips:Add("arcade", "Business: Arcade", vector3(-1651.675, -1082.294, 13.156), 484, 58, 0.8, 2, 11)
 	Blips:Add("cloud9_drift", "Business: Cloud9 Drift", vector3(-27.3694, -2544.8574, 6.0120), 315, 77, 0.5, 2, 11)
 
-	--Blips:Add("tuna", "Business: McDougle Motors", vector3(161.992, -3036.946, 6.683), 611, 83, 0.6, 2, 11)
+	Blips:Add("tuna", "Business: Tuner Shop", vector3(161.992, -3036.946, 6.683), 611, 83, 0.6, 2, 11)
 	Blips:Add("triad", "Triad Records", vector3(-832.578, -698.627, 27.280), 614, 76, 0.5, 2, 11)
 
 	Blips:Add("bballs", "Bobs Balls", vector3(756.944, -768.288, 26.337), 536, 23, 0.4, 2, 11)
