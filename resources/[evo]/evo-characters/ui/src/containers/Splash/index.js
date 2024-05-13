@@ -6,11 +6,8 @@ import { login } from '../../actions/loginActions';
 import logo from '../../assets/imgs/logo_banner.png';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faKeyboard, faMouse, faSquare } from '@fortawesome/free-solid-svg-icons';
-import { yellow } from '@mui/material/colors';
-import { faArrowPointer } from '@fortawesome/pro-solid-svg-icons';
+import { faArrowPointer, faKeyboard, faSquare } from '@fortawesome/pro-solid-svg-icons';
 import Typewriter from "typewriter-effect";
-
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
