@@ -12,7 +12,7 @@ const DepartmentData = {
         color: '#2a4179',
     },
     lscso: {
-        name: 'Blaine County\n Sheriff\'s Office',
+        name: 'Los Santos County Sheriff\'s Office',
         color: '#755613',
     },
     sast: {
