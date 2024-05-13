@@ -1303,6 +1303,7 @@ _entityTypes = {
 		capacity = 300,
 		name = "Dreamworks Safe",
 		restriction = {
+			job = {
 				id = "dreamworks",
 				permissionKey = "JOB_ACCESS_SAFE",
 			},
