@@ -29,9 +29,9 @@ const App = ({ hidden }) => {
                 // main: '#00FF96',
                 // light: '#96ffd4',
                 // dark: '#00b168',
-                main: '#E5A502',
-                light: '#E8A933',
-                dark: '#FA5800',
+                main: '#7702e5',
+				light: '#ff2100',
+				dark: '#560000',
             },
             secondary: {
                 main: mode === 'dark' ? '#191919' : '#ffffff',
