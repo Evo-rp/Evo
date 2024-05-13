@@ -15,8 +15,8 @@ _itemsSource["unique"] = {
 		gangChain = "atk",
 	},
 	{
-		name = "lss_chain",
-		label = "LSS Chain",
+		name = "vagos_chain",
+		label = "Vagos Chain",
 		description = "LSS",
 		price = 50,
 		isUsable = true,
@@ -27,7 +27,7 @@ _itemsSource["unique"] = {
 		closeUi = true,
 		metalic = false,
 		weight = 0,
-		gangChain = "lss",
+		gangChain = "vagos",
 	},
 	{
 		name = "pepega_chain",

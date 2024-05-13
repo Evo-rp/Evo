@@ -17,17 +17,17 @@ _gangChains = {
 		},
 	},
 	lss = {
-		prop = `lss_chain`,
+		prop = `vagos_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 259,
+				drawableId = 284,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 178,
+				drawableId = 250,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -243,6 +243,7 @@ _hideFromStore = {
 				["181"] = false,
 				["182"] = false,
 				["183"] = false,
+				["284"] = false,
 			},
 			[1] = {
 				["178"] = false,
@@ -254,6 +255,7 @@ _hideFromStore = {
 				["147"] = false,
 				["148"] = false,
 				["149"] = false,
+				["250"] = false
 			},
 		},
 		[8] = {
