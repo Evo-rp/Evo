@@ -1,12 +1,12 @@
 _loanConfig = {
-    defaultInterestRate = 15,
+    defaultInterestRate = 18,
     missedPayments = {
         limit = 4, -- The default value for the amount of payments that can be missed in a row
-        interestIncrease = 2.5,
-        charge = 5, -- As Percent of original loan amount
+        interestIncrease = 3.5,
+        charge = 7, -- As Percent of original loan amount
     },
     loanDefaulting = {
-        charge = 15, -- As Percent of original loan amount
+        charge = 19, -- As Percent of original loan amount
     },
     paymentInterval = (60 * 60 * 24 * 7), -- 7 days bitch
 }
