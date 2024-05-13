@@ -141,6 +141,8 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 	Blips:Add("sagma", "San Andreas Gallery of Modern Art", vector3(-424.835, 21.379, 46.269), 674, 5, 0.6, 2, 11)
 
+	--Blips:Add("dreamworks", "Dreamworks Mechanics", vector3(-739.396, -1514.290, 5.055), 524, 6, 0.7, 2, 11)/
+
 	Blips:Add("bennys", "Benny's Mechanics", vector3(-211.4965, -1326.7563, 31.3005), 544, 63, 1.0, 2, 11)
 
 	Blips:Add("prego", "Cafe Prego", vector3(-1114.819, -1452.965, 5.147), 267, 6, 0.7, 2, 11)
