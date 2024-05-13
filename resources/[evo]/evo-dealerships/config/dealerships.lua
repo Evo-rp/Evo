@@ -208,13 +208,13 @@ _dealerships = {
             catalog = {
                 {
                     type = 'box',
-                    center = vector3(133.97, -3013.55, 10.7),
-                    length = 0.4,
-                    width = 0.4,
+                    center = vector3(152.06, -3016.29, 7.04),
+                    length = 0.8,
+                    width = 1,
                     options = {
-                        heading = 345,
-                        minZ = 10.3,
-                        maxZ = 10.7
+                        heading = 0,
+                        minZ = 6.04,
+                        maxZ = 8.04
                     },
                 },
             },
