@@ -316,4 +316,19 @@ _jobSpawns = {
 			},
 		},
 	},
+	["dreamworks"] = {
+		icon = "garage",
+		locations = {
+			{
+				label = "Dreamworks",
+				workplace = false,
+				location = {
+					x = -749.987,
+					y = -1517.939,
+					z = 9.481,
+					h = 267.198,
+				},
+			},
+		},
+	},
 }
