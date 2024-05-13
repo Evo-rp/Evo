@@ -331,4 +331,39 @@ _jobSpawns = {
 			},
 		},
 	},
+	["police"] = {
+		icon = "police-box",
+		locations = {
+			{
+				label = "Vinewood PD",
+				workplace = false,
+				location = {
+					x = 639.814,
+					y = 12.432,
+					z = 82.794,
+					h = 171.492,
+				},
+			},
+			{
+				label = "La Mesa PD",
+				workplace = false,
+				location = {
+					x = 824.146,
+					y = -1285.934,
+					z = 26.266,
+					h = 82.654,
+				},
+			},
+			{
+				label = "Davis PD",
+				workplace = false,
+				location = {
+					x = 349.735,
+					y = -1599.298,
+					z = 29.292,
+					h = 135.608,
+				},
+			},
+		},
+	},
 }
