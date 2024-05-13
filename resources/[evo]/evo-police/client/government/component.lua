@@ -151,11 +151,11 @@ AddEventHandler("Core:Shared:Ready", function()
 			maxZ = 47.37,
 		}, {})
 
-		Targeting.Zones:AddBox("court-gavel", "gavel", vector3(-519.27, -175.53, 38.55), 0.5, 0.7, {
-			heading = 300,
+		Targeting.Zones:AddBox("court-gavel", "gavel", vector3(-575.71, -210.71, 38.77), 0.2, 0.4, {
+			heading = 0,
 			--debugPoly=true,
-			minZ = 36.35,
-			maxZ = 40.35
+			minZ = 38.57,
+			maxZ = 38.77
 		}, {
 			{
 				icon = "gavel",
