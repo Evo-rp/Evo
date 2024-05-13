@@ -273,14 +273,14 @@ _mechanicShops = {
 		job = "bennys",
 		zone = {
 			type = "box",
-			center = vector3(-211.4159, -1325.8787, 31.3005),
-			length = 50.0,
-			width = 60.0,
+			center = vector3(-211.35, -1328.0, 31.3),
+			length = 29.4,
+			width = 40.0,
 			options = {
 				heading = 180,
 				--debugPoly = false,
-				minZ = 50.0,
-				maxZ = 30.0,
+				minZ = 30.3,
+				maxZ = 34.3
 			},
 		},
 		dutyPoint = {
