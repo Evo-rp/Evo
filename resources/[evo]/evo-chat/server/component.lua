@@ -438,55 +438,55 @@ RegisterNetEvent("txAdmin:events:scheduledRestart", function(eventData)
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 30 minute.",
+			message = "Server is restarting in 30 minutes.",
 		})
     elseif eventData.secondsRemaining == 1500 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 25 minute.",
+			message = "Server is restarting in 25 minutes.",
 		})
     elseif eventData.secondsRemaining == 1200 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 20 minute.",
+			message = "Server is restarting in 20 minutes.",
 		})
     elseif eventData.secondsRemaining == 900 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 15 minute.",
+			message = "Server is restarting in 15 minutes.",
 		})
     elseif eventData.secondsRemaining == 600 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 10 minute.",
+			message = "Server is restarting in 10 minutes.",
 		})
     elseif eventData.secondsRemaining == 300 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 5 minute.",
+			message = "Server is restarting in 5 minutes.",
 		})
     elseif eventData.secondsRemaining == 240 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 4 minute.",
+			message = "Server is restarting in 4 minutes.",
 		})
     elseif eventData.secondsRemaining == 180 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 3 minute.",
+			message = "Server is restarting in 3 minutes.",
 		})
     elseif eventData.secondsRemaining == 120 then
 		TriggerClientEvent("chat:addMessage", -1, {
 			time = os.time(),
 			type = "server",
-			message = "Server is restarting in 2 minute.",
+			message = "Server is restarting in 2 minutes.",
 		})
     elseif eventData.secondsRemaining == 60 then
 		TriggerClientEvent("chat:addMessage", -1, {
