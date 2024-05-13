@@ -9,6 +9,7 @@ _mechanicJobs = {
 	autoexotics = true,
 	ottos = true,
 	bennys = true,
+	dreamworks = true,
 }
 
 _mechanicShops = {

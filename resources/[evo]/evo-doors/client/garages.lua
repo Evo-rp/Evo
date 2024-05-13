@@ -504,6 +504,15 @@ function CreateGaragePolyZones()
 		door_garage_id = "sagma_garage",
 	})
 
+	Polyzone.Create:Box('doors_dreamworks_main_garage', vector3(-743.79, -1505.26, 5.06), 25.0, 12.6, {
+        heading = 24,
+        --debugPoly=true,
+        minZ = 4.06,
+        maxZ = 8.46
+    }, {
+        door_garage_id = 'dreamworks_main_garage',
+    })
+
 	Polyzone.Create:Box("doors_bennys_side_garage_1", vector3(-207.8238, -1313.4540, 31.3005), 10.0, 10.0, {
 		heading = 2,
 		--debugPoly = true,

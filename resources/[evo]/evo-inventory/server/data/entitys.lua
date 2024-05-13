@@ -1279,6 +1279,40 @@ _entityTypes = {
 		id = 122,
 		slots = 120,
 		capacity = 8000,
+		name = "Dreamworks Part Storage",
+		restriction = {
+			job = {
+				id = "dreamworks",
+			},
+		},
+	},
+	{
+		id = 123,
+		slots = 60,
+		capacity = 4000,
+		name = "Dreamworks Mini Storage",
+		restriction = {
+			job = {
+				id = "dreamworks",
+			},
+		},
+	},
+	{
+		id = 124,
+		slots = 52,
+		capacity = 300,
+		name = "Dreamworks Safe",
+		restriction = {
+				id = "dreamworks",
+				permissionKey = "JOB_ACCESS_SAFE",
+			},
+		},
+	},
+
+	{
+		id = 122,
+		slots = 120,
+		capacity = 8000,
 		name = "Bennys Part Storage",
 		restriction = {
 			job = {
