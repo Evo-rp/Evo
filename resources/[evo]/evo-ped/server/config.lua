@@ -22,12 +22,12 @@ _gangChains = {
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 284,
+				drawableId = 260,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 250,
+				drawableId = 226,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -235,7 +235,7 @@ _hideFromStore = {
 		[7] = {
 			[0] = {
 				["259"] = true,
-				["168"] = false,
+				["260"] = true,
 				["169"] = false,
 				["170"] = false,
 				["171"] = false,
@@ -255,7 +255,7 @@ _hideFromStore = {
 				["147"] = false,
 				["148"] = false,
 				["149"] = false,
-				["250"] = false
+				["226"] = true
 			},
 		},
 		[8] = {

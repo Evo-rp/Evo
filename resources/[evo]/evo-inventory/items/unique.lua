@@ -17,7 +17,7 @@ _itemsSource["unique"] = {
 	{
 		name = "vagos_chain",
 		label = "Vagos Chain",
-		description = "LSS",
+		description = "Vagos",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
