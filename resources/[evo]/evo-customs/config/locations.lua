@@ -453,13 +453,13 @@ _customsLocations = {
 		blip = false,
 		zone = {
 			type = "box",
-			center = vector3(-203.1489, -1326.9749, 31.3005),
-			length = 5.8,
-			width = 4.8,
-			heading = 270.0,
+			center = vector3(-215.32, -1332.06, 35.97),
+			length = 14.5,
+			width = 17.5,
+			heading = 359,
 			--debugPoly = false,
-			minZ = 29.3005,
-			maxZ = 33.3005,
+			minZ = 30.37,
+			maxZ = 34.37
 		},
 	},
 }
