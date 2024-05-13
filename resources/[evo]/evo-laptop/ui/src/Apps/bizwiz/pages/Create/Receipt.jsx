@@ -58,27 +58,27 @@ const recTypes = [
 	},
 	{
 		value: 'Regular Repair',
-		jobs: ['redline', 'hayes', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'ottos', 'bennys'],
 	},
 	{
 		value: 'Full Repair',
-		jobs: ['redline', 'hayes', 'autoexotics', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'autoexotics', 'ottos', 'bennys'],
 	},
 	{
 		value: 'Lockpick',
-		jobs: ['redline', 'hayes', 'autoexotics', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'autoexotics', 'ottos', 'bennys'],
 	},
 	{
 		value: 'Performance Upgrades',
-		jobs: ['redline', 'hayes', 'autoexotics', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'autoexotics', 'ottos', 'bennys'],
 	},
 	{
 		value: 'Discounted Repair',
-		jobs: ['redline', 'hayes', 'autoexotics', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'autoexotics', 'ottos', 'bennys'],
 	},
 	{
 		value: 'Repair Kits',
-		jobs: ['redline', 'hayes', 'autoexotics', 'ottos', 'bennys'],
+		jobs: ['redline', 'hayes', 'dreamworks', 'autoexotics', 'ottos', 'bennys'],
 	},
 ];
 

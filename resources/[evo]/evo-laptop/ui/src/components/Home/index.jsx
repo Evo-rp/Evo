@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 	grid: {
 		display: 'flex',
 		flexFlow: 'column',
-		height: '87.5%',
+		height: '90%',
 		padding: 10,
 		flexWrap: 'wrap',
 		justifyContent: 'start',

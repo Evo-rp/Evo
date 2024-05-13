@@ -62,6 +62,16 @@ export const initialState = {
 							state: 'ACCESS_LSUNDERGROUND',
 						},
 					},
+					gangs: {
+						label: 'Gangs',
+						name: 'gangs',
+						icon: 'mask',
+						color: '#000',
+						unread: 0,
+						restricted: {
+							state: 'ACCESS_GANGAPP',
+						},
+					},
 					teams: {
 						label: 'Teams',
 						name: 'teams',

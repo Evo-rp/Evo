@@ -113,9 +113,3 @@ function Print3DText(coords, text)
         ClearDrawOrigin()
     end
 end
-
-RegisterNUICallback("Dyn8CopyID", function(data, cb)
-	Admin:CopyClipboard(data)
-
-    cb(true)
-end)

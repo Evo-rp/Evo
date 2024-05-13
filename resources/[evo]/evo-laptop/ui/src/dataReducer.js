@@ -202,6 +202,7 @@ export const initialState = {
 				'PHONE_VPN',
 				'RACE_DONGLE',
 				'ACCESS_LSUNDERGROUND',
+				'ACCESS_GANGAPP',
 				'ACCESS_BOOSTING',
 			],
 			Reputations: {
