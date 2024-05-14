@@ -34,10 +34,6 @@ AddEventHandler("txAdmin:events:scheduledRestart", function(eventData)
 	elseif not GlobalState["RestartLockdown"] and eventData.secondsRemaining <= (60 * 30) then
 		GlobalState["RestartLockdown"] = true
 	end
-
-	-- COMPONENTS.Chat.Send.System:Broadcast( -- TX Admin Sends them
-	-- 	string.format("Server Restart In %s Minutes", math.floor(eventData.secondsRemaining / 60))
-	-- )
 end)
 
 AddEventHandler("Core:Server:StartupReady", function()
