@@ -5,7 +5,7 @@ _gangChains = {
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 259,
+				drawableId = 260,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -22,7 +22,7 @@ _gangChains = {
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 260,
+				drawableId = 259,
 				textureId = 0,
 				paletteId = 0,
 			},
