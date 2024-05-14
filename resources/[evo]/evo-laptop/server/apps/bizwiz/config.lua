@@ -398,6 +398,10 @@ _bizWizConfig = {
 		logo = "https://lobfile.com/file/Gyh6kPep.png",
 		type = "mechanic",
 	},
+	dreamworks = {
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
+		type = "mechanic",
+	},
 	realestate = {
 		logo = "https://lobfile.com/file/4qAZumxW.png",
 		type = "realestate",
