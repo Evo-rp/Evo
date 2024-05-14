@@ -905,14 +905,14 @@ AddEventHandler("Businesses:Server:Startup", function()
 	Inventory.Poly:Create({
 		id = "burgershot_safe",
 		type = "box",
-		coords = vector3(-1177.4166, -897.0452, 13.9742),
-		length = 1.5,
-		width = 1.5,
+		coords = vector3(-1198.33, -895.44, 13.8),
+		length = 0.6,
+		width = 0.6,
 		options = {
 			heading = 35,
 			--debugPoly=true,
-			minZ = 11.9742,
-			maxZ = 15.9742,
+			minZ = 12.8,
+			maxZ = 13.6
 		},
 		data = {
 			business = "burgershot",

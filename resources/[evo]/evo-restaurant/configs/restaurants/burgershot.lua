@@ -8,9 +8,9 @@ table.insert(Config.Restaurants, {
                 actionString = "Preparing",
                 icon = "glass-water",
                 poly = {
-                    coords = vector3(-1196.81, -894.8, 13.97),
+                    coords = vector3(-1191.151, -905.358, 14.324),
                     w = 1.2,
-                    l = 3.0,
+                    l = 1.0,
                     options = {
                         heading = 35,
                         --debugPoly=true,
@@ -63,9 +63,9 @@ table.insert(Config.Restaurants, {
                 actionString = "Cooking",
                 icon = "burger",
                 poly = {
-                    coords = vector3(-1197.16, -898.86, 13.97),
-                    w = 3.0,
-                    l = 3.0,
+                    coords = vector3(-1187.444, -900.261, 13.948),
+                    w = 2.5,
+                    l = 3.25,
                     options = {
                         heading = 35,
                         --debugPoly=true,
@@ -192,14 +192,14 @@ table.insert(Config.Restaurants, {
         {
             id = "burgershot-freezer",
             type = "box",
-            coords = vector3(-1200.18, -902.32, 13.97),
-            width = 2.0,
-            length = 4.6,
+            coords = vector3(-1193.05, -898.67, 13.8),
+            width = 2.2,
+            length = 2.0,
             options = {
                 heading = 35,
                 --debugPoly=true,
-                minZ = 12.97,
-                maxZ = 15.97
+                minZ = 12.8,
+                maxZ = 15.8
             },
 			data = {
                 business = "burgershot",
@@ -213,14 +213,14 @@ table.insert(Config.Restaurants, {
     Pickups = {
         { -- Burger Shot
             id = "burgershot-pickup-1",
-            coords = vector3(-1192.52, -896.71, 13.97),
-            width = 1.2,
-            length = 2.0,
+            coords = vector3(-1188.01, -893.97, 13.8),
+            width = 0.4,
+            length = 0.6,
             options = {
-                heading = 304,
+                heading = 35,
                 --debugPoly=true,
-                minZ = 13.57,
-                maxZ = 15.17
+                minZ = 13.8,
+                maxZ = 14.2
             },
             data = {
                 business = "burgershot",
@@ -232,14 +232,14 @@ table.insert(Config.Restaurants, {
         },
         { -- Burger Shot
             id = "burgershot-pickup-2",
-            coords = vector3(-1193.63, -895.16, 13.97),
-            width = 1.2,
-            length = 1.6,
+            coords = vector3(-1189.52, -895.01, 13.8),
+            width = 0.4,
+            length = 0.6,
             options = {
-                heading = 304,
+                heading = 35,
                 --debugPoly=true,
-                minZ = 13.57,
-                maxZ = 15.17
+                minZ = 13.8,
+                maxZ = 14.2
             },
 			data = {
                 business = "burgershot",
@@ -251,14 +251,14 @@ table.insert(Config.Restaurants, {
         },
         { -- Burger Shot
             id = "burgershot-pickup-3",
-            coords = vector3(-1194.85, -893.42, 13.97),
-            width = 1.2,
-            length = 1.6,
+            coords = vector3(-1191.12, -896.07, 13.8),
+            width = 0.4,
+            length = 0.6,
             options = {
-                heading = 304,
+                heading = 35,
                 --debugPoly=true,
-                minZ = 13.57,
-                maxZ = 15.17
+                minZ = 13.8,
+                maxZ = 14.2
             },
 			data = {
                 business = "burgershot",
@@ -272,14 +272,14 @@ table.insert(Config.Restaurants, {
     Warmers = {
         { -- Burger Shot
             id = "burgershot-warmer-1",
-            coords = vector3(-1195.33, -897.62, 13.97),
-            length = 1.6,
-            width = 3.2,
+            coords = vector3(-1187.68, -896.96, 13.8),
+            length = 1.0,
+            width = 1.4,
             options = {
                 heading = 35,
                 --debugPoly=true,
-                minZ = 12.97,
-                maxZ = 14.97
+                minZ = 14.0,
+                maxZ = 15.0
             },
             restrict = {
                 jobs = { "burgershot" },
