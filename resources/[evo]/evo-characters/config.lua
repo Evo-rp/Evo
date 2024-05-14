@@ -25,7 +25,7 @@ Config = {
 			location = { x = -1044.84, y = -2749.85, z = 21.36, h = 0.0 },
 		},
 		{
-			id = 1,
+			id = 2,
 			label = "Sandy Shores",
 			location = { x = 1631.830, y = 3552.708, z = 35.451, h = 26.631 },
 		},
