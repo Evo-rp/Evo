@@ -253,19 +253,19 @@ AddEventHandler("Businesses:Client:Startup", function()
 					},
 				},
 			},
-			-- {
-			-- 	icon = "gem",
-			-- 	text = "Create Jewelry",
-			-- 	event = "Businesses:Client:SAGMA:OpenJewelryCrafting",
-			-- 	data = { id = k },
-			-- 	jobPerms = {
-			-- 		{
-			-- 			job = "sagma",
-			-- 			reqDuty = true,
-			-- 			jobPerms = "JOB_USE_JEWELRY_CRAFTING",
-			-- 		},
-			-- 	},
-			-- },
+			{
+				icon = "gem",
+				text = "Create Jewelry",
+				event = "Businesses:Client:SAGMA:OpenJewelryCrafting",
+				data = { id = k },
+				jobPerms = {
+					{
+						job = "sagma",
+						reqDuty = true,
+						jobPerms = "JOB_USE_JEWELRY_CRAFTING",
+					},
+				},
+			},
 		}, 3.0, true)
 	end
 end)
