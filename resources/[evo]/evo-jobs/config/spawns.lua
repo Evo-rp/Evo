@@ -364,6 +364,16 @@ _jobSpawns = {
 					h = 135.608,
 				},
 			},
+			{
+				label = "Ranger Station",
+				workplace = false,
+				location = {
+					x = 378.742,
+					y = 801.199,
+					z = 187.675,
+					h = 11.537,
+				},
+			},
 		},
 	},
 }
