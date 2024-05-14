@@ -172,7 +172,7 @@ export default (props) => {
 				<CssBaseline />
 				<Router>
 					<Phone />
-					{!phoneOpen && <Popups />}
+					{/* {!phoneOpen && <Popups />} */}
 					{showTrack && <Race />}
 				</Router>
 			</ThemeProvider>

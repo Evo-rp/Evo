@@ -589,7 +589,7 @@ export const initialState = {
 				},
 				{
 					Name: 'San Andreas State Police',
-					Id: 'sasp',
+					Id: 'sast',
 					Grades: [
 						{
 							Name: 'State Trooper',

@@ -15,6 +15,8 @@ local _tabletJobs = {
 	"tuna",
 	"pepega_pawn",
 	"harmony",
+	"uwu",
+	"dreamworks"
 }
 
 local _jobPerms = {
