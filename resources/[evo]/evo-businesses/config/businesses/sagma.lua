@@ -10,7 +10,7 @@ table.insert(Config.Businesses, {
 			},
 			recipes = {
 				{
-					result = { name = "rlg_chain", count = 1 },
+					result = { name = "atk_chain", count = 1 },
 					items = {
 						{ name = "goldbar", count = 10 },
 						{ name = "silverbar", count = 10 },
@@ -20,7 +20,7 @@ table.insert(Config.Businesses, {
 					time = 6500,
 				},
 				{
-					result = { name = "lss_chain", count = 1 },
+					result = { name = "vagos_chain", count = 1 },
 					items = {
 						{ name = "goldbar", count = 10 },
 						{ name = "silverbar", count = 10 },
