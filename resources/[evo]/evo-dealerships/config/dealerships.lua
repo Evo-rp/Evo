@@ -208,9 +208,9 @@ _dealerships = {
             catalog = {
                 {
                     type = 'box',
-                    center = vector3(152.06, -3016.29, 7.04),
-                    length = 0.8,
-                    width = 1,
+                    center = vector3(152.04, -3016.46, 7.04),
+                    length = 1.6,
+                    width = 1.8,
                     options = {
                         heading = 0,
                         minZ = 6.04,
