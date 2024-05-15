@@ -43,7 +43,7 @@ AddEventHandler("Core:Shared:Ready", function()
 					then
 						CuffAttempt()
 						_cuffPromise = promise.new()
-						Minigame.Play:RoundSkillbar(1.0 + (0.2 * (_attempts or 1)), 5 - _attempts, {
+						Minigame.Play:RoundSkillbar(3.0 + (0.2 * (_attempts or 1)), 5 - _attempts, {
 							onSuccess = "Handcuffs:Client:DoCuffBreak",
 							onFail = "Handcuffs:Client:FailCuffBreak",
 						}, {
