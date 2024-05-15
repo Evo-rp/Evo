@@ -60,7 +60,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_bleeder",
+			anim = "sandwich",
 			time = 12000,
 			pbConfig = {
 				label = "Eating",
@@ -100,7 +100,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_drink",
+			anim = "water",
 			time = 12000,
 			pbConfig = {
 				label = "Drinking",
@@ -137,7 +137,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_doubleshot",
+			anim = "sandwich",
 			time = 12000,
 			pbConfig = {
 				label = "Eating",
@@ -174,7 +174,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_prickly",
+			anim = "sandwich",
 			time = 12000,
 			pbConfig = {
 				label = "Eating",
@@ -211,7 +211,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_simply",
+			anim = "sandwich",
 			time = 12000,
 			pbConfig = {
 				label = "Eating",
@@ -248,7 +248,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_tacos",
+			anim = "sandwich",
 			time = 12000,
 			pbConfig = {
 				label = "Eating",
@@ -285,7 +285,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_fries",
+			anim = "sandwich",
 			time = 10000,
 			pbConfig = {
 				label = "Eating",
@@ -325,7 +325,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_heartstopper",
+			anim = "sandwich",
 			time = 15000,
 			pbConfig = {
 				label = "Eating",
@@ -366,7 +366,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_icecream",
+			anim = "sandwich",
 			time = 15000,
 			pbConfig = {
 				label = "Eating",
@@ -413,7 +413,7 @@ _itemsSource["burgershot"] = {
 			},
 		},
 		animConfig = {
-			anim = "bshot_icecream2",
+			anim = "sandwich",
 			time = 15000,
 			pbConfig = {
 				label = "Eating",
@@ -457,7 +457,7 @@ _itemsSource["burgershot"] = {
 		},
 		stressTicks = { "1", "2", "3", "4", "5" },
 		animConfig = {
-			anim = "bshot_wrap1",
+			anim = "sandwich",
 			time = 15000,
 			pbConfig = {
 				label = "Eating",
@@ -495,7 +495,7 @@ _itemsSource["burgershot"] = {
 		},
 		stressTicks = { "1", "2", "3", "4", "5" },
 		animConfig = {
-			anim = "bshot_wrap2",
+			anim = "sandwich",
 			time = 15000,
 			pbConfig = {
 				label = "Eating",
