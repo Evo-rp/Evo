@@ -1276,28 +1276,6 @@ _entityTypes = {
 	},
 
 	{
-		id = 122,
-		slots = 120,
-		capacity = 8000,
-		name = "Dreamworks Part Storage",
-		restriction = {
-			job = {
-				id = "dreamworks",
-			},
-		},
-	},
-	{
-		id = 123,
-		slots = 60,
-		capacity = 4000,
-		name = "Dreamworks Mini Storage",
-		restriction = {
-			job = {
-				id = "dreamworks",
-			},
-		},
-	},
-	{
 		id = 124,
 		slots = 52,
 		capacity = 300,
@@ -1625,5 +1603,28 @@ _entityTypes = {
 		slots = 192,
 		capacity = 3000,
 		name = "Storage Unit Tier 3",
+	},
+
+	{
+		id = 3003,
+		slots = 120,
+		capacity = 8000,
+		name = "Dreamworks Part Storage",
+		restriction = {
+			job = {
+				id = "dreamworks",
+			},
+		},
+	},
+	{
+		id = 3004,
+		slots = 60,
+		capacity = 4000,
+		name = "Dreamworks Mini Storage",
+		restriction = {
+			job = {
+				id = "dreamworks",
+			},
+		},
 	},
 }

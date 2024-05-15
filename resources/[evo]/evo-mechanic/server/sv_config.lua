@@ -1368,7 +1368,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 122,
+						invType = 3003,
 						owner = "dreamworks-parts-storage-1",
 					},
 				},
@@ -1388,7 +1388,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 123,
+						invType = 3004,
 						owner = "dreamworks-parts-storage-2",
 					},
 				},
@@ -1408,7 +1408,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 123,
+						invType = 3004,
 						owner = "dreamworks-parts-storage-3",
 					},
 				},
@@ -1428,7 +1428,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 123,
+						invType = 3004,
 						owner = "dreamworks-parts-storage-4",
 					},
 				},
@@ -1448,7 +1448,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 123,
+						invType = 3004,
 						owner = "dreamworks-parts-storage-5",
 					},
 				},
@@ -1468,7 +1468,7 @@ _mechanicShopStorageCrafting = {
 				data = {
 					business = "dreamworks",
 					inventory = {
-						invType = 123,
+						invType = 3004,
 						owner = "dreamworks-parts-storage-6",
 					},
 				},
