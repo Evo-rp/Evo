@@ -211,7 +211,7 @@ RegisterNetEvent("Hunting:Client:Polys", function(c)
 				text = "Inspect Corpse",
 				event = "Hunting:Client:Inspect",
 				minDist = 2.0,
-				jobs = { "tow", "police" },
+				jobs = { "police" },
 				jobDuty = true,
 				data = v.ID,
 				isEnabled = function(data, entity)
@@ -230,7 +230,7 @@ AddEventHandler("Labor:Client:Setup", function()
 				text = "Sell Tier 1 Hides",
 				event = "Hunting:Client:Sell",
 				data = { tier = 1 },
-				rep = { id = "Hunting", level = 3 },
+				rep = { id = "Hunting", level = 1 },
 				isEnabled = function()
 					return true
 				end,
