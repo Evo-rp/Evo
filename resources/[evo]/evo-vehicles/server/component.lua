@@ -854,13 +854,8 @@ AddEventHandler('entityCreated', function(entity)
                 lockedChance = 65
             end
 
-            if math.random(0, 100) <= lockedChance then
-                veh.state.Locked = true
-                SetVehicleDoorsLocked(entity, 2)
-            else
-                veh.state.Locked = false
-                SetVehicleDoorsLocked(entity, 1)
-            end
+            veh.state.Locked = true
+            SetVehicleDoorsLocked(entity, 2)
         end
     end
 end)
