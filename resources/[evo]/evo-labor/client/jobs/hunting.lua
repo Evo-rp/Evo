@@ -240,7 +240,7 @@ AddEventHandler("Labor:Client:Setup", function()
 				text = "Sell Tier 2 Hides",
 				event = "Hunting:Client:Sell",
 				data = { tier = 2 },
-				rep = { id = "Hunting", level = 4 },
+				rep = { id = "Hunting", level = 1 },
 				isEnabled = function()
 					return true
 				end,
@@ -250,7 +250,7 @@ AddEventHandler("Labor:Client:Setup", function()
 				text = "Sell Tier 3 Hides",
 				event = "Hunting:Client:Sell",
 				data = { tier = 3 },
-				rep = { id = "Hunting", level = 5 },
+				rep = { id = "Hunting", level = 1 },
 				isEnabled = function()
 					return true
 				end,
@@ -260,7 +260,7 @@ AddEventHandler("Labor:Client:Setup", function()
 				text = "Sell Tier 4 Hides",
 				event = "Hunting:Client:Sell",
 				data = { tier = 4 },
-				rep = { id = "Hunting", level = 6 },
+				rep = { id = "Hunting", level = 1 },
 				isEnabled = function()
 					return true
 				end,
