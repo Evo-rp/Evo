@@ -43,7 +43,7 @@ PropertyInteriors["container1"] = {
         },
     },
     zone = {
-        center = vector3(326.18, 108.58, -94.7),
+        center = vector3(-835.62, -396.14, 31.56),
          length = 21.2,
          width =  21.2,
          options = {
