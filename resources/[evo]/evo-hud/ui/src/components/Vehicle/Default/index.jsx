@@ -86,11 +86,11 @@ const useStyles = makeStyles((theme) => ({
         position: 'relative',
     },
     speedText: {
-        fontSize: 55,
+        fontSize: 38,
     },
     speedMeasure: {
         marginLeft: 5,
-        fontSize: 20,
+        fontSize: 16,
     },
     rpmBg: {
         background: `${theme.palette.secondary.dark}80`,
