@@ -59,16 +59,16 @@ const useStyles = makeStyles((theme) => ({
         top: 0,
     },
     speed: {
-        fontSize: 40,
-        lineHeight: '30px',
+        fontSize: 55,
+        lineHeight: '35px',
 
         '& small': {
-            fontSize: 16,
+            fontSize: 20,
             display: 'block',
         },
     },
     off: {
-        fontSize: 18,
+        fontSize: 20,
         color: theme.palette.text.alt,
     },
     checkEngine: {
@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
         height: 'fit-cotnent',
         position: 'absolute',
         bottom: 0,
-        fontSize: 18,
+        fontSize: 20,
         color: theme.palette.error.light,
         animation: 'flash linear 1s infinite',
     },
