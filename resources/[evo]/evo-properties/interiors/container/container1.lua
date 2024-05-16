@@ -27,12 +27,12 @@ PropertyInteriors["container1"] = {
             }
         },
         crafting = {
-            coords = vector3(-835.62, -396.14, 31.56),
-            heading = 0.0,
+            coords = vector3(-834.85, -396.49, 31.56),
+            heading = 1,
             polyzone = {
-                center = vector3(-835.62, -396.14, 31.56),
-                length = 3.6,
-                width = 2.6,
+                center = vector3(-834.85, -396.49, 31.56),
+                length = 2.2,
+                width = 0.9,
                 options = {
                     heading = 0,
                     --debugPoly=true,
@@ -43,11 +43,11 @@ PropertyInteriors["container1"] = {
         },
     },
     zone = {
-        center = vector3(-835.62, -396.14, 31.56),
-         length = 21.2,
-         width =  21.2,
+        center = vector3(-834.85, -396.49, 31.56),
+         length = 2.2,
+         width =  0.9,
          options = {
-             heading = 340,
+             heading = 1,
              --debugPoly=true,
              minZ = -103.1,
              maxZ = -83.7

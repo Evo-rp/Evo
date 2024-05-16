@@ -146,7 +146,12 @@ CRAFTING = {
 }
 
 _benchObjs = {}
-_benches = nil
+_benches = {
+	{
+		model = "890176606",
+		coords = vector3(-834.85, -396.49, 31.56)
+	}
+}
 RegisterNetEvent("Crafting:Client:CreateBenches", function(benches)
 	_benches = benches
 	Crafting.Benches:Refresh(nil)
