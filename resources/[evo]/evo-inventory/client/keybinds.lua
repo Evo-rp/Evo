@@ -28,7 +28,7 @@ function RegisterKeyBinds()
 		)
 	end
 
-	for i = 1, 5 do
+	for i = 1, 4 do
 		HotBarAction(i)
 	end
 end
