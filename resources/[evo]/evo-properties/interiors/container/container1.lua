@@ -42,15 +42,15 @@ PropertyInteriors["container1"] = {
             }
         },
     },
-    -- zone = {
-    --     center = vector3(326.18, 108.58, -94.7),
-    --     length = 21.2,
-    --     width =  21.2,
-    --     options = {
-    --         heading = 340,
-    --         --debugPoly=true,
-    --         minZ = -103.1,
-    --         maxZ = -83.7
-    --     }
-    -- },
+    zone = {
+        center = vector3(326.18, 108.58, -94.7),
+         length = 21.2,
+         width =  21.2,
+         options = {
+             heading = 340,
+             --debugPoly=true,
+             minZ = -103.1,
+             maxZ = -83.7
+        }
+     },
 }
