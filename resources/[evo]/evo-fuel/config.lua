@@ -487,5 +487,15 @@ Config = {
 			maxZ = 33.59,
 			restricted = false,
 		},
+		{ -- DUMB_PD_CUNTS_FUEL
+		center = vector3(560.91, 17.29, 70.61),
+		length = 20.3,
+		width = 6.3,
+		heading = 339,
+		--debugPoly=true,
+		minZ = 69.61,
+		maxZ = 73.61,
+		restricted = false,
+	},
 	}
 }
