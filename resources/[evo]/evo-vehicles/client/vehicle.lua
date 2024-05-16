@@ -277,6 +277,13 @@ VEHICLE = {
 		local vehEnt = Entity(vehicle)
 		local val = GetVehicleHandlingInt(vehicle, "CHandlingData", "nMonetaryValue")
 
+		local _, class, __ = exports['evo-performance']:getVehicleInfo(vehEnt)
+
+		if class == 'A+' or class == 'S' or class == 'S+' or class == 'X' then
+			Notification:Error("You cannot lockpick this vehicle", 3000, 'key')
+			return
+		end
+
 		local team = LocalPlayer.state.Character:GetData("Team")
 
 		if 
@@ -412,6 +419,12 @@ VEHICLE = {
 	Lockpick = function(self, config, canUnlockOwned, cb)
 		local vehEnt = Entity(VEHICLE_INSIDE)
 		local team = LocalPlayer.state.Character:GetData("Team")
+        local _, class, __ = exports['evo-performance']:getVehicleInfo(vehEnt)
+
+		if class == 'A+' or class == 'S' or class == 'S+' or class == 'X' then
+			Notification:Error("You cannot lockpick this vehicle", 3000, 'key')
+			return
+		end
 
 		if 
 			not vehEnt.state.towObjective 
@@ -880,6 +893,13 @@ AddEventHandler("Vehicles:Client:StartUp", function()
 				if VEHICLE_SEAT == -1 then
 					local vehClass = _vehicleClasses[Vehicles.Class:Get(VEHICLE_INSIDE)]
 
+					local _, class, __ = exports['evo-performance']:getVehicleInfo(VEHICLE_INSIDE)
+
+					if class == 'A+' or class == 'S' or class == 'S+' or class == 'X' then
+						Notification:Error("You cannot lockpick this vehicle", 3000, 'key')
+						return
+					end
+
 					local boostOverride = Entity(VEHICLE_INSIDE).state.boostForceHack
 
 					if vehClass?.advLockpick and not boostOverride then
@@ -892,6 +912,14 @@ AddEventHandler("Vehicles:Client:StartUp", function()
 				end
 			else
 				local target = Targeting:GetEntityPlayerIsLookingAt()
+
+				local _, class, __ = exports['evo-performance']:getVehicleInfo(target)
+
+				if class == 'A+' or class == 'S' or class == 'S+' or class == 'X' then
+					Notification:Error("You cannot lockpick this vehicle", 3000, 'key')
+					return
+				end
+
 				if
 					target
 					and target.entity

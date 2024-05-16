@@ -848,12 +848,6 @@ AddEventHandler('entityCreated', function(entity)
             veh.state.PlayerDriven = false
             veh.state.Fuel = math.random(vehicleParked and 25 or 50, 100)
             veh.state.Mileage = math.random(900, 10000)
-
-            local lockedChance = 45 -- %
-            if vehicleParked then
-                lockedChance = 65
-            end
-
             veh.state.Locked = true
             SetVehicleDoorsLocked(entity, 2)
         end
