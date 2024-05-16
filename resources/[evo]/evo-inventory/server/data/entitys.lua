@@ -1276,19 +1276,6 @@ _entityTypes = {
 	},
 
 	{
-		id = 124,
-		slots = 52,
-		capacity = 300,
-		name = "Dreamworks Safe",
-		restriction = {
-			job = {
-				id = "dreamworks",
-				permissionKey = "JOB_ACCESS_SAFE",
-			},
-		},
-	},
-
-	{
 		id = 122,
 		slots = 120,
 		capacity = 8000,
@@ -1624,6 +1611,18 @@ _entityTypes = {
 		restriction = {
 			job = {
 				id = "dreamworks",
+			},
+		},
+	},
+	{
+		id = 3005,
+		slots = 52,
+		capacity = 300,
+		name = "Dreamworks Safe",
+		restriction = {
+			job = {
+				id = "dreamworks",
+				permissionKey = "JOB_ACCESS_SAFE",
 			},
 		},
 	},

@@ -462,6 +462,27 @@ AddEventHandler("Businesses:Server:Startup", function()
 	})
 
 	Inventory.Poly:Create({
+		id = "dreamworks_safe",
+		type = "box",
+		coords = vector3(-737.03, -1525.33, 5.06),
+		length = 1.0,
+		width = 1.1,
+		options = {
+			heading = 22,
+			--debugPoly = true,
+			minZ = 4.11,
+			maxZ = 5.91
+		},
+		data = {
+			business = "dreamworks",
+			inventory = {
+				invType = 3005,
+				owner = "dreamworks_safe",
+			},
+		},
+	})
+
+	Inventory.Poly:Create({
 		id = "unicorn_safe",
 		type = "box",
 		coords = vector3(93.78, -1290.6, 29.26),
