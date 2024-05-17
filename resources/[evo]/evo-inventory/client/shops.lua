@@ -8,6 +8,7 @@ local npcData = {
     ['Ammunation'] = {first_name = 'Micheal', last_name = 'Anderson', description = 'Grab all your legal firearm equipment from here.'},
     ['Hardware Store'] = {first_name = 'James', last_name = 'Wrinklethorpe', description = 'Grab all of your utilities here.'},
     ['Medical Supplies'] = {first_name = 'Jim', last_name = 'Long', description = 'Need a bandage ?'},
+    ['Pharmacy'] = {first_name = 'Betty', last_name = 'Bandage', description = 'Need a bandage ?'},
     ['Hunting Supplies'] = {first_name = 'Elena', last_name = 'Blackwood', description = 'Gear up for the wilderness: Your one-stop shop for hunters'},
     ['Fishing Supplies'] = {first_name = 'Caleb', last_name = 'Rivers', description = 'Reel in the adventure, your premier destination for angling essentials'},
     ['Food Wholesaler'] = {first_name = 'Natalie', last_name = 'Archer', description = 'Delivering quality provisions to fuel your culinary creations, straight wholesale'},
@@ -83,6 +84,7 @@ AddEventHandler("Shop:Client:OpenShopNPC", function(data)
 end)
 
 AddEventHandler('Shop:Client:NPC', function(data, param)
+	if npcData[param.name] == nil then Logger:Error("Inventory", param.name .. ' does not exist on NPC dialog') return end
 	NPCDialog.Open(data.entity, {
 		first_name = npcData[param.name].first_name,
 		last_name = npcData[param.name].last_name,

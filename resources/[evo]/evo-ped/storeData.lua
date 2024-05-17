@@ -356,12 +356,12 @@ _clothingStores = {
 
     {  -- MT Zancudo 1
         type = 'box', 
-        center = vector3(-443.69, -310.06, 34.91),
-        length = 2.2,
-        width = 3.0,
-        heading = 23,
-        minZ = 33.91,
-        maxZ = 36.71,
+        center = vector3(1138.78, -1539.62, 35.03),
+        length = 3.4,
+        width = 2.8,
+        heading = 0,
+        minZ = 34.03,
+        maxZ = 36.63
         blip = false,
     },
     {  -- MT Zancudo 2

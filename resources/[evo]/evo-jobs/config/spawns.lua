@@ -140,13 +140,13 @@ _jobSpawns = {
 		icon = "star-of-life",
 		locations = {
 			{
-				label = "Mt Zonah Medical",
+				label = "St Fiacre",
 				workplace = "safd",
 				location = {
-					x = -435.302,
-					y = -306.880,
-					z = 34.999,
-					h = 199.190,
+					x = 1140.764,
+					y = -1538.826,
+					z = 35.033,
+					h = 201.792,
 				},
 			},
 			{
