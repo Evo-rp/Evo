@@ -53,6 +53,9 @@ INTERACTION = {
 			labelFunc = labelFunc,
 		}
 	end,
+	RemoveMenu = function(self, id)
+		menus[id] = {}
+	end,
 	ShowMenu = function(self, items)
 		local is = Interaction:ItemsAsMenu(items)
 		stack[#stack + 1] = is

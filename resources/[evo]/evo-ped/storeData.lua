@@ -361,7 +361,7 @@ _clothingStores = {
         width = 2.8,
         heading = 0,
         minZ = 34.03,
-        maxZ = 36.63
+        maxZ = 36.63,
         blip = false,
     },
     {  -- MT Zancudo 2
