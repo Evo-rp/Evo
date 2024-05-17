@@ -1,4 +1,4 @@
-_payPeriod = 60
+_payPeriod = 40
 
 Citizen.CreateThread(function()
     while not _loaded do
