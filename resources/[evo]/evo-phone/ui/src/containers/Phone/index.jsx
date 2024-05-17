@@ -71,7 +71,7 @@ export default withRouter((props) => {
 					zoom: `${settings.zoom}%`,
 			  },
 		notificationActive: {
-			height: '82.5vh',
+			height: '100vh',
 			width: 500,
 			position: 'absolute',
 			bottom: '-70vh',
