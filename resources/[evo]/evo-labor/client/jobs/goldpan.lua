@@ -1,5 +1,6 @@
 RegisterNetEvent("Characters:Client:Spawn", function()
-    Blips:Add("GoldPan", "Goldpanning Utilities", { x = 1956.636, y = 710.202, z = 163.387 }, 478, 46, 0.9)
+    Blips:Add("GoldPan", "Goldpanning Shop", { x = 1956.636, y = 710.202, z = 163.387 }, 478, 46, 0.9)
+    Blips:Add("Smeltery", "Smeltery", { x = 1110.89, y = -2008.9, z = 30.94 }, 618, 46, 0.9) 
 end)
 
 function SkillCheckBucket()
@@ -63,7 +64,7 @@ end
 
 function SkillCheckPanning()
     local p = promise.new()
-    Minigame.Play:RoundSkillbar(2.0, 2, {
+    Minigame.Play:RoundSkillbar(2.5, 2, {
         onSuccess = function()
             Wait(2500)
             Progress:Progress({
@@ -124,7 +125,7 @@ AddEventHandler('Labor:Client:Setup', function()
                 Notification:Error("You aren't close enough to the smelting area", 2000)
             end
         else
-            Notification:Error("You don't have enough gold nuggets", 2000)
+            Notification:Error("You don't have enough gold nuggets (20)", 2000)
         end
     end)
 
@@ -146,7 +147,7 @@ AddEventHandler('Labor:Client:Setup', function()
                 Notification:Error("You aren't in shallow enough water to sift for gold", 2000)
             end
         else
-            Notification:Error("You don't have a enough gravel", 2000)
+            Notification:Error("You don't have a enough gravel (5)", 2000)
         end
     end)
 end)
