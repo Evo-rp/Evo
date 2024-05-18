@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles';
 
 import DOJ from '../../assets/img/seals/doj_seal.webp';
 import LSPDBadge from '../../assets/img/seals/lspd_badge.webp';
-import StateBadge from '../../assets/img/seals/sasp_seal.webp';
+import StateBadge from '../../assets/img/seals/sapr.webp';
 import MedicalServices from '../../assets/img/seals/MedicalServices.webp';
 import SheriffBadge from '../../assets/img/seals/bcso_seal.webp';
 
@@ -32,6 +32,8 @@ export default ({ badge }) => {
             case 'lscso':
                 return SheriffBadge;
             case 'sast':
+                return StateBadge;
+            case 'sapr':
                 return StateBadge;
             case 'safd':
                 return MedicalServices;
