@@ -188,6 +188,32 @@ export const initialState = {
 						// },
 						params: '',
 					},
+					business_directory: {
+						storeLabel: 'Business Directory',
+						label: 'Business Directory',
+						icon: ['fa', 'briefcase'],
+						name: 'business_directory',
+						color: '#d68111',
+						canUninstall: true,
+						unread: 0,
+						// restricted: {
+						// 	state: 'PHONE_VPN',
+						// },
+						params: '',
+					},
+					voting: {
+						storeLabel: 'Voting',
+						label: 'Voting',
+						icon: ['fa', 'ballot'],
+						name: 'voting',
+						color: '#787777',
+						canUninstall: true,
+						unread: 0,
+						// restricted: {
+						// 	state: 'PHONE_VPN',
+						// },
+						params: '',
+					},
 					doj: {
 						storeLabel: 'DOJ',
 						label: 'DOJ',

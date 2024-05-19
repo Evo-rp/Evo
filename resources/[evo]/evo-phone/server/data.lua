@@ -187,6 +187,18 @@ _appData = {
 		requirements = {},
 	},
 	{
+		name = "voting",
+		storeLabel = "Voting",
+		label = "Voting",
+		icon = { "fa", "ballot" },
+		color = "#787777",
+		params = "",
+		canUninstall = true,
+		store = true,
+		unread = 0,
+		requirements = {},
+	},
+	{
 		name = "doj",
 		storeLabel = "DOJ",
 		label = "DOJ",

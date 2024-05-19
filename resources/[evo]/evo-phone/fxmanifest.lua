@@ -11,6 +11,8 @@ client_script("@evo-pwnzor/client/check.lua")
 
 ui_page("ui/dist/index.html")
 
+server_script("@oxmysql/lib/MySQL.lua")
+
 files({
 	"ui/dist/*.*",
 })
