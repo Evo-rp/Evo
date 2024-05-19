@@ -17,7 +17,7 @@ _fleetConfig = {
 				type = 0,
 				make = "Generic",
 				model = "Police CaraCara",
-				price = 0,
+				price = 35000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -116,9 +116,113 @@ _fleetConfig = {
                     }
                 ]]),
 			},
-			{
-				vehicle = `rdhba1300`,
+            {
+				vehicle = `RDHvigeror`,
 				type = 0,
+				make = "Generic",
+				model = "Police CaraCara",
+				price = 90000,
+				class = "S+",
+				liveries = {
+					[0] = "LSPD",
+					[1] = "BCSO",
+					[2] = "SASP",
+					[3] = "Unmarked",
+				},
+				defaultProperties = json.decode([[
+                    {
+                        "pearlescentColor": 0,
+                        "color2": {
+                            "g": 8,
+                            "b": 8,
+                            "r": 8
+                        },
+                        "mods": {
+                            "turbo": false,
+                            "sideSkirt": -1,
+                            "seats": -1,
+                            "engineBlock": -1,
+                            "windows": -1,
+                            "tank": -1,
+                            "frontWheels": -1,
+                            "aPlate": -1,
+                            "dashboard": -1,
+                            "rightFender": -1,
+                            "steeringWheel": -1,
+                            "doorSpeaker": -1,
+                            "xenonColor": 255,
+                            "speakers": -1,
+                            "dial": -1,
+                            "hood": -1,
+                            "struts": -1,
+                            "vanityPlate": -1,
+                            "armor": -1,
+                            "shifterLeavers": -1,
+                            "trunk": -1,
+                            "roof": -1,
+                            "spoilers": -1,
+                            "horns": -1,
+                            "backWheels": -1,
+                            "trimA": -1,
+                            "exhaust": -1,
+                            "plateHolder": -1,
+                            "grille": -1,
+                            "trimB": -1,
+                            "airFilter": -1,
+                            "brakes": -1,
+                            "frame": -1,
+                            "frontBumper": -1,
+                            "hydrolic": -1,
+                            "suspension": -1,
+                            "archCover": -1,
+                            "transmission": -1,
+                            "xenon": true,
+                            "rearBumper": -1,
+                            "fender": -1,
+                            "ornaments": -1,
+                            "aerials": -1,
+                            "engine": -1
+                        },
+                        "tyreSmokeColor": {
+                            "g": 255,
+                            "b": 255,
+                            "r": 255
+                        },
+                        "livery": 0,
+                        "tyreSmoke": false,
+                        "paintType": [1, 1],
+                        "windowTint": 0,
+                        "plateIndex": 4,
+                        "color1": {
+                            "g": 8,
+                            "b": 8,
+                            "r": 8
+                        },
+                        "neonEnabled": [false, false, false, false],
+                        "wheels": 1,
+                        "extras": {
+                            "1": true,
+                            "2": true,
+                            "3": true,
+                            "4": true,
+                            "5": false,
+                            "6": true,
+                            "7": true,
+                            "8": true,
+                            "9": false
+                        },
+                        "wheelColor": 0,
+                        "neonColor": {
+                            "g": 0,
+                            "b": 255,
+                            "r": 255
+                        }
+                    }
+                ]]),
+			},
+			{
+				vehicle = `RDHmtk`,
+				type = 35000,
 				make = "Generic",
 				model = "Police Bike",
 				price = 0,
@@ -225,7 +329,7 @@ _fleetConfig = {
 				type = 0,
 				make = "Generic",
 				model = "Police Charger",
-				price = 0,
+				price = 55000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -329,7 +433,7 @@ _fleetConfig = {
 				type = 0,
 				make = "Generic",
 				model = "Police Explorer",
-				price = 0,
+				price = 35000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -430,7 +534,7 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHgresleyr`,
-				type = 0,
+				type = 35000,
 				make = "Generic",
 				model = "Police Druango",
 				price = 0,
@@ -534,7 +638,7 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHstalker`,
-				type = 0,
+				type = 35000,
 				make = "Generic",
 				model = "Police Expedition",
 				price = 0,
@@ -638,7 +742,7 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHstanier`,
-				type = 0,
+				type = 25000,
 				make = "Generic",
 				model = "Police CVPI",
 				price = 0,
@@ -742,7 +846,7 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHtorrence`,
-				type = 0,
+				type = 25000,
 				make = "Generic",
 				model = "Police torrence",
 				price = 0,
