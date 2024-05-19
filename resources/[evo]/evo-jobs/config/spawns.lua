@@ -376,4 +376,19 @@ _jobSpawns = {
 			},
 		},
 	},
+	["burgershot"] = {
+		icon = "burger",
+		locations = {
+			{
+				label = "Burger Shot",
+				workplace = false,
+				location = {
+					x = -1174.257,
+					y = -896.186,
+					z = 13.938,
+					h = 300.980,
+				},
+			},
+		},
+	},
 }
