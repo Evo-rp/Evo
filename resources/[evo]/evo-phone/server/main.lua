@@ -47,6 +47,9 @@ local defaultPermissions = {
 	redline = {
 		create = false,
 	},
+	voting = {
+		admin = false,
+	},
 }
 
 AddEventHandler("onResourceStart", function(resource)

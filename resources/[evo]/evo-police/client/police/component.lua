@@ -4,6 +4,7 @@ local policeStationBlips = {
 	vector3(1850.634, 3683.860, 100.0),
 	vector3(372.658, -1601.816, 100.0),
 	vector3(835.011, -1292.794, 100.0),
+	vector3(378.742, 801.199, 187.675),
 }
 
 local _pdModels = {}

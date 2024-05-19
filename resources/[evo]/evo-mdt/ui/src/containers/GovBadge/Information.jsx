@@ -19,6 +19,10 @@ const DepartmentData = {
         name: 'San Andreas Highway Patrol',
         color: '#C0C0C0',
     },
+    sapr: {
+        name: 'San Andreas State Park Rangers',
+        color: '#4E824E',
+    },
     safd: {
         name: 'San Andreas Medical Services',
         color: '#5271ff',

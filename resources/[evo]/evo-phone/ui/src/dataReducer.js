@@ -62,6 +62,8 @@ export const initialState = {
 					'blueline',
 					'twitter',
 					'gallery',
+					'business_directory',
+					'voting',
 					'leoassist',
 					'doj',
 					'bank',
@@ -90,6 +92,8 @@ export const initialState = {
 					'blueline',
 					'twitter',
 					'gallery',
+					'business_directory',
+					'voting',
 					'leoassist',
 					'doj',
 					'bank',
@@ -118,6 +122,9 @@ export const initialState = {
 			PhonePermissions: {
 				redline: {
 					create: true,
+				},
+				voting: {
+					admin: true,
 				},
 			},
 			PhoneSettings: {
@@ -735,6 +742,8 @@ export const initialState = {
 			'bank',
 			'twitter',
 			'gallery',
+			'business_directory',
+			'voting',
 			'leoassist',
 			'doj',
 			'adverts',
@@ -755,6 +764,8 @@ export const initialState = {
 			'bank',
 			'twitter',
 			'gallery',
+			'business_directory',
+			'voting',
 			'leoassist',
 			'doj',
 			'adverts',
@@ -1268,6 +1279,28 @@ export const initialState = {
 			},
 		],
 		gallery: [],
+		openBusinesses: [
+			{
+				Name: 'Hayes Autos',
+				Employees: [
+					{
+						Name: 'Aspect',
+						Number: 1234,
+						Rank: 'Mechanic'
+					}
+				]
+			},
+			{
+				Name: 'Tuner Shop',
+				Employees: [
+					{
+						Name: 'Koi',
+						Number: 1234,
+						Rank: 'Owner'
+					}
+				]
+			},
+		],
 		// doj: [
 		// 	{
 		// 		Name: 'Aspect Dev',

@@ -16,6 +16,7 @@ import pdRaceReducer from 'Apps/blueline/reducer';
 import leoReducer from 'Apps/leoassist/reducer';
 import trackReducer from 'containers/Race/reducer';
 import comReducer from 'Apps/comanager/reducer';
+import votingReducer from 'Apps/voting/reducer'
 import laborReducer from 'Apps/labor/reducer';
 import cryptoReducer from 'Apps/crypto/reducer';
 import dyn8Reducer from 'Apps/dyn8/reducer';
@@ -39,6 +40,7 @@ export default () =>
 		leo: leoReducer,
 		track: trackReducer,
 		com: comReducer,
+		voting: votingReducer,
 		labor: laborReducer,
 		crypto: cryptoReducer,
 		dyn8: dyn8Reducer,
