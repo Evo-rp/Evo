@@ -61,6 +61,8 @@ COMPONENTS.Logger = {
 }
 
 function doLog(level, component, log, flags, data)
+	if GetConvar('sv_environment') === 'prod' then return end
+
 	Citizen.CreateThread(function()
 		local prefix = "[LOG]"
 		local mPrefix = "[LOG]"
