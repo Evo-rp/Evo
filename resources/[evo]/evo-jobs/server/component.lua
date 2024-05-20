@@ -293,6 +293,7 @@ _JOBS = {
 
 						_characterDuty[stateId] = {
 							Source = source,
+							Name = hasJob.Name,
 							Id = hasJob.Id,
 							StartTime = os.time(),
 							Time = os.time(),
@@ -456,6 +457,9 @@ _JOBS = {
 		GetDutyData = function(self, jobId)
 			return _dutyData[jobId]
 		end,
+		GetAllDutyData = function(self)
+			return _dutyData
+		end,
 		RefreshDutyData = function(self, jobId)
 			if not _dutyData[jobId] then
 				_dutyData[jobId] = {}
@@ -469,6 +473,7 @@ _JOBS = {
 			for k, v in pairs(_characterDuty) do
 				if v ~= nil and v.Id == jobId then
 					totalCount = totalCount + 1
+					jobName = v.Name
 					table.insert(onDutyPlayers, v.Source)
 					local player = Fetch:Source(v.Source)
 					local char = player:GetData('Character')
@@ -494,6 +499,7 @@ _JOBS = {
 			end
 
 			_dutyData[jobId] = {
+				Name = jobName,
 				Active = totalCount > 0,
 				Count = totalCount,
 				WorkplaceCounts = workplaceCounts,

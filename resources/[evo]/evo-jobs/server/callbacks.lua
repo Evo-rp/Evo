@@ -10,4 +10,8 @@ function RegisterJobCallbacks()
     Callbacks:RegisterServerCallback('Jobs:GetActiveDuty', function(source, jobId, cb)
         cb(Jobs.Duty:GetDutyData(jobId))
     end)
+
+    Callbacks:RegisterServerCallback('Jobs:GetAll', function(source, jobId, cb)
+        cb(Jobs.Duty:GetAllDutyData())
+    end)
 end
