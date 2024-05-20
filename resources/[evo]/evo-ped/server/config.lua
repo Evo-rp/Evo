@@ -33,18 +33,18 @@ _gangChains = {
 			},
 		},
 	},
-	ferrari = {
-		prop = `ferrari_chain`,
+	Dorky = {
+		prop = `Dorky_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 169,
+				drawableId = 285,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 143,
+				drawableId = 251,
 				textureId = 0,
 				paletteId = 0,
 			},

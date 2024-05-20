@@ -222,10 +222,10 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHmtk`,
-				type = 35000,
+				type = 0,
 				make = "Generic",
 				model = "Police Bike",
-				price = 0,
+				price = 35000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -534,10 +534,10 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHgresleyr`,
-				type = 35000,
+				type = 0,
 				make = "Generic",
 				model = "Police Druango",
-				price = 0,
+				price = 35000,
 				class = "S",
 				liveries = {
 					[0] = "LSPD",
@@ -638,10 +638,10 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHstalker`,
-				type = 35000,
+				type = 0,
 				make = "Generic",
 				model = "Police Expedition",
-				price = 0,
+				price = 35000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -742,10 +742,10 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHstanier`,
-				type = 25000,
+				type = 0,
 				make = "Generic",
 				model = "Police CVPI",
-				price = 0,
+				price = 25000,
 				class = "A+",
 				liveries = {
 					[0] = "LSPD",
@@ -846,10 +846,10 @@ _fleetConfig = {
 			},
 			{
 				vehicle = `RDHtorrence`,
-				type = 25000,
+				type = 0,
 				make = "Generic",
 				model = "Police torrence",
-				price = 0,
+				price = 25000,
 				class = "B",
 				liveries = {
 					[0] = "LSPD",
