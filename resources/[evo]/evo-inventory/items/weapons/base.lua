@@ -1991,7 +1991,8 @@ _itemsSource["weapons_base"] = {
 	},
 	{
 		name = "WEAPON_FADEBFKNIFE",
-		label = "Fade Flip Knife",
+		label = "Fade butterfly knife",
+		iconOverride = "weapon_fadebfknife",
 		weapon = "WEAPON_FADEBFKNIFE",
 		ammoType = "NONE",
 		requiresLicense = false,
