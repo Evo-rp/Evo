@@ -121,8 +121,10 @@ function getVehicleInfo(vehicle)
 
     local vehicleClass = GetVehicleClass(vehicle)
 
-    if vehicleClass ~= 8 then
-        if peformanceScore > 900 then
+    if vehicleClass == 15 then -- helicopter
+        class = "X"
+        elseif vehicleClass ~= 8 then
+    if peformanceScore > 900 then
             class = "X"
         elseif peformanceScore > 775 then
             class = "S+"
