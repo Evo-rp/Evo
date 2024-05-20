@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar, IconButton, Grid, Tooltip, ImageList, ImageListItem, ImageListItemBar, Accordion, AccordionSummary, Typography, AccordionDetails, List, ListItem, ListItemText, Divider, Button, Tabs, Tab, FormGroup, Checkbox, FormControlLabel, TextField, Box, LinearProgress, FormControl, Select, MenuItem } from '@material-ui/core';
+import { AppBar, IconButton, Grid, Tooltip, Typography, Button, Tabs, Tab, FormGroup, Checkbox, FormControlLabel, TextField, Box, LinearProgress, FormControl, Select, MenuItem } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Nui from '../../util/Nui';
 import { Modal } from '../../components';
 import { throttle } from 'lodash';
+import { useAlert } from '../../hooks';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
@@ -83,6 +84,7 @@ export default (props) => {
     const [jobRestriction, setJobRestriction] = useState('')
     const myPermissions = useSelector((state) => state.data.data.player.PhonePermissions);
 	const externalJobs = useSelector((state) => state.data.data.externalJobs);
+	const showAlert = useAlert();
 
     const handleCheck = (id) => {
         setCheckedBox(id);
@@ -195,7 +197,6 @@ export default (props) => {
     };
 
     const shouldHide = (data) => {
-        console.log(data)
         if (data === '' || data === 'none') {
             return ''
         }
@@ -375,7 +376,6 @@ export default (props) => {
                     type="text"
                     fullWidth
                     multiline
-                    required
                     value={jobRestriction}
                     onChange={(e) => setJobRestriction(e.target.value)}
                     inputProps={{
