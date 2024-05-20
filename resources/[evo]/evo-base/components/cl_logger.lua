@@ -28,7 +28,7 @@ COMPONENTS.Logger = {
 }
 
 function doLog(level, component, log)
-    if GetConvar('sv_environment') === 'prod' then return end
+    if GetConvar('sv_environment') == 'prod' then return end
     local prefix = '[LOG]'
     if level > 0 then
         if level == 1 then
