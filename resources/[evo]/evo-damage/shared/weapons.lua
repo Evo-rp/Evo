@@ -8,6 +8,7 @@ Config.Weapons = {
 	[`WEAPON_KNIFE`] = { minor = false, violent = true },
 	[`WEAPON_SWITCHBLADE`] = { minor = false, violent = true },
 	[`WEAPON_SHIV`] = { minor = false, violent = true },
+	[`WEAPON_FADEBFKNIFE`] = { minor = false, violent = true },
 	[`WEAPON_KATANA`] = { minor = false, violent = true },
 	[`WEAPON_NIGHTSTICK`] = { minor = true, violent = true },
 	[`WEAPON_HAMMER`] = { minor = true, violent = true },

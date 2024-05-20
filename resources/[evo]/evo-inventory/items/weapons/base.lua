@@ -1990,9 +1990,9 @@ _itemsSource["weapons_base"] = {
 		weight = 0.5,
 	},
 	{
-		name = "weapon_fadefknife",
+		name = "WEAPON_FADEBFKNIFE",
 		label = "Fade Flip Knife",
-		weapon = "weapon_fadebfknife",
+		weapon = "WEAPON_FADEBFKNIFE",
 		ammoType = "NONE",
 		requiresLicense = false,
 		price = 2000,
