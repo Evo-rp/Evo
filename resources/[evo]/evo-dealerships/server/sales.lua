@@ -262,7 +262,7 @@ function RegisterVehicleSaleCallbacks()
                                                             Source = targetSrc,
                                                         })
 
-                                                        if salePrice >= 50000 then
+                                                        if salePrice >= 500000 then
                                                             local creditIncrease = math.floor(salePrice / 2000)
                                                             if creditIncrease > 150 then
                                                                 creditIncrease = 150

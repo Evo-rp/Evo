@@ -485,7 +485,7 @@ function RegisterCallbacks()
 											Last = targetChar:GetData("Last"),
 										})
 
-										if prop.price >= 50000 then
+										if prop.price >= 250000 then
 											local creditIncrease = math.floor(prop.price / 1500)
 											if creditIncrease > 300 then
 												creditIncrease = 300
