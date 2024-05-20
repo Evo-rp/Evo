@@ -43,7 +43,7 @@ AddEventHandler("Phone:Server:RegisterCallbacks", function()
     end)
 
     Callbacks:RegisterServerCallback("Phone:Voting:CreateCandidate", function(source, data, cb)
-        MySQL.insert('INSERT INTO voting (label, vote_category, restriced) VALUES(@Label, @Category, @Restricted)', {
+        MySQL.insert('INSERT INTO voting (label, vote_category, restricted) VALUES(@Label, @Category, @Restricted)', {
             ['@Label'] = data.name,
             ['@Category'] = data.category,
             ['@Restricted'] = data.jobRestriction

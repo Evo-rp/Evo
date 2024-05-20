@@ -288,44 +288,4 @@ function RegisterChatCommands()
 	end, {
 		help = "DO NOT USE",
 	}, 0)
-
-	Chat:RegisterAdminCommand("givephonepermission", function(source, args, rawCommand)
-		local plyr = Fetch:SID(source)
-		local char = Fetch:Source(source):GetData("Character")
-		local perms = char:GetData("PhonePermissions")
-
-		char:SetData("PhonePermissions", {
-			redline = {
-				create = perms.redline
-			},
-			voting = {
-				admin = true,
-			},
-		})
-	end, {
-		help = "[Admin] Give Phone Permission",
-		-- params = {
-		-- 	{
-		-- 		name = "Id",
-		-- 		help = "Player Id",
-		-- 	}
-		-- },
-	}, 0)
-
-	Chat:RegisterAdminCommand("removephonepermission", function(source, args, rawCommand)
-		local plyr = Fetch:SID(source)
-		local char = Fetch:Source(source):GetData("Character")
-		local perms = char:GetData("PhonePermissions")
-
-		char:SetData("PhonePermissions", {
-			redline = {
-				create = perms.redline
-			},
-			voting = {
-				admin = false,
-			},
-		})
-	end, {
-		help = "[Admin] Remove Phone Permission",
-	}, 0)
 end

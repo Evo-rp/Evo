@@ -1,9 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppBar, IconButton, Grid, Tooltip, Accordion, AccordionSummary, Typography, AccordionDetails, List, ListItem, ListItemText, Divider, Button } from '@material-ui/core';
+import { AppBar, IconButton, Grid, Accordion, AccordionSummary, Typography, AccordionDetails, List, ListItem, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FileCopy, Delete } from '@material-ui/icons';
 import Nui from '../../util/Nui';
 import { throttle } from 'lodash';
 
@@ -27,9 +26,6 @@ const useStyles = makeStyles((theme) => ({
         },
         '&::-webkit-scrollbar-thumb:hover': {
             background: '#1de9b6',
-        },
-        '&::-webkit-scrollbar-track': {
-            background: 'transparent',
         },
     },
     header: {
@@ -63,12 +59,12 @@ export default (props) => {
 
     const fetch = useMemo(() => throttle(async () => {
         try {
-            let res = await (await Nui.send('Phone:Gallery:GetImages')).json();
+            let res = await (await Nui.send('BusinessDirectory:Get:Data')).json();
             if (res) {
                 dispatch({
                     type: 'SET_DATA',
                     payload: {
-                        type: 'gallery',
+                        type: 'openBusinesses',
                         data: res,
                     },
                 });
@@ -77,7 +73,7 @@ export default (props) => {
             }
         } catch (err) {
             // console.log(err)
-            // console.log('[ERROR] Error in Gallery app')
+            // console.log('[ERROR] Error in Business Directory app')
         }
     }, 5000), []);
 
@@ -102,7 +98,7 @@ export default (props) => {
                     {openBusinesses.map((data, k) => {
                         return (
                             <Accordion
-                                key={`track-1`}
+                                key={k}
                                 className={classes.businessItem}
                                 expanded={expanded === k}
                                 onChange={
@@ -121,7 +117,7 @@ export default (props) => {
                                     <Typography className={classes.heading}>
                                         {data.Name}
 
-                                        <IconButton
+                                        {/* <IconButton
                                             onClick={(e) => {
                                                 e.stopPropagation()
                                             }}
@@ -129,7 +125,7 @@ export default (props) => {
                                             <FontAwesomeIcon
                                                 icon={['fa', 'map-pin']}
                                             />
-                                        </IconButton>
+                                        </IconButton> */}
                                     </Typography>
                                 </AccordionSummary>
                                 <AccordionDetails>

@@ -199,6 +199,18 @@ _appData = {
 		requirements = {},
 	},
 	{
+		name = "business_directory",
+		storeLabel = 'Business Directory',
+		label = 'Business Directory',
+		icon = { 'fa', 'briefcase' },
+		color = '#d68111',
+		params = "",
+		canUninstall = true,
+		store = true,
+		unread = 0,
+		requirements = {},
+	},
+	{
 		name = "doj",
 		storeLabel = "DOJ",
 		label = "DOJ",

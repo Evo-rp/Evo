@@ -1279,28 +1279,29 @@ export const initialState = {
 			},
 		],
 		gallery: [],
-		openBusinesses: [
-			{
-				Name: 'Hayes Autos',
-				Employees: [
-					{
-						Name: 'Aspect',
-						Number: 1234,
-						Rank: 'Mechanic'
-					}
-				]
-			},
-			{
-				Name: 'Tuner Shop',
-				Employees: [
-					{
-						Name: 'Koi',
-						Number: 1234,
-						Rank: 'Owner'
-					}
-				]
-			},
-		],
+		openBusinesses: [],
+		// openBusinesses: [
+		// 	{
+		// 		Name: 'Hayes Autos',
+		// 		Employees: [
+		// 			{
+		// 				Name: 'Aspect',
+		// 				Number: 1234,
+		// 				Rank: 'Mechanic'
+		// 			}
+		// 		]
+		// 	},
+		// 	{
+		// 		Name: 'Tuner Shop',
+		// 		Employees: [
+		// 			{
+		// 				Name: 'Koi',
+		// 				Number: 1234,
+		// 				Rank: 'Owner'
+		// 			}
+		// 		]
+		// 	},
+		// ],
 		// doj: [
 		// 	{
 		// 		Name: 'Aspect Dev',
