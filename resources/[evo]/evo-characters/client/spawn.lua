@@ -93,6 +93,8 @@ Spawn = {
 			while selectingCharacter do
 				Wait(5)
 
+				DisplayRadar(false)
+
 				DisableAllControlActions(0)
 
 				EnableControlAction(0, 1, true)

@@ -4,6 +4,7 @@ Citizen.CreateThread(function()
 	end
 
 	SendNUIMessage({type = "APP_SHOW"})
+	DisplayRadar(false)
 end)
 
 function loadModel(model)
