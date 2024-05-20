@@ -20,6 +20,7 @@ function RegisterKeyBinds()
 			"keyboard",
 			"Inventory - Hotbar Action " .. tostring(key),
 			function()
+				if LocalPlayer.state.inArcade then return end
 				if not _startup then
 					return
 				end

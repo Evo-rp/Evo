@@ -14,6 +14,7 @@ end
 
 local _openCd = false
 function OpenHotBar()
+	if LocalPlayer.state.inArcade then return end
 	if not _openCd then
 		_openCd = true
 		SendNUIMessage({

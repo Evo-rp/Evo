@@ -150,32 +150,35 @@ function StartThreads()
 
                     LocalPlayer.state:set("isDead", true, true)
 
-                    local deadTime = GetCloudTimeAsInt()
-                    local releaseTime = deadTime + GetReleaseTime(isMinor)
+					local deadTime = GetCloudTimeAsInt()
+					local releaseTime = deadTime + GetReleaseTime(isMinor)
 
-                    LocalPlayer.state:set("deadData", {
-                        isMinor = isMinor,
-                    }, true)
-                    LocalPlayer.state:set("isDeadTime", deadTime, true)
-                    LocalPlayer.state:set("releaseTime", releaseTime, true)
+					LocalPlayer.state:set("deadData", {
+						isMinor = isMinor,
+					}, true)
+					LocalPlayer.state:set("isDeadTime", deadTime, true)
+					LocalPlayer.state:set("releaseTime", releaseTime, true)
 					Hud.DeathTexts:Show(isMinor and "knockout" or "death", deadTime, releaseTime)
 
-                    while not LocalPlayer.state.isDead do
-                        Citizen.Wait(1)
-                    end
-                
-                    TriggerEvent("Ped:Client:Died")
-                    TriggerServerEvent("Ped:Server:Died")
-                
-                    if (Jail:IsJailed() or not nearPlayer(100.0)) and not Config.Weapons[deathHash]?.minor then
-                        TriggerServerEvent("EmergencyAlerts:Server:DoPredefined", "injuredPerson")
-                    end
-                    Hud:Dead(true)
-                    DoDeadEvent()
-                    --respawnCd(isMinor)
-                end
-            else
+					while not LocalPlayer.state.isDead do
+						Citizen.Wait(1)
+					end
+				
+					TriggerEvent("Ped:Client:Died")
+					TriggerServerEvent("Ped:Server:Died")
+				
+					if (Jail:IsJailed() or not nearPlayer(100.0)) and not Config.Weapons[deathHash]?.minor then
+						TriggerServerEvent("EmergencyAlerts:Server:DoPredefined", "injuredPerson")
+					end
+					Hud:Dead(true)
+					DoDeadEvent()
+					--respawnCd(isMinor)
 
+					if LocalPlayer.state.inArcade then
+						Logger:Info('Arcade', 'Player is in arcade find a spawn point.')
+						TriggerEvent('Arcade:Client:RespawnPlayer')
+					end
+				end
             end
             Citizen.Wait(100)
 		end

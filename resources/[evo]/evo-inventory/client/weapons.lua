@@ -689,7 +689,7 @@ function WeaponsThread()
 		while LocalPlayer.state.loggedIn do
 			if IsPedArmed(LocalPlayer.state.ped, 6) then
 				local hasWeapon, hasHash = GetCurrentPedWeapon(LocalPlayer.state.ped, 1)
-				if hasWeapon and not LocalPlayer.state.holstering then
+				if hasWeapon and not LocalPlayer.state.holstering and not LocalPlayer.state.inArcade then
 					if not ignoredHackerWeapons[hasHash] and hasHash ~= 0 and hasHash ~= _equippedHash then
 						RemoveAllPedWeapons(LocalPlayer.state.ped)
 						if not spammyFuck and not LocalPlayer.state.isDead then
