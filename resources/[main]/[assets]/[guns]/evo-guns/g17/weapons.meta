@@ -61,7 +61,7 @@
           <AccurateModeAccuracyModifier value="0.500000" />
           <RunAndGunAccuracyModifier value="2.000000" />
           <RunAndGunAccuracyMaxModifier value="1.000000" />
-          <RecoilAccuracyMax value="1.000000" />
+          <RecoilAccuracyMax value="1.500000" />
           <RecoilErrorTime value="3.300000" />
           <RecoilRecoveryRate value="1.000000" />
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />

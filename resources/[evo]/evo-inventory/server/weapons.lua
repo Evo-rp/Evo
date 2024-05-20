@@ -120,6 +120,7 @@ local weaponCheaters = {
 	[GetHashKey("WEAPON_FALL")] = "Falling",
 	[GetHashKey("WEAPON_KATANA")] = "Katana",
 	[GetHashKey("WEAPON_SHIV")] = "Shiv",
+	[GetHashKey("weapon_fadefknife")] = "fade knife",
 	[GetHashKey("WEAPON_AR15")] = "AR-15",
 	[GetHashKey("WEAPON_P90FM")] = "P90",
 	[GetHashKey("WEAPON_SLEDGEHAMMER")] = "Sledge Hammer",
