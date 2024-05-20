@@ -31,7 +31,7 @@ _itemsSource["unique"] = {
 	},
 	{
 		name = "dorky_chain",
-		label = "dorky Chain",
+		label = "Dorky Chain",
 		description = "dorky",
 		price = 50,
 		isUsable = true,

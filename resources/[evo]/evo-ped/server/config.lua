@@ -33,7 +33,7 @@ _gangChains = {
 			},
 		},
 	},
-	Dorky = {
+	dorky = {
 		prop = `dorky_chain`,
 		type = "component",
 		componentId = 7,
