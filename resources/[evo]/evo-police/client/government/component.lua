@@ -151,9 +151,8 @@ AddEventHandler("Core:Shared:Ready", function()
 			maxZ = 47.37,
 		}, {})
 
-		Targeting.Zones:AddBox("court-gavel", "gavel", vector3(-575.71, -210.71, 38.77), 0.2, 0.4, {
+		Targeting.Zones:AddBox("gavel_courthouse", "gavel", vector3(-575.71, -210.71, 38.77), 0.2, 0.4, {
 			heading = 0,
-			--debugPoly=true,
 			minZ = 38.57,
 			maxZ = 38.77
 		}, {
@@ -161,14 +160,8 @@ AddEventHandler("Core:Shared:Ready", function()
 				icon = "gavel",
 				text = "Use Gavel",
 				event = "Government:Client:UseGavel",
-				-- jobPerms = {
-				--     {
-				--         job = 'government',
-				--         reqDuty = true,
-				--     }
-				-- },
 			},
-		}, 3.0, true)
+		}, 2.0, true)
 	end)
 end)
 
