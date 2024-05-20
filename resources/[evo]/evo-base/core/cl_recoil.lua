@@ -1,7 +1,7 @@
 local weapons = {
-	[GetHashKey('WEAPON_PISTOL')] = {recoil = 0.53, shake = 0.022}, 	--PISTOL "WEAPON_RPK16
+	[GetHashKey('WEAPON_PISTOL')] = {recoil = 0.74, shake = 0.025}, 	
 	[GetHashKey('WEAPON_UZI')] = {recoil = 0.53, shake = 0.03},
-	[GetHashKey('WEAPON_G17')] = {recoil = 0.6, shake = 0.032},
+	[GetHashKey('WEAPON_G17')] = {recoil = 0.80, shake = 0.04},
 	[GetHashKey('WEAPON_M45A1')] = {recoil = 0.52, shake = 0.02},
 	[GetHashKey('WEAPON_G45')] = {recoil = 0.45, shake = 0.02},
 	[GetHashKey('WEAPON_L5')] = {recoil = 0.93, shake = 0.04},
