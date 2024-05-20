@@ -30,9 +30,9 @@ _itemsSource["unique"] = {
 		gangChain = "vagos",
 	},
 	{
-		name = "pepega_chain",
-		label = "Pepega Chain",
-		description = "Pepega",
+		name = "dorky_chain",
+		label = "dorky Chain",
+		description = "dorky",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
@@ -42,7 +42,7 @@ _itemsSource["unique"] = {
 		closeUi = true,
 		metalic = false,
 		weight = 0,
-		gangChain = "pepega",
+		gangChain = "dorky",
 	},
 	{
 		name = "enemigos_chain",

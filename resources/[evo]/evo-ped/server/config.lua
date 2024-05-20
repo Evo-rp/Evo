@@ -34,7 +34,7 @@ _gangChains = {
 		},
 	},
 	Dorky = {
-		prop = `Dorky_chain`,
+		prop = `dorky_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
@@ -236,6 +236,7 @@ _hideFromStore = {
 			[0] = {
 				["259"] = true,
 				["260"] = true,
+				["285"] = true,
 				["169"] = false,
 				["170"] = false,
 				["171"] = false,
@@ -247,6 +248,7 @@ _hideFromStore = {
 			},
 			[1] = {
 				["178"] = false,
+				["251"] = true,
 				["250"] = false,
 				["143"] = false,
 				["144"] = false,
