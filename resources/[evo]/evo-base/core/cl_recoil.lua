@@ -10,14 +10,14 @@ local weapons = {
 	[GetHashKey('WEAPON_2011')] = {recoil = 0.32, shake = 0.02},
 	[GetHashKey('WEAPON_AK74')] = {recoil = 0.57, shake = 0.03},
 	[GetHashKey('WEAPON_PP19')] = {recoil = 0.43, shake = 0.03},
-	[GetHashKey('WEAPON_MINIUZI')] = {recoil = 0.53, shake = 0.03},
+	[GetHashKey('WEAPON_MINIUZI')] = {recoil = 0.85, shake = 0.05},
 	[GetHashKey('WEAPON_FNX')] = {recoil = 0.32, shake = 0.02},
 	[GetHashKey('WEAPON_GLOCK19X2')] = {recoil = 0.42, shake = 0.02},
 	[GetHashKey('WEAPON_MPX')] = {recoil = 0.56, shake = 0.03},
 	[GetHashKey('WEAPON_MP9A')] = {recoil = 0.51, shake = 0.03},
-	[GetHashKey('WEAPON_PISTOL_MK2')] = {recoil = 0.35, shake = 0.02}, 	--PISTOL MK2
+	[GetHashKey('WEAPON_PISTOL_MK2')] = {recoil = 0.75, shake = 0.04}, 	--PISTOL MK2
 	[GetHashKey('WEAPON_COMBATPISTOL')] = {recoil = 0.35, shake = 0.02}, -- COMBAT PISTOL
-	[GetHashKey('WEAPON_APPISTOL')] = {recoil = 0.55, shake = 0.03}, -- AP PISTOL
+	[GetHashKey('WEAPON_APPISTOL')] = {recoil = 0.86, shake = 0.04}, -- AP PISTOL
 	[GetHashKey('WEAPON_PISTOL50')] = {recoil = 0.9, shake = 0.04}, -- PISTOL .50
 	[GetHashKey('WEAPON_MICROSMG')] = {recoil = 0.6, shake = 0.03}, -- MICRO SMG
 	[GetHashKey('WEAPON_SMG')] = {recoil = 0.45, shake = 0.03}, -- SMG
