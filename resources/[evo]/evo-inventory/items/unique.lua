@@ -45,9 +45,9 @@ _itemsSource["unique"] = {
 		gangChain = "dorky",
 	},
 	{
-		name = "enemigos_chain",
-		label = "Enemigos Chain",
-		description = "Enemigos",
+		name = "ballas_chain",
+		label = "Ballas Chain",
+		description = "Balling on the Ballas",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
@@ -57,7 +57,7 @@ _itemsSource["unique"] = {
 		closeUi = true,
 		metalic = false,
 		weight = 0,
-		gangChain = "enemigos",
+		gangChain = "ballas",
 	},
 	{
 		name = "lust_chain",

@@ -50,18 +50,18 @@ _gangChains = {
 			},
 		},
 	},
-	enemigos = {
-		prop = `enemigos_chain`,
+	ballas = {
+		prop = `ballas_chain`,
 		type = "component",
 		componentId = 7,
 		data = {
 			[0] = {
-				drawableId = 170,
+				drawableId = 286,
 				textureId = 0,
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 144,
+				drawableId = 252,
 				textureId = 0,
 				paletteId = 0,
 			},
@@ -237,6 +237,7 @@ _hideFromStore = {
 				["259"] = true,
 				["260"] = true,
 				["285"] = true,
+				["286"] = true,
 				["169"] = false,
 				["170"] = false,
 				["171"] = false,
@@ -249,6 +250,7 @@ _hideFromStore = {
 			[1] = {
 				["178"] = false,
 				["251"] = true,
+				["252"] = true,
 				["250"] = false,
 				["143"] = false,
 				["144"] = false,
