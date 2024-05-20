@@ -7,3 +7,6 @@ resources/\[assets\].rar
 start_7290_default.bat
 resources/\[main\]/\[assets\]/maps_old.rar
 config/server.cfg
+resources/\[main\]/\[assets\]/\[RDH_POLICE\]/**
+resources/\[main\]/\[assets\]/\[RDH\]/**
+node_modules
