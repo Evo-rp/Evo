@@ -206,7 +206,7 @@ end)
 AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
     print(json.encode(data, {indent = true}))
     print(GameData.SelectedGamePasscode)
-    if data.password == GameData.SelectedGamePasscode then
+    if data.passcode == GameData.SelectedGamePasscode then
         print('The password was the current password.')
         -- Put the player into the lobby server sided table
     else
