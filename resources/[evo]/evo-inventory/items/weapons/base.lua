@@ -1972,7 +1972,7 @@ _itemsSource["weapons_base"] = {
 		weight = 3,
 	},
 	{
-		name = "weapon_dragon_katana_red",
+		name = "WEAPON_DRAGON_KATANA_RED",
 		label = "Weapon Red Dragon Katana",
 		weapon = "WEAPON_DRAGON_KATANA_RED",
 		ammoType = "NONE",
@@ -1989,7 +1989,7 @@ _itemsSource["weapons_base"] = {
 		weight = 0.5,
 	},
 	{
-		name = "weapon_dragon_katana_purple",
+		name = "WEAPON_DRAGON_KATANA_PURPLE",
 		label = "Weapon Purple Dragon Katana",
 		weapon = "WEAPON_DRAGON_KATANA_PURPLE",
 		ammoType = "NONE",
@@ -2006,7 +2006,7 @@ _itemsSource["weapons_base"] = {
 		weight = 0.5,
 	},
 	{
-		name = "weapon_dragon_katana_blue",
+		name = "WEAPON_DRAGON_KATANA_BLUE",
 		label = "Weapon Blue Dragon Katana",
 		weapon = "WEAPON_DRAGON_KATANA_BLUE",
 		ammoType = "NONE",
@@ -2042,7 +2042,7 @@ _itemsSource["weapons_base"] = {
 	},
 	{
 		name = "WEAPON_FADEBFKNIFE",
-		label = "Fade butterfly knife",
+		label = "Fade Butterfly Knife",
 		iconOverride = "weapon_fadebfknife",
 		weapon = "WEAPON_FADEBFKNIFE",
 		ammoType = "NONE",
