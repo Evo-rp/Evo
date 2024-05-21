@@ -356,7 +356,7 @@ PWNZOR = PWNZOR
 			if char ~= nil then
 				local wh = GetConvar("discord_pwnzor_webhook", "")
 				if wh ~= nil and wh ~= "" then
-					exports["discord-screenshot"]:requestCustomClientScreenshotUploadToDiscord(
+					exports["screenshot-basic"]:requestScreenshotUpload(
 						char:GetData("Source"),
 						tostring(wh),
 						{
