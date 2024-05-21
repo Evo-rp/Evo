@@ -41,7 +41,6 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
         
             Callbacks:ServerCallback('Arcade:Server:GetLobbys', {}, function(data)
                 for key, value in pairs(data) do
-                    print(json.encode(value, {indent = true}))
                     table.insert(Lobbys, {
                         label = value.Name,
                         description = value.Description,
@@ -139,6 +138,7 @@ AddEventHandler('Arcade:Client:SubmitGame', function(data)
 end)
 
 AddEventHandler('Arcade:Client:LobbyPasscode', function(data)
+    print(json.encode(data, {indent = true}))
     GameData.SelectedGamePasscode = data.Passcode
     GameData.SelectedGameId = data.Id
     Input:Show("Lobby Passcode", "Passcode", {
