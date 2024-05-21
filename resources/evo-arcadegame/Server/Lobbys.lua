@@ -102,6 +102,13 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
-        
+        local char = Fetch:Source(source):GetData("Character")
+        table.insert(_Lobbys[data.id].Players, {
+            SID = char:GetData('SID'),
+            Source = source,
+            LobbyOwner = false,
+        })
+
+        cb(true)
     end)
 end
