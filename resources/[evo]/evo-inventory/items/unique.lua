@@ -60,9 +60,9 @@ _itemsSource["unique"] = {
 		gangChain = "ballas",
 	},
 	{
-		name = "lust_chain",
-		label = "Lust Chain",
-		description = "Lust",
+		name = "WhiteStar_Mask",
+		label = "WhiteStar Mask",
+		description = "⛥",
 		price = 50,
 		isUsable = true,
 		isRemoved = true,
@@ -72,7 +72,7 @@ _itemsSource["unique"] = {
 		closeUi = true,
 		metalic = false,
 		weight = 0,
-		gangChain = "lust",
+		gangChain = "WS",
 	},
 	{
 		name = "ssf_chain",

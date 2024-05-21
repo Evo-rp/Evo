@@ -67,10 +67,10 @@ _gangChains = {
 			},
 		},
 	},
-	lust = {
-		prop = `lust_chain`,
-		type = "component",
-		componentId = 7,
+	WS = {
+		prop = `Whitestar_chain`,
+		type = "prop",
+		componentId = 12,
 		data = {
 			[0] = {
 				drawableId = 171,
@@ -78,7 +78,7 @@ _gangChains = {
 				paletteId = 0,
 			},
 			[1] = {
-				drawableId = 145,
+				drawableId = 288,
 				textureId = 0,
 				paletteId = 0,
 			},
