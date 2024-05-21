@@ -1974,7 +1974,7 @@ _itemsSource["weapons_base"] = {
 	{
 		name = "weapon_dragon_katana_red",
 		label = "Weapon Red Dragon Katana",
-		weapon = "weapon_dragon_katana_red",
+		weapon = "WEAPON_DRAGON_KATANA_RED",
 		ammoType = "NONE",
 		requiresLicense = false,
 		price = 2000,
@@ -1991,7 +1991,7 @@ _itemsSource["weapons_base"] = {
 	{
 		name = "weapon_dragon_katana_purple",
 		label = "Weapon Purple Dragon Katana",
-		weapon = "weapon_dragon_katana_purple",
+		weapon = "WEAPON_DRAGON_KATANA_PURPLE",
 		ammoType = "NONE",
 		requiresLicense = false,
 		price = 2000,
@@ -2008,7 +2008,7 @@ _itemsSource["weapons_base"] = {
 	{
 		name = "weapon_dragon_katana_blue",
 		label = "Weapon Blue Dragon Katana",
-		weapon = "weapon_dragon_katana_blue",
+		weapon = "WEAPON_DRAGON_KATANA_BLUE",
 		ammoType = "NONE",
 		requiresLicense = false,
 		price = 2000,
