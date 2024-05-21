@@ -235,6 +235,11 @@ Config.WeaponClassBindings = {
     [`WEAPON_KNIFE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_MACHETE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_SWITCHBLADE`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_DRAGON_KATANA_BLUE`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_DRAGON_KATANA_RED`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_DRAGON_KATANA_PURPLE`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_FADEBFKNIFE`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_SHIV`] = Config.WeaponClasses['CUTTING'],
 
     --[[ Light Impact ]]--
     --[`WEAPON_GARBAGEBAG`] = Config.WeaponClasses['LIGHT_IMPACT'], -- Garbage Bag
