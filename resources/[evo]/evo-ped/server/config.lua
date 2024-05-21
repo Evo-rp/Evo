@@ -68,12 +68,12 @@ _gangChains = {
 		},
 	},
 	WS = {
-		prop = `Whitestar_chain`,
+		prop = `WhiteStar_Mask`,
 		type = "prop",
 		componentId = 12,
 		data = {
 			[0] = {
-				drawableId = 171,
+				drawableId = 310,
 				textureId = 0,
 				paletteId = 0,
 			},
