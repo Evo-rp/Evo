@@ -100,4 +100,8 @@ RegisterCallbacks = function()
     Callbacks:RegisterServerCallback('Arcade:Server:GetWeapons', function(source, data, cb)
         cb(_Loadouts[data])
     end)
+
+    Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
+        
+    end)
 end

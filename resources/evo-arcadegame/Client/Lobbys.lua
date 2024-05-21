@@ -41,10 +41,14 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
         
             Callbacks:ServerCallback('Arcade:Server:GetLobbys', {}, function(data)
                 for key, value in pairs(data) do
+                    print(json.encode(value, {indent = true}))
                     table.insert(Lobbys, {
                         label = value.Name,
                         description = value.Description,
-                        event = 'Arcade:Client:Passcode'
+                        event = 'Arcade:Client:LobbyPasscode'
+                        data = {
+                            Passcode = value.Passcode
+                        }
                     })
                 end
             end)
@@ -86,42 +90,42 @@ AddEventHandler("Arcade:Client:CreateLobby", function(data)
 
     Wait(500)
 
-    Input:Show("Lobby Settings",
-        "Match Configuration",
+    Input:Show("Lobby Settings", "Match Configuration", {
         {
-            {
-                label = 'Lobby Name',
-                id = "name",
-                type = "text",
-                options = {
-                    inputProps = {
-                        maxLength = 24,
-                    },
+            label = 'Lobby Name',
+            id = "name",
+            type = "text",
+            options = {
+                inputProps = {
+                    maxLength = 24,
                 },
             },
-            {
-                id = "passcode",
-                type = "text",
-                options = {
-                    inputProps = {
-                        maxLength = 5,
-                    },
+        },
+        {
+            id = "passcode",
+            label = 'Passcode',
+            type = "text",
+            options = {
+                inputProps = {
+                    maxLength = 5,
                 },
             },
-            {
-                id = "gamemode",
-                type = "select",
-                select = GameModes,
-                options = {},
-            },
-            {
-                id = "map",
-                type = "select",
-                select = MapOptions,
-                options = {},
-            },
-	    },
-    "Arcade:Client:SubmitGame", data)
+        },
+        {
+            id = "gamemode",
+            label = 'Game Mode',
+            type = "select",
+            select = GameModes,
+            options = {},
+        },
+        {
+            id = "map",
+            type = "select",
+            label = 'Map',
+            select = MapOptions,
+            options = {},
+        },
+    }, "Arcade:Client:SubmitGame", data)
 end)
 
 AddEventHandler('Arcade:Client:SubmitGame', function(data)
@@ -134,7 +138,8 @@ AddEventHandler('Arcade:Client:SubmitGame', function(data)
     end)
 end)
 
-AddEventHandler('Arcade:Client:Passcode', function()
+AddEventHandler('Arcade:Client:LobbyPasscode', function(data)
+    GameData.SelectedGamePasscode = data.Passcode
     Input:Show("Lobby Passcode", "Passcode", {
         {
             id = "passcode",
@@ -195,5 +200,15 @@ AddEventHandler('Arcade:Client:Spawn', function(DATA)
                 Citizen.Wait(0)
             end
         end)
+    end
+end)
+
+AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
+    print(json.encode(data, {indent = true}))
+    if data.password == GameData.SelectedGamePasscode then
+        print('The password was the current password.')
+        -- Put the player into the lobby server sided table
+    else
+        Notification:Error("Wrong password.")
     end
 end)

@@ -44,8 +44,6 @@ RegisterCallbacks = function()
         GameData.GameMode = data.GameMode
         DoScreenFadeOut(500)
 
-        -- print(json.encode(data, {indent = true}))
-
         Callbacks:ServerCallback('Arcade:Server:GetMaps', {}, function(callback)
             LocalPlayer.state.inArcade = true
             local Camera = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", callback[data.MapKey].CONFIG.StartCameraCoords.x, callback[data.MapKey].CONFIG.StartCameraCoords.y, callback[data.MapKey].CONFIG.StartCameraCoords.z, 0, 0, callback[data.MapKey].CONFIG.StartCameraCoords.w, 180.00, false, 0)
