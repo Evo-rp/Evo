@@ -47,7 +47,7 @@ function StartThreads()
 					end
 				end
 
-				if IsPedShooting(LocalPlayer.state.ped) and not _ignored[cw] then
+				if IsPedShooting(LocalPlayer.state.ped) and not _ignored[cw] and not LocalPlayer.state.inArcade then
 					if LocalPlayer.state.onDuty ~= "police" then
 						local veh = GetVehiclePedIsIn(LocalPlayer.state.ped)
 						if veh ~= 0 then
