@@ -45,7 +45,7 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
                     table.insert(Lobbys, {
                         label = value.Name,
                         description = value.Description,
-                        event = 'Arcade:Client:LobbyPasscode'
+                        event = 'Arcade:Client:LobbyPasscode',
                         data = {
                             Passcode = value.Passcode
                         }
