@@ -103,6 +103,8 @@ RegisterCallbacks = function()
 
     Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
         local char = Fetch:Source(source):GetData("Character")
+        print(data.id)
+        print(json.encode(_Lobbys[data.id].Players, { indent = true }))
         table.insert(_Lobbys[data.id].Players, {
             SID = char:GetData('SID'),
             Source = source,
