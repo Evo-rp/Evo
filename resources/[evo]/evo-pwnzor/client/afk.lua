@@ -65,7 +65,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 			if playerPed then
 				currentPos = GetEntityCoords(playerPed)
 				if prevPos ~= nil then
-					if #(vector3(currentPos.x, currentPos.y, currentPos.z) - vector3(prevPos.x, prevPos.y, prevPos.z)) < 1.5 then
+					if #(vector3(currentPos.x, currentPos.y, currentPos.z) - vector3(prevPos.x, prevPos.y, prevPos.z)) < 1.5 and not LocalPlayer.state.isDead then
 						if time > (AFKTimer * 2) then
 							Callbacks:ServerCallback('Pwnzor:AFK')
 						elseif time > AFKTimer then

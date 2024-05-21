@@ -73,6 +73,7 @@ Config = {
 		`ng_planes`,
 	},
 	BlacklistedVehs = {
+		[`DUMP`] = true,
 		[`SHAMAL`] = true,
 		[`LUXOR`] = true,
 		[`LUXOR2`] = true,
@@ -149,6 +150,16 @@ Config = {
 		[`zentorno`] = true,
 		[`benson`] = true,
 		[`monster`] = true,
+		[`vigilante`] = true,
+		[`apc`] = true,
+		[`deluxo`] = true,
+		[`freight`] = true,
+		[`barrage`] = true,
+		[`starling`] = true,
+		[`towtruck`] = true,
+		[`towtruck2`] = true,
+		[`duster`] = true,
+		[`frogger`] = true,
 	},
 	BlacklistedPeds = {
 		[`s_m_y_ranger_01`] = true,
@@ -192,6 +203,7 @@ Config = {
 		[`g_f_y_ballas_01`] = true,
 		[`g_f_y_families_01`] = true,
 		[`g_f_y_families_01`] = true,
+		[`a_m_o_acult_01`] = true,
 	},
 	BanResources = {
 		["evo-base"] = true,

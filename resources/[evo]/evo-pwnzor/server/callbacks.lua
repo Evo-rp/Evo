@@ -97,7 +97,7 @@ function RegisterCallbacks()
 
 	Callbacks:RegisterServerCallback("Pwnzor:AFK", function(source, data, cb)
 		if Config.Components.AFK.Enabled then
-			Punishment:Kick(source, "You Were Kicked For Being AFK", "Pwnzor")
+			Punishment:Kick(source, "You Were Kicked For Being AFK", "Pwnzor", true)
 		end
 	end)
 

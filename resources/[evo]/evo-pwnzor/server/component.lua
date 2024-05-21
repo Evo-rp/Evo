@@ -170,19 +170,22 @@ AddEventHandler("Core:Shared:Ready", function()
 			Citizen.CreateThread(function()
 				_loaded = true
 				while _loaded do
-					for k, v in pairs(Fetch:All()) do
-						local mult = GetPlayerWeaponDamageModifier(v:GetData("Source"))
+					for k, v in ipairs(GetPlayers()) do
+						local mult = GetPlayerWeaponDamageModifier(v)
 
 						if mult > 1.0 then
-							Logger:Warn(
-								"Pwnzor",
-								string.format(
-									"%s (%s) Had An Unusual Damage Modifier: %s",
-									v:GetData("Name"),
-									v:GetData("AccountID"),
-									mult
+							local player = Fetch:Source(tonumber(v))
+							if player and player:GetData("Character") then
+								Logger:Warn(
+									"Pwnzor",
+									string.format(
+										"%s (%s) Had An Unusual Damage Modifier: %s",
+										player:GetData("Name"),
+										player:GetData("AccountID"),
+										mult
+									)
 								)
-							)
+							end
 						end
 					end
 					Citizen.Wait(60000)
@@ -210,41 +213,54 @@ AddEventHandler("giveWeaponEvent", function(sender, data)
 	-- Stops other players giving people weapons (doesn't affect single people unless you have give weapons on menus and etc.)
 end)
 
--- AddEventHandler("explosionEvent", function(sender, ev)
--- 	local src = tonumber(sender)
--- 	local player = Fetch:Source(src)
--- 	for _, v in ipairs(Config.Components.Explosions.Options.Types) do
--- 		if ev.explosionType == v then
--- 			CancelEvent()
+AddEventHandler("explosionEvent", function(sender, ev)
+	local src = tonumber(sender)
+	local player = Fetch:Source(src)
+	for _, v in ipairs(Config.Components.Explosions.Options.Types) do
+		if ev.explosionType == v then
+			CancelEvent()
 
--- 			if
--- 				_blockedExplosions[src] ~= nil
--- 				and #_blockedExplosions[src] >= Config.Components.Explosions.Options.Count
--- 			then
--- 				if not player.Permissions:IsAdmin() then
--- 					Punishment.Ban:Source(src, -1, "Explosion Trigger", "Pwnzor")
--- 				else
--- 					Logger:Warn(
--- 						"Pwnzor",
--- 						"Admin "
--- 							.. GetPlayerName(src)
--- 							.. " Triggered Explosion Detection With Explosion Type of "
--- 							.. ev.explosionType,
--- 						{ console = true }
--- 					)
--- 				end
--- 			else
--- 				if _blockedExplosions[src] == nil then
--- 					_blockedExplosions[src] = {
--- 						{ time = os.time(), type = ev.explosionType },
--- 					}
--- 				else
--- 					table.insert(_blockedExplosions[src], { time = os.time(), type = ev.explosionType })
--- 				end
--- 			end
--- 		end
--- 	end
--- end)
+			if
+				_blockedExplosions[src] ~= nil
+				and #_blockedExplosions[src] >= Config.Components.Explosions.Options.Count
+			then
+				local char = Fetch:CharacterSource(src)
+				if char then
+					Logger:Warn("Pwnzor", string.format("%s %s (%s) Triggered Explosion Detection With Explosion Type of %s", char:GetData("First"), char:GetData("Last"), char:GetData("SID"), ev.explosionType), {
+						console = true,
+						file = false,
+						database = true,
+						discord = {
+							embed = true,
+							type = 'error',
+							webhook = GetConvar('discord_pwnzor_webhook', ''),
+						}
+					})
+					Pwnzor:Screenshot(char:GetData("SID"), "Potential Weapon Exploit")
+				else
+					Logger:Warn("Pwnzor", string.format("Source %s Triggered Explosion Detection With Explosion Type of %s", src, ev.explosionType), {
+						console = true,
+						file = false,
+						database = true,
+						discord = {
+							embed = true,
+							type = 'error',
+							webhook = GetConvar('discord_pwnzor_webhook', ''),
+						}
+					})
+				end
+			else
+				if _blockedExplosions[src] == nil then
+					_blockedExplosions[src] = {
+						{ time = os.time(), type = ev.explosionType },
+					}
+				else
+					table.insert(_blockedExplosions[src], { time = os.time(), type = ev.explosionType })
+				end
+			end
+		end
+	end
+end)
 
 AddEventHandler("entityCreating", function(entity)
 	if Config.BlacklistedVehs[GetEntityModel(entity)] then
@@ -256,7 +272,7 @@ RegisterNetEvent("Pwnzor:Server:ResourceStarted", function(resource)
 	local plyr = Fetch:Source(source)
 	Logger:Info(
 		"Pwnzor",
-		string.format("%s (%s) Started A Resource: %s", plyr:GetData("Name"), plyr:GetData("ID"), resource),
+		string.format("%s (%s) Started A Resource: %s", plyr:GetData("Name"), plyr:GetData("AccountID"), resource),
 		{
 			console = true,
 			file = true,
@@ -283,7 +299,7 @@ RegisterNetEvent("Pwnzor:Server:ResourceStopped", function(resource)
 	else
 		Logger:Info(
 			"Pwnzor",
-			string.format("%s (%s) Stopped A Resource: %s", plyr:GetData("Name"), plyr:GetData("ID"), resource),
+			string.format("%s (%s) Stopped A Resource: %s", plyr:GetData("Name"), plyr:GetData("AccountID"), resource),
 			{
 				console = true,
 				file = true,
@@ -335,6 +351,43 @@ PWNZOR = PWNZOR
 				_tmpIgnores[source] = os.time() + 60
 			end,
 		},
+		Screenshot = function(self, stateId, desc)
+			local char = Fetch:SID(stateId)
+			if char ~= nil then
+				local wh = GetConvar("discord_pwnzor_webhook", "")
+				if wh ~= nil and wh ~= "" then
+					exports["discord-screenshot"]:requestCustomClientScreenshotUploadToDiscord(
+						char:GetData("Source"),
+						tostring(wh),
+						{
+							encoding = "webp",
+							quality = 1,
+						},
+						{
+							content = "",
+							embeds = {
+								{
+									color = 3844857,
+									title = string.format("Screenshot from %s %s (%s) | %s", char:GetData("First"), char:GetData("Last"), char:GetData("SID"), desc),
+								}
+							}
+						},
+						10000,
+						function(error)
+							if error then
+								Logger:Warn(
+									"Pwnzor",
+									string.format("Failed to Screenshot SID %s", stateId),
+									{
+										console = true,
+									}
+								)
+							end
+						end
+					)
+				end
+			end
+		end
 	}
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
