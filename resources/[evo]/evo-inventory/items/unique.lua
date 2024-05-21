@@ -60,7 +60,7 @@ _itemsSource["unique"] = {
 		gangChain = "ballas",
 	},
 	{
-		name = "WhiteStar_Mask",
+		name = "whitestar_mask",
 		label = "WhiteStar Mask",
 		description = "⛥",
 		price = 50,
