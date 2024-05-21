@@ -183,6 +183,9 @@ COMPONENTS.Player = {
 						tokens = tkns,
 					},
 				},
+				options = {
+					upsert = true,
+				},
 			}, function()
 				p:resolve(tkns)
 			end)
