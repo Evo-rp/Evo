@@ -46,7 +46,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		RetrieveComponents()
 
 		Keybinds:Add("targeting_starts", "LMENU", "keyboard", "Targeting (Third Eye) (Hold)", function()
-			if IS_SPAWNED then
+			if IS_SPAWNED and not LocalPlayer.state.isCuffed and not LocalPlayer.state.isHardCuffed then
 				StartTargeting()
 			end
 		end, function()
