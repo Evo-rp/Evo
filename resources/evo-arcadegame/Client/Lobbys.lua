@@ -46,7 +46,8 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
                         description = value.Description,
                         event = 'Arcade:Client:LobbyPasscode',
                         data = {
-                            Passcode = value.Passcode
+                            Passcode = value.Passcode,
+                            Id = value.Id
                         }
                     })
                 end
