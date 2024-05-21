@@ -207,10 +207,11 @@ end)
 AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
     -- print(json.encode(data, {indent = true}))
     -- print(GameData.SelectedGamePasscode)
+    print(GameData.SelectedGameId)
     if data.passcode == GameData.SelectedGamePasscode then
         Callbacks:ServerCallback('Arcade:Server:JoinGame', { id = GameData.SelectedGameId }, function(callback)
             GameData.SelectedGamePasscode = ''
-            GameData.SelectedGameId = 0
+            -- GameData.SelectedGameId = 0
 
             if callback then
                 Notification:Info('You joined the lobby.')
@@ -220,7 +221,7 @@ AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
         end)
     else
         GameData.SelectedGamePasscode = ''
-        GameData.SelectedGameId = 0
+        -- GameData.SelectedGameId = 0
         Notification:Error("Wrong password.")
     end
 end)
