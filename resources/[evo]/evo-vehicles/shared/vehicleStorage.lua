@@ -1318,7 +1318,7 @@ _vehicleStorage = {
 			{ JobId = "police", HQ = true },
 			{ JobId = "police", HQ = true },
 		},
-		coords = vector3(450.41, -985.63, 43.69),
+		coords = vector3(580.07, 12.65, 103.23),
 		zone = {
 			type = "box",
 			center = vector3(579.23, 10.82, 103.23),
