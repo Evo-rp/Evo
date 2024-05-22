@@ -21,9 +21,9 @@ Config.StartItems = {
 
 Config.ShopItemSets = {
 	[1] = {
-		"sandwich",
-		"sandwich_egg",
-		"water",
+		-- "sandwich",
+		-- "sandwich_egg",
+		-- "water",
 		"bandage",
 		"cigarette_pack",
 		"coffee",
@@ -87,6 +87,7 @@ Config.ShopItemSets = {
 		"phone",
 		"WEAPON_FLASHBANG",
 		"WEAPON_SMOKEGRENADE",
+		"scuba_gear",
 		"breachingcharge"
 	}, -- Police Armory
 	[7] = { "traumakit", "medicalkit", "firstaid", "bandage", "morphine", "radio", "phone", "scuba_gear" },

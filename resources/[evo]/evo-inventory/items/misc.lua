@@ -622,7 +622,7 @@ _itemsSource["misc"] = {
 	{
 		name = "scuba_gear",
 		label = "Scuba Gear",
-		qualification = "EMS_DIVING",
+		qualification = "EMS_DIVING", "PD_DIVING",
 		price = 1000,
 		isUsable = true,
 		isRemoved = false,
