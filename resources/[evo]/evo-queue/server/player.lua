@@ -150,69 +150,46 @@ function PlayerClass(identifier, player, deferrals)
 end
 
 function FetchDatabaseUser(identifier, player)
-	local p = promise.new()
+    local p = promise.new()
 
-	Database.Auth:findOne({
-		collection = "users",
-		query = {
-			identifier = identifier,
-		},
-		limit = 1,
-		options = {
-			projection = {
-				name = 1,
-				forum = 1,
-				account = 1,
-				identifier = 1,
-				verified = 1,
-				joined = 1,
-				groups = 1,
-				avatar = 1,
-				priority = 1,
-			},
-		},
-	}, function(success, results)
-		print(json.encode(results))
-		if success and #results > 0 and results[1].identifier and results[1].identifier == identifier then
-			
-			if results[1].name == nil or results[1].name ~= GetPlayerName(player) then
-				Database.Auth:updateOne({
-					collection = "users",
-					query = {
-						identifier = results[1].identifier,
-					},
-					update = {
-						["$set"] = {
-							name = GetPlayerName(player),
-						},
-					},
-				}, function()
-					p:resolve(doc)
-				end)
-			else
-				p:resolve(results[1])
-			end
-		else
-			local doc = {
-				name = GetPlayerName(player),
-				account = Sequence:Get("Account"),
-				identifier = identifier,
-				verified = true,
-				joined = os.time() * 1000,
-				groups = {
-					"Whitelisted",
-				},
-				priority = 0,
-			}
-			Database.Auth:insertOne({
-				collection = "users",
-				document = doc,
-				print(json.encode(doc))
-			}, function()
-				p:resolve(doc)
-			end)
-		end
-	end)
+    local query = "SELECT name, forum, account, identifier, verified, joined, groups, avatar, priority FROM users WHERE identifier = ? LIMIT 1"
+    local params = {identifier}
 
-	return Citizen.Await(p)
+    exports.oxmysql:execute(query, params, function(results)
+        if results and #results > 0 and results[1].identifier and results[1].identifier == identifier then
+            local user = results[1]
+            if user.name == nil or user.name ~= GetPlayerName(player) then
+                local updateQuery = "UPDATE users SET name = ? WHERE identifier = ?"
+                local updateParams = {GetPlayerName(player), user.identifier}
+                
+                exports.oxmysql:execute(updateQuery, updateParams, function()
+                    p:resolve(user)
+                end)
+            else
+                p:resolve(user)
+            end
+        else
+            local doc = {
+                name = GetPlayerName(player),
+                account = Sequence:Get("Account"),
+                identifier = identifier,
+                verified = true,
+                joined = os.time() * 1000,
+                groups = json.encode({"Whitelisted"}),
+                priority = 0,
+            }
+            local insertQuery = [[
+                INSERT INTO users (name, account, identifier, verified, joined, groups, priority)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ]]
+            local insertParams = {doc.name, doc.account, doc.identifier, doc.verified, doc.joined, doc.groups, doc.priority}
+
+            exports.oxmysql:execute(insertQuery, insertParams, function()
+                p:resolve(doc)
+            end)
+        end
+    end)
+
+    return Citizen.Await(p)
 end
+
