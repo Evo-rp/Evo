@@ -207,6 +207,64 @@ _vehicleSyncStuff = {
 				end
 			end,
 		},
+		Bike = {
+			Pickup = function(self, vehicle)
+				if DoesEntityExist(vehicle) then
+					if GetPedInVehicleSeat(vehicle, 1) == 0 then
+						local playerPed = PlayerPedId()
+						local bone = 24818
+						if
+							GetEntityModel(vehicle) == GetHashKey("bmx")
+							or GetEntityModel(vehicle) == GetHashKey("scorcher")
+							or GetEntityModel(vehicle) == GetHashKey("cruiser")
+							or GetEntityModel(vehicle) == GetHashKey("fixter")
+							or GetEntityModel(vehicle) == GetHashKey("tribike")
+							or GetEntityModel(vehicle) == GetHashKey("tribike2")
+							or GetEntityModel(vehicle) == GetHashKey("tribike3")
+							or GetEntityModel(vehicle) == GetHashKey("pbike")
+						then
+							PLAYER_IS_HOLDING_BIKE = true
+							PLAYER_BIKE_ENTITY = vehicle
+
+							AttachEntityToEntity(
+								vehicle,
+								playerPed,
+								bone,
+								0.18,
+								-0.20,
+								0.40,
+								0.0,
+								0.0,
+								0.0,
+								true,
+								true,
+								false,
+								true,
+								1,
+								true
+							)
+							Notification.Info(
+								self,
+								string.format("Press [%s] to drop the bike", Keybinds:GetKey("veh_bike_drop")),
+								8000,
+								"fas fa-bicycle"
+							)
+						end
+					end
+				end
+			end,
+			Drop = function(self)
+				local playerPed = PlayerPedId()
+				if DoesEntityExist(PLAYER_BIKE_ENTITY) then
+					if IsEntityAttached(PLAYER_BIKE_ENTITY) and not IsPedInAnyVehicle(playerPed, false) then
+						DetachEntity(PLAYER_BIKE_ENTITY, nil, nil)
+						SetVehicleOnGroundProperly(PLAYER_BIKE_ENTITY)
+						PLAYER_IS_HOLDING_BIKE = false
+						PLAYER_BIKE_ENTITY = 0
+					end
+				end
+			end,
+		},
 	},
 }
 

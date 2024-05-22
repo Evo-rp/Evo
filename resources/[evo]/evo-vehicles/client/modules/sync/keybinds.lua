@@ -32,4 +32,8 @@ AddEventHandler('Vehicles:Client:StartUp', function()
     Keybinds:Add('veh_neons_toggle', '', 'keyboard', 'Vehicle - Toggle Neons/Underglow', function()
         Vehicles.Sync.Neons:Toggle()
     end)
+    
+    Keybinds:Add('veh_bike_drop', 'G', 'keyboard', 'Vehicle - Put Down Bicycle', function()
+        Vehicles.Sync.Bike:Drop()
+    end)
 end)

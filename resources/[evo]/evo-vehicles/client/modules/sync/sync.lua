@@ -198,3 +198,11 @@ RegisterNetEvent("Vehicle:Client:ForceAudio", function(vNet, audio)
         end
     end
 end)
+
+AddEventHandler("Vehicle:Client:PickupBike", function(entityData)
+	if not DoesEntityExist(entityData.entity) then
+		return
+	end
+
+	Vehicles.Sync.Bike:Pickup(entityData.entity)
+end)
