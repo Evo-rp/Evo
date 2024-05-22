@@ -81,6 +81,9 @@ _propertyCraftingRecipies = {
 		items = {
 			{ name = "scrapmetal", count = 250 },
 			{ name = "ironbar", count = 50 },
+			{ name = "heavy_glue", count = 5 },
+			{ name = "plastic", count = 15 },
+			{ name = "copperwire", count = 5 },
 			{ name = "electronic_parts", count = 75 },
 		},
 		time = 1000,
@@ -100,6 +103,16 @@ _propertyCraftingRecipies = {
 			{ name = "ironbar", count = 5 },
 			{ name = "heavy_glue", count = 1 },
 			{ name = "plastic", count = 4 },
+		},
+		time = 5000,
+	},
+	["heavyarmor"] = {
+		result = { name = "heavyarmor", count = 1 },
+		items = {
+			{ name = "ironbar", count = 50 },
+			{ name = "heavy_glue", count = 10 },
+			{ name = "plastic", count = 4 },
+			{ name = "cloth", count = 5 },
 		},
 		time = 5000,
 	},
@@ -150,6 +163,7 @@ _propertyCrafting = {
 			-- _propertyCraftingRecipies.WEAPON_PISTOL,
 			-- _propertyCraftingRecipies.WEAPON_FNX,
 			_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
+			_propertyCraftingRecipies.heavyarmor,
 			_propertyCraftingRecipies.AMMO_PISTOL,
 			-- {
 			-- 	result = { name = "fakeplates", count = 2 },
