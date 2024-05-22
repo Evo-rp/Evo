@@ -109,7 +109,7 @@
 					<VehicleReloadTime value="1.000000"/>
 					<AnimReloadRate value="1.000000"/>
 					<BulletsPerAnimLoop value="1"/>
-					<TimeBetweenShots value="0.370000"/>
+					<TimeBetweenShots value="0.470000"/>
 					<TimeLeftBetweenShotsWhereShouldFireIsCached value="0.250000"/>
 					<SpinUpTime value="0.000000"/>
 					<SpinTime value="0.000000"/>
