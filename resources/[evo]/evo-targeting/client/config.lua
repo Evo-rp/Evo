@@ -149,6 +149,16 @@ Config.VehicleMenu = {
 		minDist = 25.0,
 	},
 	{
+		icon = "fas fa-bicycle",
+		isEnabled = function(data, entityData)
+			return GetVehicleClass(entityData.entity) == 13
+		end,
+		text = "Pick Up Bike",
+		event = "Vehicle:Client:PickupBike",
+		data = {},
+		minDist = 3.0,
+	},
+	{
 		icon = "truck-tow",
 		text = "Request Tow",
 		event = "Vehicles:Client:RequestTow",
