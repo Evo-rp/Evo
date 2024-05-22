@@ -72,6 +72,12 @@ function RegisterRandomItems()
 		Callbacks:ClientCallback(source, "Labor:Goldpanning:StartMoulding", "")
 	end)
 
+	Inventory.Items:RegisterUse("breachingcharge", "RandomItems", function(source, item)
+		Callbacks:ClientCallback(source, "Doors:BreachingCharge", "", function(data, cb)
+			Inventory.Items:RemoveSlot(item.Owner, item.Name, 1, item.Slot, item.invType)
+		end)
+	end)
+
 	Inventory.Items:RegisterUse("pdarmor", "RandomItems", function(source, item)
 		Inventory.Items:RemoveSlot(item.Owner, item.Name, 1, item.Slot, item.invType)
 		SetPedArmour(GetPlayerPed(source), 100)

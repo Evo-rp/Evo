@@ -98,14 +98,14 @@ function RegisterCallbacks()
 		cb(DOORS_CACHE, ELEVATOR_CACHE)
 	end)
 
-	Callbacks:RegisterServerCallback("Doors:ToggleLocks", function(source, doorId, cb)
-		if type(doorId) == "string" then
-			doorId = DOORS_IDS[doorId]
+	Callbacks:RegisterServerCallback("Doors:ToggleLocks", function(source, data, cb)
+		if type(data.doorId) == "string" then
+			data.doorId = DOORS_IDS[data.doorId]
 		end
 
-		local targetDoor = _doorConfig[doorId]
-		if targetDoor and CheckPlayerAuth(source, targetDoor.restricted) then
-			local newState = Doors:SetLock(doorId)
+		local targetDoor = _doorConfig[data.doorId]
+		if targetDoor and CheckPlayerAuth(source, targetDoor.restricted) or data.breachingCharge then
+			local newState = Doors:SetLock(data.doorId)
 			if newState == nil then
 				cb(false, false)
 			else
