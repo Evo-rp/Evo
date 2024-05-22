@@ -53,7 +53,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		HospitalMiddleware()
 
 		GlobalState["HiddenHospital"] = {
-			coords = vector3(1730.343, 3029.604, 62.170),
+			coords = vector3(1214.323, -491.958, 66.164),
 			heading = 74.207,
 		}
 
