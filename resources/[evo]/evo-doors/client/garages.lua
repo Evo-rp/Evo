@@ -700,7 +700,7 @@ function DoGarageKeyFobAction()
 		local inZone = Polyzone:IsCoordsInZone(playerCoords, false, "door_garage_id")
 		if inZone and inZone.door_garage_id then
 			if Doors:CheckRestriction(inZone.door_garage_id) then
-				Callbacks:ServerCallback("Doors:ToggleLocks", inZone.door_garage_id, function(success, newState)
+				Callbacks:ServerCallback("Doors:ToggleLocks", { doorId = inZone.door_garage_id, breachingCharge = false }, function(success, newState)
 					if success then
 						if newState then
 							UISounds.Play:FrontEnd(-1, "OOB_Cancel", "GTAO_FM_Events_Soundset")

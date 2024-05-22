@@ -59,6 +59,7 @@ AddEventHandler("Core:Shared:Ready", function()
 			DoGarageKeyFobAction()
 		end)
 
+		RegisterCallbacks()
 		CreateGaragePolyZones()
 		CreateElevators()
 		Citizen.Wait(1000)
@@ -341,7 +342,7 @@ AddEventHandler("Keybinds:Client:KeyUp:primary_action", function()
 	if _lookingAtDoor and _showingDoorInfo then
 		StopShowingDoorInfo()
 		DoorAnim()
-		Callbacks:ServerCallback("Doors:ToggleLocks", _lookingAtDoor, function(success, newState)
+		Callbacks:ServerCallback("Doors:ToggleLocks", { doorId = _lookingAtDoor, breachingCharge = false }, function(success, newState)
 			if success then
 				Sounds.Do.Play:One("doorlocks.ogg", 0.2)
 			end
