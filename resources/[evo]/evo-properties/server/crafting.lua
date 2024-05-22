@@ -109,10 +109,10 @@ _propertyCraftingRecipies = {
 	["heavyarmor"] = {
 		result = { name = "heavyarmor", count = 1 },
 		items = {
-			{ name = "ironbar", count = 50 },
-			{ name = "heavy_glue", count = 10 },
-			{ name = "plastic", count = 4 },
-			{ name = "cloth", count = 5 },
+			{ name = "ironbar", count = 175 },
+			{ name = "heavy_glue", count = 20 },
+			{ name = "plastic", count = 10 },
+			{ name = "cloth", count = 35 },
 		},
 		time = 5000,
 	},
