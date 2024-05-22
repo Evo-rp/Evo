@@ -151,7 +151,7 @@ end
 
 function FetchDatabaseUser(identifier, player)
     local p = promise.new()
-
+    -- This can kill itself --PixelRez
     local query = "SELECT name, forum, account, identifier, verified, joined, groups, avatar, priority FROM users WHERE identifier = ? LIMIT 1"
     local params = {identifier}
 
