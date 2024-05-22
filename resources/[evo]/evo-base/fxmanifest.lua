@@ -1,6 +1,7 @@
 fx_version("cerulean")
 games({ "gta5" })
 lua54("yes")
+server_script("@oxmysql/lib/MySQL.lua")
 client_script("@evo-pwnzor/client/check.lua")
 client_scripts({
 	"sh_init.lua",
