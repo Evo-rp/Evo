@@ -101,6 +101,54 @@ CREATE TABLE IF NOT EXISTS `placed_props` (
 
 -- Data exporting was unselected.
 
+CREATE TABLE `bank_accounts` (
+	`account` INT(10) NOT NULL,
+	`type` VARCHAR(255) NOT NULL COLLATE 'latin1_swedish_ci',
+	`owner` VARCHAR(255) NOT NULL COLLATE 'latin1_swedish_ci',
+	`balance` INT(10) NOT NULL DEFAULT '0',
+	`name` VARCHAR(255) NOT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`account`) USING BTREE,
+	INDEX `Owner` (`owner`) USING BTREE,
+	INDEX `Type` (`type`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB;
+
+CREATE TABLE `bank_accounts_permissions` (
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
+	`account` INT(10) NOT NULL,
+	`type` INT(10) NOT NULL,
+	`jointOwner` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`job` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`workplace` VARCHAR(255) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`jobPermissions` VARCHAR(1024) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `job` (`job`) USING BTREE,
+	INDEX `workplace` (`workplace`) USING BTREE,
+	INDEX `jointOwner` (`jointOwner`) USING BTREE,
+	INDEX `account` (`account`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;
+
+
+CREATE TABLE `bank_accounts_transactions` (
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
+	`type` VARCHAR(255) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`account` INT(10) NOT NULL,
+	`amount` INT(10) NOT NULL DEFAULT '0',
+	`timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`title` VARCHAR(255) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+	`description` VARCHAR(1024) NOT NULL DEFAULT '' COLLATE 'utf8mb4_general_ci',
+	`data` VARCHAR(1024) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `account` (`account`) USING BTREE
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=1;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

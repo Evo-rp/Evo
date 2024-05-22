@@ -19,6 +19,7 @@ function RetrieveBankingComponents()
 	Jobs = exports["evo-base"]:FetchComponent("Jobs")
 	Vehicles = exports["evo-base"]:FetchComponent("Vehicles")
 	Inventory = exports["evo-base"]:FetchComponent("Inventory")
+	Pwnzor = exports["evo-base"]:FetchComponent("Pwnzor")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -42,6 +43,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Tasks",
 		"Vehicles",
 		"Inventory",
+		"Pwnzor",
 	}, function(error)
 		if #error > 0 then
 			exports["evo-base"]:FetchComponent("Logger"):Critical("Banking", "Failed To Load All Dependencies")
@@ -54,8 +56,8 @@ end)
 _BANKING = {
 	Accounts = {
 		Get = function(self, accountNumber)
-			return FindBankAccount({
-				Account = accountNumber,
+			return MySQL.single.await("SELECT account as Account, balance as Balance, type as Type, owner as Owner, name as Name FROM bank_accounts WHERE account = ?", {
+				accountNumber
 			})
 		end,
 		CreatePersonal = function(self, ownerSID)
@@ -64,180 +66,60 @@ _BANKING = {
 				return hasAccount
 			end
 
-			return CreateBankAccount({
-				Type = "personal",
-				Owner = ownerSID,
-				Balance = 5000,
-			})
+			local acc = CreateBankAccount("personal", tostring(ownerSID), 5000)
+			if acc then
+				return Banking.Accounts:Get(acc)
+			end
+			return false
 		end,
 		GetPersonal = function(self, ownerSID)
-			return FindBankAccount({
-				Type = "personal",
-				Owner = ownerSID,
+			return MySQL.single.await("SELECT account as Account, balance as Balance, type as Type, owner as Owner, name as Name FROM bank_accounts WHERE type = ? AND owner = ?", {
+				"personal",
+				tostring(ownerSID)
 			})
 		end,
-		CreatePersonalSavings = function(self, ownerSID, jointOwners)
-			local existingSavingAccount = FindBankAccount({
-				Type = "personal_savings",
-				Owner = ownerSID,
-			})
-
-			if existingSavingAccount then
-				return existingSavingAccount
+		CreatePersonalSavings = function(self, ownerSID)
+			local acc = CreateBankAccount("personal_savings", tostring(ownerSID), 0)
+			if acc then
+				local data = Banking.Accounts:Get(acc)
+				data.JointOwners = {}
+				return data
 			end
-
-			return CreateBankAccount({
-				Type = "personal_savings",
-				Owner = ownerSID,
-				JointOwners = jointOwners or {},
-			})
-		end,
-		GetPersonalSavings = function(self, SID)
-			return FindBankAccounts({
-				Type = "personal_savings",
-				["$or"] = {
-					{
-						Owner = SID,
-					},
-					{
-						JointOwners = SID,
-					},
-				},
-			})
+			return false
 		end,
 		AddPersonalSavingsJointOwner = function(self, accountId, jointOwnerSID)
-			local p = promise.new()
-			Database.Game:findOneAndUpdate({
-				collection = "bank_accounts",
-				query = {
-					Account = accountId,
-				},
-				update = {
-					["$push"] = {
-						JointOwners = jointOwnerSID,
-					},
-				},
-				options = {
-					returnDocument = "after",
-				},
-			}, function(success, results)
-				if success and results then
-					p:resolve(results)
-				else
-					p:resolve(false)
-				end
-			end)
-
-			local res = Citizen.Await(p)
-			return res
-		end,
-		RemovePersonalSavingsJointOwner = function(self, accountId, jointOwnerSID)
-			local p = promise.new()
-			Database.Game:findOneAndUpdate({
-				collection = "bank_accounts",
-				query = {
-					Account = accountId,
-				},
-				update = {
-					["$pull"] = {
-						JointOwners = jointOwnerSID,
-					},
-				},
-				options = {
-					returnDocument = "after",
-				},
-			}, function(success, results)
-				if success and results then
-					p:resolve(results)
-				else
-					p:resolve(false)
-				end
-			end)
-
-			local res = Citizen.Await(p)
-			return res
-		end,
-		CreateOrganization = function(self, accountId, accountName, startingBalance, jobAccess)
-			local account = FindBankAccount({
-				Type = "organization",
-				Owner = accountId,
+			local account = MySQL.single.await("SELECT account, type FROM bank_accounts WHERE type = ? AND account = ?", {
+				"personal_savings",
+				accountId
 			})
 
 			if account then
-				return account
-			end
+				local existing = MySQL.single.await("SELECT jointOwner FROM bank_accounts_permissions WHERE account = ? AND jointOwner = ?", {
+					accountId,
+					tostring(jointOwnerSID)
+				})
 
-			return CreateBankAccount({
-				Type = "organization",
-				Owner = accountId,
-				Name = accountName,
-				Balance = startingBalance or 0,
-				JobAccess = jobAccess,
+				if not existing then
+					return MySQL.insert.await("INSERT INTO bank_accounts_permissions (account, type, jointOwner) VALUES (?, ?, ?)", {
+						accountId,
+						1,
+						tostring(jointOwnerSID)
+					})
+				end
+			end
+		end,
+		RemovePersonalSavingsJointOwner = function(self, accountId, jointOwnerSID)
+			return MySQL.query.await("DELETE FROM bank_accounts_permissions WHERE account = ? AND type = ? AND jointOwner = ?", {
+				accountId,
+				1,
+				tostring(jointOwnerSID)
 			})
 		end,
 		GetOrganization = function(self, accountId)
-			local account = FindBankAccount({
-				Type = "organization",
-				Owner = accountId,
+			return MySQL.single.await("SELECT account as Account, balance as Balance, type as Type, owner as Owner, name as Name FROM bank_accounts WHERE type = ? AND owner = ?", {
+				"organization",
+				accountId
 			})
-			return account
-		end,
-		AddOrganizationAccessingJob = function(self, job, workplace, permissionSettings)
-			local account = FindBankAccount({
-				Type = "organization",
-				Owner = accountId,
-			})
-
-			if account then
-				local currentAccess = account.JobAccess or {}
-
-				for k, v in ipairs(currentAccess) do
-					if v.Job == job and (not workplace or v.Workplace == workplace) then
-						table.remove(currentAccess, k)
-					end
-				end
-
-				table.insert(currentAccess, {
-					Job = job,
-					Workplace = workplace,
-					Permissions = permissionSettings or GetDefaultBankAccountPermissions(),
-				})
-
-				local updatedAccountData = UpdateBankAccount({
-					Account = account.Account,
-				}, {
-					["$set"] = {
-						JobAccess = currentAccess,
-					},
-				})
-				return updatedAccountData
-			end
-			return false
-		end,
-		RemoveOrganizationAccessingJob = function(self, job, workplace)
-			local account = FindBankAccount({
-				Type = "organization",
-				Owner = accountId,
-			})
-
-			if account then
-				local currentAccess = account.JobAccess or {}
-				for k, v in ipairs(currentAccess) do
-					if v.Job == job and v.Workplace == workplace then
-						table.remove(currentAccess, k)
-					end
-				end
-
-				local updatedAccountData = UpdateBankAccount({
-					Account = account.Account,
-				}, {
-					["$set"] = {
-						JobAccess = currentAccess,
-					},
-				})
-				return updatedAccountData
-			end
-			return false
 		end,
 	},
 	Balance = {
@@ -257,14 +139,12 @@ _BANKING = {
 		end,
 		Deposit = function(self, accountNumber, amount, transactionLog, skipPhoneNoti)
 			if amount and amount > 0 then
-				local accountData = UpdateBankAccount({
-					Account = accountNumber,
-				}, {
-					["$inc"] = {
-						Balance = math.floor(amount),
-					},
+				local u = MySQL.query.await("UPDATE bank_accounts SET balance = balance + ? WHERE account = ?", {
+					math.floor(amount),
+					accountNumber
 				})
-				if accountData then
+
+				if u and u.affectedRows > 0 then
 					if transactionLog then
 						Banking.TransactionLogs:Add(
 							accountNumber,
@@ -275,65 +155,68 @@ _BANKING = {
 							transactionLog.transactionAccount,
 							transactionLog.data
 						)
-
+	
 						if transactionLog.title ~= "Cash Deposit" then
 							local acct = Banking.Accounts:Get(accountNumber)
 							if acct ~= nil then
 								if acct.Type == "personal" or acct.Type == "personal_savings" then
-									local p = Fetch:CharacterData("SID", acct.Owner)
+									local p = Fetch:SID(tonumber(acct.Owner))
 									if p ~= nil and not skipPhoneNoti then
 										Phone.Notification:Add(
 											p:GetData("Source"),
 											"Received A Deposit",
 											string.format("$%s Deposited Into %s", math.floor(amount), acct.Name),
-											os.time() * 1000,
+											os.time(),
 											6000,
 											"bank",
 											{}
 										)
 									end
 
-									if acct.JointOwners ~= nil and #acct.JointOwners > 0 and not skipPhoneNoti then
-										for k, v in ipairs(acct.JointOwners) do
-											local jo = Fetch:CharacterData("SID", v)
-											if jo ~= nil then
-												Phone.Notification:Add(
-													jo:GetData("Source"),
-													"Received A Deposit",
-													string.format(
-														"$%s Deposited Into %s",
-														math.floor(amount),
-														acct.Name
-													),
-													os.time() * 1000,
-													6000,
-													"bank",
-													{}
-												)
-											end
-										end
-									end
+									-- if acct.Type == "personal_savings" then
+									-- 	local jO = MySQL.query.await("SELECT jointOwner FROM bank_accounts_permissions WHERE account = ? AND type = ?", {
+									-- 		acct.Account,
+									-- 		1
+									-- 	})
+
+									-- 	if jO and #jO > 0 then
+									-- 		for k, v in ipairs(jO) do
+									-- 			local char = Fetch:CharacterData("SID", tonumber(v.jointOwner))
+									-- 			if char ~= nil then
+									-- 				Phone.Notification:Add(
+									-- 					char:GetData("Source"),
+									-- 					"Received A Deposit",
+									-- 					string.format(
+									-- 						"$%s Deposited Into %s",
+									-- 						math.floor(amount),
+									-- 						acct.Name
+									-- 					),
+									-- 					os.time(),
+									-- 					6000,
+									-- 					"bank",
+									-- 					{}
+									-- 				)
+									-- 			end
+									-- 		end
+									-- 	end
+									-- end
 								end
 							end
 						end
 					end
-					return accountData.Balance
+					return true
 				end
 			end
 			return false
 		end,
 		Withdraw = function(self, accountNumber, amount, transactionLog)
 			if amount and amount > 0 then
-				local p = promise.new()
-				local accountData = UpdateBankAccount({
-					Account = accountNumber,
-				}, {
-					["$inc"] = {
-						Balance = -(math.floor(amount)),
-					},
+				local u = MySQL.query.await("UPDATE bank_accounts SET balance = balance - ? WHERE account = ?", {
+					math.floor(amount),
+					accountNumber
 				})
 
-				if accountData then
+				if u and u.affectedRows > 0 then
 					if transactionLog then
 						Banking.TransactionLogs:Add(
 							accountNumber,
@@ -345,7 +228,8 @@ _BANKING = {
 							transactionLog.data
 						)
 					end
-					return accountData.Balance
+
+					return true
 				end
 			end
 			return false
@@ -359,41 +243,21 @@ _BANKING = {
 		end,
 	},
 	TransactionLogs = {
-		Add = function(self, accountNumber, type, amount, title, description, transactionAccount, data)
-			local doc = {
-				Type = type,
-				Timestamp = os.time(),
-				Account = accountNumber,
-				Amount = (math.floor(amount)),
-				Title = title or "Unknown",
-				Description = description or "No Description",
-				TransactionAccount = transactionAccount,
-				Data = data,
-			}
+		Add = function(self, accountNumber, tType, amount, title, description, transactionAccount, data)
+			if type(data) ~= "table" then
+				data = { data = data }
+			end
 
-			Database.Game:insertOne({
-				collection = "bank_accounts_transactions",
-				document = doc,
+			data.transactionAccount = transactionAccount
+
+			MySQL.single.await("INSERT INTO bank_accounts_transactions (type, account, amount, title, description, data) VALUES (?, ?, ?, ?, ?, ?)", {
+				tType,
+				accountNumber,
+				math.floor(amount),
+				title,
+				description,
+				json.encode(data)
 			})
-			return doc
-		end,
-		Get = function(self, accountNumber)
-			local p = promise.new()
-			Database.Game:find({
-				collection = "bank_accounts_transactions",
-				query = {
-					Account = accountNumber,
-				},
-			}, function(success, results)
-				if success then
-					p:resolve(results)
-				else
-					p:resolve({})
-				end
-			end)
-
-			local res = Citizen.Await(p)
-			return res
 		end,
 	},
 }
