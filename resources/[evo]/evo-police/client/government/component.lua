@@ -99,8 +99,8 @@ AddEventHandler("Core:Shared:Ready", function()
 		PedInteraction:Add(
 			"govt-services",
 			`a_f_m_eastsa_02`,
-			vector3(-551.196, -203.182, 37.239),
-			351.18592,
+			vector3(321.418, -1640.354, 31.535),
+			318.282,
 			25.0,
 			govServices,
 			"bell-concierge"
@@ -144,17 +144,16 @@ AddEventHandler("Core:Shared:Ready", function()
 			}, 3.0, true)
 		end
 
-		Polyzone.Create:Box("courtroom", vector3(-571.17, -207.02, 38.77), 18.2, 19.6, {
-			heading = 30,
-			--debugPoly=true,
-			minZ = 36.97,
-			maxZ = 47.37,
+		Polyzone.Create:Box("courtroom", vector3(341.5, -1642.1, 38.5), 10.0, 16.2, {
+			heading = 50,
+			minZ = 37.7,
+			maxZ = 43.9
 		}, {})
 
-		Targeting.Zones:AddBox("gavel_courthouse", "gavel", vector3(-575.71, -210.71, 38.77), 0.2, 0.4, {
-			heading = 0,
-			minZ = 38.57,
-			maxZ = 38.77
+		Targeting.Zones:AddBox("gavel_courthouse", "gavel", vector3(345.87, -1637.35, 38.93), 0.2, 0.4, {
+			heading = 310,
+			minZ = 38.73,
+			maxZ = 38.93
 		}, {
 			{
 				icon = "gavel",
