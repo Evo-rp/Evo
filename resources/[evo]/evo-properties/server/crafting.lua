@@ -11,6 +11,178 @@ _propertyCraftingRecipies = {
 		},
 		time = 10 * 1000,
 	},
+	["handcuffs"] = {
+		result = { name = "handcuffs", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 20 },
+			{ name = "rubber", count = 13 },
+			{ name = "heavy_glue", count = 15 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_SMG_SILENCER"] = {
+		result = { name = "ATTCH_SMG_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 80 },
+			{ name = "rubber", count = 5 },
+			{ name = "heavy_glue", count = 2 },
+			{ name = "plastic", count = 4 },
+			{ name = "copperwire", count = 25 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_SMG_EXT_MAG"] = {
+		result = { name = "ATTCH_SMG_EXT_MAG", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 30 },
+			{ name = "rubber", count = 2 },
+			{ name = "heavy_glue", count = 10 },
+			{ name = "plastic", count = 4 },
+			{ name = "copperwire", count = 18 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_PISTOL_SILENCER"] = {
+		result = { name = "ATTCH_PISTOL_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 60 },
+			{ name = "rubber", count = 2 },
+			{ name = "heavy_glue", count = 10 },
+			{ name = "plastic", count = 1 },
+			{ name = "copperwire", count = 18 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_AR_SILENCER"] = {
+		result = { name = "ATTCH_AR_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 130 },
+			{ name = "rubber", count = 25 },
+			{ name = "heavy_glue", count = 125 },
+			{ name = "plastic", count = 10 },
+			{ name = "copperwire", count = 125 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_ADV_AR_SILENCER"] = {
+		result = { name = "ATTCH_ADV_AR_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 250 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 225 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 234 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_ADV_SMG_SILENCER"] = {
+		result = { name = "ATTCH_ADV_SMG_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 150 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 125 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 134 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_AR_EXT_MAG"] = {
+		result = { name = "ATTCH_AR_EXT_MAG", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 50 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 25 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 134 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_BOX_MAG"] = {
+		result = { name = "ATTCH_BOX_MAG", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 50 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 25 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 134 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_DRUM_MAG"] = {
+		result = { name = "ATTCH_DRUM_MAG", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 50 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 25 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 134 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_ADV_PISTOL_SILENCER"] = {
+		result = { name = "ATTCH_ADV_PISTOL_SILENCER", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 150 },
+			{ name = "rubber", count = 175 },
+			{ name = "heavy_glue", count = 125 },
+			{ name = "plastic", count = 30 },
+			{ name = "copperwire", count = 134 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_HOLO"] = {
+		result = { name = "ATTCH_HOLO", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 130 },
+			{ name = "rubber", count = 75 },
+			{ name = "heavy_glue", count = 75 },
+			{ name = "plastic", count = 130 },
+			{ name = "binoculars", count = 1 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_MED_SCOPE"] = {
+		result = { name = "ATTCH_MED_SCOPE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 150 },
+			{ name = "rubber", count = 125 },
+			{ name = "heavy_glue", count = 175 },
+			{ name = "plastic", count = 150 },
+			{ name = "binoculars", count = 1 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_LRG_SCOPE"] = {
+		result = { name = "ATTCH_LRG_SCOPE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 250 },
+			{ name = "rubber", count = 225 },
+			{ name = "heavy_glue", count = 275 },
+			{ name = "plastic", count = 250 },
+			{ name = "binoculars", count = 1 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_SMALL_SCOPE"] = {
+		result = { name = "ATTCH_SMALL_SCOPE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 20 },
+			{ name = "rubber", count = 25 },
+			{ name = "heavy_glue", count = 25 },
+			{ name = "plastic", count = 20 },
+			{ name = "binoculars", count = 1 },
+		},
+		time = 10 * 1000,
+	},
+	["ATTCH_WEAPON_FLASHLIGHT"] = {
+		result = { name = "ATTCH_WEAPON_FLASHLIGHT", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 20 },
+			{ name = "heavy_glue", count = 25 },
+			{ name = "plastic", count = 20 },
+		},
+		time = 10 * 1000,
+	},
 	["WEAPON_FNX"] = {
 		result = { name = "WEAPON_FNX", count = 1 },
 		items = {
@@ -194,135 +366,10 @@ _propertyCrafting = {
 	{ -- Weapon bench ( doggie rn)
 		id = "66458e397a6944f6c6071845",
 		recipies = {
-			-- _propertyCraftingRecipies.lockpick,
-			-- _propertyCraftingRecipies.adv_lockpick,
-			-- _propertyCraftingRecipies.WEAPON_PISTOL,
-			-- _propertyCraftingRecipies.WEAPON_FNX,
 			_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
 			_propertyCraftingRecipies.heavyarmor,
 			_propertyCraftingRecipies.AMMO_PISTOL,
-			-- {
-			-- 	result = { name = "fakeplates", count = 2 },
-			-- 	items = {
-			-- 		{ name = "plastic", count = 1 },
-			-- 		{ name = "scrapmetal", count = 1 },
-			-- 	},
-			-- 	time = 10000,
-			-- },
-			-- _propertyCraftingRecipies.vpn,
-			-- _propertyCraftingRecipies.safecrack_kit,
-			-- _propertyCraftingRecipies.electronics_kit,
-			-- _propertyCraftingRecipies.adv_electronics_kit,
-			-- _propertyCraftingRecipies.WEAPON_MOLOTOV,
-			-- _propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
-			-- {
-			-- 	result = { name = "WEAPON_PIPEBOMB", count = 1 },
-			-- 	items = {
-			-- 		{ name = "pipe", count = 1 },
-			-- 		{ name = "gunpowder", count = 1 },
-			-- 		{ name = "nails", count = 2 },
-			-- 	},
-			-- 	time = 2000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_PISTOL_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_PISTOL_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_SMG_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_SMG_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 16 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_AR_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_AR_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_WEAPON_FLASHLIGHT", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "electronic_parts", count = 10 },
-			-- 		{ name = "plastic", count = 2 },
-			-- 		{ name = "copperwire", count = 2 },
-			-- 		{ name = "glue", count = 1 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_SMG_EXT_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_AR_EXT_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_DRUM_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_BOX_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_HOLO", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "electronic_parts", count = 35 },
-			-- 		{ name = "plastic", count = 5 },
-			-- 		{ name = "heavy_glue", count = 2 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
+			
 		},
 		-- restrictions = {
 		-- 	job = {
@@ -332,6 +379,22 @@ _propertyCrafting = {
 		-- },
 		canUseSchematics = true,
 	},
+	{ -- Weapon2 bench ( whitestar )
+	id = "664eca2e6aadd2f9bcfa09bb",
+	recipies = {
+		_propertyCraftingRecipies.WEAPON_FNX,
+		_propertyCraftingRecipies.heavyarmor,
+		_propertyCraftingRecipies.AMMO_PISTOL,
+		
+	},
+	-- restrictions = {
+	-- 	job = {
+	-- 		id = "dgang",
+	-- 		onDuty = false,
+	-- 	},
+	-- },
+	canUseSchematics = true,
+},
 	{ -- ballas bench (thermite)
 		id = "66481432701083ecb30a70d7",
 		recipies = {
@@ -341,139 +404,11 @@ _propertyCrafting = {
 			-- _propertyCraftingRecipies.WEAPON_FNX,
 			-- _propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
 			-- _propertyCraftingRecipies.AMMO_PISTOL,
-			-- {
-			-- 	result = { name = "fakeplates", count = 2 },
-			-- 	items = {
-			-- 		{ name = "plastic", count = 1 },
-			-- 		{ name = "scrapmetal", count = 1 },
-			-- 	},
-			-- 	time = 10000,
-			-- },
-			-- _propertyCraftingRecipies.vpn,
-			-- _propertyCraftingRecipies.safecrack_kit,
-			-- _propertyCraftingRecipies.electronics_kit,
-			-- _propertyCraftingRecipies.adv_electronics_kit,
-			-- _propertyCraftingRecipies.WEAPON_MOLOTOV,
-			-- _propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
-			-- {
-			-- 	result = { name = "WEAPON_PIPEBOMB", count = 1 },
-			-- 	items = {
-			-- 		{ name = "pipe", count = 1 },
-			-- 		{ name = "gunpowder", count = 1 },
-			-- 		{ name = "nails", count = 2 },
-			-- 	},
-			-- 	time = 2000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_PISTOL_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_PISTOL_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_SMG_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_SMG_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 16 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_AR_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 6 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_ADV_AR_SILENCER", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_WEAPON_FLASHLIGHT", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "electronic_parts", count = 10 },
-			-- 		{ name = "plastic", count = 2 },
-			-- 		{ name = "copperwire", count = 2 },
-			-- 		{ name = "glue", count = 1 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_SMG_EXT_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_AR_EXT_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_DRUM_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_BOX_MAG", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "heavy_glue", count = 5 },
-			-- 		{ name = "plastic", count = 15 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
-			-- {
-			-- 	result = { name = "ATTCH_HOLO", count = 1 },
-			-- 	items = {
-			-- 		{ name = "ironbar", count = 1 },
-			-- 		{ name = "electronic_parts", count = 35 },
-			-- 		{ name = "plastic", count = 5 },
-			-- 		{ name = "heavy_glue", count = 2 },
-			-- 	},
-			-- 	time = 5000,
-			-- },
 		},
-		-- restrictions = {
-		-- 	job = {
-		-- 		id = "dgang",
-		-- 		onDuty = false,
-			-- },
-		-- },
 		canUseSchematics = true,
 	},
 	{ -- Dev Bench
-		id = "664ea21df9d1f3cfe23ab9ea",
+		id = "664ec97b6aadd2f9bcfa09ae",
 		recipies = {
 			_propertyCraftingRecipies.WEAPON_PISTOL,
 			_propertyCraftingRecipies.WEAPON_FNX,
@@ -487,6 +422,7 @@ _propertyCrafting = {
 			_propertyCraftingRecipies.WEAPON_DRAGON_KATANA_PURPLE,
 			_propertyCraftingRecipies.WEAPON_DRAGON_KATANA_BLUE,
 			_propertyCraftingRecipies.WEAPON_FADEBFKNIFE,
+			_propertyCraftingRecipies.ATTCH_SMG_SILENCER,
 
 		},
 		restrictions = {
@@ -497,40 +433,6 @@ _propertyCrafting = {
 		},
 		canUseSchematics = true,
  },
-	-- { -- Zeke's Bench
-	-- 	id = "627bcd0416fc911180e25c98",
-	-- 	recipies = {
-	-- 		_propertyCraftingRecipies.vpn,
-	-- 		_propertyCraftingRecipies.safecrack_kit,
-	-- 		_propertyCraftingRecipies.electronics_kit,
-	-- 		_propertyCraftingRecipies.adv_electronics_kit,
-	-- 	},
-	-- 	canUseSchematics = true,
-	-- },
-	-- { -- Jakes Bench
-	-- 	id = "627ec8b655399e5fe01a185b",
-	-- 	recipies = {
-	-- 		_propertyCraftingRecipies.WEAPON_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_FNX,
-	-- 		_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
-	-- 		_propertyCraftingRecipies.AMMO_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_MOLOTOV,
-	-- 		_propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
-	-- 	},
-	-- 	canUseSchematics = true,
-	-- },
-	-- { -- Jakes Bench
-	-- 	id = "62ec823174ffdb7079d6885b",
-	-- 	recipies = {
-	-- 		_propertyCraftingRecipies.WEAPON_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_FNX,
-	-- 		_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
-	-- 		_propertyCraftingRecipies.AMMO_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_MOLOTOV,
-	-- 		_propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
-	-- 	},
-	-- 	canUseSchematics = true,
-	-- },
 }
 
 function SetupPropertyCrafting()

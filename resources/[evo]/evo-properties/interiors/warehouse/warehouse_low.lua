@@ -41,6 +41,21 @@ PropertyInteriors["warehouse_low"] = {
                 }
             }
         },
+        crafting = {
+            coords = vector3(1102.35, -3102.69, -39.0),
+            heading = 1,
+            polyzone = {
+                center = vector3(1102.35, -3102.69, -39.0),
+                length = 5.1,
+                width = 0.7,
+                options = {
+                    heading = 90,
+                    --debugPoly=true,
+                    minZ = -40.1,
+                    maxZ = -37.7
+                }
+            }
+        },
     },
     -- zone = {
     --     center = vector3(326.18, 108.58, -94.7),
