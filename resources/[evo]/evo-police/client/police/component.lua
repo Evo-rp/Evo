@@ -563,10 +563,16 @@ AddEventHandler("Core:Shared:Ready", function()
 			end
 		end)
 
-		Targeting.Zones:AddBox("pd-clockinoff-mrpd", "siren-on", vector3(450.41, -983.93, 30.69), 0.8, 0.8, {
+		Targeting.Zones:AddBox("pd-clockinoff-fuckingmrpd", "siren-on", vector3(450.41, -983.93, 30.69), 0.8, 0.8, {
 			heading = 355,
 			minZ = 28.49,
 			maxZ = 32.49
+		}, policeDutyPoint, 2.0, true)
+
+		Targeting.Zones:AddBox("pd-clockinoff-vpd", "siren-on", vector3(621.34, 7.9, 83.62), 1, 1, {
+			heading = 340,
+			minZ = 83.62,
+			maxZ = 84.02
 		}, policeDutyPoint, 2.0, true)
 
 		Targeting.Zones:AddBox("pd-clockinoff-rangers", "siren-on", vector3(385.76, 795.04, 187.46), 0.4, 0.4, {
@@ -720,6 +726,20 @@ AddEventHandler("Core:Shared:Ready", function()
 				},
 			},
 		}
+
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-women", "siren-on", vector3(474.94, -990.35, 30.69), 1.1, 6.3, {
+			heading = 0,
+			--debugPoly=true,
+			minZ = 28.89,
+			maxZ = 32.89
+		}, locker, 3.0, true)
+
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-men", "siren-on", vector3(480.74, -1006.71, 30.69), 6.2, 0.8, {
+			heading = 267,
+			--debugPoly=true,
+			minZ = 28.29,
+			maxZ = 32.29
+		}, locker, 3.0, true)
 
 		Targeting.Zones:AddBox("police-shitty-locker", "siren-on", vector3(607.94, 9.2, 87.8), 0.4, 4.2, {
 			heading = 340,
