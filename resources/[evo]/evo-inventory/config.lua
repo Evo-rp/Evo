@@ -87,7 +87,7 @@ Config.ShopItemSets = {
 		"phone",
 		"WEAPON_FLASHBANG",
 		"WEAPON_SMOKEGRENADE",
-		"scuba_gear",
+		"PDscuba_gear",
 		"breachingcharge"
 	}, -- Police Armory
 	[7] = { "traumakit", "medicalkit", "firstaid", "bandage", "morphine", "radio", "phone", "scuba_gear" },
