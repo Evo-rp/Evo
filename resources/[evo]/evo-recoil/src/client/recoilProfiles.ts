@@ -4,6 +4,10 @@ import WeaponRecoilDictionary from "./interfaces/weaponRecoilDictionary";
 export const RecoilProfiles: WeaponRecoilDictionary = {
   // HANDGUNS
   [453432689]: new RecoilProfile(1.0, 0), // PISTOL
+  [-724102563]: new RecoilProfile(1.0, 0), // glock 17
+  [-694879300]: new RecoilProfile(1.0, 0), // glock 19
+  [1614270180]: new RecoilProfile(1.0, 0), // five 7
+  [1517788145]: new RecoilProfile(1.0, 0), // FNX
   [-1075685676]: new RecoilProfile(0.5, 0), // PISTOL MK2
   [1593441988]: new RecoilProfile(1.0, 0), // COMBAT PISTOL
   [-1716589765]: new RecoilProfile(1.5, 0), // PISTOL .50
@@ -23,8 +27,10 @@ export const RecoilProfiles: WeaponRecoilDictionary = {
 
   // SUBMACHINE GUNS
   [324215364]: new RecoilProfile(0.75, 0), // MICRO SMG
-  [-1121678507]: new RecoilProfile(0.75, 0), // MINI SMG
+  [-1121678507]: new RecoilProfile(0.75, 0), // MINI SMG 
   [736523883]: new RecoilProfile(0.75, 0), // SMG
+  [409176877]: new RecoilProfile(0.75, 0), // P90
+  [1846078594]: new RecoilProfile(0.75, 0), // UMP45
   [2024373456]: new RecoilProfile(0.4, 0), // SMG MK2
   [-270015777]: new RecoilProfile(0.5, 0), // ASSAULT SMG
   [171789620]: new RecoilProfile(0.75, 0), // COMBAT PDW
@@ -44,6 +50,9 @@ export const RecoilProfiles: WeaponRecoilDictionary = {
   [-1074790547]: new RecoilProfile(0.3, 0), // ASSAULT RIFLE
   [961495388]: new RecoilProfile(0.15, 0), // ASSAULT RIFLE MK2
   [-2084633992]: new RecoilProfile(0.15, 0), // CARBINE RIFLE
+  [-1510913797]: new RecoilProfile(0.15, 0), // AK74 1837284246
+  [1837284246]: new RecoilProfile(0.15, 0), // HK416B
+  [-599901489]: new RecoilProfile(0.15, 0), // Ar-15
   [-86904375]: new RecoilProfile(0.15, 0), // CARBINE RIFLE MK2
   [-1357824103]: new RecoilProfile(0.35, 0), // ADVANCED RIFLE
   [-1063057011]: new RecoilProfile(0.4, 0), // SPECIAL CARBINE
