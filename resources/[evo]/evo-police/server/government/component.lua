@@ -108,14 +108,14 @@ AddEventHandler("Core:Shared:Ready", function()
 		Inventory.Poly:Create({
 			id = "doj-storage",
 			type = "box",
-			coords = vector3(-586.64, -203.5, 38.23),
-			length = 0.8,
-			width = 1.4,
+			coords = vector3(347.21, -1631.0, 38.5),
+			length = 1.6,
+			width = 2.2,
 			options = {
-				heading = 30,
+				heading = 50,
 				--debugPoly=true,
-				minZ = 37.23,
-				maxZ = 39.43,
+				minZ = 37.5,
+				maxZ = 38.5
 			},
 			data = {
 				inventory = {
