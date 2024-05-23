@@ -727,6 +727,20 @@ AddEventHandler("Core:Shared:Ready", function()
 			},
 		}
 
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-women", "siren-on", vector3(474.94, -990.35, 30.69), 1.1, 6.3, {
+			heading = 0,
+			--debugPoly=true,
+			minZ = 28.89,
+			maxZ = 32.89
+		}, locker, 3.0, true)
+
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-men", "siren-on", vector3(480.74, -1006.71, 30.69), 6.2, 0.8, {
+			heading = 267,
+			--debugPoly=true,
+			minZ = 28.29,
+			maxZ = 32.29
+		}, locker, 3.0, true)
+
 		Targeting.Zones:AddBox("police-shitty-locker", "siren-on", vector3(607.94, 9.2, 87.8), 0.4, 4.2, {
 			heading = 340,
 			--debugPoly=true,
