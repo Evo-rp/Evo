@@ -563,10 +563,10 @@ AddEventHandler("Core:Shared:Ready", function()
 			end
 		end)
 
-		Targeting.Zones:AddBox("pd-clockinoff-mrpd", "siren-on", vector3(450.41, -983.93, 30.69), 0.8, 0.8, {
-			heading = 355,
-			minZ = 28.49,
-			maxZ = 32.49
+		Targeting.Zones:AddBox("pd-clockinoff-vpd", "siren-on", vector3(621.34, 7.9, 83.62), 1, 1, {
+			heading = 340,
+			minZ = 83.62,
+			maxZ = 84.02
 		}, policeDutyPoint, 2.0, true)
 
 		Targeting.Zones:AddBox("pd-clockinoff-rangers", "siren-on", vector3(385.76, 795.04, 187.46), 0.4, 0.4, {
