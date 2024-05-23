@@ -41,6 +41,21 @@ PropertyInteriors["warehouse_med"] = {
                 }
             }
         },
+        crafting = {
+            coords = vector3(1048.2, -3104.25, -39.0),
+            heading = 1,
+            polyzone = {
+                center = vector3(1048.2, -3104.25, -39.0),
+                length = 1.5,
+                width = 0.9,
+                options = {
+                    heading = 180,
+                    --debugPoly=true,
+                    minZ = -39.9,
+                    maxZ = -37.9
+                }
+            }
+        },
     },
     -- zone = {
     --     center = vector3(326.18, 108.58, -94.7),

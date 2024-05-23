@@ -22,6 +22,42 @@ _propertyCraftingRecipies = {
 		},
 		time = 10 * 1000,
 	},
+	["WEAPON_DRAGON_KATANA_RED"] = {
+		result = { name = "WEAPON_DRAGON_KATANA_RED", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 4 },
+			{ name = "rubber", count = 5 },
+			{ name = "ironbar", count = 5 },
+		},
+		time = 10 * 1000,
+	},
+	["WEAPON_DRAGON_KATANA_PURPLE"] = {
+		result = { name = "WEAPON_DRAGON_KATANA_PURPLE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 4 },
+			{ name = "rubber", count = 5 },
+			{ name = "ironbar", count = 5 },
+		},
+		time = 10 * 1000,
+	},
+	["WEAPON_DRAGON_KATANA_BLUE"] = {
+		result = { name = "WEAPON_DRAGON_KATANA_BLUE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 4 },
+			{ name = "rubber", count = 5 },
+			{ name = "ironbar", count = 5 },
+		},
+		time = 10 * 1000,
+	},
+	["WEAPON_FADEBFKNIFE"] = {
+		result = { name = "WEAPON_FADEBFKNIFE", count = 1 },
+		items = {
+			{ name = "scrapmetal", count = 4 },
+			{ name = "rubber", count = 5 },
+			{ name = "ironbar", count = 5 },
+		},
+		time = 10 * 1000,
+	},
 	["WEAPON_HEAVYPISTOL"] = {
 		result = { name = "WEAPON_HEAVYPISTOL", count = 1 },
 		items = {
@@ -155,7 +191,7 @@ _propertyCraftingRecipies = {
 -- Really Shitty Way of doing this but oh well
 
 _propertyCrafting = {
-	{ -- King Abuse's Bench
+	{ -- Weapon bench ( doggie rn)
 		id = "66458e397a6944f6c6071845",
 		recipies = {
 			-- _propertyCraftingRecipies.lockpick,
@@ -296,7 +332,7 @@ _propertyCrafting = {
 		-- },
 		canUseSchematics = true,
 	},
-	{ -- Alzars Bench
+	{ -- ballas bench (thermite)
 		id = "66481432701083ecb30a70d7",
 		recipies = {
 			_propertyCraftingRecipies.thermite,
@@ -436,19 +472,31 @@ _propertyCrafting = {
 		-- },
 		canUseSchematics = true,
 	},
-	-- { -- Robbies Bench
-	-- 	id = "6266c8875a39301c44cc748c",
-	-- 	recipies = {
-	-- 		_propertyCraftingRecipies.WEAPON_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_FNX,
-	-- 		_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
-	-- 		_propertyCraftingRecipies.AMMO_PISTOL,
-	-- 		_propertyCraftingRecipies.WEAPON_MOLOTOV,
-	-- 		_propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
-	-- 		_propertyCraftingRecipies.vpn,
-	-- 	},
-	-- 	canUseSchematics = true,
-	-- },
+	{ -- Dev Bench
+		id = "664ea21df9d1f3cfe23ab9ea",
+		recipies = {
+			_propertyCraftingRecipies.WEAPON_PISTOL,
+			_propertyCraftingRecipies.WEAPON_FNX,
+			_propertyCraftingRecipies.WEAPON_HEAVYPISTOL,
+			_propertyCraftingRecipies.AMMO_PISTOL,
+			_propertyCraftingRecipies.WEAPON_MOLOTOV,
+			_propertyCraftingRecipies.ATTCH_PISTOL_EXT_MAG,
+			_propertyCraftingRecipies.vpn,
+			_propertyCraftingRecipies.heavyarmor,
+			_propertyCraftingRecipies.WEAPON_DRAGON_KATANA_RED,
+			_propertyCraftingRecipies.WEAPON_DRAGON_KATANA_PURPLE,
+			_propertyCraftingRecipies.WEAPON_DRAGON_KATANA_BLUE,
+			_propertyCraftingRecipies.WEAPON_FADEBFKNIFE,
+
+		},
+		restrictions = {
+			job = {
+				id = "dgang",
+				onDuty = true,
+			},
+		},
+		canUseSchematics = true,
+ },
 	-- { -- Zeke's Bench
 	-- 	id = "627bcd0416fc911180e25c98",
 	-- 	recipies = {
