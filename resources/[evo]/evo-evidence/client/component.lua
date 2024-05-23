@@ -59,7 +59,24 @@ AddEventHandler("Core:Shared:Ready", function()
 		end
 		RetrieveComponents()
 
-		Polyzone.Create:Box("evidence_ballistics_mrpd", vector3(605.43, 5.06, 75.04), 1.0, 1.0, {
+		Polyzone.Create:Box("evidence_ballistics_mrpd", vector3(463.18, -998.01, 30.69), 1.2, 3.2, {
+			heading = 0,
+			minZ = 27.69,
+			maxZ = 31.69
+		}, {
+			ballistics = true,
+		})
+
+
+		Polyzone.Create:Box("evidence_dna_mrpd", vector3(463.21, -1000.69, 30.69), 1.4, 3.0, {
+			heading = 0,
+			minZ = 27.69,
+			maxZ = 31.69
+		}, {
+			dna = true,
+		})
+
+		Polyzone.Create:Box("evidence_ballistics_vpd", vector3(605.43, 5.06, 75.04), 1.0, 1.0, {
 			heading = 340,
 			minZ = 74.04,
 			maxZ = 76.64
@@ -67,7 +84,7 @@ AddEventHandler("Core:Shared:Ready", function()
 			ballistics = true,
 		})
 
-		Polyzone.Create:Box("evidence_dna_mrpd", vector3(606.38, 6.76, 75.04), 1.0, 1.0, {
+		Polyzone.Create:Box("evidence_dna_vpd", vector3(606.38, 6.76, 75.04), 1.0, 1.0, {
 			heading = 340,
 			minZ = 74.09,
 			maxZ = 75.69
