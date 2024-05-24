@@ -167,3 +167,7 @@ AddEventHandler("Ped:Client:Died", function()
 
 	TriggerServerEvent("Damage:Server:LogDeath", killer, deathReason)
 end)
+
+RegisterCommand('GET_CURRENT_WEAPON', function()
+    print('Hash: ' .. GetHashKey(GetCurrentPedWeapon(PlayerPedId())))
+end)
