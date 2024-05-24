@@ -607,11 +607,11 @@ AddEventHandler("Core:Shared:Ready", function()
 			maxZ = 29.04,
 		}, policeDutyPoint, 2.0, true)
 
-		Targeting.Zones:AddBox("pd-clockinoff-courthouse", "siren-on", vector3(-528.46, -189.44, 38.23), 1.0, 1.0, {
-			heading = 30,
+		Targeting.Zones:AddBox("pd-clockinoff-courthouse", "siren-on", vector3(318.34, -1638.93, 32.54), 1.8, 1.6, {
+			heading = 50,
 			--debugPoly=true,
-			minZ = 37.63,
-			maxZ = 39.23
+			minZ = 32.34,
+			maxZ = 33.34
 		}, policeDutyPoint, 2.0, true)
 
 		for k, v in ipairs(_pdStationPolys) do

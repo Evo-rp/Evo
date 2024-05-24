@@ -165,7 +165,7 @@ AddEventHandler("Core:Shared:Ready", function()
 end)
 
 RegisterNetEvent("Characters:Client:Spawn", function()
-	Blips:Add("courthouse", "Courthouse", vector3(-538.916, -214.852, 37.650), 419, 0, 0.9)
+	Blips:Add("courthouse", "Courthouse", vector3(325.786, -1631.416, 32.535), 419, 0, 0.9)
 end)
 
 AddEventHandler("Government:Client:UseGavel", function()
