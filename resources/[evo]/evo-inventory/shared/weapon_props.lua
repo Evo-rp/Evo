@@ -44,7 +44,7 @@ WEAPON_PROPS = {
     { type = 'melee', item = "WEAPON_DRAGON_KATANA_RED", model = `w_me_dragon_katana_sheathed_red`, x = 0.35, y = -0.125, z = -0.15, rx = 2.5, ry = -60.0, rz = 0.0 }, 
     { type = 'melee', item = "WEAPON_DRAGON_KATANA_BLUE", model = `w_me_dragon_katana_sheathed_blue`, x = 0.35, y = -0.125, z = -0.15, rx = 2.5, ry = -60.0, rz = 0.0 },
     { type = 'melee', item = "WEAPON_KATANA_2", model = `w_me_katana_2_saya`, x = 0.35, y = -0.125, z = -0.15, rx = 2.5, ry = -60.0, rz = 0.0 },
-    { type = 'melee', item = "WEAPON_SCYTHE", model = `w_me_scythe`, x = 0.2, y = -0.155, z = 0.155, rx = 0.0, ry = 0.0, rz = 180.0 },
+    { type = 'melee', item = "WEAPON_SCYTHE", model = `w_me_scythe`, x = 0.2, y = -0.155, z = 0.155, rx = 0.0, ry = 0.0, rz = 260.0 },
     { type = 'melee', item = "WEAPON_MACHETE", model = `w_me_machette_lr`, x = 0.2, y = -0.125, z = -0.15, rx = 5.0, ry = -60.0, rz = 0.0 },
     { type = 'melee', item = "WEAPON_PONY", model = `w_me_PONY`, x = 0.4, y = -0.125, z = -0.25, rx = 5.0, ry = -60.0, rz = 0.0 },
     { type = 'melee', item = "WEAPON_BAT", model = `w_me_bat`, x = 0.2, y = -0.125, z = -0.15, rx = 5.0, ry = -60.0, rz = 0.0 },
