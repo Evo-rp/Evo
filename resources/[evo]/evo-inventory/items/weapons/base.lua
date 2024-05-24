@@ -1971,7 +1971,7 @@ _itemsSource["weapons_base"] = {
 		weight = 3,
 	},
 	{ 
-		name = "weapon_katana_2",
+		name = "WEAPON_KATANA_2",
 		label = "Katana",
 		weapon = "WEAPON_KATANA_2",
 		ammoType = "NONE",
