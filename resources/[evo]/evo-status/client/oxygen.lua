@@ -77,7 +77,7 @@ function RemoveScubaGear()
     end
 
     Progress:Progress({
-        name = 'scuba_gear',
+        name = 'scuba_gear','scuba_gear',
         duration = 2500,
         label = "Removing Scuba Gear",
         useWhileDead = false,
@@ -113,7 +113,7 @@ function RegisterOxygenCallbacks()
 
         if oxygenDepletionRate >= 1 then
             Progress:Progress({
-                name = 'scuba_gear',
+                name = 'scuba_gear','scuba_gear',
                 duration = 5000,
                 label = "Fitting Scuba Gear",
                 useWhileDead = false,
@@ -157,7 +157,7 @@ function RegisterOxygenCallbacks()
 end
 
 function RegisterOxygenMenus()
-    Interaction:RegisterMenu("scuba_gear", "Take Off Scuba Gear", "mask-snorkel", function()
+    Interaction:RegisterMenu("scuba_gear","PDscuba_gear", "Take Off Scuba Gear", "mask-snorkel", function()
         RemoveScubaGear()
         Interaction:Hide()
     end, function()
