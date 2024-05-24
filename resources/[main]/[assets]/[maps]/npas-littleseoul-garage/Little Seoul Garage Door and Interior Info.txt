@@ -1,0 +1,23 @@
+Little Seoul Garage Door and Interior Info - 
+
+Garage - <position x="-665.43250000" y="-873.91400000" z="25.20554000"/>
+
+info = "Compound Gate"
+coords = vector3(-666.88,-889.52,23.53),
+model = -1603817716
+
+info = "Compound Garage"
+coords = vector3(-675.33,-878.72,25.24),
+model = 245838764
+
+info = "Compound Door South"
+coords = vector3(-695.96,-940.02,20.17),
+model = -1209505515
+
+info = "Compound Door East 1"
+coords = vector3(-658.16,-919.21,23.52),
+model = -1209505515
+
+info = "Compound Door East 2"
+coords = vector3(-661.42,-921.24,23.26),
+model = -1209505515
