@@ -48,48 +48,6 @@ table.insert(Config.Businesses, {
 					},
 					time = 6500,
 				},
-				{
-					result = { name = "lust_chain", count = 1 },
-					items = {
-						{ name = "goldbar", count = 10 },
-						{ name = "silverbar", count = 10 },
-						{ name = "diamond", count = 1 },
-						{ name = "amethyst", count = 1 },
-						{ name = "sapphire", count = 1 },
-						{ name = "opal", count = 1 },
-					},
-					time = 6500,
-				},
-				{
-					result = { name = "mint_mate_chain", count = 1 },
-					items = {
-						{ name = "goldbar", count = 10 },
-						{ name = "silverbar", count = 10 },
-						{ name = "diamond", count = 2 },
-						{ name = "emerald", count = 2 },
-					},
-					time = 6500,
-				},
-				{
-					result = { name = "mint_mate_chain_2", count = 1 },
-					items = {
-						{ name = "goldbar", count = 10 },
-						{ name = "silverbar", count = 10 },
-						{ name = "diamond", count = 2 },
-						{ name = "emerald", count = 2 },
-					},
-					time = 6500,
-				},
-				{
-					result = { name = "snow_chain", count = 1 },
-					items = {
-						{ name = "goldbar", count = 10 },
-						{ name = "silverbar", count = 10 },
-						{ name = "diamond", count = 2 },
-						{ name = "opal", count = 2 },
-					},
-					time = 6500,
-				},
 			},
 		},
 	},
