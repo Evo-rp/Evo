@@ -5,7 +5,7 @@ addDoorsListToConfig({
 
     {
         id = "mrpd_PD_Lobby1",
-        model = 1079515784
+        model = 1079515784,
         coords = vector3(451.09, -991.29, 30.84),
         locked = true,
         restricted = {
