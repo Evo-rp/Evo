@@ -1697,12 +1697,12 @@ _vehicleStorage = {
 		coords = vector3(-566.04, -165.79, 38.0),
 		zone = {
 			type = "box",
-			center = vector3(-566.04, -165.79, 38.0),
-			length = 41.4,
-			width = 5.4,
-			heading = 293,
-			minZ = 36.4,
-			maxZ = 40.4,
+			center = vector3(321.47, -1576.23, 29.95),
+			length = 6.8,
+			width = 32.8,
+			heading = 320,
+			minZ = 28.15,
+			maxZ = 32.15
 		},
 		spaces = {
 			vector4(-580.644, -171.434, 37.407, 293.319),
