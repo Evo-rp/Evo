@@ -169,5 +169,5 @@ AddEventHandler("Ped:Client:Died", function()
 end)
 
 RegisterCommand('GET_CURRENT_WEAPON', function()
-    print('Hash: ' .. GetHashKey(GetCurrentPedWeapon(PlayerPedId())))
+    print('Hash: ' .. GetHashKey(GetCurrentPedWeapon(PlayerPedId(), true)))
 end)
