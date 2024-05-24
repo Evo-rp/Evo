@@ -236,8 +236,10 @@ Config.WeaponClassBindings = {
     [`WEAPON_MACHETE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_SWITCHBLADE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_DRAGON_KATANA_BLUE`] = Config.WeaponClasses['CUTTING'],
-    [`WEAPON_DRAGON_KATANA_RED`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_DRAGON_KATANA_RED`] = Config.WeaponClasses['CUTTING'], 
     [`WEAPON_DRAGON_KATANA_PURPLE`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_KATANA_2`] = Config.WeaponClasses['CUTTING'],
+    [`WEAPON_SCYTHE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_FADEBFKNIFE`] = Config.WeaponClasses['CUTTING'],
     [`WEAPON_SHIV`] = Config.WeaponClasses['CUTTING'],
 
