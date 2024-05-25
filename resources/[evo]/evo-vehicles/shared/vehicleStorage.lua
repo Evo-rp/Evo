@@ -1248,8 +1248,36 @@ _vehicleStorage = {
 
 	-- Restricted Storage
 
-	["vpd_restricted"] = {
+	["mrpd_restricted"] = {
 		name = "MRPD Parking",
+		vehType = 0,
+		restricted = {
+			{ JobId = "police", WorkplaceId = false }, -- Allow All Police Workplaces
+		},
+		fleet = { -- HQ is where fleet vehicles originate from
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+		},
+		coords = vector3(441.899, -984.603, 25.706),
+		zone = {
+			type = "box",
+			center = vector3(579.23, 10.82, 103.23),
+			length = 10.6,
+			width = 5.6,
+			heading = 0,
+			minZ = 24.71,
+			maxZ = 27.71
+		},
+		spaces = {
+			vector4(445.971, -992.170, 25.295, 89.700),
+			vector4(445.964, -995.549, 25.296, 87.477),
+			vector4(446.345, -998.788, 25.296, 85.531)
+		},
+	},
+
+	["vpd_restricted"] = {
+		name = "VPD Parking",
 		vehType = 0,
 		restricted = {
 			{ JobId = "police", WorkplaceId = false }, -- Allow All Police Workplaces
