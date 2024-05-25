@@ -8,14 +8,14 @@ table.insert(Config.Restaurants, {
                 actionString = "Preparing",
                 icon = "glass-water",
                 poly = {
-                    coords = vector3(-1191.151, -905.358, 14.324),
-                    w = 1.2,
-                    l = 1.0,
+                    coords = vector3(-505.15, -696.74, 33.67),
+                    w = 3.2,
+                    l = 0.6,
                     options = {
-                        heading = 35,
+                        heading = 0,
                         --debugPoly=true,
-                        minZ = 12.97,
-                        maxZ = 15.17
+                        minZ = 33.47,
+                        maxZ = 34.67
                     },
                 },
             },
@@ -63,14 +63,14 @@ table.insert(Config.Restaurants, {
                 actionString = "Cooking",
                 icon = "burger",
                 poly = {
-                    coords = vector3(-1187.444, -900.261, 13.948),
-                    w = 2.5,
-                    l = 3.25,
+                    coords = vector3(-504.63, -686.72, 33.67),
+                    w = 1.4,
+                    l = 1,
                     options = {
-                        heading = 35,
+                        heading = 0,
                         --debugPoly=true,
-                        minZ = 12.97,
-                        maxZ = 16.17
+                        minZ = 33.27,
+                        maxZ = 33.87
                     },
                 },
             },
@@ -192,14 +192,14 @@ table.insert(Config.Restaurants, {
         {
             id = "burgershot-freezer",
             type = "box",
-            coords = vector3(-1193.05, -898.67, 13.8),
-            width = 2.2,
-            length = 2.0,
+            coords = vector3(-508.93, -682.41, 33.67),
+            width = 3.6,
+            length = 1.8,
             options = {
-                heading = 35,
+                heading = 0,
                 --debugPoly=true,
-                minZ = 12.8,
-                maxZ = 15.8
+                minZ = 32.67,
+                maxZ = 36.07
             },
 			data = {
                 business = "burgershot",
@@ -213,14 +213,14 @@ table.insert(Config.Restaurants, {
     Pickups = {
         { -- Burger Shot
             id = "burgershot-pickup-1",
-            coords = vector3(-1188.01, -893.97, 13.8),
-            width = 0.4,
-            length = 0.6,
+            coords = vector3(-508.17, -695.18, 33.67),
+            width = 1,
+            length = 1,
             options = {
-                heading = 35,
+                heading = 0,
                 --debugPoly=true,
-                minZ = 13.8,
-                maxZ = 14.2
+                minZ = 33.27,
+                maxZ = 33.87
             },
             data = {
                 business = "burgershot",
@@ -232,14 +232,14 @@ table.insert(Config.Restaurants, {
         },
         { -- Burger Shot
             id = "burgershot-pickup-2",
-            coords = vector3(-1189.52, -895.01, 13.8),
-            width = 0.4,
-            length = 0.6,
+            coords = vector3(-508.19, -696.68, 33.67),
+            width = 1,
+            length = 1,
             options = {
-                heading = 35,
+                heading = 0,
                 --debugPoly=true,
-                minZ = 13.8,
-                maxZ = 14.2
+                minZ = 33.27,
+                maxZ = 33.87
             },
 			data = {
                 business = "burgershot",
@@ -251,14 +251,14 @@ table.insert(Config.Restaurants, {
         },
         { -- Burger Shot
             id = "burgershot-pickup-3",
-            coords = vector3(-1191.12, -896.07, 13.8),
-            width = 0.4,
-            length = 0.6,
+            coords = vector3(-508.14, -698.23, 33.67),
+            width = 0.6,
+            length = 1,
             options = {
-                heading = 35,
+                heading = 10,
                 --debugPoly=true,
-                minZ = 13.8,
-                maxZ = 14.2
+                minZ = 33.27,
+                maxZ = 33.87
             },
 			data = {
                 business = "burgershot",
@@ -272,14 +272,14 @@ table.insert(Config.Restaurants, {
     Warmers = {
         { -- Burger Shot
             id = "burgershot-warmer-1",
-            coords = vector3(-1187.68, -896.96, 13.8),
-            length = 1.0,
+            coords = vector3(-506.77, -691.25, 33.67),
+            length = 1.8,
             width = 1.4,
             options = {
-                heading = 35,
+                heading = 0,
                 --debugPoly=true,
-                minZ = 14.0,
-                maxZ = 15.0
+                minZ = 33.67,
+                maxZ = 34.67
             },
             restrict = {
                 jobs = { "burgershot" },
