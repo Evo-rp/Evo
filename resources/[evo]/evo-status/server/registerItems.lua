@@ -58,5 +58,21 @@ function registerUsables()
             end
         end)
 	end)
+
+    Inventory.Items:RegisterUse("PDscuba_gear", "Status", function(source, slot, itemData)
+        Callbacks:ClientCallback(source, "Status:UseScubaGear", {}, function(success)
+            if success then
+                local newValue = slot.CreateDate - (60 * 60 * 24 * 20)
+                if (os.time() - itemData.durability >= newValue) then
+                    Inventory.Items:RemoveId(slot.Owner, slot.invType, slot)
+                else
+                    Inventory:SetItemCreateDate(
+                        slot.id,
+                        newValue
+                    )
+                end
+            end
+        end)
+	end)
 end
 
