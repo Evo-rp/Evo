@@ -1,0 +1,13 @@
+Snake Pit Door and Interior Info - <position x="-779.87650000" y="-870.82820000" z="20.69419000"/>
+
+info = "Garage Door"
+coords = vector3(-763.82,-870.7,21.68),
+model = -1573772550
+
+info = "Gate Door Left"
+coords = vector3(-820.65,-900.93,18.73),
+model = -1063457618
+
+info = "Gate Door Right"
+coords = vector3(-818.29,-900.93,18.73),
+model = -1063457618
