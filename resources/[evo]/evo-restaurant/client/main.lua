@@ -29,11 +29,11 @@ AddEventHandler("Proxy:Shared:RegisterReady", function()
 end)
 
 function Startup()
-	Targeting.Zones:AddBox("burgershot-clockinoff", "clock", vector3(-1177.73, -897.57, 13.8), 1.2, 0.2, {
-		heading = 305,
+	Targeting.Zones:AddBox("burgershot-clockinoff", "clock", vector3(-504.6, -697.07, 33.67), 1.2, 0.2, {
+		heading = 0,
 		--debugPoly=true,
-		minZ = 13.6,
-		maxZ = 14.8
+		minZ = 33.47,
+		maxZ = 34.87
 	}, {
 		{
 			icon = "clipboard-check",
