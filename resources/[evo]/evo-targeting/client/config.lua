@@ -577,6 +577,107 @@ Config.VehicleMenu = {
 			}
 		},
 	},
+	-- G6 Truck
+	{ -- To the workers
+		icon = "vault",
+		item = "group6_bag",
+		isEnabled = function(data, entityData)
+			local vehState = Entity(entityData.entity).state
+			if not vehState.G6TRUCK then
+				return false
+			end
+
+			if vehState.G6_HACKED then
+				return false
+			end
+
+			if vehState.G6_GETTINGHACKED then
+				return false
+			end
+
+			local serverId = GetPlayerServerId(PlayerId())
+
+			if not vehState.Access or not vehState.Access[serverId] then
+				return false
+			end
+
+			return not LocalPlayer.state.isDead
+				and vehState.VIN ~= nil
+				and GetEntityHealth(entityData.entity) > 0
+				and IsNearTrunk(entityData.entity, 4.0, false)
+		end,
+		text = "Deposit the bag",
+		event = "Group6:DepositBag",
+		data = {},
+		minDist = 2.0,
+	},
+	{ -- Non workers, to crack the safe
+		icon = "vault",
+		isEnabled = function(data, entityData)
+			local vehState = Entity(entityData.entity).state
+			if not vehState.G6TRUCK then
+				return false
+			end
+
+			local serverId = GetPlayerServerId(PlayerId())
+
+			-- #TODO: Remove the comment after test is done
+			-- if not vehState.Access or vehState.Access[serverId] then
+			-- 	return false
+			-- end
+
+			if vehState.G6_HACKED then
+				return false
+			end
+
+			if vehState.G6_GETTINGHACKED then
+				return false
+			end
+
+			return not LocalPlayer.state.isDead
+				and vehState.VIN ~= nil
+				and GetEntityHealth(entityData.entity) > 0
+				and IsNearTrunk(entityData.entity, 4.0, false)
+		end,
+		text = "Crack Safe",
+		event = "Group6:CrackSafe",
+		data = {},
+		minDist = 2.0,
+	},
+	{ -- Non workers, to grab the loot if the safe is cracked
+		icon = "hand",
+		text = "Grab Loot",
+		event = "Group6:OpenSafe",
+		data = {},
+		minDist = 2.0,
+		isEnabled = function(data, entity)
+			local vehState = Entity(entity.entity).state
+
+			local serverId = GetPlayerServerId(PlayerId())
+
+			if vehState.Access and not vehState.Access[serverId] then
+				if not vehState.G6_HACKED then
+					return false
+				end
+
+				if vehState.G6_GETTINGHACKED then
+					return false
+				end
+			elseif vehState.Access and vehState.Access[serverId] then
+				local jobState = LocalPlayer.state.jobState
+				if not jobState then return end
+				if jobState ~= 3 then
+					return false
+				end
+			end
+
+
+			return not LocalPlayer.state.isDead
+			and vehState.VIN ~= nil
+			and GetEntityHealth(entity.entity) > 0
+			and IsNearTrunk(entity.entity, 4.0, false)
+		end
+	},
 }
 
 Config.PlayerMenu = {

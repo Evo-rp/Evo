@@ -1626,4 +1626,16 @@ _entityTypes = {
 			},
 		},
 	},
+	{
+		id = 3006,
+		slots = 5,
+		capacity = 3000,
+		name = "Bag Storage",
+	},
+	{
+		id = 3007,
+		slots = 15,
+		capacity = 9000,
+		name = "Gruppe Sechs Safe",
+	},
 }

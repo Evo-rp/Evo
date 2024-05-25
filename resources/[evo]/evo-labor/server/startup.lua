@@ -149,5 +149,11 @@ AddEventHandler("Labor:Server:Startup", function()
 		{ label = "Rank 5", value = 12000 },
 	}, true)
 
+	Labor.Jobs:Register("Group6", "Gruppe Sechs", 0, 1000, 100, false, {
+		{ label = "Rank 1", value = 1500 },
+		{ label = "Rank 2", value = 3000 },
+		{ label = "Rank 3", value = 7000 },
+		{ label = "Rank 4", value = 10000 },
+	})
 	--Labor.Jobs:Register("Trucking", "Trucking", 0, 1005, 100)
 end)

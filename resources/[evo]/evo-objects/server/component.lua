@@ -237,6 +237,7 @@ _OBJECTS = {
 					isFrozen,
 					nameOverride ~= "0" and nameOverride or "Placed Object"
 				)
+				return true, id
 			else
 				return false
 			end

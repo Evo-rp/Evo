@@ -29,6 +29,7 @@ function RetrieveComponents()
 	Pwnzor = exports["evo-base"]:FetchComponent("Pwnzor")
 	Crafting = exports["evo-base"]:FetchComponent("Crafting")
 	Vendor = exports["evo-base"]:FetchComponent("Vendor")
+	Objects = exports["fs-base"]:FetchComponent("Objects")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
@@ -61,6 +62,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		"Pwnzor",
 		"Crafting",
 		"Vendor",
+		"Objects",
 	}, function(error)
 		if #error > 0 then
 			Logger:Critical("Labor", "Failed To Load All Dependencies")

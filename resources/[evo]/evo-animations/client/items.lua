@@ -258,6 +258,7 @@ local animStatePriority = {
     pc = 993,
     microwave = 992,
     boombox = 991,
+    suitcase2 = 990,
 }
 
 function EnsureCharacterAnimStates()
