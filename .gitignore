@@ -26,3 +26,5 @@ resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/fxmanifest.lua
 resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/clothes_dump.json
 resources/\[evo\]/evo-base/components/cl_recoil.lua
 resources/\[evo\]/evo-base/components/cl_recoil.lua
+artifacts
+.replxx_history

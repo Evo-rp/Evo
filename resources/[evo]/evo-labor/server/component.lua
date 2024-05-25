@@ -29,7 +29,7 @@ function RetrieveComponents()
 	Pwnzor = exports["evo-base"]:FetchComponent("Pwnzor")
 	Crafting = exports["evo-base"]:FetchComponent("Crafting")
 	Vendor = exports["evo-base"]:FetchComponent("Vendor")
-	Objects = exports["fs-base"]:FetchComponent("Objects")
+	Objects = exports["evo-base"]:FetchComponent("Objects")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
