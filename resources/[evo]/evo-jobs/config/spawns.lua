@@ -391,4 +391,19 @@ _jobSpawns = {
 			},
 		},
 	},
+	["government"] = {
+		icon = "building-columns",
+		locations = {
+			{
+				label = "Court House",
+				workplace = false,
+				location = {
+					x = 330.784,
+					y = -1616.014,
+					z = 32.534,
+					h = 52.355,
+				},
+			},
+		},
+	},
 }
