@@ -39,6 +39,9 @@ G6 = {
 
             self.Data.Blips = {}
         end
+        
+        Targeting.Zones:RemoveZone('Group6_Task')
+        Targeting.Zones:Refresh()
 
         if PedInteraction:GetPed('Group6_Task') then
             PedInteraction:Remove('Group6_Task')
@@ -188,6 +191,13 @@ RegisterNetEvent('Group6:Client:OnDuty', function(joiner, time)
             --         false, false, false, false)
             -- end)
 
+            if PedInteraction:GetPed(blipID_task) then
+                PedInteraction:Remove(blipID_task)
+            end
+
+            Targeting.Zones:RemoveZone(blipID_task)
+            Targeting.Zones:Refresh()
+
             local targetOption = {
                 {
                     icon = 'sack-dollar',
@@ -204,31 +214,28 @@ RegisterNetEvent('Group6:Client:OnDuty', function(joiner, time)
             if currentTask.Route == 'Containers' then
 
             elseif currentTask.Route == 'Atms' then
-                -- Targeting.Zones:AddCircle(blipID_task, 'sack-dollar', currentTask.Position.xyz, 1.0, {
-                --     name = 'atm',
-                --     useZ = false,
+                -- Targeting.Zones:AddCircle(blipID_task, "sack-dollar", vec(currentTask.Position.x, currentTask.Position.y, currentTask.Position.z - 1.0), 0.5, {
                 --     debugPoly = true,
-                --     polyDebug = true
-                -- }, {
-                --     {
-                --         icon = 'sack-dollar',
-                --         text = 'Teszt',
-                --         event = string.format('Labor:Client:%s:Action', joiner),
-                --         data = {
-                --             id = 1,
-                --             animation = {
-                --                 anim = 'hammer',
-                --             },
-                --             duration = math.random(5000, 10000),
-                --             label = 'Picking up bags',
-                --         },
-                --         -- tempjob = 'Group6',
-                --         isEnabled = function(data)
-                --             return true
-                --             -- return G6.Data.Working and G6.Data.State == 2
-                --         end,
-                --     },
-                -- }, 3.0, true)
+                --     useZ = true
+                -- }, targetOption, 3.0, true)
+
+                Targeting.Zones:AddCircle(blipID_task, "sack-dollar", vec(currentTask.Position.x, currentTask.Position.y, currentTask.Position.z - 1.0), 0.5, {
+                    debugPoly = true,
+                    useZ = true
+                }, {
+                    {
+                        icon = 'sack-dollar',
+                        text = 'Grab Bag',
+                        event = string.format('Group6:Client:%s:GrabBag', joiner),
+                        data = {},
+                        tempjob = 'Group6',
+                        isEnabled = function(data)
+                            return G6.Data.Working and G6.Data.State == 2
+                        end,
+                    },
+                }, 3.0, true)
+
+                Targeting.Zones:Refresh()
             else
                 PedInteraction:Add(
                     blipID_task,

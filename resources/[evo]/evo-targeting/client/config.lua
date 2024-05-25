@@ -604,7 +604,7 @@ Config.VehicleMenu = {
 			return not LocalPlayer.state.isDead
 				and vehState.VIN ~= nil
 				and GetEntityHealth(entityData.entity) > 0
-				and IsNearTrunk(entityData.entity, 4.0, false)
+				and isNearTrunk(entityData.entity, 4.0, false)
 		end,
 		text = "Deposit the bag",
 		event = "Group6:DepositBag",
@@ -637,7 +637,7 @@ Config.VehicleMenu = {
 			return not LocalPlayer.state.isDead
 				and vehState.VIN ~= nil
 				and GetEntityHealth(entityData.entity) > 0
-				and IsNearTrunk(entityData.entity, 4.0, false)
+				and isNearTrunk(entityData.entity, 4.0, false)
 		end,
 		text = "Crack Safe",
 		event = "Group6:CrackSafe",
@@ -675,7 +675,7 @@ Config.VehicleMenu = {
 			return not LocalPlayer.state.isDead
 			and vehState.VIN ~= nil
 			and GetEntityHealth(entity.entity) > 0
-			and IsNearTrunk(entity.entity, 4.0, false)
+			and isNearTrunk(entity.entity, 4.0, false)
 		end
 	},
 }

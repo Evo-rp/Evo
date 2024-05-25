@@ -293,7 +293,7 @@ _G6 = {
 
 AddEventHandler("Labor:Server:Startup", function()
 	Callbacks:RegisterServerCallback("Group6:StartJob", function(source, data, cb)
-		if _group6[data] ~= nil and _group6[data].state == 0 then
+		if (GlobalState["Duty:police"] or 0) >= Group6.RequiredPolice and _group6[data] and _group6[data].state == 0 then
 			_group6[_joiners[source]].state = 1
 			Labor.Offers:Start(_joiners[source], _JOB, "Pick up you vehicle", 1)
 			TriggerClientEvent(string.format("Group6:Client:%s:Startup", data), -1)
@@ -305,7 +305,7 @@ AddEventHandler("Labor:Server:Startup", function()
 
 	Callbacks:RegisterServerCallback("Group6:VehicleSpawn", function(source, data, cb)
 		if _joiners[source] ~= nil and _group6[_joiners[source]].truck == nil and _group6[_joiners[source]].state == 1 then
-			local leaderRank = 0 --Reputation:GetLevel(source, _JOB)
+			local leaderRank = 1 --Reputation:GetLevel(source, _JOB)
 			local errorMessage
 			Vehicles:SpawnTemp(source, Group6.Vehicles[leaderRank] or Group6.Vehicles[0], Group6.Spawn.Position,
 				Group6.Spawn.Heading, function(veh, VIN)
@@ -490,6 +490,8 @@ AddEventHandler("Group6:Server:OffDuty", function(source, joiner)
 end)
 
 AddEventHandler("Group6:Server:FinishJob", function(joiner)
+	print("Group6:Server:FinishJob") --> Lefut ha a játékos befejezte a munkát
+	--#TODO: 30 min timeout for the members
 	if not _group6[joiner] then return end
 	local routes = _group6[joiner].route?.Collection
 

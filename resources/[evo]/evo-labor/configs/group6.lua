@@ -1,4 +1,5 @@
 Group6 = {
+    RequiredPolice = 0,
     Vehicles = {
         [0] = `sultan`,
         [1] = `sultan`,
