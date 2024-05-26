@@ -447,5 +447,62 @@ addDoorsListToConfig({
     },
 
 
+    {
+        id = "MRPD_STAIRS_1",
+        model = 1079515784,
+        coords = vector3(470.9779, -978.1656, 30.689281),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_what_the_fuck_is_this_unfinished_map",
+        model = 1079515784,
+        coords = vector3(474.65753, -986.2953, 30.689277),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+
+    {
+        id = "MRPD_DISPATCH_ROOM",
+        model = 1079515784,
+        coords = vector3(458.14981, -991.1163, 30.689279),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_BRIEFING_ROOM_ENTRANCE_2",
+        model = 1079515784,
+        coords = vector3(439.57052, -996.8442, 30.689281),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_MAIN_HALLWAY_DOOR",
+        model = 1079515784,
+        coords = vector3(450.58279, -991.9012, 30.689277),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+
 
 })
