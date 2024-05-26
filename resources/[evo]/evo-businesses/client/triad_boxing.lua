@@ -20,7 +20,7 @@ AddEventHandler("Businesses:Client:Startup", function()
 end)
 
 AddEventHandler("Businesses:Client:ToggleTriadBoxingLock", function()
-    Callbacks:ServerCallback("Doors:ToggleLocks", "triad_boxing_arena", function(success, newState)
+    Callbacks:ServerCallback("Doors:ToggleLocks", {doorId = "triad_boxing_arena", breachingCharge = false }, function(success, newState)
         if success then
             Sounds.Do.Play:One("doorlocks.ogg", 0.2)
         end
