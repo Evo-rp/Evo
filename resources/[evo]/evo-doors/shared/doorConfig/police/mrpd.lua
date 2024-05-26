@@ -459,7 +459,40 @@ addDoorsListToConfig({
     },
 
     {
-        id = "MRPD_what_the_fuck_is_this_unfinished_map",
+        id = "MRPD_STAIRS_2",
+        model = 1079515784,
+        coords = vector3(467.02767, -1005.176, 30.689281),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_UPSTAIRS_2",
+        model = 1079515784,
+        coords = vector3(467.09481, -1004.954, 40.207386),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_UPSTAIRS_1",
+        model = 1079515784,
+        coords = vector3(471.10748, -978.1715, 40.207378),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_EVIDENCE_ROOM_DOOR",
         model = 1079515784,
         coords = vector3(474.65753, -986.2953, 30.689277),
         locked = true,
@@ -503,6 +536,105 @@ addDoorsListToConfig({
         },
     },
 
+    {
+        id = "MRPD_MAIN_HALLWAY_DOOR_2",
+        model = 1079515784,
+        coords = vector3(465.79605, -991.9835, 30.68927),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
 
+    {
+        id = "MRPD_HELIPAD_STAIRS",
+        model = 1079515784,
+        coords = vector3(470.86752, -986.0703, 40.207427),
+        double = 'MRPD_HELIPAD_STAIRS_2',
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HELIPAD_STAIRS_2",
+        model = 1079515784,
+        double = 'MRPD_HELIPAD_STAIRS',
+        coords = vector3(470.83529, -987.7415, 40.207427),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HELIPAD_DOOR",
+        model = -158854912,
+        coords = vector3(469.00085, -990.186, 45.239124),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HELIPAD_DOOR_2",
+        model = 794198680,
+        coords = vector3(468.94256, -983.6218, 45.230537),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_DOOR_HALLWAY",
+        model = 1079515784,
+        coords = vector3(465.80899, -977.4143, 30.689264),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_DOOR_RECEPTION",
+        model = 1079515784,
+        coords = vector3(452.34463, -978.2862, 30.689268),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_GARAGE_DOOR_1",
+        model = -246583363,
+        coords = vector3(451.18801, -1000.755, 25.765163),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_GARAGE_DOOR_2",
+        model = -246583363,
+        coords = vector3(432.60177, -1000.678, 25.773921),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
 
 })
