@@ -151,6 +151,28 @@ addDoorsListToConfig({
         },
     },
 
+    {
+        id = "MRPD_BRIEFING_ROOM_2",
+        model = 1079515784,
+        coords = vector3(439.87, -987.80, 30.68),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_BRIEFING_ROOM_EMERGENCY_EXIT",
+        model = 794198680,
+        coords = vector3(426.44448, -998.2934, 30.689268),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
 
     {
         id = "MRPD_HOLDINGCELL_ENTRANCE_1",
@@ -398,6 +420,17 @@ addDoorsListToConfig({
         id = "MRPD_DOOR_CELL2",
         model = -113421396,
         coords = vector3(479.23971, -988.323, 26.385997),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_ARMORY_DOOR",
+        model = 1079515784,
+        coords = vector3(467.21887, -1002.143, 30.689264),
         locked = true,
         restricted = {
             { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
