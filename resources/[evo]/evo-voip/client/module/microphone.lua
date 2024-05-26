@@ -163,21 +163,21 @@ function CreateMicrophonePolyzones()
 		VOIP_MICROPHONE_RANGE = 15.0,
 	})
 
-	Polyzone.Create:Box("microphone_courtroom_main", vector3(-576.85, -210.29, 38.23), 5.8, 2.6, {
-		heading = 30,
+	Polyzone.Create:Box("microphone_courtroom_main", vector3(345.24, -1636.0, 38.5), 2.8, 5.8, {
+		heading = 320,
 		--debugPoly=true,
-		minZ = 36.83,
-		maxZ = 40.83,
+		minZ = 37.5,
+		maxZ = 41.1
 	}, {
 		VOIP_MICROPHONE = true,
 		VOIP_MICROPHONE_RANGE = 50.0,
 	})
 
-	Polyzone.Create:Box("microphone_courtroom_podium", vector3(-572.54, -207.85, 38.23), 2, 2, {
-		heading = 30,
+	Polyzone.Create:Box("microphone_courtroom_podium", vector3(340.56, -1636.73, 38.5), 3.2, 2.2, {
+		heading = 320,
 		--debugPoly=true,
-		minZ = 36.43,
-		maxZ = 40.43,
+		minZ = 37.5,
+		maxZ = 40.5
 	}, {
 		VOIP_MICROPHONE = true,
 		VOIP_MICROPHONE_RANGE = 50.0,

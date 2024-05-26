@@ -1248,8 +1248,36 @@ _vehicleStorage = {
 
 	-- Restricted Storage
 
-	["vpd_restricted"] = {
+	["mrpd_restricted"] = {
 		name = "MRPD Parking",
+		vehType = 0,
+		restricted = {
+			{ JobId = "police", WorkplaceId = false }, -- Allow All Police Workplaces
+		},
+		fleet = { -- HQ is where fleet vehicles originate from
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+			{ JobId = "police", HQ = true },
+		},
+		coords = vector3(441.899, -984.603, 25.706),
+		zone = {
+			type = "box",
+			center = vector3(579.23, 10.82, 103.23),
+			length = 10.6,
+			width = 5.6,
+			heading = 0,
+			minZ = 24.71,
+			maxZ = 27.71
+		},
+		spaces = {
+			vector4(445.971, -992.170, 25.295, 89.700),
+			vector4(445.964, -995.549, 25.296, 87.477),
+			vector4(446.345, -998.788, 25.296, 85.531)
+		},
+	},
+
+	["vpd_restricted"] = {
+		name = "VPD Parking",
 		vehType = 0,
 		restricted = {
 			{ JobId = "police", WorkplaceId = false }, -- Allow All Police Workplaces
@@ -1697,20 +1725,22 @@ _vehicleStorage = {
 		coords = vector3(-566.04, -165.79, 38.0),
 		zone = {
 			type = "box",
-			center = vector3(-566.04, -165.79, 38.0),
-			length = 41.4,
-			width = 5.4,
-			heading = 293,
-			minZ = 36.4,
-			maxZ = 40.4,
+			center = vector3(321.47, -1576.23, 29.95),
+			length = 6.8,
+			width = 32.8,
+			heading = 320,
+			minZ = 28.15,
+			maxZ = 32.15
 		},
 		spaces = {
-			vector4(-580.644, -171.434, 37.407, 293.319),
-			vector4(-574.528, -168.776, 37.515, 293.002),
-			vector4(-568.831, -166.357, 37.588, 293.003),
-			vector4(-563.224, -163.976, 37.662, 293.013),
-			vector4(-558.359, -161.910, 37.728, 293.014),
-			vector4(-550.891, -158.839, 37.793, 292.339),
+			vector4(332.663, -1585.392, 28.881, 319.785),
+			vector4(329.685, -1581.947, 28.883, 321.511),
+			vector4(326.617, -1579.434, 28.883, 315.551),
+			vector4(323.254, -1576.640, 28.883, 318.759),
+			vector4(320.061, -1573.947, 28.883, 318.243),
+			vector4(316.481, -1571.720, 28.882, 320.889),
+			vector4(313.523, -1568.705, 28.884, 318.100),
+			vector4(310.042, -1566.191, 28.882, 321.136)
 		},
 	},
 

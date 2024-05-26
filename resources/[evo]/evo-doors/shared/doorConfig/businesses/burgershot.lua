@@ -1,88 +1,87 @@
 addDoorsListToConfig({
     {
-        id = 'bshot_front_left',
-        model = 1724308471,
-        coords = vector3(-1183.762, -884.994, 13.798),
+        id = 'snr_buns_1',
+        double = "snr_buns_2",
+        model = 30354137,
+        coords = vector3(-515.837, -691.554, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_front_right',
-        model = -571782594,
-        coords = vector3(-1184.322, -883.976, 13.800),
+        id = 'snr_buns_2',
+        double = "snr_buns_1",
+        model = 30354137,
+        coords = vector3(-515.929, -692.726, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_side_front_right',
-        model = 1724308471,
-        coords = vector3(-1197.163, -883.999, 13.799),
+        id = 'snr_buns_3',
+        model = -682043923,
+        coords = vector3(-504.831, -693.618, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_side_front_right',
-        model = -571782594,
-        coords = vector3(-1198.336, -884.740, 13.799),
+        id = 'snr_buns_4',
+        model = -452300464,
+        coords = vector3(-503.514, -698.915, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_front_first_door',
-        model = 1618088565,
-        coords = vector3(-1185.769, -893.783, 13.798),
+        id = 'snr_buns_5',
+        model = -452300464,
+        coords = vector3(-503.514, -698.915, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_front_second_door',
-        model = 1618088565,
-        coords = vector3(-1186.574, -895.880, 13.798),
+        id = 'snr_buns_6',
+        model = 1245241911,
+        coords = vector3(-501.618, -693.855, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_left_kitchen_door',
-        model = 547885802,
-        coords = vector3(-1182.885, -899.075, 13.798),
+        id = 'snr_buns_7',
+        model = -516616147,
+        coords = vector3(-503.299, -691.094, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {
             { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
         },
     },
+
     {
-        id = 'bshot_left_outer_door',
-        model = 1009568243,
-        coords = vector3(-1176.961, -894.829, 13.761),
-        locked = true,
-        autoRate = 6.0,
-        restricted = {
-            { type = 'job', job = 'burgershot', jobPermission = false, reqDuty = false },
-        },
-    },
-    {
-        id = 'bshot_right_outer_door',
-        model = 1009568243,
-        coords = vector3(-1199.681, -903.556, 13.796),
+        id = 'snr_buns_8',
+        model = 5622041892,
+        coords = vector3(-507.658, -682.966, 33.672),
         locked = true,
         autoRate = 6.0,
         restricted = {

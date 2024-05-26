@@ -380,13 +380,28 @@ _jobSpawns = {
 		icon = "burger",
 		locations = {
 			{
-				label = "Burger Shot",
+				label = "Snr Buns",
 				workplace = false,
 				location = {
-					x = -1174.257,
-					y = -896.186,
-					z = 13.938,
-					h = 300.980,
+					x = -503.498,
+					y = -701.711,
+					z = 33.672,
+					h = 9.889,
+				},
+			},
+		},
+	},
+	["government"] = {
+		icon = "building-columns",
+		locations = {
+			{
+				label = "Court House",
+				workplace = false,
+				location = {
+					x = 330.784,
+					y = -1616.014,
+					z = 32.534,
+					h = 52.355,
 				},
 			},
 		},
