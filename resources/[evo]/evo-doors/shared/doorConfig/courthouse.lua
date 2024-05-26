@@ -176,4 +176,26 @@ addDoorsListToConfig({
             { type = 'job', job = 'government' },
         },
     },
+        {
+            id = "courthouse_17",
+            double = "courthouse_18",
+            locked = true,
+            model = 1730900584,
+            coords = vector3(356.176, -1639.767, 38.497),
+            autoRate = 6.0,
+            restricted = {
+                { type = 'job', job = 'dgang' },
+            },
+            {
+                id = "courthouse_17",
+                double = "courthouse_18",
+                locked = true,
+                model = 1730900584,
+                coords = vector3(355.266, -1641.073, 38.497),
+                autoRate = 6.0,
+                restricted = {
+                    { type = 'job', job = 'dgang' },
+                },
+         },
+    },
 })
