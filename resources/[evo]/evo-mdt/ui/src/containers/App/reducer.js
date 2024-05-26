@@ -1,7 +1,7 @@
 
 export const initialState = {
 	hidden: process.env.NODE_ENV == 'production',
-	//hidden: true,
+	// hidden: true,
 	opacity: false,
 	attorney: false,
 	pointBreakpoints: {

@@ -1,3 +1,5 @@
+ALERT_SOUND = false
+
 RegisterNUICallback("CloseAlerts", function(data, cb)
 	cb("OK")
 	EmergencyAlerts:Close()
@@ -42,6 +44,15 @@ RegisterNUICallback("RouteAlert", function(data, cb)
 		SetNewWaypoint(data.location.x, data.location.y)
 		Notification:Info("Alert Location Marked")
 	end
+end)
+
+RegisterNUICallback('MuteAlertSound', function(data, cb)
+	if data.state then
+		Notification:Error('Muted Dispatch Alerts.')
+	else
+		Notification:Info('Unmuted Dispatch Alerts.')
+	end
+	ALERT_SOUND = data.state
 end)
 
 RegisterNUICallback("ViewCamera", function(data, cb)

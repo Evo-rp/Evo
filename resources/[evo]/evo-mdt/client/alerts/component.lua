@@ -259,10 +259,12 @@ _pdAlerts = {
 
 		local duty = LocalPlayer.state.onDuty
 		if _jobs[duty] then
-			if isPanic then
-				Sounds.Play:Distance(15, "panic.ogg", 1.0)
-			else
-				Sounds.Play:Distance(15, "alert_normal.ogg", 0.5)
+			if not ALERT_SOUND then
+				if isPanic then
+					Sounds.Play:Distance(15, "panic.ogg", 1.0)
+				else
+					Sounds.Play:Distance(15, "alert_normal.ogg", 0.5)
+				end
 			end
 
 			if blip ~= nil and location ~= nil then

@@ -9,8 +9,11 @@ export default () => {
 	const dispatch = useDispatch();
 	const alerts = useSelector((state) => state.alerts.alerts);
 	const showing = useSelector((state) => state.alerts.showing);
+	const alertsDisplayed = useSelector((state) => state.alerts.alertsDisabled)
+
 	const useStyles = makeStyles((theme) => ({
 		container: {
+			display: !alertsDisplayed && !showing ? 'none' : '',
 			height: showing ? '60%' : '100%',
 			width: '100%',
 			overflowY: 'auto',

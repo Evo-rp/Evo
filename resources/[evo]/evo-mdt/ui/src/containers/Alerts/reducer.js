@@ -1,8 +1,13 @@
 export const initialState = {
 	showing: false,
+	alertsMuted: false,
+	alertsDisabled: true,
 	onDuty: Array(),
 	alerts: Array(),
-	//showing: true,
+
+	// showing: true,
+	// alertsMuted: false,
+	// alertsDisabled: true,
 	// onDuty: [
 	// 	{
 	// 		job: 'police',
@@ -194,6 +199,16 @@ export default (state = initialState, action) => {
 				...state,
 				emergencyMembers: action.payload.members,
 			};
+		case 'UPDATE_MUTED_ALERT':
+			return {
+				...state,
+				alertsMuted: action.payload.state
+			}
+		case 'UPDATE_DISPLAYED_ALERTS':
+			return {
+				...state,
+				alertsDisabled: action.payload.state
+			}
 		default:
 			return state;
 	}
