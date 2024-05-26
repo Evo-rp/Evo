@@ -45,7 +45,7 @@ addDoorsListToConfig({
         restricted = {
             { type = 'job', job = 'dgang', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
         },
-    }, vector3(1854.158, 3705.771, 34.234)
+    },
     {
         id = "sspd_front_2",
         double = "sspd_front_1",
