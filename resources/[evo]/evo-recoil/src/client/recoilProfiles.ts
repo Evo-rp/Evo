@@ -3,17 +3,17 @@ import WeaponRecoilDictionary from "./interfaces/weaponRecoilDictionary";
 
 export const RecoilProfiles: WeaponRecoilDictionary = {
   // HANDGUNS
-  [453432689]: new RecoilProfile(1.0, 0), // PISTOL
-  [-724102563]: new RecoilProfile(1.0, 0), // glock 17
-  [-694879300]: new RecoilProfile(1.0, 0), // glock 19
-  [1614270180]: new RecoilProfile(1.0, 0), // five 7
-  [1517788145]: new RecoilProfile(0.9, 0), // FNX
+  [453432689]: new RecoilProfile(1.2, 0), // PISTOL
+  [-724102563]: new RecoilProfile(1.2, 0), // glock 17
+  [-694879300]: new RecoilProfile(1.2, 0), // glock 19
+  [1614270180]: new RecoilProfile(1.2, 0), // five 7
+  [1517788145]: new RecoilProfile(1.2, 0), // FNX
   [-1075685676]: new RecoilProfile(0.9, 0), // PISTOL MK2
   [1593441988]: new RecoilProfile(1.0, 0), // COMBAT PISTOL
   [-1716589765]: new RecoilProfile(1.5, 0), // PISTOL .50
   [-1076751822]: new RecoilProfile(1.0, 0), // SNS PISTOL
   [-2009644972]: new RecoilProfile(1.0, 0), // SNS PISTOL MK2
-  [-771403250]: new RecoilProfile(0.4, 0), // HEAVY PISTOL
+  [-771403250]: new RecoilProfile(1.65, 0), // HEAVY PISTOL
   [137902532]: new RecoilProfile(1.0, 0), // VINTAGE PISTOL
   [-598887786]: new RecoilProfile(1.75, 0), // MARKSMAN PISTOL
   [-1045183535]: new RecoilProfile(1.75, 0), // HEAVY REVOLVER

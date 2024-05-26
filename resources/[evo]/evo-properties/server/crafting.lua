@@ -379,8 +379,8 @@ _propertyCrafting = {
 		-- },
 		canUseSchematics = true,
 	},
-	{ -- Weapon2 bench ( whitestar )
-	id = "664eca2e6aadd2f9bcfa09bb",
+	{ -- Weapon2 bench ( SB )
+	id = "6653cc5c409e633d3c80e51d",
 	recipies = {
 		_propertyCraftingRecipies.WEAPON_FNX,
 		_propertyCraftingRecipies.heavyarmor,
