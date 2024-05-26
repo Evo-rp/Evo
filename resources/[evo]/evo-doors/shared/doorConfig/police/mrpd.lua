@@ -306,6 +306,105 @@ addDoorsListToConfig({
         },
     },
 
+    {
+        id = "MRPD_HOLDING_CELL_1",
+        model = -691335480,
+        coords = vector3(486.53027, -987.0224, 26.386079),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_2",
+        model = -300093563,
+        coords = vector3(483.99182, -997.5967, 26.386072),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_3",
+        model = 11515395,
+        coords = vector3(483.93139, -1003.619, 26.386081),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_4",
+        model = -300093563,
+        coords = vector3(478.07772, -989.3062, 26.386096),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_5",
+        model = 11515395,
+        coords = vector3(471.91491, -989.4775, 26.386096),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_6",
+        model = -300093563,
+        coords = vector3(472.06124, -987.3369, 26.386095),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_HOLDING_CELL_7",
+        model = 11515395,
+        coords = vector3(478.21618, -987.2774, 26.386093),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_DOOR_CELL",
+        model = -113421396,
+        coords = vector3(482.9898, -996.3041, 26.386068),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
+    {
+        id = "MRPD_DOOR_CELL2",
+        model = -113421396,
+        coords = vector3(479.23971, -988.323, 26.385997),
+        locked = true,
+        restricted = {
+            { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+            { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
+        },
+    },
+
 
 
 })
