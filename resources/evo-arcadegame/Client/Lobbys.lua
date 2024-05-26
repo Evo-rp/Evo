@@ -1,36 +1,59 @@
 AddEventHandler('Arcade:Client:OpenLobbys', function()
     Callbacks:ServerCallback('Arcade:Server:CheckInLobby', {}, function(data)
         if data then
-            local LobbyMenu = {
-                main = {
-                    label = 'Arcade #' .. data.Id .. ' | Game Mode: ' .. data.GameMode,
-                    hideClose = true,
-                    items = {
-                        {
-                            label = 'Information',
-                            description = 'Map ' .. data.Map,
-                        },
-                        {
-                            label = 'Start Game',
-                            description = 'Begin the game with all people in the lobby!',
-                            event = 'Arcade:Client:StartGame',
-                            data = {
-                                id = data.Id
+            if data.LobbyOwner then
+                local LobbyMenu = {
+                    main = {
+                        label = 'Arcade #' .. data.Id .. ' | Game Mode: ' .. data.GameMode,
+                        hideClose = true,
+                        items = {
+                            {
+                                label = 'Information',
+                                description = 'Map ' .. data.Map,
+                            },
+                            {
+                                label = 'Start Game',
+                                description = 'Begin the game with all people in the lobby!',
+                                event = 'Arcade:Client:StartGame',
+                                data = {
+                                    id = data.Id
+                                }
+                            },
+                            {
+                                label = 'Close lobby',
+                                description = 'Close the lobby and return to lobby menu.',
+                                event = 'Arcade:Client:CloseLobby',
+                                data = {
+                                    id = data.Id
+                                }
                             }
                         },
-                        {
-                            label = 'Close lobby',
-                            description = 'Close the lobby and return to lobby menu.',
-                            event = 'Arcade:Client:CloseLobby',
-                            data = {
-                                id = data.Id
-                            }
-                        }
                     },
-                },
-            }
-        
-            ListMenu:Show(LobbyMenu)
+                }
+            else
+                local LobbyMenu = {
+                    main = {
+                        label = 'Arcade #' .. data.Id .. ' | Game Mode: ' .. data.GameMode,
+                        hideClose = true,
+                        items = {
+                            {
+                                label = 'Information',
+                                description = 'Map ' .. data.Map,
+                            },
+                            {
+                                label = 'Leave lobby',
+                                description = 'Leave the current lobby you are in.',
+                                event = 'Arcade:Client:LeaveLobby',
+                                data = {
+                                    id = data.Id
+                                }
+                            }
+                        },
+                    },
+                }
+
+                ListMenu:Show(LobbyMenu)
+            end
         else
             Lobbys = {}
             table.insert(Lobbys, {
@@ -45,10 +68,7 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
                         label = value.Name,
                         description = value.Description,
                         event = 'Arcade:Client:LobbyPasscode',
-                        data = {
-                            Passcode = value.Passcode,
-                            Id = value.Id
-                        }
+                        data = value
                     })
                 end
             end)
@@ -139,9 +159,7 @@ AddEventHandler('Arcade:Client:SubmitGame', function(data)
 end)
 
 AddEventHandler('Arcade:Client:LobbyPasscode', function(data)
-    print(json.encode(data, {indent = true}))
-    GameData.SelectedGamePasscode = data.Passcode
-    GameData.SelectedGameId = data.Id
+    GameData = data
     Input:Show("Lobby Passcode", "Passcode", {
         {
             id = "passcode",
@@ -157,6 +175,10 @@ end)
 
 AddEventHandler('Arcade:Client:CloseLobby', function(data)
     Callbacks:ServerCallback('Arcade:Server:RemoveLobby', { id = data.id }, function(callback) end)
+end)
+
+AddEventHandler('Arcade:Client:LeaveLobby', function(data)
+    Callbacks:ServerCallback('Arcade:Server:LeaveLobby', { id = data.id }, function(callback) end)
 end)
 
 AddEventHandler('Arcade:Client:StartGame', function(data)
@@ -206,11 +228,8 @@ AddEventHandler('Arcade:Client:Spawn', function(DATA)
 end)
 
 AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
-    if data.passcode == GameData.SelectedGamePasscode then
-        Callbacks:ServerCallback('Arcade:Server:JoinGame', { id = GameData.SelectedGameId }, function(callback)
-            GameData.SelectedGamePasscode = ''
-            -- GameData.SelectedGameId = 0
-
+    if data.passcode == GameData.Passcode then
+        Callbacks:ServerCallback('Arcade:Server:JoinGame', { id = GameData }, function(callback)
             if callback then
                 Notification:Info('You joined the lobby.')
             else
@@ -218,8 +237,6 @@ AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
             end
         end)
     else
-        GameData.SelectedGamePasscode = ''
-        -- GameData.SelectedGameId = 0
         Notification:Error("Wrong password.")
     end
 end)
