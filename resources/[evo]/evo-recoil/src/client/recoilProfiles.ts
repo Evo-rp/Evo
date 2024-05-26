@@ -7,8 +7,8 @@ export const RecoilProfiles: WeaponRecoilDictionary = {
   [-724102563]: new RecoilProfile(1.0, 0), // glock 17
   [-694879300]: new RecoilProfile(1.0, 0), // glock 19
   [1614270180]: new RecoilProfile(1.0, 0), // five 7
-  [1517788145]: new RecoilProfile(1.0, 0), // FNX
-  [-1075685676]: new RecoilProfile(0.5, 0), // PISTOL MK2
+  [1517788145]: new RecoilProfile(0.9, 0), // FNX
+  [-1075685676]: new RecoilProfile(0.9, 0), // PISTOL MK2
   [1593441988]: new RecoilProfile(1.0, 0), // COMBAT PISTOL
   [-1716589765]: new RecoilProfile(1.5, 0), // PISTOL .50
   [-1076751822]: new RecoilProfile(1.0, 0), // SNS PISTOL
@@ -26,14 +26,14 @@ export const RecoilProfiles: WeaponRecoilDictionary = {
   [-1355376991]: new RecoilProfile(0.1, 0), // UP-N-ATOMIZER
 
   // SUBMACHINE GUNS
-  [324215364]: new RecoilProfile(0.75, 0), // MICRO SMG
-  [-1121678507]: new RecoilProfile(0.75, 0), // MINI SMG 
-  [736523883]: new RecoilProfile(0.75, 0), // SMG
-  [409176877]: new RecoilProfile(0.75, 0), // P90
-  [1846078594]: new RecoilProfile(0.75, 0), // UMP45
-  [2024373456]: new RecoilProfile(0.4, 0), // SMG MK2
-  [-270015777]: new RecoilProfile(0.5, 0), // ASSAULT SMG
-  [171789620]: new RecoilProfile(0.75, 0), // COMBAT PDW
+  [324215364]: new RecoilProfile(0.85, 0), // MICRO SMG
+  [-1121678507]: new RecoilProfile(0.85, 0), // MINI SMG 
+  [736523883]: new RecoilProfile(0.85, 0), // SMG
+  [409176877]: new RecoilProfile(0.85, 0), // P90
+  [1846078594]: new RecoilProfile(0.85, 0), // UMP45
+  [2024373456]: new RecoilProfile(0.7, 0), // SMG MK2
+  [-270015777]: new RecoilProfile(0.7, 0), // ASSAULT SMG
+  [171789620]: new RecoilProfile(0.85, 0), // COMBAT PDW
 
   // SHOTGUNS
   [487013001]: new RecoilProfile(3.0, 0), // PUMP SHOTGUN
