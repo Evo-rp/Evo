@@ -8,6 +8,7 @@ addDoorsListToConfig({
         model = 1239973900,
         coords = vector3(434.32455, -980.327, 30.69028),
         locked = false,
+        double = 'MRPD_FRONTDOOR_2',
         restricted = {
             { type = 'job', job = 'police', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
             { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
@@ -19,6 +20,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_FRONTDOOR_2",
         model = -1095702117,
+        double = 'MRPD_FRONTDOOR_1',
         coords = vector3(434.26705, -981.5385, 30.69028),
         locked = false,
         restricted = {
@@ -32,6 +34,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_FRONTDOOR_3",
         model = 1239973900,
+        double = 'MRPD_FRONTDOOR_4',
         coords = vector3(434.31829, -983.7691, 30.69028),
         locked = false,
         restricted = {
@@ -45,6 +48,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_FRONTDOOR_4",
         model = -1095702117,
+        double = 'MRPD_FRONTDOOR_3',
         coords = vector3(434.31607, -984.8727, 30.69028),
         locked = false,
         restricted = {
@@ -58,6 +62,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_SIDEDOOR_1",
         model = -1095702117,
+        double = 'MRPD_SIDEDOOR_2',
         coords = vector3(441.40325, -999.2327, 30.690294),
         locked = true,
         restricted = {
@@ -71,6 +76,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_SIDEDOOR_2",
         model = 1239973900,
+        double = 'MRPD_SIDEDOOR_1',
         coords = vector3(442.44708, -999.0339, 30.690292),
         locked = true,
         restricted = {
@@ -84,6 +90,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_SIDEDOOR_3",
         model = 1239973900,
+        double = 'MRPD_SIDEDOOR_4',
         coords = vector3(469.16729, -971.6365, 30.68485),
         locked = true,
         restricted = {
@@ -97,6 +104,7 @@ addDoorsListToConfig({
     {
         id = "MRPD_SIDEDOOR_4",
         model = -1095702117,
+        double = 'MRPD_SIDEDOOR_3',
         coords = vector3(468.06539, -971.8006, 30.684848),
         locked = true,
         restricted = {
