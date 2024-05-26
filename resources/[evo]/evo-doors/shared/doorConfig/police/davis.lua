@@ -25,7 +25,38 @@ addDoorsListToConfig({
             { type = 'job', job = 'government', workplace = 'doj', gradeLevel = 10, jobPermission = false, reqDuty = true },
         },
     },
-
+    {
+        id = "sspd_back_1",
+        model = -1385904007,
+        coords = vector3(1854.158, 3705.771, 34.234),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'dgang', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+        },
+    },
+    {
+        id = "sspd_front_1",
+        double = "sspd_front_2",
+        model = -1140355308,
+        coords = vector3(1867.108, 3685.846, 34.234),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'dgang', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+        },
+    }, vector3(1854.158, 3705.771, 34.234)
+    {
+        id = "sspd_front_2",
+        double = "sspd_front_1",
+        model = -1140355308,
+        coords = vector3(1868.004, 3686.532, 34.234),
+        locked = true,
+        autoRate = 6.0,
+        restricted = {
+            { type = 'job', job = 'dgang', workplace = false, gradeLevel = 0, jobPermission = false, reqDuty = false },
+        },
+    },
     {
         id = "dpd_rear_1",
         double = "dpd_rear_2",
