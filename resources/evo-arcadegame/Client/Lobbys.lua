@@ -139,6 +139,7 @@ AddEventHandler('Arcade:Client:SubmitGame', function(data)
 end)
 
 AddEventHandler('Arcade:Client:LobbyPasscode', function(data)
+    print(json.encode(data, {indent = true}))
     GameData.SelectedGamePasscode = data.Passcode
     GameData.SelectedGameId = data.Id
     Input:Show("Lobby Passcode", "Passcode", {
