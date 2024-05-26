@@ -5,6 +5,7 @@ local policeStationBlips = {
 	vector3(372.658, -1601.816, 100.0),
 	vector3(835.011, -1292.794, 100.0),
 	vector3(378.742, 801.199, 187.675),
+	vector3(428.705, -982.595, 35.582)
 }
 
 local _pdModels = {}
@@ -563,6 +564,12 @@ AddEventHandler("Core:Shared:Ready", function()
 			end
 		end)
 
+		Targeting.Zones:AddBox("pd-clockinoff-fuckingmrpd", "siren-on", vector3(450.41, -983.93, 30.69), 0.8, 0.8, {
+			heading = 355,
+			minZ = 28.49,
+			maxZ = 32.49
+		}, policeDutyPoint, 2.0, true)
+
 		Targeting.Zones:AddBox("pd-clockinoff-vpd", "siren-on", vector3(621.34, 7.9, 83.62), 1, 1, {
 			heading = 340,
 			minZ = 83.62,
@@ -601,11 +608,11 @@ AddEventHandler("Core:Shared:Ready", function()
 			maxZ = 29.04,
 		}, policeDutyPoint, 2.0, true)
 
-		Targeting.Zones:AddBox("pd-clockinoff-courthouse", "siren-on", vector3(-528.46, -189.44, 38.23), 1.0, 1.0, {
-			heading = 30,
+		Targeting.Zones:AddBox("pd-clockinoff-courthouse", "siren-on", vector3(318.34, -1638.93, 32.54), 1.8, 1.6, {
+			heading = 50,
 			--debugPoly=true,
-			minZ = 37.63,
-			maxZ = 39.23
+			minZ = 32.34,
+			maxZ = 33.34
 		}, policeDutyPoint, 2.0, true)
 
 		for k, v in ipairs(_pdStationPolys) do
@@ -720,6 +727,20 @@ AddEventHandler("Core:Shared:Ready", function()
 				},
 			},
 		}
+
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-women", "siren-on", vector3(474.94, -990.35, 30.69), 1.1, 6.3, {
+			heading = 0,
+			--debugPoly=true,
+			minZ = 28.89,
+			maxZ = 32.89
+		}, locker, 3.0, true)
+
+		Targeting.Zones:AddBox("police-shitty-locker-mrpd-men", "siren-on", vector3(480.74, -1006.71, 30.69), 6.2, 0.8, {
+			heading = 267,
+			--debugPoly=true,
+			minZ = 28.29,
+			maxZ = 32.29
+		}, locker, 3.0, true)
 
 		Targeting.Zones:AddBox("police-shitty-locker", "siren-on", vector3(607.94, 9.2, 87.8), 0.4, 4.2, {
 			heading = 340,

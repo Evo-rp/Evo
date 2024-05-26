@@ -114,7 +114,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 	Blips:Add("bakery", "Bakery", vector3(-1255.273, -293.090, 37.383), 106, 31, 0.5, 2, 11)
 	Blips:Add("noodle", "Noodle Exchange", vector3(-1194.746, -1161.401, 7.692), 414, 6, 0.5, 2, 11)
-	Blips:Add("burgershot", "Burger Shot", vector3(-1183.511, -884.722, 13.800), 106, 6, 0.5, 2, 11)
+	Blips:Add("burgershot", "Snr Buns", vector3(-512.611, -692.243, 33.672), 293, 6, 0.5, 2, 11)
 
 	Blips:Add("lasttrain", "Last Train Diner", vector3(-361.137, 275.310, 86.422), 208, 6, 0.5, 2, 11)
 	Blips:Add("beanmachine", "Business: Bean Machine", vector3(-630.3255, 234.04238, 81.881523), 536, 52, 0.5, 2, 11)
