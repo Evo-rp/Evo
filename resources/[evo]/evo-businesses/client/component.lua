@@ -127,7 +127,7 @@ AddEventHandler("Characters:Client:Spawn", function()
 
 	Blips:Add("smokeonwater", "Smoke on the Water", vector3(-1169.751, -1571.643, 4.667), 140, 52, 0.6, 2, 11)
 
-	Blips:Add("digitalden", "Digital Den", vector3(390.766, -830.339, 29.300), 355, 58, 0.6, 2, 11)
+	Blips:Add("digitalden", "Click Lovers", vector3(214.268, -1511.213, 29.295), 355, 58, 0.6, 2, 11)
 
 	Blips:Add("rockford_records", "Rockford Records", vector3(-1007.658, -267.795, 39.040), 614, 63, 0.5, 2, 11)
 
