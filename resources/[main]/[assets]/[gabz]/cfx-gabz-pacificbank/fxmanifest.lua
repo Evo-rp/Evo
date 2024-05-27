@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 author 'Gabz'
 description 'Pacific Bank'
-version '1.0.0'
+version '1.0.2'
 lua54 'yes'
 this_is_a_map 'yes'
 
@@ -19,5 +19,6 @@ server_scripts {
 
 escrow_ignore {
     'stream/**/*.ytd',
+    'stream/vanilla/*.*',
 }
 dependency '/assetpacks'
