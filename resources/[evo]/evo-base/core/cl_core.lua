@@ -60,6 +60,7 @@ function COMPONENTS.Core.Init(self)
 				SetEntityProofs(LocalPlayer.state.ped, false, false, false, false, false, true, false, false)
 				SetPedDropsWeaponsWhenDead(LocalPlayer.state.ped, false)
 				SetPedAmmoToDrop(LocalPlayer.state.ped, 0)
+				SetPedSuffersCriticalHits(LocalPlayer.state.ped, false)
 
 				if GetEntityMaxHealth(ped) ~= 200 then
 					SetEntityMaxHealth(ped, 200)
