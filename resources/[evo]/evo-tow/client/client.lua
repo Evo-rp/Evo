@@ -40,7 +40,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		end
 		RetrieveComponents()
 
-		PedInteraction:Add("veh_tow_jerry", `a_m_m_eastsa_01`, vector3(-247.645, -1183.099, 22.090), 312.942, 50.0, {
+		PedInteraction:Add("veh_tow_jerry", `a_m_m_eastsa_01`, vector3(1016.057, -2289.017, 29.5119), 312.942, 50.0, {
 			{
 				icon = "truck-tow",
 				text = "Request Tow Truck",
@@ -71,10 +71,10 @@ AddEventHandler("Core:Shared:Ready", function()
 			},
 		}, "truck-tow", "WORLD_HUMAN_HANG_OUT_STREET")
 
-		Polyzone.Create:Box("tow_impound_zone", vector3(-236.96, -1173.44, 23.04), 19.4, 24.4, {
-			heading = 270,
-			minZ = 22.04,
-			maxZ = 26.04,
+		Polyzone.Create:Box("tow_impound_zone", vector3(1020.89, -2300.62, 30.51), 21.3, 19.1, {
+			heading = 355,
+			minZ = 29.51,
+			maxZ = 33.51,
 		})
 	end)
 end)
