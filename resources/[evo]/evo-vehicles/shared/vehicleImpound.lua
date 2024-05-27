@@ -1,6 +1,6 @@
 _vehicleImpound = {
     name = 'Impound Yard',
-    coords = vector3(-217.737, -1178.995, 23.044),
+    coords = vector3(1012.615, -2311.793, 30.51),
     spaces = {
         vector4(-197.824, -1174.704, 22.562, 200.803),
         vector4(-194.447, -1174.454, 22.562, 200.792),
