@@ -3,7 +3,6 @@ _inLobby = {}
 
 RegisterCallbacks = function()
     Callbacks:RegisterServerCallback('Arcade:Server:CreateLobby', function(source, data, cb)
-        print(json.encode(data, {indent = true}))
         local char = Fetch:Source(source):GetData("Character")
         local lobbyId = #_Lobbys + 1
 
@@ -13,6 +12,7 @@ RegisterCallbacks = function()
             Map = _Maps[data.map].LABEL,
             MapKey = data.map,
             Name = data.name,
+            LobbyOwner = true,
         }
 
         _Lobbys[lobbyId] = {
@@ -42,8 +42,6 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:RemoveLobby', function(source, data, cb)
-        local char = Fetch:Source(source):GetData("Character")
-
         for k, v in ipairs(_Lobbys[data.id].Players) do
             if v.Source == nil then return end
             if _Lobbys[data.id].Started then
@@ -53,6 +51,21 @@ RegisterCallbacks = function()
             end
 
             Routing:RoutePlayerToGlobalRoute(v.Source)
+
+            local character = Fetch:Source(v.Source):GetData("Character")
+            _inLobby[character:GetData("SID")] = nil
+        end
+
+        _Lobbys[data.id] = nil
+    end)
+
+    Callbacks:RegisterServerCallback('Arcade:Server:LeaveLobby', function(source, data, cb)
+        for k, v in ipairs(_Lobbys[data.id].Players) do
+            if v.Source == nil then return end
+
+            Routing:RoutePlayerToGlobalRoute(v.Source)
+
+            _Lobbys[data.id].Players[k] = nil
 
             local character = Fetch:Source(v.Source):GetData("Character")
             _inLobby[character:GetData("SID")] = nil
@@ -102,14 +115,25 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
+        print(json.encode(data, {indent = true}))
         local char = Fetch:Source(source):GetData("Character")
-        print(data.id)
-        print(json.encode(_Lobbys[data.id].Players, { indent = true }))
-        table.insert(_Lobbys[data.id].Players, {
+        print('Inserting to players')
+        print(char:GetData('SID'))
+        print(source)
+        table.insert(_Lobbys[data.Id].Players, {
             SID = char:GetData('SID'),
             Source = source,
             LobbyOwner = false,
         })
+
+        _inLobby[char:GetData("SID")] = {
+            Id = data.Id,
+            GameMode = data.GameMode,
+            Map = _Maps[data.MapKey].LABEL,
+            MapKey = data.MapKey,
+            Name = data.Name,
+            LobbyOwner = false,
+        }
 
         cb(true)
     end)
