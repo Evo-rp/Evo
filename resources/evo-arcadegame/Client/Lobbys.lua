@@ -230,7 +230,7 @@ end)
 
 AddEventHandler('Arcade:Client:SubmitPasscode', function(data)
     if data.passcode == GameData.Passcode then
-        Callbacks:ServerCallback('Arcade:Server:JoinGame', { id = GameData }, function(callback)
+        Callbacks:ServerCallback('Arcade:Server:JoinGame', GameData, function(callback)
             if callback then
                 Notification:Info('You joined the lobby.')
             else
