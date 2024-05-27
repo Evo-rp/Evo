@@ -235,4 +235,32 @@ addDoorsListToConfig({
         autoRate = 6.0,
         restricted = {},
     },
+    {
+        locked = true,
+        model = -1152174184,
+        coords = vector3(-155.895, -1116.145, 23.349),
+        autoRate = 6.0,
+        restricted = {},
+    },
+    {
+        locked = true,
+        model = 73386408,
+        coords = vector3(-157.24, -1116.145, 23.349),
+        autoRate = 6.0,
+        restricted = {},
+    },
+    {
+        locked = true,
+        model = -1922281023,
+        coords = vector3(-189.877, -1115.182, 23.281),
+        autoRate = 6.0,
+        restricted = {},
+    },
+    {
+        locked = true,
+        model = -1922281023,
+        coords = vector3(-190.787, -1115.209, 23.281),
+        autoRate = 6.0,
+        restricted = {},
+    },
 })
