@@ -14,7 +14,7 @@ _dealerships = {
             loans = 'loans@premiumdeluxe.com',
         },
         blip = {
-            coords = vector3(-38.0, -1099.0, 26.0),
+            coords = vector3(-34.053, -1659.121, 29.491),
             sprite = 523,
             colour = 57,
             scale = 0.6,
@@ -24,155 +24,152 @@ _dealerships = {
             dealership = {
                 type = 'poly',
                 points = {
-                    vector2(-1.282169342041, -1081.4558105469),
-                    vector2(-19.788076400757, -1074.6860351562),
-                    vector2(-22.219783782959, -1081.3433837891),
-                    vector2(-63.157688140869, -1066.3566894531),
-                    vector2(-80.589126586914, -1116.6845703125),
-                    vector2(-64.742156982422, -1122.2971191406),
-                    vector2(-15.041819572449, -1120.1148681641)
+                    vector2(-23.837366104126, -1633.1323242188),
+                    vector2(14.090105056763, -1665.0364990234),
+                    vector2(11.958735466003, -1673.3294677734),
+                    vector2(-57.123271942139, -1702.2672119141),
+                    vector2(-65.481880187988, -1697.4028320312),
+                    vector2(-67.740005493164, -1689.1381835938)
                 },
                 options = {
-                    minZ = 21.0,
-                    maxZ = 45.0,
+                    minZ = 28.29,
+                    maxZ = 32.29
                 }
             },
             catalog = {
                 {
                     type = 'box',
-                    center = vector3(-51.73, -1095.03, 27.27),
-                    length = 1,
-                    width = 1,
+                    center = vector3(-34.98, -1666.27, 29.49),
+                    length = 1.4,
+                    width = 2.4,
                     options = {
-                        heading = 28,
-                        minZ = 26.27,
-                        maxZ = 28.27
+                        heading = 50,
+                        minZ = 28.49,
+                        maxZ = 30.09
                     },
                 },
-                {
-                    type = 'box',
-                    center = vector3(-51.13, -1086.99, 27.27),
-                    length = 1,
-                    width = 1,
-                    options = {
-                        heading = 338,
-                        minZ = 26.27,
-                        maxZ = 28.27
-                    },
-                },
-                {
-                    type = 'box',
-                    center = vector3(-40.27, -1094.44, 27.27),
-                    length = 1,
-                    width = 1,
-                    options = {
-                        heading = 295,
-                        minZ = 26.27,
-                        maxZ = 28.27
-                    },
-                },
-                {
-                    type = 'box',
-                    center = vector3(-39.02, -1100.29, 27.27),
-                    length = 1,
-                    width = 1,
-                    options = {
-                        heading = 295,
-                        minZ = 26.27,
-                        maxZ = 28.27
-                    },
-                },
-                {
-                    type = 'box',
-                    center = vector3(-46.887, -1095.525, 27.274),
-                    length = 1,
-                    width = 1,
-                    options = {
-                        heading = 291,
-                        minZ = 26.27,
-                        maxZ = 28.27
-                    },
-                },
+                -- {
+                --     type = 'box',
+                --     center = vector3(-51.13, -1086.99, 27.27),
+                --     length = 1,
+                --     width = 1,
+                --     options = {
+                --         heading = 338,
+                --         minZ = 26.27,
+                --         maxZ = 28.27
+                --     },
+                -- },
+                -- {
+                --     type = 'box',
+                --     center = vector3(-40.27, -1094.44, 27.27),
+                --     length = 1,
+                --     width = 1,
+                --     options = {
+                --         heading = 295,
+                --         minZ = 26.27,
+                --         maxZ = 28.27
+                --     },
+                -- },
+                -- {
+                --     type = 'box',
+                --     center = vector3(-39.02, -1100.29, 27.27),
+                --     length = 1,
+                --     width = 1,
+                --     options = {
+                --         heading = 295,
+                --         minZ = 26.27,
+                --         maxZ = 28.27
+                --     },
+                -- },
+                -- {
+                --     type = 'box',
+                --     center = vector3(-46.887, -1095.525, 27.274),
+                --     length = 1,
+                --     width = 1,
+                --     options = {
+                --         heading = 291,
+                --         minZ = 26.27,
+                --         maxZ = 28.27
+                --     },
+                -- },
             },
             -- Array of different BOX zones for targeting interaction
             employeeInteracts = {
                 { -- PDM
-                    center = vector3(-40.82, -1085.29, 27.27),
-                    length = 1.0,
-                    width = 5.0,
+                    center = vector3(-29.72, -1668.68, 29.49),
+                    length = 3.6,
+                    width = 0.6,
                     options = {
-                        heading = 340,
-                        minZ = 26.27,
-                        maxZ = 27.87
+                        heading = 320,
+                        minZ = 28.49,
+                        maxZ = 29.89
                     }
                 },
-                { -- PDM
-                    center = vector3(-32.19, -1088.49, 27.27),
-                    length = 1.0,
-                    width = 5.0,
-                    options = {
-                        heading = 340,
-                        minZ = 26.27,
-                        maxZ = 27.87
-                    }
-                },
-                { -- PDM
-                    center = vector3(-26.4, -1104.46, 27.27),
-                    length = 0.8,
-                    width = 2.6,
-                    options = {
-                        heading = 250,
-                        minZ = 26.27,
-                        maxZ = 27.87
-                    }
-                },
-                { -- PDM
-                    center = vector3(-27.36, -1107.16, 27.27),
-                    length = 0.8,
-                    width = 2.6,
-                    options = {
-                        heading = 250,
-                        minZ = 26.27,
-                        maxZ = 27.87
-                    }
-                },
-                { -- PDM
-                    center = vector3(-31.8, -1097.31, 27.27),
-                    length = 0.8,
-                    width = 5.0,
-                    options = {
-                        heading = 250,
-                        minZ = 26.27,
-                        maxZ = 27.87
-                    }
-                },
+                -- { -- PDM
+                --     center = vector3(-32.19, -1088.49, 27.27),
+                --     length = 1.0,
+                --     width = 5.0,
+                --     options = {
+                --         heading = 340,
+                --         minZ = 26.27,
+                --         maxZ = 27.87
+                --     }
+                -- },
+                -- { -- PDM
+                --     center = vector3(-26.4, -1104.46, 27.27),
+                --     length = 0.8,
+                --     width = 2.6,
+                --     options = {
+                --         heading = 250,
+                --         minZ = 26.27,
+                --         maxZ = 27.87
+                --     }
+                -- },
+                -- { -- PDM
+                --     center = vector3(-27.36, -1107.16, 27.27),
+                --     length = 0.8,
+                --     width = 2.6,
+                --     options = {
+                --         heading = 250,
+                --         minZ = 26.27,
+                --         maxZ = 27.87
+                --     }
+                -- },
+                -- { -- PDM
+                --     center = vector3(-31.8, -1097.31, 27.27),
+                --     length = 0.8,
+                --     width = 5.0,
+                --     options = {
+                --         heading = 250,
+                --         minZ = 26.27,
+                --         maxZ = 27.87
+                --     }
+                -- },
             },
             buyback = {
                 type = 'box',
-                center = vector3(-23.6, -1094.49, 27.31),
-                length = 10.4,
-                width = 6.6,
+                center = vector3(-52.59, -1691.59, 29.47),
+                length = 7.2,
+                width = 4.0,
                 options = {
-                    heading = 340,
+                    heading = 310,
                     --debugPoly=true,
-                    minZ = 26.31,
-                    maxZ = 29.91
+                    minZ = 28.47,
+                    maxZ = 31.07
                 }
             }
         },
         showroom = {
-            vector4(-42.260, -1101.108, 26.817, 200.276),
-            vector4(-47.382, -1092.079, 26.818, 251.945),
-            vector4(-54.637, -1096.546, 26.819, 181.830),
-            vector4(-49.802, -1083.960, 26.818, 204.186),
-            vector4(-36.615, -1093.333, 26.819, 165.214),
+            vector4(-25.207, -1650.226, 29.080, 92.910),
+            vector4(-33.400, -1657.906, 29.080, 186.054),
+            vector4(-39.974, -1664.899, 29.081, 80.237)
         },
         storage = {
             Type = 1,
             Id = 'pdm_delivery',
         },
         testdrive = {
-			coords = vector4(-23.651, -1094.333, 27.305, 340.060),
+			coords = vector4(-58.140, -1686.835, 29.492, 306.254),
 			timer = 1000 * 60 * 1.5,
 			setplayerback = false,
 		},

@@ -93,12 +93,20 @@ function CreateGaragePolyZones()
 		door_garage_id = "tuna_garage_2",
 	})
 
-	Polyzone.Create:Box("doors_pdm_garage", vector3(-20.88, -1086.56, 27.31), 15.6, 6.2, {
-		heading = 340,
-		minZ = 26.31,
-		maxZ = 30.31,
+	Polyzone.Create:Box("doors_pdm_garage_1", vector3(-18.79, -1674.63, 29.46), 14.8, 5.8, {
+		heading = 320,
+		minZ = 28.46,
+		maxZ = 32.26
 	}, {
-		door_garage_id = "pdm_garage",
+		door_garage_id = "pdm_garage_1",
+	})
+
+	Polyzone.Create:Box("doors_pdm_garage_2", vector3(-32.27, -1646.49, 29.18), 5.2, 11.0, {
+		heading = 320,
+		minZ = 28.18,
+		maxZ = 32.18
+	}, {
+		door_garage_id = "pdm_garage_2",
 	})
 
 	Polyzone.Create:Box("doors_uwu_garage", vector3(-601.88, -1059.2, 22.48), 4.8, 10.8, {

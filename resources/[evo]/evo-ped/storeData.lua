@@ -635,7 +635,7 @@ _clothingStores = {
         maxZ = 6.26,
         blip = false,
     },
-    {
+    {   
         type = 'box',
         center = vector3(965.53, 22.57, 71.46), 
         length = 9.8,
@@ -668,17 +668,17 @@ _clothingStores = {
         maxZ = 113.0,
         blip = false,
     },
-    {
-        type = 'box',
-        center = vector3(-28.52, -1109.4, 27.27),
-        length = 1.2,
-        width = 4.8,
-        heading = 340,
-        --debugPoly=true,
-        minZ = 26.27,
-        maxZ = 28.67,
-        blip = false,
-    },
+    -- {
+    --     type = 'box',
+    --     center = vector3(-28.52, -1109.4, 27.27),
+    --     length = 1.2,
+    --     width = 4.8,
+    --     heading = 340,
+    --     --debugPoly=true,
+    --     minZ = 26.27,
+    --     maxZ = 28.67,
+    --     blip = false,
+    -- },
     { 
         type = 'box',
         center = vector3(-271.853, -968.258, 110.097), 

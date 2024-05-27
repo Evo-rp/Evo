@@ -1894,23 +1894,19 @@ _vehicleStorage = {
 		vehType = 0,
 		hideBlip = true,
 		retrievalOnly = true,
-		coords = vector3(-12.692, -1104.677, 26.925),
+		coords = vector3(-47.268, -1672.792, 29.343),
 		zone = {
 			type = "box",
-			center = vector3(-13.17, -1104.58, 26.92),
-			length = 24.6,
+			center = vector3(-46.89, -1673.15, 29.34),
+			length = 3.8,
 			width = 6.8,
-			heading = 340,
+			heading = 320,
 			--debugPoly=true,
-			minZ = 25.92,
-			maxZ = 29.92,
+			minZ = 28.34,
+			maxZ = 31.74
 		},
 		spaces = {
-			vector4(-10.597, -1097.880, 26.471, 340.236),
-			vector4(-12.934, -1104.627, 26.441, 71.056),
-			vector4(-14.282, -1107.495, 26.441, 70.431),
-			vector4(-15.169, -1110.672, 26.441, 67.117),
-			vector4(-16.301, -1113.725, 26.442, 72.918),
+			vector4(-47.268, -1672.792, 29.343, 221.874)
 		},
 	},
 	["redline_delivery"] = {
@@ -2183,32 +2179,32 @@ _vehicleStorage = {
 			vector4(-814.960, -727.633, 23.297, 180.993),
 		},
 	},
-	["pdm_private"] = {
-		name = "PDM Private Parking",
-		vehType = 0,
-		restricted = {
-			{ JobId = "pdm", WorkplaceId = false },
-		},
-		fleet = { -- HQ is where fleet vehicles originate from
-			{ JobId = "pdm", HQ = true },
-		},
-		coords = vector3(-11.79, -1081.19, 27.05),
-		zone = {
-			type = "box",
-			center = vector3(-11.79, -1081.19, 27.05),
-			length = 6.4,
-			width = 19.6,
-			heading = 341,
-			--debugPoly=true,
-			minZ = 26.05,
-			maxZ = 30.05,
-		},
-		spaces = {
-			vector4(-6.717, -1084.191, 26.563, 159.429),
-			vector4(-10.255, -1082.524, 26.564, 159.245),
-			vector4(-14.694, -1081.186, 26.563, 159.069),
-		},
-	},
+	-- ["pdm_private"] = {
+	-- 	name = "PDM Private Parking",
+	-- 	vehType = 0,
+	-- 	restricted = {
+	-- 		{ JobId = "pdm", WorkplaceId = false },
+	-- 	},
+	-- 	fleet = { -- HQ is where fleet vehicles originate from
+	-- 		{ JobId = "pdm", HQ = true },
+	-- 	},
+	-- 	coords = vector3(-11.79, -1081.19, 27.05),
+	-- 	zone = {
+	-- 		type = "box",
+	-- 		center = vector3(-11.79, -1081.19, 27.05),
+	-- 		length = 6.4,
+	-- 		width = 19.6,
+	-- 		heading = 341,
+	-- 		--debugPoly=true,
+	-- 		minZ = 26.05,
+	-- 		maxZ = 30.05,
+	-- 	},
+	-- 	spaces = {
+	-- 		vector4(-6.717, -1084.191, 26.563, 159.429),
+	-- 		vector4(-10.255, -1082.524, 26.564, 159.245),
+	-- 		vector4(-14.694, -1081.186, 26.563, 159.069),
+	-- 	},
+	-- },
 	["tirenutz_private"] = {
 		name = "Tire Nutz Private Parking",
 		vehType = 0,

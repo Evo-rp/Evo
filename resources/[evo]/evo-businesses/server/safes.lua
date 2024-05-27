@@ -191,14 +191,14 @@ AddEventHandler("Businesses:Server:Startup", function()
 	Inventory.Poly:Create({
 		id = "pdm_safe",
 		type = "box",
-		coords = vector3(-23.87, -1102.85, 27.27),
-		width = 2.2,
-		length = 1.0,
+		coords = vector3(-30.31, -1665.74, 29.49),
+		width = 1.0,
+		length = 1,
 		options = {
-			heading = 340,
+			heading = 320,
 			--debugPoly=true,
-			minZ = 26.27,
-			maxZ = 28.27,
+			minZ = 28.49,
+			maxZ = 30.29
 		},
 		data = {
 			business = "pdm",
