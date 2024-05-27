@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<Item>
+			<modelName>P90Scope1FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope2FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope3FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope4FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope5FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope6FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope7FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Scope8FluffysMods</modelName>
+			<txdName>P90ScopesFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>		
+		<Item>
+			<modelName>P90Pad1FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Pad2FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>		
+		<Item>
+			<modelName>P90MagFluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="500"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh7FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>		
+		<Item>
+			<modelName>P90Flsh6FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh5FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh4FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh3FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh2FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Flsh1FluffysMods</modelName>
+			<txdName>P90FlshFluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Barrel3FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Barrel2FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+		<Item>
+			<modelName>P90Barrel1FluffysMods</modelName>
+			<txdName>P90FluffysMods</txdName>
+			<ptfxAssetName>NULL</ptfxAssetName>
+			<lodDist value="250"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
+

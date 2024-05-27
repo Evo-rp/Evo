@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponComponentInfoBlob>
+	<Infos>
+		<Item type="CWeaponComponentInfo">
+			<Name>COMPONENT_P90_BARREL_01</Name>
+			<Model>P90Barrel1FluffysMods</Model>
+			<LocName>"BARREL"</LocName>
+			<LocDesc>"BARREL"</LocDesc>
+			<AttachBone>AAPSupp</AttachBone>
+			<WeaponAttachBone>WAPSupp</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="-5"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="0"/>
+			<HudRange value="-5"/>
+			<MuzzleBone>Gun_SuMuzzle</MuzzleBone>
+			<FlashFx>muz_assault_rifle</FlashFx>
+		</Item>
+		<Item type="CWeaponComponentSuppressorInfo">
+			<Name>COMPONENT_P90_BARREL_02</Name>
+			<Model>P90Barrel2FluffysMods</Model>
+			<LocName>"BARREL"</LocName>
+			<LocDesc>"BARREL"</LocDesc>
+			<AttachBone>AAPSupp</AttachBone>
+			<WeaponAttachBone>WAPSupp</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="-5"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="0"/>
+			<HudRange value="-5"/>
+			<MuzzleBone>Gun_SuMuzzle</MuzzleBone>
+			<FlashFx>muz_pistol_silencer</FlashFx>
+		</Item>
+		<Item type="CWeaponComponentInfo">
+			<Name>COMPONENT_P90_BARREL_03</Name>
+			<Model>P90Barrel3FluffysMods</Model>
+			<LocName>"BARREL"</LocName>
+			<LocDesc>"BARREL"</LocDesc>
+			<AttachBone>AAPSupp</AttachBone>
+			<WeaponAttachBone>WAPSupp</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="-5"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="0"/>
+			<HudRange value="-5"/>
+			<MuzzleBone>Gun_SuMuzzle</MuzzleBone>
+			<FlashFx>muz_assault_rifle</FlashFx>
+		</Item>		
+	</Infos>
+	<InfoBlobName/>
+</CWeaponComponentInfoBlob>
+

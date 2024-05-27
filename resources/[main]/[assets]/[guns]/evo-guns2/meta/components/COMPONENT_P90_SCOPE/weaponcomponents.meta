@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponComponentInfoBlob>
+	<Infos>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_01</Name>
+			<Model>P90Scope1FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_02</Name>
+			<Model>P90Scope2FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_03</Name>
+			<Model>P90Scope3FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_04</Name>
+			<Model>P90Scope4FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_05</Name>
+			<Model>P90Scope5FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_06</Name>
+			<Model>P90Scope6FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_07</Name>
+			<Model>P90Scope7FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_SCOPE_08</Name>
+			<Model>P90Scope8FluffysMods</Model>
+			<LocName>WCT_SCOPE_SML</LocName>
+			<LocDesc>WCD_SCOPE_SML</LocDesc>
+			<AttachBone>AAPScop</AttachBone>
+			<WeaponAttachBone>WAPScop</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+			<CameraHash/>
+			<RecoilShakeAmplitude value="0.280000"/>
+			<ExtraZoomFactorForAccurateMode value="1.200000"/>
+			<Reticule value="0"/>
+			<ReticuleHash/>
+		</Item>		
+	</Infos>
+	<InfoBlobName/>
+</CWeaponComponentInfoBlob>
+

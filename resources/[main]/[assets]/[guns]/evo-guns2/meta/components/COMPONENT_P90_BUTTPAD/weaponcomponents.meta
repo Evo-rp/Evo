@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF - 8"?>
+
+<CWeaponComponentInfoBlob>
+	<Infos>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_BUTTPAD_01</Name>
+			<Model>P90Pad1FluffysMods</Model>
+			<LocName>"BUTTPAD"</LocName>
+			<LocDesc>"BUTTPAD"</LocDesc>
+			<AttachBone>AAPPad</AttachBone>
+			<WeaponAttachBone>WAPPad</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+		</Item>
+		<Item type="CWeaponComponentScopeInfo">
+			<Name>COMPONENT_P90_BUTTPAD_02</Name>
+			<Model>P90Pad2FluffysMods</Model>
+			<LocName>"BUTTPAD"</LocName>
+			<LocDesc>"BUTTPAD"</LocDesc>
+			<AttachBone>AAPPad</AttachBone>
+			<WeaponAttachBone>WAPPad</WeaponAttachBone>
+			<AccuracyModifier type="NULL"/>
+			<DamageModifier type="NULL"/>
+			<bShownOnWheel value="true"/>
+			<CreateObject value="true"/>
+			<HudDamage value="0"/>
+			<HudSpeed value="0"/>
+			<HudCapacity value="0"/>
+			<HudAccuracy value="5"/>
+			<HudRange value="0"/>
+		</Item>
+	</Infos>
+	<InfoBlobName/>
+</CWeaponComponentInfoBlob>
+
