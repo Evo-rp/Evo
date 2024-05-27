@@ -743,4 +743,19 @@ _itemsSource["misc"] = {
 		weight = 4,
 		durability = (60 * 60 * 24 * 30),
 	},
+	{
+		name = "money_checkque",
+		label = 'Checkque',
+		price = 0,
+		isUsable = false,
+		isRemoved = false,
+		isStackable = true,
+		isDestroyed = false,
+		type = 7,
+		rarity = 5,
+		closeUi = false,
+		metalic = true,
+		weight = 10,
+		durability = (60 * 60 * 24 * 30),
+	}
 }
