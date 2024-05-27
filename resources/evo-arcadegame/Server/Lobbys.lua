@@ -115,6 +115,7 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
+        print(json.encode(data, {indent = true}))
         local char = Fetch:Source(source):GetData("Character")
         print('Inserting to players')
         print(char:GetData('SID'))
