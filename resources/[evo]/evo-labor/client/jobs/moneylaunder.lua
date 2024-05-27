@@ -76,8 +76,6 @@ AddEventHandler('Labor:Client:MoneyLaunder:GetLocation', function()
 
 		_Blip = Blips:Add("SalvDelivery", "Dropoff Location", vector3(cb[Location].x, cb[Location].y, cb[Location].z), 586, 2, 1.4)
 
-		SetEntityCoords(PlayerPedId(), cb[Location].x, cb[Location].y, cb[Location].z) -- Dev testing
-
 		PedInteraction:Add("MoneyLaunderPed:Dropoff", `ig_bankman`, vector3(cb[Location].x, cb[Location].y, cb[Location].z), cb[Location].w, 25.0, {
 			{
 				icon = 'money-bill',
