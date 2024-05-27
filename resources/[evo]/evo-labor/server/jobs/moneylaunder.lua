@@ -27,20 +27,12 @@ AddEventHandler("Labor:Server:Startup", function()
         local char = Fetch:Source(source):GetData("Character")
         Inventory.Items:Remove(char:GetData("SID"), 1, "money_checkque", 1)
 
-        -- Banking.Balance:Deposit(
-        --     Banking.Accounts:GetPersonal(char:GetData("SID")).Account,
-        --     count * v.price,
-        --     {
-        --         type = "deposit",
-        --         title = "Goods Export",
-        --         description = string.format(
-        --             "Sold %s x%s at $%s/unit",
-        --             itemData.label,
-        --             count,
-        --             v.price
-        --         ),
-        --     }
-        -- )
+        Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, math.random(1000, 5000),
+            {
+                type = "deposit",
+                title = "Banking deposit",
+            }
+        )
     end)
 
     Callbacks:RegisterServerCallback('Labor:Server:MoneyLaunder:AlertPolice', function(source, data, cb)
