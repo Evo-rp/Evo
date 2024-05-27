@@ -31,6 +31,7 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
                         },
                     },
                 }
+                ListMenu:Show(LobbyMenu)
             else
                 local LobbyMenu = {
                     main = {
@@ -52,9 +53,8 @@ AddEventHandler('Arcade:Client:OpenLobbys', function()
                         },
                     },
                 }
+                ListMenu:Show(LobbyMenu)
             end
-
-            ListMenu:Show(LobbyMenu)
         else
             Lobbys = {}
             table.insert(Lobbys, {
