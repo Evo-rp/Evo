@@ -40,7 +40,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		end
 		RetrieveComponents()
 
-		PedInteraction:Add("veh_tow_jerry", `a_m_m_eastsa_01`, vector3(1016.057, -2289.017, 29.5119), 21.3, 19.1, {
+		PedInteraction:Add("veh_tow_jerry", `a_m_m_eastsa_01`, vector3(1016.057, -2289.017, 29.5119), 270.4, 10.0, {
 			{
 				icon = "truck-tow",
 				text = "Request Tow Truck",
