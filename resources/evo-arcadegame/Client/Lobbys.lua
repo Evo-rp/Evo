@@ -1,5 +1,6 @@
 AddEventHandler('Arcade:Client:OpenLobbys', function()
     Callbacks:ServerCallback('Arcade:Server:CheckInLobby', {}, function(data)
+        print(json.encode(data, {indent = true}))
         if data then
             if data.LobbyOwner then
                 local LobbyMenu = {

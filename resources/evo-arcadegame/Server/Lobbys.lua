@@ -42,8 +42,6 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:RemoveLobby', function(source, data, cb)
-        local char = Fetch:Source(source):GetData("Character")
-
         for k, v in ipairs(_Lobbys[data.id].Players) do
             if v.Source == nil then return end
             if _Lobbys[data.id].Started then
@@ -62,8 +60,6 @@ RegisterCallbacks = function()
     end)
 
     Callbacks:RegisterServerCallback('Arcade:Server:LeaveLobby', function(source, data, cb)
-        local char = Fetch:Source(source):GetData("Character")
-
         for k, v in ipairs(_Lobbys[data.id].Players) do
             if v.Source == nil then return end
 
@@ -120,6 +116,9 @@ RegisterCallbacks = function()
 
     Callbacks:RegisterServerCallback('Arcade:Server:JoinGame', function(source, data, cb)
         local char = Fetch:Source(source):GetData("Character")
+        print('Inserting to players')
+        print(char:GetData('SID'))
+        print(source)
         table.insert(_Lobbys[data.id].Players, {
             SID = char:GetData('SID'),
             Source = source,
