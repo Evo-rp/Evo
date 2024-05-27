@@ -119,7 +119,7 @@ RegisterCallbacks = function()
         print('Inserting to players')
         print(char:GetData('SID'))
         print(source)
-        table.insert(_Lobbys[data.id].Players, {
+        table.insert(_Lobbys[data.Id].Players, {
             SID = char:GetData('SID'),
             Source = source,
             LobbyOwner = false,
