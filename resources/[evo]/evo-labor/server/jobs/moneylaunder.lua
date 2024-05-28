@@ -8,7 +8,24 @@ local _Locations = {
     vector4(-355.210, -46.944, 48.036, 245.125), -- Hawick Bank 2
 }
 
+local _reputationMultiplier = {
+    [0] = 20,
+    [1] = 30,
+    [2] = 40,
+    [3] = 50,
+    [4] = 60,
+    [5] = 70,
+}
+
 AddEventHandler("Labor:Server:Startup", function()
+    Reputation:Create("MoneyCleaning", "Money Launder", {
+        { label = "Rank 1", value = 5000 },
+        { label = "Rank 2", value = 10000 },
+        { label = "Rank 3", value = 20000 },
+        { label = "Rank 4", value = 30000 },
+        { label = "Rank 5", value = 40000 },
+    })
+
     Callbacks:RegisterServerCallback('Labor:Server:MoneyLaunder:RetrieveLocations', function(source, data, cb)
         Phone.Notification:Add(
 			source,
@@ -27,7 +44,10 @@ AddEventHandler("Labor:Server:Startup", function()
         local char = Fetch:Source(source):GetData("Character")
         Inventory.Items:Remove(char:GetData("SID"), 1, "money_checkque", 1)
 
-        Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, math.random(1000, 5000),
+        local repLevel = Reputation:GetLevel(source, "MoneyCleaning") or 0
+        Reputation.Modify:Add(source, "MoneyCleaning", 5)
+
+        Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, _reputationMultiplier[repLevel] / 50 * math.random(1000, 7000),
             {
                 type = "deposit",
                 title = "Banking deposit",
@@ -36,12 +56,12 @@ AddEventHandler("Labor:Server:Startup", function()
     end)
 
     Callbacks:RegisterServerCallback('Labor:Server:MoneyLaunder:AlertPolice', function(source, data, cb)
-        Robbery:TriggerPDAlert(source, coords, "10-31A", "Illegal Cash Deposit", {
+        Robbery:TriggerPDAlert(source, data.coords, "10-31", "Illegal Cash Deposit", {
             icon = 568,
             size = 0.9,
             color = 1,
             duration = (60 * 5),
-        })
+        }, 'cash_deposit')
     end)
 
     Callbacks:RegisterServerCallback('Labor:Server:MoneyLaunder:Finish', function(source, data, cb)

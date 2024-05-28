@@ -33,14 +33,13 @@ AddEventHandler("Labor:Client:Setup", function()
 	}, 'money-check-dollar-pen', 'WORLD_HUMAN_CLIPBOARD')
 
 	Interaction:RegisterMenu("moneyrun-cancel", "Cancel Money Run", "ban", function(data)
+		Interaction:Hide()
 		_InMoneyRun = false
 		timesDone = 0
 
 		PedInteraction:Remove("MoneyLaunderPed:Dropoff")
 
-		if _Blip ~= nil then
-			RemoveBlip(_Blip)
-		end
+		RemoveBlip(_Blip)
 	end, function()
         return _InMoneyRun
 	end)
@@ -92,9 +91,7 @@ AddEventHandler('Labor:Client:Trade', function()
 	if Inventory.Check.Player:HasItem('money_checkque', 1) then
 		PedInteraction:Remove("MoneyLaunderPed:Dropoff")
 
-		if _Blip ~= nil then
-			RemoveBlip(_Blip)
-		end
+		RemoveBlip(_Blip)
 
 		local Chance = math.random(1, 10)
 
