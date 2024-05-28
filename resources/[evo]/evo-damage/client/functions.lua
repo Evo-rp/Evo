@@ -15,7 +15,7 @@ end)
 
 function ApplyLimp(ped)
 	local shouldLimp = (GetEntityHealth(ped) - 100) <= math.floor((GetEntityMaxHealth(ped) - 100) / 4)
-	if shouldLimp and not (LocalPlayer.state.onPainKillers or 0 > 0) then
+	if shouldLimp and not (LocalPlayer.state.onPainKillers or 0 > 0) and not LocalPLayer.state.inArcade then
 		if not LocalPlayer.state.isLimping then
 			LocalPlayer.state.isLimping = true
 			Animations.PedFeatures:RequestFeaturesUpdate()
