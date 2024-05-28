@@ -44,7 +44,6 @@ export default () => {
     ]
 
     const CheckExists = (state) => {
-        print(Gang.Progression[state])
         if (Gang.Progression[state]) {
             return Gang.Progression[data.TypeKey]
         } else {

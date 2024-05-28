@@ -30,13 +30,13 @@ export default (props) => {
 			primary: {
 				main: Boolean(settings?.colors)
 					? settings.colors.accent
-					: '#b40000',
+					: '#7702e5',
 				light: Boolean(settings?.colors)
 					? settings.colors.accent
-					: '#c33333',
+					: '#9035e6',
 				dark: Boolean(settings?.colors)
 					? settings.colors.accent
-					: '#7e0000',
+					: '#9902e5',
 				contrastText: '#ffffff',
 			},
 			secondary: {
