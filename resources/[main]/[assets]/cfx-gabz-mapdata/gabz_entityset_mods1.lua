@@ -1141,11 +1141,11 @@ local interiors = {
             --{ name = 'mba_jumbotron', enable = true },
 
             -- MMA - enable all of the entitySets below
-            { name = 'mba_tribune', enable = true },
-            { name = 'mba_tarps', enable = true },
-            { name = 'mba_fighting', enable = true },
-            { name = 'mba_mma', enable = true },
-            { name = 'mba_jumbotron', enable = true },
+            --{ name = 'mba_tribune', enable = true },
+            --{ name = 'mba_tarps', enable = true },
+            --{ name = 'mba_fighting', enable = true },
+            --{ name = 'mba_mma', enable = true },
+            --{ name = 'mba_jumbotron', enable = true },
 
             -- BOXING - enable all of the entitySets below
             --{ name = 'mba_tribune', enable = true },
@@ -1177,8 +1177,8 @@ local interiors = {
             --{ name = 'mba_hockey', enable = true },
 
             -- GOKART TRACK 1 - enable all of the entitySets below
-            --{ name = 'mba_cover', enable = true },
-            --{ name = 'mba_gokart_01', enable = true },
+            { name = 'mba_cover', enable = true },
+            { name = 'mba_gokart_01', enable = true },
 
             -- GOKART TRACK 2 - enable all of the entitySets below
             --{ name = 'mba_cover', enable = true },
@@ -1210,11 +1210,11 @@ local interiors = {
             --"gabz_ipl_mba_sign_fameorshame",
             --"gabz_ipl_mba_sign_wrestling",
             --"gabz_ipl_mba_sign_boxing",
-            "gabz_ipl_mba_sign_mma",
+            --"gabz_ipl_mba_sign_mma",
             --"gabz_ipl_mba_sign_curling",
             --"gabz_ipl_mba_sign_soccer",
             --"gabz_ipl_mba_sign_icehockey",
-            --"gabz_ipl_mba_sign_gokart",
+            "gabz_ipl_mba_sign_gokart",
             --"gabz_ipl_mba_sign_banditoleague",
             --"gabz_ipl_mba_sign_banditomania",
         }
@@ -1230,15 +1230,19 @@ local interiors = {
 }
 
 CreateThread(function()
-    for _, interior in ipairs(interiors) do
-        if not interior.ipl or not interior.coords or not interior.entitySets then
-            print('^5[GABZ]^7 ^1Error while loading interior.^7')
+    for i = 1, #interiors do
+        local interior = interiors[i]
+        local entitySets = interior.entitySets
+        if not interior.ipl or not interior.coords or not entitySets then
+            print('^5[GABZ]^7 ^1Error while loading interiors.^7')
             return
         end
+
         RequestIpl(interior.ipl)
         local interiorID = GetInteriorAtCoords(interior.coords.x, interior.coords.y, interior.coords.z)
         if IsValidInterior(interiorID) then
-            for __, entitySet in ipairs(interior.entitySets) do
+            for k = 1, #entitySets do
+                local entitySet = entitySets[k]
                 if entitySet.enable then
                     EnableInteriorProp(interiorID, entitySet.name)
                     if entitySet.color then
@@ -1250,11 +1254,14 @@ CreateThread(function()
             end
             RefreshInterior(interiorID)
         end
-        if interior.exterior_ipl ~= nil then
-            for __, ext_ipl in ipairs(interior.exterior_ipl) do
+
+        local exterior_ipl = interior.exterior_ipl
+        if exterior_ipl then
+            for j = 1, #exterior_ipl do
+                local ext_ipl = exterior_ipl[j]
                 RequestIpl(ext_ipl)
             end
         end
     end
-    print("^5[GABZ]^7 Interiors datas loaded.")
+    print("^5[GABZ]^7 Interior data loaded.")
 end)
