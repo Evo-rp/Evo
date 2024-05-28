@@ -22,8 +22,6 @@ table.insert(Config.Restaurants, {
             recipes = {
                 _genericRecipies.glass_cock,
                 _genericRecipies.lemonade,
-                _genericRecipies.glass_cock,
-                _genericRecipies.lemonade,
                 _cocktailRecipies.vodka_shot,
                 _cocktailRecipies.whiskey_glass,
                 {
@@ -32,6 +30,32 @@ table.insert(Config.Restaurants, {
                         { name = "coffee_beans", count = 5 },
                     },
                     time = 5000,
+                },
+                {
+                    result = { name = "green_tea", count = 5 },
+                    items = {
+                        { name = "plastic_cup", count = 1 },
+                        { name = "tea_leaf", count = 4 },
+                    },
+                    time = 6000,
+                },
+                {
+                    result = { name = "booba_tea", count = 5 },
+                    items = {
+                        { name = "plastic_cup", count = 1 },
+                        { name = "tea_leaf", count = 2 },
+                    },
+                    time = 2000,
+                },
+                {
+                    result = { name = "milkshake", count = 4 },
+                    items = {
+                        { name = "sugar", count = 2 },
+                        { name = "milk_can", count = 1 },
+                        { name = "icing", count = 1 },
+                        { name = "raspberry", count = 1 },
+                    },
+                    time = 3000,
                 },
             },
         },
