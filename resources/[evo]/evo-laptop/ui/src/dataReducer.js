@@ -982,6 +982,16 @@ export const initialState = {
 			},
 		],
 		businessLogo: 'https://i.imgur.com/EU7HQji.png',
+		Gang: {
+			Name: 'Aspects Gang',
+			Progression: [],
+			Members: [
+				{
+					Name: 'Aspect',
+					SID: 1,
+				},
+			]
+		}
 	} : {
 		disabledBoostingContracts: []
 	},
