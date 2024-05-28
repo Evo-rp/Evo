@@ -137,6 +137,7 @@ STATUS = {
 	Modify = {
 		Add = function(self, status, value, addCd, force)
 			if _statuses[status] ~= nil then
+				if status == 'PLAYER_STRESS' and LocalPlayer.state.inArcade then return end
 				if
 					_statuses[status].max <= 0
 					and (
