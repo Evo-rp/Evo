@@ -84,7 +84,7 @@ _DRUGS.Meth = {
 
 AddEventHandler("Drugs:Server:Startup", function()
     Vendor:Create("MethSeller", "ped", "Rob Tools", `A_M_M_RurMeth_01`, {
-        coords = vector3(381.617, 800.944, 186.674),
+        coords = vector3(-805.894, -959.349, 17.224),
         heading = 340.594,
         scenario = "WORLD_HUMAN_SMOKING"
     }, _toolsForSale, "badge-dollar", "View Offers")
