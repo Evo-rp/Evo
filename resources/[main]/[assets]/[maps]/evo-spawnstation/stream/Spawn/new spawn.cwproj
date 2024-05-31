@@ -1,0 +1,17 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>spawn_main.ymap</Item>
+    <Item>spawn_details.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>kt1_09_interior_kt1_09_seoul_subway.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+</CodeWalkerProject>
