@@ -149,26 +149,6 @@ _jobSpawns = {
 					h = 201.792,
 				},
 			},
-			{
-				label = "Eastside SAFD",
-				workplace = "safd",
-				location = {
-					x = 1216.6586,
-					y = -1474.5269,
-					z = 34.8570,
-					h = 92.1860,
-				},
-			},
-			{
-				label = "Southside SAFD",
-				workplace = "safd",
-				location = {
-					x = 217.46,
-					y = -1662.46,
-					z = 29.80,
-					h = 57.82,
-				},
-			},
 		},
 	},
 	["realestate"] = {
