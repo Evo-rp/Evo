@@ -33,13 +33,13 @@ function RetrieveComponents()
 end
 
 local _sellerLocs = {
-	["0"] = vector4(2256.724, 3047.388, 44.684, 337.759), -- Sunday
-	["1"] = vector4(2052.251, 1998.819, 122.644, 2.983), -- Monday
-	["2"] = vector4(2819.798, -742.708, 1.157, 296.721), -- Tuesday
-	["3"] = vector4(1598.378, -1687.030, 88.357, 201.986), -- Wednesday
-	["4"] = vector4(-2192.564, -402.600, 9.296, 132.937), -- Thursday
-	["5"] = vector4(-2353.306, 3242.392, 92.615, 155.448), -- Friday
-	["6"] = vector4(1598.378, -1687.030, 88.357, 201.986), -- Saturday
+	["0"] = vector4(2256.724, 3047.388, 44.684, 337.759), -- Sunday done
+	["1"] = vector4(2256.724, 3047.388, 44.684, 337.759), -- Monday done
+	["2"] = vector4(2819.798, -742.708, 1.157, 296.721), -- Tuesday done
+	["3"] = vector4(1572.869, -1659.311, 92.858, 116.804), -- Wednesday done
+	["4"] = vector4(2819.798, -742.708, 1.157, 296.721), -- Thursday done
+	["5"] = vector4(-2192.564, -402.600, 9.296, 132.937), -- Friday done
+	["6"] = vector4(1572.869, -1659.311, 92.858, 116.804), -- Saturday done
 }
 
 local _toolsForSale = {
@@ -172,7 +172,7 @@ AddEventHandler("Core:Shared:Ready", function()
 
 		local pos = _sellerLocs[tostring(os.date("%w"))]
 		Vendor:Create("HeistBlocks", "ped", "Devices", GetHashKey("HC_Hacker"), {
-			coords = vector3(-569.387, 227.492, 73.890),
+			coords = vector3(-1062.614, -249.993, 43.021),
 			heading = 317.712,
 			anim = {
 				animDict = "mp_fbi_heist",

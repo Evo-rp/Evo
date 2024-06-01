@@ -18,39 +18,25 @@ end
 
 local previews = {
 	{
-		coords = vector4(-452.011, -347.713, 93.668, 6.812),
-		animation = {
-			anim = 'idle_a',
-			animDict = 'anim@mp_player_intupperfind_the_fish',
-		}
+		coords = vector4(-3965.796, 2068.584, 496.51, 60.0),
 	},
 	{
-		coords = vector4(-453.843, -347.466, 93.668, 354.550),
-		animation = {
-			anim = 'ambclub_12_mi_hi_bootyshake_laz',
-			animDict = 'anim@amb@nightclub@lazlow@hi_railing@',
-		}
+		coords = vector4(-3965.542, 2066.99, 496.51, 45.0),
 	},
 	{
-		coords = vector4(-455.399, -347.215, 93.668, 358.231),
-		animation = {
-			anim = 'dancecrowd_li_11_hu_shimmy_laz',
-			animDict = 'anim@amb@nightclub@lazlow@hi_dancefloor@',
-		}
+		coords = vector4(-3966.36, 2066.042, 496.51, 35.0),
 	},
 	{
-		coords = vector4(-456.765, -347.082, 93.668, 354.173),
-		animation = {
-			anim = 'celebration_idle_f_a',
-			animDict = 'anim@mp_celebration@idles@female',
-		}
+		coords = vector4(-3966.954, 2065.124, 496.51, 31.0),
 	},
 	{
-		coords = vector4(-458.671, -346.869, 93.668, 349.038),
-		animation = {
-			anim = 'idle_a',
-			animDict = 'amb@world_human_hang_out_street@female_hold_arm@idle_a',
-		}
+		coords = vector4(-3968.297, 2064.551, 496.51, 17.0),
+	},
+	{
+		coords = vector4(-3969.694, 2064.037, 496.51, 4.0),
+	},
+	{
+		coords = vector4(-3970.917, 2065.034, 496.51, 349.0),
 	}
 }
 
@@ -75,12 +61,15 @@ RegisterNUICallback("GetData", function(data, cb)
 		})
 		
 		Callbacks:ServerCallback("Characters:GetCharacters", {}, function(characters)
-			SetEntityCoords(PlayerPedId(), -455.512, -329.480, 94.675, 0.0, 0.0, 0.0, false)
+			SetEntityCoordsNoOffset(PlayerPedId(), vector3(-3972.28, 2017.22, 500.92), false, false, false, false)
 
-			local cam2 = CreateCamWithParams("DEFAULT_SCRIPTED_CAMERA", -455.755, -341.990, 95.377, 0, 0, 175.489, 180.00, false, 0)
-			SetCamActiveWithInterp(cam2, cam, 1000, true, true)
-			RenderScriptCams(true, false, 1, true, true)
-			SetCamFov(cam2, 80.0)
+			cam2 = CreateCam('DEFAULT_SCRIPTED_CAMERA', true);
+			SetCamRot(cam2, 0.0, 0.0, 207.829, 2);
+			SetCamCoord(cam2, -3970.787, 2071.767, 498.14);
+			StopCamShaking(cam2, true);
+			SetCamFov(cam2, 47.0);
+			SetCamActive(cam2, true);
+			RenderScriptCams(true, false, 0, true, true);
 
 			TransitionFromBlurred(500)
 			DestroyCam(cam)
@@ -96,17 +85,11 @@ RegisterNUICallback("GetData", function(data, cb)
 						Citizen.Wait(1)
 					end
 
-					if DoesEntityExist(ped) then
-						RequestAnimDict(v.animation.animDict)
-						while not HasAnimDictLoaded(v.animation.animDict) do 
-							Wait(0) 
-						end
-						TaskPlayAnim(ped, v.animation.animDict, v.animation.anim, 8.0, 8.0, 600000, 1, 1, true, true, true)
-					end
-
 					Ped:Preview(ped, tonumber(characters[k].Gender), characters[k].Preview, false, characters[k].GangChain)
 					Entity(ped).state.characterIndex = k
 					table.insert(peds, ped)
+
+					FreezeEntityPosition(ped, true)
 				else
 					loadModel(GetHashKey('mp_m_freemode_01'))
 					local ped = CreatePed(5, GetHashKey('mp_m_freemode_01'), v.coords, false, true)
@@ -116,17 +99,10 @@ RegisterNUICallback("GetData", function(data, cb)
 						Citizen.Wait(1)
 					end
 
-					if DoesEntityExist(ped) then
-						RequestAnimDict(v.animation.animDict)
-						while not HasAnimDictLoaded(v.animation.animDict) do 
-							Wait(0) 
-						end
-						TaskPlayAnim(ped, v.animation.animDict, v.animation.anim, 8.0, 8.0, 600000, 1, 1, true, true, true)
-					end
-					
-
 					Entity(ped).state.characterIndex = k
 					table.insert(peds, ped)
+
+					FreezeEntityPosition(ped, true)
 				end
 
 				SetEntityCoords(ped, previews[k][1], previews[k][2], previews[k][3], 0.0, 0.0, 0.0, false)
@@ -147,13 +123,6 @@ RegisterNUICallback("GetData", function(data, cb)
 		end)
 	end)
 end)
-
--- RegisterCommand("test", function(character)
--- 	SendNUIMessage({type = "APP_SHOW"})
--- 	TriggerServerEvent('Characters:GetName')
--- 	SetNuiFocus(true,true)
-
--- end)
 
 RegisterNUICallback("CreateCharacter", function(data, cb)
 	cb("ok")
