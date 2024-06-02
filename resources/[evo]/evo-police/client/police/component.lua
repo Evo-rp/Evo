@@ -264,6 +264,17 @@ AddEventHandler("Core:Shared:Ready", function()
 			return LocalPlayer.state.onDuty == "police" and LocalPlayer.state.isDead
 		end)
 
+		Interaction:RegisterMenu("police", "Secured Compartment", "gun", function(data)
+			Interaction:Hide()
+
+			Inventory.Dumbfuck:Open({
+				invType = 3,
+				owner = GetVehicleNumberPlateText(GetVehiclePedIsIn(PlayerPedId())),
+			})
+		end, function()
+			return LocalPlayer.state.onDuty == "police" and not LocalPlayer.state.isDead and GetVehicleClass(GetVehiclePedIsIn(PlayerPedId(), false)) == 18 and IsPedInAnyVehicle(PlayerPedId())
+		end)
+
 		Interaction:RegisterMenu("police-raid-biz", "Search Inventory", "magnifying-glass", function(data)
 			Interaction:Hide()
 			Progress:ProgressWithTickEvent({
