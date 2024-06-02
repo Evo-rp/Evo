@@ -1800,7 +1800,6 @@ _vehicleStorage = {
 			vector4(-304.497, 6295.164, 31.492, 135.612),
 		},
 	},
-
 	["greycat_shipping_private"] = {
 		name = "Greycat Shipping Private Parking",
 		vehType = 0,
@@ -1895,6 +1894,29 @@ _vehicleStorage = {
 		},
 		spaces = {
 			vector4(-609.955, -1059.175, 21.305, 89.242),
+		},
+	},
+	["beanmachine"] = {
+		name = "Bean Machine Private Parking",
+		vehType = 0,
+		restricted = {
+			{ JobId = "beanmachine", WorkplaceId = false },
+		},
+		fleet = { -- HQ is where fleet vehicles originate from
+			{ JobId = "beanmachine", HQ = true },
+		},
+		coords = vector3(109.402, -1056.770, 29.193),
+		zone = {
+			type = "box",
+			center = vector3(108.750, -1055.931, 29.194),
+			length = 5.2,
+			width = 8.4,
+			heading = 69.571,
+			minZ = 26.79,
+			maxZ = 30.79,
+		},
+		spaces = {
+			vector4(108.728, -1056.113, 29.193, 69.571),
 		},
 	},
 

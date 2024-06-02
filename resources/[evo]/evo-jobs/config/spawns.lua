@@ -241,6 +241,21 @@ _jobSpawns = {
 			},
 		},
 	},
+	["beanmachine"] = {
+		icon = "coffee",
+		locations = {
+			{
+				label = "Bean Machine",
+				workplace = false,
+				location = {
+					x = 124.710,
+					y = -1034.917,
+					z = 29.278,
+					h = 70.012,
+				},
+			},
+		},
+	},
 	["casino"] = {
 		icon = "cards",
 		locations = {
@@ -332,6 +347,16 @@ _jobSpawns = {
 					y = -1285.934,
 					z = 26.266,
 					h = 82.654,
+				},
+			},
+			{
+				label = "Mission Row PD", 
+				workplace = false,
+				location = {
+					x = 427.408,
+					y = -973.764,
+					z = 30.690,
+					h = 218.849,
 				},
 			},
 			{
