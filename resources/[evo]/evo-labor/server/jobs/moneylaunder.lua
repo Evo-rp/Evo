@@ -19,11 +19,11 @@ local _reputationMultiplier = {
 
 AddEventHandler("Labor:Server:Startup", function()
     Reputation:Create("MoneyCleaning", "Money Launder", {
-        { label = "Rank 1", value = 5000 },
-        { label = "Rank 2", value = 10000 },
-        { label = "Rank 3", value = 20000 },
-        { label = "Rank 4", value = 30000 },
-        { label = "Rank 5", value = 40000 },
+        { label = "Rank 1", value = 1875 },
+        { label = "Rank 2", value = 4250 },
+        { label = "Rank 3", value = 6000 },
+        { label = "Rank 4", value = 8625 },
+        { label = "Rank 5", value = 11625 },
     })
 
     Callbacks:RegisterServerCallback('Labor:Server:MoneyLaunder:RetrieveLocations', function(source, data, cb)
@@ -45,7 +45,7 @@ AddEventHandler("Labor:Server:Startup", function()
         Inventory.Items:Remove(char:GetData("SID"), 1, "money_checkque", 1)
 
         local repLevel = Reputation:GetLevel(source, "MoneyCleaning") or 0
-        Reputation.Modify:Add(source, "MoneyCleaning", 5)
+        Reputation.Modify:Add(source, "MoneyCleaning", 125)
 
         Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, _reputationMultiplier[repLevel] / 50 * math.random(1000, 7000),
             {
