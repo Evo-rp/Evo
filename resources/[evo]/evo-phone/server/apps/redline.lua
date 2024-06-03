@@ -3,7 +3,7 @@ local _awardedCoin = "VRM"
 local _awardedAmount = 5
 local _cryptoPayout = 16
 
-local _reqForCrypto = 5
+local _reqForCrypto = 4
 
 local _races = {}
 local _tracks = nil
