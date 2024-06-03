@@ -101,7 +101,24 @@ AddEventHandler('Labor:Client:Trade', function()
 		end
 
 		if Chance > 3 then
-			Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Complete')
+			Progress:Progress({
+				name = "money_launder_transaction",
+				duration = 120000,
+				label = "Negotiating...",
+				useWhileDead = false,
+				canCancel = true,
+				ignoreModifier = true,
+				controlDisables = {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				},
+			}, function(cancelled)
+				if not cancelled then
+					Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Complete')
+				end
+			end
 		end
 
 		if timesDone ~= 5 then
