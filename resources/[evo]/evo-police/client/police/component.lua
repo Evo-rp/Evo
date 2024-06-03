@@ -235,7 +235,7 @@ AddEventHandler("Core:Shared:Ready", function()
 		_pdModels = GlobalState["PoliceCars"]
 		_emsModels = GlobalState["EMSCars"]
 
-		Interaction:RegisterMenu("police", false, "siren-on", function(data)
+		Interaction:RegisterMenu("police-panic", false, "siren-on", function(data)
 			Interaction:ShowMenu({
 				{
 					icon = "siren-on",
@@ -261,6 +261,8 @@ AddEventHandler("Core:Shared:Ready", function()
 				},
 			})
 		end, function()
+			print(LocalPlayer.state.onDuty)
+			print(LocalPlayer.state.isDead)
 			return LocalPlayer.state.onDuty == "police" and LocalPlayer.state.isDead
 		end)
 
