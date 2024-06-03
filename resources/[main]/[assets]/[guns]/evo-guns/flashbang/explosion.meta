@@ -16,7 +16,7 @@
       <directedWidth value="0.000000" />
       <directedLifeTime value="0.000000" />
       <camShakeName>GRENADE_EXPLOSION_SHAKE</camShakeName>
-      <camShake value="0.300000" />
+      <camShake value="0.600000" />
       <camShakeRollOffScaling value="0.500000" />
       <shockingEventVisualRangeOverride value="-1.000000" />
       <shockingEventAudioRangeOverride value="-1.000000" />

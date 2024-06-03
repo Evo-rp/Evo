@@ -67,11 +67,11 @@
           <RecoilAccuracyToAllowHeadShotAI value="1000.000000" />
           <MinHeadShotDistanceAI value="0.000000" />
           <MaxHeadShotDistanceAI value="0.000000" />
-          <HeadShotDamageModifierAI value="0.000000" />
+          <HeadShotDamageModifierAI value="5.000000" />
           <RecoilAccuracyToAllowHeadShotPlayer value="0.175000" />
           <MinHeadShotDistancePlayer value="50.000000" />
           <MaxHeadShotDistancePlayer value="300.000000" />
-          <HeadShotDamageModifierPlayer value="1.150000" />
+          <HeadShotDamageModifierPlayer value="1.650000" />
           <Damage value="32.000000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
