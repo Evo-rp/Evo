@@ -118,7 +118,7 @@ AddEventHandler('Labor:Client:Trade', function()
 				if not cancelled then
 					Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Complete')
 				end
-			end
+			end)
 		end
 
 		if timesDone ~= 5 then
