@@ -35,6 +35,17 @@ AddEventHandler("Finance:Server:Startup", function()
 		end
 	end)
 
+	Inventory.Items:RegisterUse("crypto_voucher2", "RandomItems", function(source, item)
+		local char = Fetch:Source(source):GetData("Character")
+		if item.MetaData.CryptoCoin and ((item.MetaData.Quantity and tonumber(item.MetaData.Quantity) or 0) > 0) then
+			local data = Crypto.Coin:Get(item.MetaData.CryptoCoin)
+			Crypto.Exchange:Add(item.MetaData.CryptoCoin, char:GetData("CryptoWallet"), item.MetaData.Quantity)
+			Inventory.Items:RemoveSlot(item.Owner, item.Name, 1, item.Slot, 1)
+		else
+			Execute:Client(source, "Notification", "Error", "Invalid Voucher")
+		end
+	end)
+
 	TriggerEvent("Crypto:Server:Startup")
 end)
 

@@ -559,6 +559,20 @@ _itemsSource["loot"] = {
 		weight = 0.25,
 	},
 	{
+		name = "crypto_voucher2",
+		label = "Crypto Voucher 2",
+		price = 0,
+		isUsable = true,
+		isRemoved = true,
+		isStackable = false,
+		isDestroyed = false,
+		type = 7,
+		rarity = 4,
+		closeUi = true,
+		metalic = false,
+		weight = 0.25,
+	},
+	{
 		name = "gravel",
 		label = "Gravel",
 		price = 0,
@@ -589,5 +603,5 @@ _itemsSource["loot"] = {
 		weight = 3,
 		isDestroyed = true,
 		durability = (60 * 60 * 24 * 90),
-	},
+	}
 }

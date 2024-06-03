@@ -73,6 +73,9 @@ function BuildMetaDataTable(cData, item)
 	elseif itemExist.name == "crypto_voucher" and not MetaData.CryptoCoin and not MetaData.Quantity then
 		MetaData.CryptoCoin = "PLEB"
 		MetaData.Quantity = math.random(25, 50)
+	elseif itemExist.name == "crypto_voucher2" and not MetaData.CryptoCoin and not MetaData.Quantity then
+		MetaData.CryptoCoin = "VRM"
+		MetaData.Quantity = math.random(25, 50)
 	elseif itemExist.name == "vpn" then
 		MetaData.VpnName = {
 			First = Generator.Name:First(),
@@ -816,6 +819,7 @@ function DoSwap(source, data, cb)
 end
 
 function DoMove(source, data, cb)
+	-- Logger:Info("Inventory", json.encode(data, { indent = true }))
 	Citizen.CreateThread(function()
 		local player = Fetch:Source(source)
 		local char = player:GetData("Character")
@@ -1576,6 +1580,9 @@ INVENTORY = {
 			elseif itemExist.name == "crypto_voucher" and not MetaData.CryptoCoin and not MetaData.Quantity then
 				MetaData.CryptoCoin = "PLEB"
 				MetaData.Quantity = math.random(25, 50)
+			elseif itemExist.name == "crypto_voucher2" and not MetaData.CryptoCoin and not MetaData.Quantity then
+				MetaData.CryptoCoin = "VRM"
+				MetaData.Quantity = math.random(25, 50)
 			elseif itemExist.name == "vpn" then
 				MetaData.VpnName = {
 					First = Generator.Name:First(),
@@ -1724,6 +1731,9 @@ INVENTORY = {
 				MetaData.Finished = os.time() + (60 * 60 * 24 * math.random(1, 3))
 			elseif itemExist.name == "crypto_voucher" and not MetaData.CryptoCoin and not MetaData.Quantity then
 				MetaData.CryptoCoin = "PLEB"
+				MetaData.Quantity = math.random(25, 50)
+			elseif itemExist.name == "crypto_voucher2" and not MetaData.CryptoCoin and not MetaData.Quantity then
+				MetaData.CryptoCoin = "VRM"
 				MetaData.Quantity = math.random(25, 50)
 			elseif itemExist.name == "vpn" then
 				MetaData.VpnName = {
