@@ -40,7 +40,7 @@
           <FromStrafeTransitionUpperBodyClipSetHash />
           <SwapWeaponFilterHash />
           <SwapWeaponInLowCoverFilterHash />
-          <AnimFireRateModifier value="1.000000" />
+          <AnimFireRateModifier value="0.800000" />
           <AnimBlindFireRateModifier value="1.000000" />
           <AnimWantingToShootFireRateModifier value="-1.000000" />
           <UseFromStrafeUpperBodyAimNetwork value="true" />
