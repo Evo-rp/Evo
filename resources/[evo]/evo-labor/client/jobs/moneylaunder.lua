@@ -89,46 +89,49 @@ AddEventHandler('Labor:Client:Trade', function()
 	timesDone = timesDone + 1
 
 	if Inventory.Check.Player:HasItem('money_checkque', 1) then
-		PedInteraction:Remove("MoneyLaunderPed:Dropoff")
-
-		RemoveBlip(_Blip)
-
 		local Chance = math.random(1, 10)
 
 		if Chance < 3 then
-			Notification:Error('Checkque declined!', 1000)
 			Callbacks:ServerCallback('Labor:Server:MoneyLaunder:AlertPolice', { coords = GetEntityCoords(PlayerPedId() )}, function(callback) end)
 		end
 
-		if Chance > 3 then
-			Progress:Progress({
-				name = "money_launder_transaction",
-				duration = 120000,
-				label = "Negotiating...",
-				useWhileDead = false,
-				canCancel = true,
-				ignoreModifier = true,
-				controlDisables = {
-					disableMovement = true,
-					disableCarMovement = true,
-					disableMouse = false,
-					disableCombat = true,
-				},
-			}, function(cancelled)
-				if not cancelled then
+		Progress:Progress({
+			name = "money_launder_transaction",
+			duration = 30000,
+			label = "Negotiating...",
+			useWhileDead = false,
+			canCancel = true,
+			ignoreModifier = true,
+			controlDisables = {
+				disableMovement = true,
+				disableCarMovement = true,
+				disableMouse = false,
+				disableCombat = true,
+			},
+		}, function(cancelled)
+			if not cancelled then
+				PedInteraction:Remove("MoneyLaunderPed:Dropoff")
+
+				RemoveBlip(_Blip)
+
+				if Chance < 3 then
+					Notification:Error('Checkque declined!', 1000)
+				end
+
+				if Chance > 3 then
 					Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Complete')
 				end
-			end)
-		end
 
-		if timesDone ~= 5 then
-			TriggerEvent('Labor:Client:MoneyLaunder:GetLocation')
-		else
-			timesDone = 0
-			_InMoneyRun = false
+				if timesDone ~= 5 then
+					TriggerEvent('Labor:Client:MoneyLaunder:GetLocation')
+				else
+					timesDone = 0
+					_InMoneyRun = false
 
-			Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Finish')
-		end
+					Callbacks:ServerCallback('Labor:Server:MoneyLaunder:Finish')
+				end
+			end
+		end)
 	else
 		Notification:Info('You do not have a checkque to turn in!', 1000)
 	end
