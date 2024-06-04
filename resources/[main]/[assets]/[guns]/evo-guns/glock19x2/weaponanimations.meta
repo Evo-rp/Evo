@@ -39,9 +39,9 @@
 					<FromStrafeTransitionUpperBodyClipSetHash>weapons@pistol@</FromStrafeTransitionUpperBodyClipSetHash>
 					<SwapWeaponFilterHash>RightArm_NoSpine_filter</SwapWeaponFilterHash>
 					<SwapWeaponInLowCoverFilterHash>RightArm_NoSpine_filter</SwapWeaponInLowCoverFilterHash>
-					<AnimFireRateModifier value="1.300000"/>
+					<AnimFireRateModifier value="1.000000"/>
 					<AnimBlindFireRateModifier value="1.000000"/>
-					<AnimWantingToShootFireRateModifier value="3.000000"/>
+					<AnimWantingToShootFireRateModifier value="1.300000"/>
 					<UseFromStrafeUpperBodyAimNetwork value="true"/>
 					<AimingDownTheBarrel value="true"/>
 					<WeaponSwapData ref="SWAP_DEFAULT"/>
@@ -138,9 +138,9 @@
 					<FromStrafeTransitionUpperBodyClipSetHash>weapons@pistol@</FromStrafeTransitionUpperBodyClipSetHash>
 					<SwapWeaponFilterHash>RightArm_NoSpine_filter</SwapWeaponFilterHash>
 					<SwapWeaponInLowCoverFilterHash>RightArm_NoSpine_filter</SwapWeaponInLowCoverFilterHash>
-					<AnimFireRateModifier value="1.300000"/>
+					<AnimFireRateModifier value="1.000000"/>
 					<AnimBlindFireRateModifier value="1.000000"/>
-					<AnimWantingToShootFireRateModifier value="3.000000"/>
+					<AnimWantingToShootFireRateModifier value="1.300000"/>
 					<UseFromStrafeUpperBodyAimNetwork value="true"/>
 					<AimingDownTheBarrel value="true"/>
 					<WeaponSwapData ref="SWAP_DEFAULT"/>
@@ -201,9 +201,9 @@
 					<FromStrafeTransitionUpperBodyClipSetHash>weapons@pistol@</FromStrafeTransitionUpperBodyClipSetHash>
 					<SwapWeaponFilterHash>RightArm_NoSpine_filter</SwapWeaponFilterHash>
 					<SwapWeaponInLowCoverFilterHash>RightArm_NoSpine_filter</SwapWeaponInLowCoverFilterHash>
-					<AnimFireRateModifier value="1.300000"/>
+					<AnimFireRateModifier value="1.000000"/>
 					<AnimBlindFireRateModifier value="1.000000"/>
-					<AnimWantingToShootFireRateModifier value="3.000000"/>
+					<AnimWantingToShootFireRateModifier value="1.300000"/>
 					<UseFromStrafeUpperBodyAimNetwork value="true"/>
 					<AimingDownTheBarrel value="true"/>
 					<WeaponSwapData ref="SWAP_DEFAULT"/>
@@ -263,9 +263,9 @@
 					<FromStrafeTransitionUpperBodyClipSetHash>weapons@pistol@</FromStrafeTransitionUpperBodyClipSetHash>
 					<SwapWeaponFilterHash>RightArm_NoSpine_filter</SwapWeaponFilterHash>
 					<SwapWeaponInLowCoverFilterHash>RightArm_NoSpine_filter</SwapWeaponInLowCoverFilterHash>
-					<AnimFireRateModifier value="1.300000"/>
+					<AnimFireRateModifier value="1.000000"/>
 					<AnimBlindFireRateModifier value="1.000000"/>
-					<AnimWantingToShootFireRateModifier value="3.000000"/>
+					<AnimWantingToShootFireRateModifier value="1.300000"/>
 					<UseFromStrafeUpperBodyAimNetwork value="true"/>
 					<AimingDownTheBarrel value="true"/>
 					<WeaponSwapData ref="SWAP_DEFAULT"/>
@@ -324,9 +324,9 @@
 					<FromStrafeTransitionUpperBodyClipSetHash>weapons@pistol@</FromStrafeTransitionUpperBodyClipSetHash>
 					<SwapWeaponFilterHash>RightArm_NoSpine_filter</SwapWeaponFilterHash>
 					<SwapWeaponInLowCoverFilterHash>RightArm_NoSpine_filter</SwapWeaponInLowCoverFilterHash>
-					<AnimFireRateModifier value="1.300000"/>
+					<AnimFireRateModifier value="1.000000"/>
 					<AnimBlindFireRateModifier value="1.000000"/>
-					<AnimWantingToShootFireRateModifier value="3.000000"/>
+					<AnimWantingToShootFireRateModifier value="1.300000"/>
 					<UseFromStrafeUpperBodyAimNetwork value="true"/>
 					<AimingDownTheBarrel value="true"/>
 					<WeaponSwapData ref="SWAP_DEFAULT"/>
