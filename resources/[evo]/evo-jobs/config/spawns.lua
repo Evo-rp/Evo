@@ -380,13 +380,13 @@ _jobSpawns = {
 				},
 			},
 			{
-				label = "Davis PD",
+				label = "Davis PD", 
 				workplace = false,
 				location = {
-					x = 349.735,
-					y = -1599.298,
-					z = 29.292,
-					h = 135.608,
+					x = 372.910,
+					y = -1610.174,
+					z = 29.293,
+					h = 234.627,
 				},
 			},
 			{

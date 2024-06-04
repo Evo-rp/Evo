@@ -595,10 +595,10 @@ AddEventHandler("Core:Shared:Ready", function()
 			maxZ = 32.89,
 		}, policeDutyPoint, 2.0, true)
 
-		Targeting.Zones:AddBox("pd-clockinoff-davis", "siren-on", vector3(381.37, -1595.84, 30.05), 2.0, 1.0, {
-			heading = 320,
-			minZ = 29.85,
-			maxZ = 31.05,
+		Targeting.Zones:AddBox("pd-clockinoff-davis", "siren-on", vector3(369.302, -1607.452, 29.293), 2.0, 3.0, {
+			heading = 53.516,
+			minZ = 25,
+			maxZ = 31,
 		}, policeDutyPoint, 2.0, true)
 
 		Targeting.Zones:AddBox("pd-clockinoff-lamesa", "siren-on", vector3(837.23, -1289.2, 28.24), 0.8, 2.2, {
