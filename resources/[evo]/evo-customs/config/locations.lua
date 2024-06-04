@@ -462,4 +462,27 @@ _customsLocations = {
 			maxZ = 34.37
 		},
 	},
+	{
+		type = 0,
+		name = "Hayes Garage",
+		restrictClass = false,
+		restrictJobs = {
+			hayes = true,
+		},
+		canInstallPerformance = false,
+		costMultiplier = 0.75,
+		blip = false,
+		zone = {
+			type = "box",
+			center = vector3(-1420.57, -443.49, 35.91),
+			length = 21.4,
+			width = 24.0,
+			heading = 210.382,
+			--debugPoly = false,
+			minZ = 34.91,
+			maxZ = 36.91
+		},
+	},
 }
+
+
