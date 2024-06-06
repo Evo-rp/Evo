@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Paper, Button, LinearProgress, Card, CardContent, Typography, CardActions, Box } from '@mui/material';
-import { makeStyles, styled } from '@mui/styles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import {  useSelector } from 'react-redux';
+import { Button, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
+import Nui from '../../../../util/Nui'
 
 const useStyles = makeStyles((theme) => ({
     BoxTextHeader: {
@@ -70,7 +70,7 @@ export default () => {
                 <Typography
                     className={classes.BoxText}
                 >
-                    15
+                    ?
                 </Typography>
             </div>
 
@@ -91,7 +91,7 @@ export default () => {
                 <Typography
                     className={classes.BoxText}
                 >
-                    15
+                    ?
                 </Typography>
             </div>
 
@@ -118,7 +118,7 @@ export default () => {
                 <Button
                     variant="contained"
                     color="success"
-
+                    onClick={() => Nui.send("Gangs:ToggleSprays")}
                     style={{
                         marginTop: "1%",
                         position: "absolute",
