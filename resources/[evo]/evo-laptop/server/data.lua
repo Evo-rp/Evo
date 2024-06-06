@@ -17,6 +17,21 @@ _appData = {
 		},
 	},
 	{
+		name = "gangs",
+		storeLabel = "Gangs",
+		label = "Gangs",
+		icon = "mask",
+		color = "#000",
+		--params = ":tab?",
+		hidden = false,
+		canUninstall = true,
+		store = true,
+		unread = 0,
+		restricted = {
+			state = { 'ACCESS_GANGAPP' }
+		}
+	},
+	{
 		name = "teams",
 		storeLabel = "Teams",
 		label = "Teams",

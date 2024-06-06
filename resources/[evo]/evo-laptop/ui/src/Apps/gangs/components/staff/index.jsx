@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Grid, Paper, Button, LinearProgress, Card, CardContent, Typography, CardActions, Box } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { Grid, Paper, Button, Card, CardContent, Typography, CardActions, Box, Dialog, DialogTitle, DialogContent, DialogActions, TextField, InputAdornment } from '@mui/material';
+import { Modal } from "../../../../components";
 import { makeStyles, styled } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { useAlert } from '../../../hooks';
+import Nui from '../../../../util/Nui'
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 		flexWrap: 'wrap',
 		overflow: 'auto',
 		maxHeight: 750,
+		marginTop: 10
 	},
 	card: {
 		margin: 1,
@@ -60,12 +62,35 @@ const useStyles = makeStyles((theme) => ({
 		marginBottom: theme.spacing(2),
 		fontSize: '1.5rem',
 		marginLeft: 95
-	}
+	},
+	popup: {
+		paddingTop: `5px !important`,
+		maxHeight: `750px !important`,
+	},
 }));
 
 export default () => {
 	const classes = useStyles();
+
+	const [showingAdd, setShowingAdd] = useState(false)
+	const [addInput, setAddInput] = useState('')
+
+	const [kickingMember, setKickingMember] = useState(false)
+	const [memberKickData, setMemberKickData] = useState({
+		Name: '',
+		SID: 0,
+	})
+
 	const Gang = useSelector((state) => state.data.data.Gang)
+	const Player = useSelector((state) => state.data.data.player)
+
+	const isGangLeader = () => {
+		if (Gang.LeadersSid.includes(Player.SID)) {
+			return true
+		} else {
+			return false
+		}
+	}
 
 	return (
 		<>
@@ -73,6 +98,25 @@ export default () => {
 				<div className={classes.details}>
 					<div className={classes.title}>
 						Members ({Gang.Members.length})
+					</div>
+				</div>
+			</Grid>
+			<Grid item xs={12} style={{ position: 'relative', height: 38 }}>
+				<div className={classes.details}>
+					<div className={classes.title}>
+						<Button
+							variant='contained'
+							color={isGangLeader() ? 'success' : 'error'}
+							onClick={() => {
+								if (isGangLeader()) {
+									setShowingAdd(true)
+								}
+
+								// Do leave gang logic
+							}}
+						>
+							{isGangLeader() ? 'Add Member' : 'Leave Gang'}
+						</Button>
 					</div>
 				</div>
 			</Grid>
@@ -88,16 +132,99 @@ export default () => {
 										{data.Name}
 									</Typography>
 								</CardContent>
-								<CardActions>
-									<Button fullWidth variant="contained" color="error" size="large">
-										Kick Member
-									</Button>
-								</CardActions>
+
+								{Gang.LeadersSid.includes(Player.SID) &&
+									<CardActions>
+										<Button
+											fullWidth
+											variant="contained"
+											color="error"
+											size="large"
+											onClick={() => {
+												setMemberKickData({
+													Name: data.Name,
+													SID: data.SID
+												})
+												setKickingMember(true)
+											}}
+										>
+											Kick Member
+										</Button>
+									</CardActions>
+								}
 							</Card>
 						</Grid>
 					)
 				})}
 			</Box>
+
+			<Dialog
+				scroll="paper"
+				open={showingAdd}
+				onClose={() => {
+					setAddInput('')
+					setShowingAdd(false)
+				}}
+			>
+				<DialogTitle
+					style={{ cursor: 'move' }}
+					id="draggable-dialog-title"
+				>
+					Add Member
+				</DialogTitle>
+				<DialogContent className={classes.popup}>
+					<TextField
+						placeholder='State ID'
+						variant='standard'
+						type='number'
+						name='sid'
+						value={addInput}
+						fullWidth
+						onChange={(e) => {
+							setAddInput(e.target.value)
+						}}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<FontAwesomeIcon
+										icon={['fas', 'id-badge']}
+									/>
+								</InputAdornment>
+							),
+						}}
+					/>
+				</DialogContent>
+				<DialogActions>
+					<Button
+						fullWidth
+						variant='contained'
+						type="submit"
+						color={'success'}
+						onClick={async () => {
+							setShowingAdd(false)
+							await (await Nui.send("Gangs:AddMember", { SID: addInput })).json();
+							setAddInput('')
+						}}
+					>
+						Add
+					</Button>
+				</DialogActions>
+			</Dialog>
+
+			<Modal
+				open={kickingMember}
+				title={'Kicking Member'}
+				onClose={() => setKickingMember(false)}
+				onAccept={() => {
+					console.log(memberKickData.SID)
+					Nui.send("Gangs:KickMember", { SID: memberKickData.SID })
+					setKickingMember(false)
+				}}
+				acceptLang={`Kick`}
+				closeLang={"Cancel"}
+			>
+				<p>Are you sure you want to kick {memberKickData.Name}</p>
+			</Modal>
 		</>
 	);
 };

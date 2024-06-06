@@ -9,6 +9,7 @@ LAPTOP = {
 		Hud:ShiftLocation(true)
 		SendNUIMessage({ type = "LAPTOP_VISIBLE" })
 		SetNuiFocus(true, true)
+		FetchGangApp()
 
 		Citizen.CreateThread(function()
 			local playerPed = PlayerPedId()
