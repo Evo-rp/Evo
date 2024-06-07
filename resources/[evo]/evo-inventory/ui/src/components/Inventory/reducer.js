@@ -33,6 +33,7 @@ export const initialState = {
 	itemsLoaded: false,
 	staticTooltip: false,
 
+	draggingAmount: 0,
 	// player: {
 	// 	size: 40,
 	// 	invType: 1,
@@ -202,6 +203,11 @@ export const initialState = {
 
 const appReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'SET_DRAGGING_AMOUNT':
+			return {
+				...state,
+				draggingAmount: action.payload.amount
+			}
 		case 'UNLOAD_ITEMS':
 			return {
 				...state,

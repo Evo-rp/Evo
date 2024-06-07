@@ -112,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
 export default (props) => {
 	const classes = useStyles();
 	const hover = useSelector((state) => state.inventory.hover);
+	const draggingAmount = useSelector((state) => state.inventory.draggingAmount);
 	const itemData = useSelector((state) => state.inventory.items)[hover?.Name];
 	const [state, setState] = React.useState(initialState);
 
@@ -163,15 +164,15 @@ export default (props) => {
 									itemData,
 								)})`,
 							}}
-						></div>
+						/>
 					)}
 					{Boolean(itemData) && (
 						<div className={classes.label}>
 							{getItemLabel(hover, itemData)}
 						</div>
 					)}
-					{Boolean(hover) && hover.Count > 0 && (
-						<div className={classes.count}>{hover.Count}</div>
+					{Boolean(hover) && (
+						<div className={classes.count}>{draggingAmount > hover.Count ? 1 : draggingAmount}</div>
 					)}
 					{Boolean(itemData?.durability) &&
 						Boolean(hover?.CreateDate) &&

@@ -34,6 +34,7 @@ const ignoredFields = [
 	'Mugshot',
 	'MethTable',
 	'CustomAmt',
+	'spray_model'
 ];
 
 const lua2json = (lua) =>

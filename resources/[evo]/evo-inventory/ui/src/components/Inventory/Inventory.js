@@ -141,6 +141,41 @@ const useStyles = makeStyles((theme) => ({
 			color: theme.palette.primary.main,
 		},
 	},
+	amountInput: {
+		width: 150,
+		height: 50,
+		lineHeight: '175px',
+		textAlign: 'center',
+		fontSize: 22.5,
+		position: 'absolute',
+		top: 0,
+		bottom: 250,
+		outline: 'none',
+		color: 'white',
+		left: 0,
+		right: 0,
+		margin: 'auto',
+		backgroundColor: `${theme.palette.secondary.light}`,
+		border: `1px solid transparent`,
+		transition: 'background ease-in 0.15s, border ease-in 0.15s, color ease-in 0.15s',
+		appearance: 'none',
+		'&::-webkit-outer-spin-button': {
+			appearance: 'none',
+			margin: 0,
+		},
+		'&::-webkit-inner-spin-button': {
+			appearance: 'none',
+			margin: 0,
+		},
+		'&[type="number"]': {
+			appearance: 'textfield',
+		},
+		'&:hover': {
+			backgroundColor: `${theme.palette.secondary.dark}9e`,
+			borderColor: theme.palette.primary.main,
+			color: theme.palette.primary.main,
+		},
+	},
 	loader: {
 		position: 'absolute',
 		width: 'fit-content',
@@ -206,6 +241,7 @@ export default (props) => {
 	const settings = useSelector((state) => state.app.settings);
 	const itemsLoaded = useSelector((state) => state.inventory.itemsLoaded);
 	const playerInventory = useSelector((state) => state.inventory.player);
+	const draggingAmount = useSelector((state) => state.inventory.draggingAmount);
 	const secondaryInventory = useSelector(
 		(state) => state.inventory.secondary,
 	);
@@ -437,31 +473,51 @@ export default (props) => {
 	} else {
 		return (
 			<Fragment>
-				<Fade in={isUsable()}>
-					<div
-						className={classes.useBtn}
-						onMouseUp={() => {
-							if (!Boolean(hover) || hover?.invType != 1) return;
-							useItem(hover?.owner, hover?.Slot, hover?.invType);
-							dispatch({
-								type: 'USE_ITEM_PLAYER',
-								payload: {
-									originSlot: hover?.Slot,
-								},
-							});
-							dispatch({
-								type: 'SET_HOVER',
-								payload: null,
-							});
-							dispatch({
-								type: 'SET_HOVER_ORIGIN',
-								payload: null,
-							});
-						}}
-					>
-						<FontAwesomeIcon icon={['fas', 'bullseye']} />
-					</div>
-				</Fade>
+				<input
+					className={classes.amountInput}
+					type='number'
+					placeholder='Amount'
+					value={draggingAmount}
+					maxLength={5}
+					min={0}
+					max={99999}
+					onChange={(e) => {
+						dispatch({
+							type: 'SET_DRAGGING_AMOUNT',
+							payload: {
+								amount: e.target.value
+							}
+						})
+					}}
+				/>
+
+				<div
+					className={classes.useBtn}
+					style={{
+						opacity: isUsable() ? 1 : 0.65
+					}}
+					onMouseUp={() => {
+						if (!isUsable()) return;
+						if (!Boolean(hover) || hover?.invType != 1) return;
+						useItem(hover?.owner, hover?.Slot, hover?.invType);
+						dispatch({
+							type: 'USE_ITEM_PLAYER',
+							payload: {
+								originSlot: hover?.Slot,
+							},
+						});
+						dispatch({
+							type: 'SET_HOVER',
+							payload: null,
+						});
+						dispatch({
+							type: 'SET_HOVER_ORIGIN',
+							payload: null,
+						});
+					}}
+				>
+					<FontAwesomeIcon icon={['fas', 'bullseye']} />
+				</div>
 				<div className={classes.root} onClick={cancelDrag}>
 					<div className={classes.gridBg} onClick={cancelDrag}>
 						<div className={classes.inventoryHeader}>

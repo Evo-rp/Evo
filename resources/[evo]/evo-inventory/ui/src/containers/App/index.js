@@ -38,17 +38,17 @@ export default () => {
 		},
 		palette: {
 			primary: {
-				main: '#603FEF',
-				light: '#ff2100',
-				dark: '#560000',
-				contrastText: '#ffffff',
-			},
+                main: '#7702e5',
+                light: '#9035e6',
+                dark: '#9902e5',
+                contrastText: '#ffffff',
+            },
 			secondary: {
-				main: '#141414',
-				light: '#1c1c1c',
-				dark: '#0f0f0f',
-				contrastText: '#ffffff',
-			},
+                main: '#141414',
+                light: '#1c1c1c',
+                dark: '#0f0f0f',
+                contrastText: '#ffffff',
+            },
 			error: {
 				main: '#6e1616',
 				light: '#a13434',
