@@ -1,7 +1,7 @@
 Chaserconfig = {} --- Do Not Change, edit, or add new values, may cause issues.
 ---------------------------------------------------------------------------------GENERAL SETTINGS------------------------------------------------------------------------------------
 Chaserconfig.enablecustombasevents = true
-Chaserconfig.enableintegratedhud = true
+Chaserconfig.enableintegratedhud = false
 Chaserconfig.integratedhudrefreshrate = 11
 Chaserconfig.showhudspeedinmph = false
 Chaserconfig.simulationdriftmode = false
