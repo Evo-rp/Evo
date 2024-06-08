@@ -92,82 +92,110 @@ export default (props) => {
                     </Grid>
                 </AppBar>
 
-                <div
-                    className={classes.businessesContainer}
-                >
-                    {openBusinesses.map((data, k) => {
-                        return (
-                            <Accordion
-                                key={k}
-                                className={classes.businessItem}
-                                expanded={expanded === k}
-                                onChange={
-                                    expanded === k
-                                        ? () => setExpanded(null)
-                                        : () => setExpanded(k)
-                                }
-                            >
-                                <AccordionSummary
-                                    expandIcon={
-                                        <FontAwesomeIcon
-                                            icon={['fas', 'chevron-down']}
-                                        />
+                {openBusinesses.length > 0 &&
+                    <div
+                        className={classes.businessesContainer}
+                    >
+                        {openBusinesses.map((data, k) => {
+                            return (
+                                <Accordion
+                                    key={k}
+                                    className={classes.businessItem}
+                                    expanded={expanded === k}
+                                    onChange={
+                                        expanded === k
+                                            ? () => setExpanded(null)
+                                            : () => setExpanded(k)
                                     }
                                 >
-                                    <Typography className={classes.heading}>
-                                        {data.Name}
-
-                                        {/* <IconButton
-                                            onClick={(e) => {
-                                                e.stopPropagation()
-                                            }}
-                                        >
+                                    <AccordionSummary
+                                        expandIcon={
                                             <FontAwesomeIcon
-                                                icon={['fa', 'map-pin']}
+                                                icon={['fas', 'chevron-down']}
                                             />
-                                        </IconButton> */}
-                                    </Typography>
-                                </AccordionSummary>
-                                <AccordionDetails>
-                                    <List>
-                                        {data.Employees.map((data) => {
-                                            return (
-                                                <ListItem
-                                                    key={data.Number}
-                                                    button
-                                                    disableRipple
-                                                    style={{
-                                                        width: '90%',
-                                                        marginLeft: '5.5%'
-                                                    }}
-                                                >
-                                                    <Grid container justifyContent="space-between">
-                                                        <Grid item xs={5}>
-                                                            <ListItemText
-                                                                primary={data.Name}
-                                                                secondary={data.Rank}
-                                                            />
-                                                        </Grid>
+                                        }
+                                    >
+                                        <Typography className={classes.heading}>
+                                            {data.Name}
 
-                                                        <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                                            <IconButton
-                                                                onClick={() => Nui.send('BusinessDirectory:Call', { number: data.Number })}
-                                                            >
-                                                                <FontAwesomeIcon
-                                                                    icon={['fa', 'phone']}
+                                            {/* <IconButton
+                                                onClick={(e) => {
+                                                    e.stopPropagation()
+                                                }}
+                                            >
+                                                <FontAwesomeIcon
+                                                    icon={['fa', 'map-pin']}
+                                                />
+                                            </IconButton> */}
+                                        </Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                        <List>
+                                            {data.Employees.map((data) => {
+                                                return (
+                                                    <ListItem
+                                                        key={data.Number}
+                                                        button
+                                                        disableRipple
+                                                        style={{
+                                                            width: '90%',
+                                                            marginLeft: '5.5%'
+                                                        }}
+                                                    >
+                                                        <Grid container justifyContent="space-between">
+                                                            <Grid item xs={5}>
+                                                                <ListItemText
+                                                                    primary={data.Name}
+                                                                    secondary={data.Rank}
                                                                 />
-                                                            </IconButton>
+                                                            </Grid>
+
+                                                            <Grid item xs={2} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                                                <IconButton
+                                                                    onClick={() => Nui.send('BusinessDirectory:Call', { number: data.Number })}
+                                                                >
+                                                                    <FontAwesomeIcon
+                                                                        icon={['fa', 'phone']}
+                                                                    />
+                                                                </IconButton>
+                                                            </Grid>
                                                         </Grid>
-                                                    </Grid>
-                                                </ListItem>
-                                            )
-                                        })}
-                                    </List>
-                                </AccordionDetails>
-                            </Accordion>
-                        )
-                    })}
-                </div>
+                                                    </ListItem>
+                                                )
+                                            })}
+                                        </List>
+                                    </AccordionDetails>
+                                </Accordion>
+                            )
+                        })}
+                    </div>
+                }
+
+                {openBusinesses.length <= 0 &&
+                    <div
+                        className={classes.businessesContainer}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                marginTop: '10vh'
+                            }}
+                        >
+                            <FontAwesomeIcon
+                                icon={['fa', 'briefcase']}
+                                style={{
+                                    fontSize: '10vh',
+                                    color: '#d68111'
+                                }}
+                            />
+
+                            <span style={{ fontSize: '2vh', marginTop: '2vh' }}>No Businesses Open.</span>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     );
