@@ -9,6 +9,7 @@ function SpawnShowroom(id)
         local spawnVehicles = {}
         for slot, data in pairs(GlobalState.DealershipShowrooms[id]) do
             local spawnPoint = _dealerships[id].showroom[tonumber(slot)]
+            if spawnPoint == nil then return end
             Game.Vehicles:SpawnLocal(spawnPoint.xyz, data.vehicle, spawnPoint.w, function(veh)
                 if not SHOWROOM_CACHE[id] then
                     SHOWROOM_CACHE[id] = {}
