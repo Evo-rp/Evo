@@ -1,5 +1,5 @@
 export const initialState = {
-	hidden: true,
+	hidden: false,
 	showHotbar: false,
 	showing: null,
 	mode: 'inventory',

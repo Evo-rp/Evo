@@ -140,6 +140,16 @@ export default (props) => {
 		return () => document.removeEventListener('mousemove', mouseMove);
 	}, []);
 
+	const GetDragCount = () => {
+		if (draggingAmount > hover.Count) {
+			return 1
+		} else if (draggingAmount <= 0) {
+			return 1
+		} else {
+			return draggingAmount
+		}
+	}
+
 	if (hover) {
 		return (
 			<div
@@ -172,7 +182,7 @@ export default (props) => {
 						</div>
 					)}
 					{Boolean(hover) && (
-						<div className={classes.count}>{draggingAmount > hover.Count ? 1 : draggingAmount}</div>
+						<div className={classes.count}>{GetDragCount()}</div>
 					)}
 					{Boolean(itemData?.durability) &&
 						Boolean(hover?.CreateDate) &&
