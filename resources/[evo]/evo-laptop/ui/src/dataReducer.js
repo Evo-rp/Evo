@@ -984,11 +984,16 @@ export const initialState = {
 		businessLogo: 'https://i.imgur.com/EU7HQji.png',
 		Gang: {
 			Name: 'Aspects Gang',
+			LeadersSid: [1],
 			Progression: [],
 			Members: [
 				{
 					Name: 'Aspect',
 					SID: 1,
+				},
+				{
+					Name: 'James Williams',
+					SID: 2,
 				},
 			]
 		}
