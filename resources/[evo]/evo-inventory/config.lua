@@ -85,8 +85,6 @@ Config.ShopItemSets = {
 		"binoculars",
 		"camera",
 		"phone",
-		"WEAPON_FLASHBANG",
-		"WEAPON_SMOKEGRENADE",
 		"PDscuba_gear",
 		"breachingcharge",
 		"parachute"
