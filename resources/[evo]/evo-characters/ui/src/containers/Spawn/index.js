@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { FormControl, InputLabel, MenuItem, Select, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { deselectCharacter, selectSpawn } from '../../actions/characterActions';
+import { deselectCharacter, selectSpawn, spawnToWorld } from '../../actions/characterActions';
 import SpawnIcon from '../../components/SpawnIcon';
 
 const useStyles = makeStyles((theme) => ({
@@ -137,7 +137,7 @@ const Spawn = (props) => {
 									<MenuItem
 										value={spawn.label}
 										onClick={() => {
-											props.selectSpawn(spawn);
+											props.spawnToWorld(spawn, props.selectedChar);
 										}}
 									>
 										{spawn.label}
@@ -154,10 +154,11 @@ const Spawn = (props) => {
 
 const mapStateToProps = (state) => ({
 	spawns: state.spawn.spawns,
-	selected: state.spawn.selected,
+	selectedChar: state.characters.selected,
 });
 
 export default connect(mapStateToProps, {
 	deselectCharacter,
-	selectSpawn
+	selectSpawn,
+	spawnToWorld
 })(Spawn);
