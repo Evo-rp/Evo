@@ -61,14 +61,16 @@ const Characters = (props) => {
 							<MenuItem
 								value={char.SID}
 								onClick={() => {
-									dispatch({
-										type: 'SELECT_CHARACTER',
-										payload: {
-											character: char
-										}
-									})
-
 									props.getCharacterSpawns(char)
+
+									setTimeout(() => {
+										dispatch({
+											type: 'SELECT_CHARACTER',
+											payload: {
+												character: char
+											}
+										})
+									}, 500)
 								}}
 							>
 								{char.First} {char.Last} 
