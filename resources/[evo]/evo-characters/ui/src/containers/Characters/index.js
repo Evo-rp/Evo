@@ -9,6 +9,10 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
 } from '@mui/material';
 
 import Character from '../../components/Character';
@@ -45,6 +49,43 @@ const Characters = (props) => {
 
 	return (
 		<>
+			<FormControl style={{ position: 'absolute', width: '15%', right: '28vh', top: '7.5vh' }} variant="standard">
+				<InputLabel id="demo-simple-select-standard-label">Select Character</InputLabel>
+				<Select
+					labelId="demo-simple-select-standard-label"
+					id="demo-simple-select-standard"
+					label="Select Character"
+				>
+					{props.characters.map((char, i) => {
+						return (
+							<MenuItem
+								value={char.SID}
+								onClick={() => {
+									dispatch({
+										type: 'SET_UPDATE_SELECT',
+										payload: {
+											character: char
+										}
+									})
+
+									props.getCharacterSpawns(props.selected)
+								}}
+							>
+								{char.First} {char.Last} 
+							</MenuItem>
+						)
+					})}
+
+					<MenuItem
+						value={'Create Character'}
+						onClick={() => props.showCreator()}
+						disabled={props.characters.length === 7}
+					>
+						Create Character
+					</MenuItem>
+				</Select>
+			</FormControl>
+
 			<Character setOpen={setOpen} />
 
 			{props.selected != null && (
