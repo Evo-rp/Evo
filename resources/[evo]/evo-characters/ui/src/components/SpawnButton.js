@@ -5,7 +5,7 @@ import { makeStyles } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { selectSpawn, spawnToWorld } from '../actions/characterActions';
-import { ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 
 const SpawnButton = (props) => {
 	const onClick = () => {

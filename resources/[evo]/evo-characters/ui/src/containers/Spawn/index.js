@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
-import { Box, Button, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Paper, Tooltip, Typography } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Tooltip } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import SpawnButton from '../../components/SpawnButton';
-import { deselectCharacter } from '../../actions/characterActions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { deselectCharacter, selectSpawn, spawnToWorld } from '../../actions/characterActions';
 import SpawnIcon from '../../components/SpawnIcon';
 
 const useStyles = makeStyles((theme) => ({
@@ -59,7 +57,6 @@ const Spawn = (props) => {
 		const childPos = zeroPointRef.current.getBoundingClientRect();
 		const parentPos = zeroPointRef.current.parentElement.getBoundingClientRect();
 
-
 		const childOffset = {
 			top: childPos.top - parentPos.top,
 			left: childPos.left - parentPos.left
@@ -86,8 +83,8 @@ const Spawn = (props) => {
 	useEffect(() => {
 		const handleResize = () => {
 			const convertSpawns = props?.spawns.map(spawn => {
-				const { x, y } = spawn.location;
-				const correctCoordinate = getCorrectXY(x, y);
+				const correctCoordinate = getCorrectXY(spawn.location.x, spawn.location.y);
+
 				return {
 					...spawn,
 					posX: correctCoordinate[0],
@@ -121,10 +118,34 @@ const Spawn = (props) => {
 					/>
 
 					{convertedSpawn.map((spawn, i) => {
+						if (spawn.icon === 'house') return;
 						return (
 							<SpawnIcon spawn={spawn} />
 						)
 					})}
+
+					<FormControl style={{ position: 'absolute', width: '15%', right: '28vh', top: '7.5vh' }} variant="standard">
+						<InputLabel id="demo-simple-select-standard-label">Property Spawn</InputLabel>
+						<Select
+							labelId="demo-simple-select-standard-label"
+							id="demo-simple-select-standard"
+							label="Property Spawn"
+						>
+							{convertedSpawn.map((spawn, i) => {
+								if (spawn.icon !== 'house') return;
+								return (
+									<MenuItem
+										value={spawn.label}
+										onClick={() => {
+											props.spawnToWorld(spawn, props.selectedChar);
+										}}
+									>
+										{spawn.label}
+									</MenuItem>
+								)
+							})}
+						</Select>
+					</FormControl>
 				</div>
 			</div>
 		</>
@@ -133,9 +154,11 @@ const Spawn = (props) => {
 
 const mapStateToProps = (state) => ({
 	spawns: state.spawn.spawns,
-	selected: state.spawn.selected,
+	selectedChar: state.characters.selected,
 });
 
 export default connect(mapStateToProps, {
 	deselectCharacter,
+	selectSpawn,
+	spawnToWorld
 })(Spawn);
