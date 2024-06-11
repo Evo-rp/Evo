@@ -49,26 +49,26 @@ const Characters = (props) => {
 
 	return (
 		<>
-			<FormControl style={{ position: 'absolute', width: '15%', right: '28vh', top: '7.5vh' }} variant="standard">
+			<FormControl style={{ position: 'absolute', width: '15%', right: '1vh', top: '0.5vh' }} variant="standard">
 				<InputLabel id="demo-simple-select-standard-label">Select Character</InputLabel>
 				<Select
 					labelId="demo-simple-select-standard-label"
 					id="demo-simple-select-standard"
 					label="Select Character"
 				>
-					{props.characters.map((char, i) => {
+					{props.characters.map((char) => {
 						return (
 							<MenuItem
 								value={char.SID}
 								onClick={() => {
 									dispatch({
-										type: 'SET_UPDATE_SELECT',
+										type: 'SELECT_CHARACTER',
 										payload: {
 											character: char
 										}
 									})
 
-									props.getCharacterSpawns(props.selected)
+									props.getCharacterSpawns(char)
 								}}
 							>
 								{char.First} {char.Last} 

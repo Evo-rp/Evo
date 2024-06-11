@@ -117,18 +117,18 @@ const charReducer = (state = initialState, action) => {
 				...state,
 				characters: state.characters.filter((c) => c.ID != action.payload.id),
 			};
-		case SET_CHARACTER_DATA:
-			if (state.updateSelect) {
-				return {
-					...state,
-					characterIndex: action.payload.index,
-					selected: state.characters[action.payload.index],
-					position: {
-						x: action.payload.x,
-						y: action.payload.y
-					}
-				};
-			}
+		// case SET_CHARACTER_DATA:
+		// 	if (state.updateSelect) {
+		// 		return {
+		// 			...state,
+		// 			characterIndex: action.payload.index,
+		// 			selected: state.characters[action.payload.index],
+		// 			position: {
+		// 				x: action.payload.x,
+		// 				y: action.payload.y
+		// 			}
+		// 		};
+		// 	}
 		case SET_UPDATE_SELECT:
 			return {
 				...state,
