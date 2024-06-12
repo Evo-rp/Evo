@@ -14,7 +14,7 @@ function SkillCheckBucket()
     local pedCoords = GetEntityCoords(playerPed)
     local bucket = CreateObject(model, pedCoords.x, pedCoords.y, pedCoords.z, true, true, false) 
     AttachEntityToEntity(bucket, playerPed, GetPedBoneIndex(playerPed, 57005), 0.09, 0.03, -0.02, -78.0, 13.0, 28.0, false, false, true, true, 0, true)
-    Minigame.Play:RoundSkillbar(2.0, 2, {
+    Minigame.Play:RoundSkillbar(1.0, 5, {
         onSuccess = function()
             Wait(2500)
             Progress:Progress({
@@ -64,7 +64,7 @@ end
 
 function SkillCheckPanning()
     local p = promise.new()
-    Minigame.Play:RoundSkillbar(2.5, 2, {
+    Minigame.Play:RoundSkillbar(1, 5, {
         onSuccess = function()
             Wait(2500)
             Progress:Progress({
@@ -86,9 +86,9 @@ function SkillCheckPanning()
             }, function(cancelled)
                 if not cancelled then
                     Callbacks:ServerCallback('Goldpan:RemoveGravel', {}, function(callback) end)
-                    local chance = math.random(1, 20)
+                    local chance = math.random(1, 10)
                     print(chance)
-                    if chance < 10 then
+                    if chance < 4 then
                         Callbacks:ServerCallback("Goldpan:GetReward", {}, function(callback)
                             if callback then
                                 Notification:Info("You found some gold", 2000)
@@ -110,7 +110,7 @@ end
 
 local SmeltingCoords = {
     position = vector3(1110.89, -2008.9, 30.94),
-    size = vector3(5.0, 5.0, 4.0),
+    size = vector3(55.0, 55.0, 55.0),
     heading = 325,
 }
 

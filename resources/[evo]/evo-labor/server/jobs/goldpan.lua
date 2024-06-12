@@ -12,7 +12,7 @@ AddEventHandler('Labor:Server:Startup', function()
 
     Callbacks:RegisterServerCallback("Goldpan:GetReward", function(source, data, cb)
         local char = Fetch:Source(source):GetData("Character")
-        Inventory:AddItem(char:GetData("SID"), "goldnugget", math.random(2, 5), {}, 1)
+        Inventory:AddItem(char:GetData("SID"), "goldnugget", math.random(5, 15), {}, 1)
         cb(true)
     end)
 
