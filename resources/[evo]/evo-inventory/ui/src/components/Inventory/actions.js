@@ -100,8 +100,6 @@ const moveSlot = (
 	capacityOverrideTo,
 	isSplit = false,
 ) => {
-	console.log('countFrom: ' + countFrom)
-	console.log('countTo: ' + countTo)
 	Nui.send('MoveSlot', {
 		ownerFrom: ownerFrom,
 		ownerTo: ownerTo,

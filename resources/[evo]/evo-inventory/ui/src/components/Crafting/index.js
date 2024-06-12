@@ -12,96 +12,64 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Recipe from './recipe';
+import { filter } from 'lodash';
 
 const useStyles = makeStyles((styles) => ({
-	ffs: {
-		height: '100%',
+	craftingContainer: {
+		minWidth: 678,
 	},
 	search: {
-		marginBottom: '1%',
+		marginTop: 8,
+		marginBottom: 8,
 	},
-	wrapper: {
+	recipes: {
+		maxHeight: 'calc(60vh - 170px)',
+		overflowX: 'hidden',
+		overflowY: 'auto',
+		gap: 8,
 		display: 'flex',
-		justifyContent: 'center',
-		userSelect: 'none',
-		'-webkit-user-select': 'none',
+		flexWrap: 'wrap',
+		justifyContent: 'space-between',
+		maxWidth: 870,
 		width: '100%',
-		height: '99%',
-	},
-	container: {
-		width: '100%',
-		display: 'grid',
-		gridTemplateColumns: '1fr 1fr',
-		gridGap: '25px',
-		overflow: 'auto',
-		gridAutoRows: 'max-content',
-	},
-	noRecipes: {
-		padding: 30,
-		textAlign: 'center',
-	},
-	loader: {
-		position: 'absolute',
-		width: 'fit-content',
-		height: 'fit-content',
-		top: 0,
-		bottom: 0,
-		right: 0,
-		left: 0,
-		margin: 'auto',
-		textAlign: 'center',
-		'& span': {
-			display: 'block',
-		},
 	},
 }));
 
 const Crafting = () => {
 	const classes = useStyles();
-	const itemsLoaded = useSelector((state) => state.inventory.itemsLoaded);
 	const items = useSelector((state) => state.inventory.items);
 	const cooldowns =
 		useSelector((state) => state.crafting.cooldowns) || Object();
 	const recipes = useSelector((state) => state.crafting.recipes);
 	const crafting = useSelector((state) => state.crafting.crafting);
 
-	const [filtered, setFiltered] = useState(recipes);
+	const [filtered, setFiltered] = useState(recipes ?? Array());
 	const [search, setSearch] = useState('');
 
 	useEffect(() => {
-		setFiltered(
-			Object.keys(recipes)
-				.filter((r) =>
-					items[recipes[r].result.name].label
-						.toLowerCase()
-						.includes(search.toLowerCase()),
-				)
-				.map((k) => recipes[k]),
-		);
-	}, [search, recipes]);
+		if (!Boolean(recipes)) return;
+		if (search == '') {
+			setFiltered(recipes);
+		} else {
+			setFiltered(
+				recipes.filter(
+					(r) =>
+						Boolean(items[r.result.name]) &&
+						items[r.result.name].label
+							.toLowerCase()
+							.includes(search.toLowerCase()),
+				),
+			);
+		}
+	}, [search, recipes, items]);
 
 	const onChange = (e) => {
 		setSearch(e.target.value);
 	};
 
-	if (!itemsLoaded || Object.keys(items).length == 0) {
-		return (
-			<div className={classes.loader}>
-				<CircularProgress size={36} style={{ margin: 'auto' }} />
-				<span>Loading Inventory Items</span>
-				<Alert
-					style={{ marginTop: 20 }}
-					variant="outlined"
-					severity="info"
-				>
-					If you see this for a long period of time, there may be an
-					issue. Try restarting your FiveM.
-				</Alert>
-			</div>
-		);
-	} else {
-		return (
-			<div className={classes.ffs}>
+	return (
+		<div className={classes.craftingContainer}>
+			<div className={classes.search}>
 				<TextField
 					fullWidth
 					className={classes.search}
@@ -111,6 +79,13 @@ const Crafting = () => {
 					onChange={onChange}
 					disabled={Boolean(crafting)}
 					InputProps={{
+						startAdornment: (
+							<InputAdornment position="start">
+								<FontAwesomeIcon
+									icon={['fas', 'magnifying-glass']}
+								/>
+							</InputAdornment>
+						),
 						endAdornment: (
 							<InputAdornment position="end">
 								<IconButton
@@ -125,25 +100,22 @@ const Crafting = () => {
 						),
 					}}
 				/>
-				<div className={classes.wrapper}>
-					{Boolean(filtered) && filtered.length > 0 ? (
-						<div className={classes.container}>
-							{filtered.map((recipe, index) => (
-								<Recipe
-									key={`${recipe.name}-${index}`}
-									index={index}
-									recipe={recipe}
-									cooldown={cooldowns[recipe.id]}
-								/>
-							))}
-						</div>
-					) : (
-						<div className={classes.noRecipes}>No Recipes</div>
-					)}
-				</div>
 			</div>
-		);
-	}
+
+			<div className={classes.recipes}>
+				{filtered.map((recipe, k) => {
+					return (
+						<Recipe
+							key={`recipe-${k}`}
+							identifier={recipe.id}
+							recipe={recipe}
+							cooldown={cooldowns[recipe.id]}
+						/>
+					);
+				})}
+			</div>
+		</div>
+	);
 };
 
 export default Crafting;

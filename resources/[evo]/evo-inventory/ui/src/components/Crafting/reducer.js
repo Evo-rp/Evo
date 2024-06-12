@@ -1,52 +1,26 @@
 const initialState = {
 	bench: 'none',
 	crafting: null,
-	actionString: 'Crafting',
-	myCounts: Object(),
-	cooldowns: Object(),
-	recipes: Array(),
-	// myCounts: {
-	// 	bread: 12,
-	// },
-	// cooldowns: Object({
-	// 	3: Date.now() + 1000 * 60 * 60 * 25,
-	// }),
-	// recipes: [
-	// 	{
-	// 		id: '1',
-	// 		result: { name: 'water', count: 5 },
-	// 		items: [
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 		],
-	// 		time: 10000,
-	// 	},
-	// 	{
-	// 		id: '2',
-	// 		result: { name: 'water', count: 1123 },
-	// 		items: [
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 		],
-	// 		time: 10000,
-	// 	},
-	// 	{
-	// 		id: '3',
-	// 		result: { name: 'water', count: 1 },
-	// 		items: [
-	// 			{ name: 'bread', count: 3 },
-	// 			{ name: 'bread', count: 3 },
-	// 		],
-	// 		time: 10000,
-	// 		cooldown: 1000 * 60 * 60 * 25,
-	// 	},
-	// ],
+	schematics: Object(),
+	cooldowns:
+		process.env.NODE_ENV == 'production'
+			? Object()
+			: Object({
+					3: Date.now() + 1000 * 60 * 60 * 25,
+			  }),
+	recipes:
+		process.env.NODE_ENV == 'production'
+			? Array()
+			: [
+					{
+						result: { name: 'bread', count: 5 },
+						items: [{ name: 'water', count: 3 }],
+					},
+					{
+						result: { name: 'water', count: 5 },
+						items: [{ name: 'bread', count: 3 }],
+					},
+			  ],
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,10 +31,13 @@ const reducer = (state = initialState, action) => {
 				bench: action.payload.bench,
 				cooldowns: action.payload.cooldowns,
 				recipes: action.payload.recipes,
-				myCounts: action.payload.myCounts,
-				actionString: action.payload.actionString,
 			};
 		}
+		case 'UPDATE_COOLDOWNS':
+			return {
+				...state,
+				cooldowns: action.payload.cooldowns,
+			};
 		case 'SET_CRAFTING': {
 			return {
 				...state,
@@ -70,6 +47,11 @@ const reducer = (state = initialState, action) => {
 				},
 			};
 		}
+		case 'SET_SCHEMS':
+			return {
+				...state,
+				schematics: action.payload,
+			};
 		case 'END_CRAFTING':
 			return {
 				...state,

@@ -12,8 +12,16 @@ const getItemImage = (item, itemData) => {
 			: item.MetaData
 		: Object();
 
+	const smd = Boolean(itemData?.staticMetadata)
+		? typeof itemData?.staticMetadata == 'string'
+			? lua2json(itemData?.staticMetadata)
+			: itemData?.staticMetadata
+		: Object();
+
 	if (metadata?.CustomItemImage) {
 		return metadata?.CustomItemImage;
+	} else if (smd?.CustomItemImage) {
+		return smd?.CustomItemImage;
 	} else if (Boolean(itemData) && Boolean(itemData.iconOverride)) {
 		return `../images/items/${itemData.iconOverride}.webp`;
 	} else {
@@ -35,4 +43,17 @@ const getItemLabel = (item, itemData) => {
 	}
 };
 
-export { getItemImage, getItemLabel };
+const fallbackItem = {
+	name: 'ph',
+	label: 'Invalid Item',
+	description:
+		"An item in your inventory is missing its item definition, try /reloaditems and if this doesn't fix it please report this",
+	invalid: true,
+	price: 0,
+	isStackable: false,
+	type: -1,
+	rarity: -1,
+	weight: 0,
+};
+
+export { getItemImage, getItemLabel, fallbackItem };

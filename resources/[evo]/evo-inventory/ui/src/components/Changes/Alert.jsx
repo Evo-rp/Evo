@@ -1,84 +1,71 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@mui/styles';
-import { Fade } from '@mui/material';
-import { getItemImage, getItemLabel } from '../Inventory/item';
+import { Fade, Slide } from '@mui/material';
+import { fallbackItem, getItemImage, getItemLabel } from '../Inventory/item';
 
 const useStyles = makeStyles((theme) => ({
 	container: {
+		width: 285,
+		height: 60,
 		pointerEvents: 'none',
+		display: 'flex',
 		zIndex: 1,
+		background: `${theme.palette.secondary.dark}80`,
+		borderLeft: `4px solid ${theme.palette.primary.main}`,
+		'&.add': {
+			borderColor: theme.palette.success.main,
+		},
+		'&.removed': {
+			borderColor: theme.palette.error.main,
+		},
+		'&.used': {
+			borderColor: theme.palette.info.main,
+		},
 	},
-	img: {
-		height: 152,
-		width: '100%',
-		overflow: 'hidden',
-		zIndex: 3,
+	label: {
+		color: theme.palette.text.main,
+		fontSize: 18,
+		lineHeight: '20px',
+		textShadow: '0 0 5px #000',
+		flex: 1,
+		height: 'fit-content',
+		paddingTop: 15,
+		paddingLeft: 5,
+		paddingRight: 5,
+		width: 188,
+		'& small': {
+			fontSize: 12,
+			display: 'block',
+		},
+	},
+	image: {
+		height: 60,
+		width: 60,
 		backgroundSize: '70%',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
-	},
-	label: {
-		bottom: 0,
-		left: 0,
-		position: 'absolute',
-		textAlign: 'center',
-		padding: '0 5px',
-		width: '100%',
-		maxWidth: '100%',
-		overflow: 'hidden',
-		whiteSpace: 'nowrap',
-		color: theme.palette.text.main,
-		background: theme.palette.secondary.light,
-		borderTop: `1px solid rgb(255 255 255 / 4%)`,
-		zIndex: 4,
-	},
-	slot: {
-		width: 132,
-		height: 152,
-		backgroundColor: `${theme.palette.secondary.light}61`,
-		border: `1px solid rgba(255, 255, 255, 0.04)`,
-		position: 'relative',
-		zIndex: 2,
-		// border: `1px solid ${theme.palette.border.divider}`,
-		// '&.add': {
-		// 	borderColor: theme.palette.success.main,
-		// },
-		// '&.removed': {
-		// 	borderColor: theme.palette.error.main,
-		// },
-		// '&.used': {
-		// 	borderColor: theme.palette.info.main,
-		// },
+		borderRight: `1px solid ${theme.palette.border.divider}`,
 	},
 	count: {
-		top: 0,
-		right: 0,
-		position: 'absolute',
-		textAlign: 'right',
-		padding: '0 5px',
-		textShadow: `0 0 5px ${theme.palette.secondary.dark}`,
-		color: theme.palette.text.main,
-		zIndex: 4,
+		height: 60,
+		width: 48,
+		textAlign: 'center',
+		lineHeight: '60px',
+		borderLeft: `1px solid ${theme.palette.border.divider}`,
 	},
-	type: {
-		top: 0,
-		left: 0,
-		position: 'absolute',
-		padding: '0 5px',
-		color: theme.palette.text.main,
-		background: theme.palette.secondary.light,
-		borderRight: `1px solid ${theme.palette.border.divider}`,
-		borderBottom: `1px solid ${theme.palette.border.divider}`,
-		borderBottomRightRadius: 5,
-		zIndex: 4,
+	itemName: {
+		whiteSpace: 'nowrap',
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
 	},
 }));
 
 export default ({ alert }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const itemData = useSelector((state) => state.inventory.items)[alert.item];
+	const items = useSelector((state) => state.inventory.items);
+	const itemData = Boolean(alert) ? items[alert.item] ?? fallbackItem : null;
 
 	const [show, setShow] = useState(true);
 
@@ -115,11 +102,11 @@ export default ({ alert }) => {
 	};
 
 	return (
-		<Fade in={show} onExited={onAnimEnd}>
-			<div className={classes.container}>
-				<div className={`${classes.slot} ${alert.type}`}>
+		<Slide direction="up" in={show} onExited={onAnimEnd}>
+			<div className={`${classes.container} ${alert.type}`}>
+				{Boolean(itemData) ? (
 					<div
-						className={classes.img}
+						className={classes.image}
 						style={{
 							backgroundImage: `url(${getItemImage(
 								alert.item,
@@ -127,17 +114,21 @@ export default ({ alert }) => {
 							)})`,
 						}}
 					></div>
-					{Boolean(itemData) && (
-						<div className={classes.label}>
+				) : (
+					<div className={classes.image}></div>
+				)}
+				{Boolean(itemData) && (
+					<div className={classes.label}>
+						<div className={classes.itemName}>
 							{getItemLabel(alert.item, itemData)}
 						</div>
-					)}
-					<div className={classes.type}>{getTypeLabel()}</div>
-					{alert.count > 0 && (
-						<div className={classes.count}>{alert.count}</div>
-					)}
+						<small>{getTypeLabel()}</small>
+					</div>
+				)}
+				<div className={classes.count}>
+					{alert.count > 0 ? alert.count : '-'}
 				</div>
 			</div>
-		</Fade>
+		</Slide>
 	);
 };
