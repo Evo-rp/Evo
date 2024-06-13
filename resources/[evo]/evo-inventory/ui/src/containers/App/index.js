@@ -12,6 +12,7 @@ import {
 	Fade,
 } from '@mui/material';
 
+import CraftingProcessor from '../../components/Crafting/Process';
 import AppScreen from '../../components/AppScreen/AppScreen';
 import Inventory from '../../components/Inventory/Inventory';
 import HoverSlot from '../../components/Inventory/HoverSlot';
@@ -160,6 +161,7 @@ export default () => {
 	const dispatch = useDispatch();
 	const hidden = useSelector((state) => state.app.hidden);
 	const mode = useSelector((state) => state.app.mode);
+	const crafting = useSelector((state) => state.crafting.crafting);
 	const itemsLoaded = useSelector((state) => state.inventory.itemsLoaded);
 	const items = useSelector((state) => state.inventory.items);
 	const staticTooltip = useSelector((state) => state.inventory.staticTooltip);
@@ -206,6 +208,7 @@ export default () => {
 						</ErrorBoundary>
 					</div>
 				</Fade>
+				{Boolean(crafting) && <CraftingProcessor crafting={crafting} />}
 			</ThemeProvider>
 		</StyledEngineProvider>
 	);

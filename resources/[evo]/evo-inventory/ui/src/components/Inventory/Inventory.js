@@ -928,10 +928,6 @@ export default (props) => {
 							To Other Inventory (If Possible)
 						</li>
 						<li>
-							<b>Shift Right Click: </b>Split Stack. Brings Up
-							Prompt To Split Stack (If Possible)
-						</li>
-						<li>
 							<b>Control Left Click: </b>Half Stack. Starts
 							Dragging Half Of The Selected Stack (If Possible)
 						</li>
