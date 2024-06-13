@@ -257,7 +257,6 @@ AddEventHandler("Robbery:Server:Setup", function()
         if
             pState.inOilRig
             and (not GlobalState["AntiShitlord"] or os.time() > GlobalState["AntiShitlord"])
-            and not GlobalState[string.format("OilRig:Loot:%s", data.id)]
             and _OILRIG_CONFIG.LootLocations[data.id] ~= nil
         then
 			if OilRig.Loot[data.id] == source then
