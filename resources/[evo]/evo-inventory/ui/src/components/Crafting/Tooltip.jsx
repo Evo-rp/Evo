@@ -111,7 +111,7 @@ export default ({ item, count }) => {
 			<div className={classes.itemName}>{getItemLabel(null, item)}</div>
 			<div className={classes.itemType}>
 				{`${getRarityLabel()} ${getTypeLabel()}`}
-				{Boolean(item.isUsable) && (
+				{item.isUsable && (
 					<span className={classes.usable}>Usable</span>
 				)}
 			</div>

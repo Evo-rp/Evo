@@ -19,6 +19,7 @@ import Hotbar from '../../components/Inventory/Hotbar';
 import ChangeAlerts from '../../components/Changes';
 import StaticTooltip from '../../components/Inventory/StaticTooltip';
 import { ErrorBoundary } from '../../components/ErrorBoundary';
+import Crafting from '../../components/Crafting';
 
 library.add(fab, fas, far);
 
@@ -158,6 +159,7 @@ const muiTheme = createTheme({
 export default () => {
 	const dispatch = useDispatch();
 	const hidden = useSelector((state) => state.app.hidden);
+	const mode = useSelector((state) => state.app.mode);
 	const itemsLoaded = useSelector((state) => state.inventory.itemsLoaded);
 	const items = useSelector((state) => state.inventory.items);
 	const staticTooltip = useSelector((state) => state.inventory.staticTooltip);
@@ -186,12 +188,21 @@ export default () => {
 				<Fade in={!hidden} timeout={500} onExited={onHide}>
 					<div>
 						<ErrorBoundary>
-							<Fragment>
-								<AppScreen>
-									<Inventory />
-								</AppScreen>
-								<HoverSlot />
-							</Fragment>
+							{mode === 'inventory' && (
+								<Fragment>
+									<AppScreen>
+										<Inventory />
+									</AppScreen>
+									<HoverSlot />
+								</Fragment>
+							)}
+							{mode === 'crafting' && (
+								<Fragment>
+									<AppScreen>
+										<Crafting />
+									</AppScreen>
+								</Fragment>
+							)}
 						</ErrorBoundary>
 					</div>
 				</Fade>

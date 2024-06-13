@@ -359,7 +359,7 @@ export default (props) => {
 			items[hover.Name].isUsable &&
 			(!Boolean(items[hover.Name].durability) ||
 				hover?.CreateDate + items[hover.Name].durability >
-					Date.now() / 1000)
+				Date.now() / 1000)
 		);
 	};
 
@@ -386,7 +386,7 @@ export default (props) => {
 				items[item.Name]?.type == 2) ||
 			(items[item.Name]?.type == 10 &&
 				secondaryInventory.owner ==
-					`container:${item?.MetaData?.Container}`)
+				`container:${item?.MetaData?.Container}`)
 		) {
 			Nui.send('FrontEndSound', 'DISABLED');
 			return;
@@ -446,12 +446,12 @@ export default (props) => {
 						Count:
 							item.Count > 1
 								? Math.max(
-										1,
-										Math.min(
-											Math.floor(item.Count / 2),
-											10000,
-										),
-								  )
+									1,
+									Math.min(
+										Math.floor(item.Count / 2),
+										10000,
+									),
+								)
 								: 1,
 					},
 				});
@@ -584,9 +584,8 @@ export default (props) => {
 					/>
 
 					<div
-						className={`${classes.useBtn}${
-							!isUsable() ? ' disabled' : ''
-						}`}
+						className={`${classes.useBtn}${!isUsable() ? ' disabled' : ''
+							}`}
 						onMouseUp={() => {
 							if (
 								!Boolean(hover) ||
@@ -671,7 +670,7 @@ export default (props) => {
 								variant="determinate"
 								value={Math.floor(
 									(playerWeight / playerInventory.capacity) *
-										100,
+									100,
 								)}
 							/>
 						</div>
@@ -686,10 +685,10 @@ export default (props) => {
 													s.Slot == value + 1,
 											)
 												? playerInventory.inventory.filter(
-														(s) =>
-															Boolean(s) &&
-															s.Slot == value + 1,
-												  )[0]
+													(s) =>
+														Boolean(s) &&
+														s.Slot == value + 1,
+												)[0]
 												: {};
 										return (
 											<Slot
@@ -739,7 +738,7 @@ export default (props) => {
 												}}
 												locked={
 													playerInventory.disabled[
-														value + 1
+													value + 1
 													]
 												}
 											/>
@@ -749,174 +748,165 @@ export default (props) => {
 						</div>
 					</div>
 				</div>
-				{mode == 'crafting' ? (
+				<Fade in={showSecondary}>
 					<div className={classes.gridBg}>
-						<div className={classes.inventoryHeader}>Crafting</div>
-						<div className={classes.container}>
-							<Crafting />
+						<div className={classes.inventoryHeader}>
+							{secondaryInventory.name}
 						</div>
-					</div>
-				) : (
-					<Fade in={showSecondary}>
-						<div className={classes.gridBg}>
-							<div className={classes.inventoryHeader}>
-								{secondaryInventory.name}
+						<div className={classes.container}>
+							<div className={classes.inventoryWeight}>
+								{!secondaryInventory.shop &&
+									!secondaryInventory.playerShop && (
+										<>
+											<div
+												className={
+													classes.weightText
+												}
+											>
+												{`${secondaryWeight.toFixed(
+													2,
+												)} / ${secondaryInventory.capacity.toFixed(
+													2,
+												)}`}
+											</div>
+											<LinearProgress
+												className={
+													classes.inventoryWeightBar
+												}
+												color="primary"
+												variant="determinate"
+												value={
+													secondaryInventory.shop
+														? 0
+														: Math.floor(
+															(secondaryWeight /
+																secondaryInventory.capacity) *
+															100,
+														)
+												}
+											/>
+										</>
+									)}
 							</div>
-							<div className={classes.container}>
-								<div className={classes.inventoryWeight}>
-									{!secondaryInventory.shop &&
-										!secondaryInventory.playerShop && (
-											<>
-												<div
-													className={
-														classes.weightText
-													}
-												>
-													{`${secondaryWeight.toFixed(
-														2,
-													)} / ${secondaryInventory.capacity.toFixed(
-														2,
-													)}`}
-												</div>
-												<LinearProgress
-													className={
-														classes.inventoryWeightBar
-													}
-													color="primary"
-													variant="determinate"
-													value={
-														secondaryInventory.shop
-															? 0
-															: Math.floor(
-																	(secondaryWeight /
-																		secondaryInventory.capacity) *
-																		100,
-															  )
-													}
-												/>
-											</>
-										)}
-								</div>
-								<div className={classes.inventoryGrid}>
-									{secondaryInventory.loaded &&
-										[
-											...Array(
-												secondaryInventory.size,
-											).keys(),
-										].map((value) => {
-											let slot =
-												secondaryInventory.inventory.filter(
+							<div className={classes.inventoryGrid}>
+								{secondaryInventory.loaded &&
+									[
+										...Array(
+											secondaryInventory.size,
+										).keys(),
+									].map((value) => {
+										let slot =
+											secondaryInventory.inventory.filter(
+												(s) =>
+													Boolean(s) &&
+													s.Slot == value + 1,
+											)
+												? secondaryInventory.inventory.filter(
 													(s) =>
 														Boolean(s) &&
-														s.Slot == value + 1,
-												)
-													? secondaryInventory.inventory.filter(
-															(s) =>
-																Boolean(s) &&
-																s.Slot ==
-																	value + 1,
-													  )[0]
-													: {};
-											return (
-												<Slot
-													secondary
-													canAddToShop={canAddToShop}
-													onAddToShop={
-														setModifyingShop
-													}
-													slot={value + 1}
-													key={value + 1}
-													data={slot}
-													owner={
-														secondaryInventory.owner
-													}
-													invType={
-														secondaryInventory.invType
-													}
-													shop={
-														secondaryInventory.shop
-													}
-													free={
-														secondaryInventory.free
-													}
-													playerShop={
-														secondaryInventory.playerShop
-													}
-													vehClass={
-														secondaryInventory.class
-													}
-													vehModel={
-														secondaryInventory.model
-													}
-													slotOverride={
-														secondaryInventory.slotOverride
-													}
-													capacityOverride={
-														secondaryInventory.capacityOverride
-													}
-													hotkeys={false}
-													playerCapacity={
-														playerInventory.capacity
-													}
-													playerWeight={playerWeight}
-													secondaryCapacity={
-														Boolean(
-															secondaryInventory.capacityOverride,
-														)
-															? secondaryInventory.capacityOverride
-															: secondaryInventory.capacity
-													}
-													secondaryWeight={
-														secondaryWeight
-													}
-													onContextMenu={(e) => {
-														if (
-															secondaryInventory
-																.disabled[
-																value + 1
-															]
-														)
-															return;
-														onRightClick(
-															e,
-															secondaryInventory.owner,
-															secondaryInventory.invType,
-															secondaryInventory.shop,
-															secondaryInventory.free,
-															slot,
-															secondaryInventory.class,
-															secondaryInventory.model,
-														);
-													}}
-													locked={
+														s.Slot ==
+														value + 1,
+												)[0]
+												: {};
+										return (
+											<Slot
+												secondary
+												canAddToShop={canAddToShop}
+												onAddToShop={
+													setModifyingShop
+												}
+												slot={value + 1}
+												key={value + 1}
+												data={slot}
+												owner={
+													secondaryInventory.owner
+												}
+												invType={
+													secondaryInventory.invType
+												}
+												shop={
+													secondaryInventory.shop
+												}
+												free={
+													secondaryInventory.free
+												}
+												playerShop={
+													secondaryInventory.playerShop
+												}
+												vehClass={
+													secondaryInventory.class
+												}
+												vehModel={
+													secondaryInventory.model
+												}
+												slotOverride={
+													secondaryInventory.slotOverride
+												}
+												capacityOverride={
+													secondaryInventory.capacityOverride
+												}
+												hotkeys={false}
+												playerCapacity={
+													playerInventory.capacity
+												}
+												playerWeight={playerWeight}
+												secondaryCapacity={
+													Boolean(
+														secondaryInventory.capacityOverride,
+													)
+														? secondaryInventory.capacityOverride
+														: secondaryInventory.capacity
+												}
+												secondaryWeight={
+													secondaryWeight
+												}
+												onContextMenu={(e) => {
+													if (
 														secondaryInventory
-															.disabled[value + 1]
-													}
-												/>
-											);
-										})}
-								</div>
+															.disabled[
+														value + 1
+														]
+													)
+														return;
+													onRightClick(
+														e,
+														secondaryInventory.owner,
+														secondaryInventory.invType,
+														secondaryInventory.shop,
+														secondaryInventory.free,
+														slot,
+														secondaryInventory.class,
+														secondaryInventory.model,
+													);
+												}}
+												locked={
+													secondaryInventory
+														.disabled[value + 1]
+												}
+											/>
+										);
+									})}
 							</div>
-							{Boolean(secondaryInventory.action) && (
-								<Button
-									fullWidth
-									color="primary"
-									className={classes.actionBtn}
-									onClick={onAction}
-								>
-									{secondaryInventory.action.text}
-									<FontAwesomeIcon
-										icon={[
-											'fas',
-											secondaryInventory.action.icon ||
-												'up-right-from-square',
-										]}
-									/>
-								</Button>
-							)}
 						</div>
-					</Fade>
-				)}
+						{Boolean(secondaryInventory.action) && (
+							<Button
+								fullWidth
+								color="primary"
+								className={classes.actionBtn}
+								onClick={onAction}
+							>
+								{secondaryInventory.action.text}
+								<FontAwesomeIcon
+									icon={[
+										'fas',
+										secondaryInventory.action.icon ||
+										'up-right-from-square',
+									]}
+								/>
+							</Button>
+						)}
+					</div>
+				</Fade>
 			</div>
 
 			<Modal open={showHelp} onClose={() => setShowHelp(false)}>
