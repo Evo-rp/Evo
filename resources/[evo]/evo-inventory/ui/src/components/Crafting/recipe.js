@@ -209,6 +209,7 @@ const Recipe = ({ index, recipe, cooldown }) => {
 				})
 			).json();
 
+			console.log(res)
 			if (res) {
 				Nui.send('FrontEndSound', 'SELECT');
 				dispatch({

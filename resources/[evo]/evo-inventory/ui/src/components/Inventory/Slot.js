@@ -3,8 +3,8 @@ import { CircularProgress, LinearProgress, Popover } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
-import { mergeSlot, moveSlot, swapSlot } from './actions';
-import { getItemImage, getItemLabel } from './item';
+import { closeInventory, mergeSlot, moveSlot, swapSlot } from './actions';
+import { fallbackItem, getItemImage, getItemLabel } from './item';
 import Nui from '../../util/Nui';
 import { useSound } from '../../hooks';
 import Tooltip from './Tooltip';
@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'inline-block',
 		boxSizing: 'border-box',
 		flexGrow: 0,
-		minWidth: '6.5vw',
-		flexBasis: '6.5vw',
+		width: 'calc(20% - 4px)',
+		maxWidth: 170,
 		zIndex: 1,
 		position: 'relative',
 		'&.mini': {
@@ -29,8 +29,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	slot: {
 		width: '100%',
-		height: '19.25vh',
+		height: 190,
 		backgroundColor: `${theme.palette.secondary.light}61`,
+		border: '1px solid #1c1c1c6e',
 		position: 'relative',
 		zIndex: 2,
 		'&.mini': {
@@ -40,10 +41,17 @@ const useStyles = makeStyles((theme) => ({
 		'&.solid': {
 			backgroundColor: `${theme.palette.secondary.light}c4`,
 		},
-		'&:not(.disabled):not(.empty)': {
+		'&:not(.broken):not(.broken)': {
 			transition: 'background ease-in 0.15s',
 			'&:hover': {
 				backgroundColor: `${theme.palette.secondary.dark}9e`,
+			},
+		},
+		'&.broken': {
+			backgroundColor: `${theme.palette.error.dark}4a`,
+			borderColor: `${theme.palette.error.dark}6e`,
+			'&:hover': {
+				backgroundColor: `${theme.palette.error.dark}36`,
 			},
 		},
 	},
@@ -57,10 +65,10 @@ const useStyles = makeStyles((theme) => ({
 		transition: 'opacity ease-in 0.15s, border ease-in 0.15s',
 	},
 	img: {
-		height: '17.25vh',
+		height: 190,
 		width: '100%',
 		zIndex: 3,
-		backgroundSize: '70%',
+		backgroundSize: '65%',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
 		'&.mini': {
@@ -78,21 +86,22 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: 4,
 	},
 	label: {
-		bottom: 0,
+		bottom: 7,
 		left: 0,
+		right: 0,
 		position: 'absolute',
 		textAlign: 'center',
 		height: 30,
 		lineHeight: '30px',
 		fontSize: 16,
 		width: '100%',
-		maxWidth: '100%',
-		overflow: 'hidden',
-		whiteSpace: 'nowrap',
 		color: theme.palette.text.main,
-		background: theme.palette.secondary.light,
-		borderTop: `1px solid rgb(255 255 255 / 4%)`,
 		zIndex: 4,
+		margin: 'auto',
+		maxWidth: '90%',
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
 	},
 	equipped: {
 		top: 0,
@@ -107,17 +116,17 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: 4,
 	},
 	hotkey: {
-		top: 0,
-		left: 0,
+		height: 'fit-content',
+		width: 'fit-content',
 		position: 'absolute',
-		padding: '0 5px',
-		width: '20px',
-		color: theme.palette.primary.alt,
-		background: theme.palette.secondary.light,
-		borderRight: `1px solid rgb(255 255 255 / 4%)`,
-		borderBottom: `1px solid rgb(255 255 255 / 4%)`,
-		borderBottomRightRadius: 4,
-		zIndex: 4,
+		top: 0,
+		bottom: 0,
+		left: 0,
+		right: 0,
+		margin: 'auto',
+		fontSize: '75px',
+		opacity: 0.2,
+		zIndex: -1,
 	},
 	price: {
 		top: 0,
@@ -144,20 +153,25 @@ const useStyles = makeStyles((theme) => ({
 			},
 		},
 	},
+	free: {
+		top: 0,
+		left: 0,
+		position: 'absolute',
+		padding: '0 5px',
+		textShadow: `0 0 5px ${theme.palette.secondary.dark}`,
+		color: theme.palette.success.main,
+		zIndex: 4,
+	},
 	durability: {
-		bottom: 30,
+		bottom: 0,
 		left: 0,
 		position: 'absolute',
 		width: '100%',
 		maxWidth: '100%',
 		overflow: 'hidden',
-		height: 7,
+		height: 4,
 		background: 'transparent',
 		zIndex: 4,
-	},
-	broken: {
-		backgroundColor: theme.palette.text.alt,
-		transition: 'none !important',
 	},
 	progressbar: {
 		transition: 'none !important',
@@ -188,32 +202,36 @@ const lua2json = (lua) =>
 			.replace(/,(\s*)\}/gm, (s, k) => `${k}}`),
 	);
 
-export default connect()((props) => {
+export default (props) => {
 	const metadata = Boolean(props.data?.MetaData)
 		? typeof props.data?.MetaData == 'string'
-			? lua2json(props.data.MetaData)
-			: props.data.MetaData
+			? lua2json(props?.data?.MetaData)
+			: props?.data?.MetaData
 		: Object();
 
 	const classes = useStyles();
+	const dispatch = useDispatch();
+	const soundEffect = useSound();
+	const mode = useSelector((state) => state.app.mode);
 	const hidden = useSelector((state) => state.app.hidden);
 	const hover = useSelector((state) => state.inventory.hover);
 	const hoverOrigin = useSelector((state) => state.inventory.hoverOrigin);
 	const inUse = useSelector((state) => state.inventory.inUse);
 	const showSecondary = useSelector((state) => state.inventory.showSecondary);
+	const draggingAmount = useSelector((state) => state.inventory.draggingAmount);
+
 	const secondaryInventory = useSelector(
 		(state) => state.inventory.secondary,
 	);
 	const playerInventory = useSelector((state) => state.inventory.player);
 	const items = useSelector((state) => state.inventory.items);
-	const itemData = useSelector((state) => state.inventory.items)[
-		props?.data?.Name
-	];
-	const hoverData = useSelector((state) => state.inventory.items)[
-		hover?.Name
-	];
-	const dispatch = useDispatch();
-	const soundEffect = useSound();
+
+	const itemData = Boolean(props?.data)
+		? items[props?.data?.Name] ?? fallbackItem
+		: null;
+	const hoverData = Boolean(hover)
+		? items[hover?.Name] ?? fallbackItem
+		: null;
 
 	const calcDurability = () => {
 		if (!Boolean(props?.data?.CreateDate) || !Boolean(itemData?.durability))
@@ -247,28 +265,48 @@ export default connect()((props) => {
 
 	const durability = calcDurability();
 
+	const broken = durability <= 0;
+
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
 	const tooltipOpen = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
 
-	const tooltipClose = () => {
+	const tooltipClose = (e, reason) => {
 		setAnchorEl(null);
+
+		if (reason == 'escapeKeyDown') {
+			dispatch({
+				type: 'SET_CONTEXT_ITEM',
+				payload: null,
+			});
+			dispatch({
+				type: 'SET_SPLIT_ITEM',
+				payload: null,
+			});
+			closeInventory();
+		}
 	};
 
 	const isUsable = () => {
+		if (mode != 'inventory') return false;
+
 		return (
+			(!Boolean(itemData) || !itemData.invalid) &&
 			!Boolean(inUse) &&
 			props.owner == playerInventory.owner &&
-			items[props.data.Name].isUsable &&
-			(!Boolean(items[props.data.Name].durability) ||
-				props.data?.CreateDate + items[props.data.Name].durability >
+			itemData.isUsable &&
+			(!Boolean(itemData.durability) ||
+				props.data?.CreateDate + itemData.durability >
 					Date.now() / 1000)
 		);
 	};
 
 	const moveItem = () => {
+		if (Boolean(props?.data) && (!Boolean(itemData) || itemData.invalid))
+			return;
+
 		if (
 			hoverOrigin.slot !== props.slot ||
 			hoverOrigin.owner !== props.owner ||
@@ -299,6 +337,44 @@ export default connect()((props) => {
 
 			if (destination == 'secondary' && secondaryInventory.shop) {
 				Nui.send('FrontEndSound', 'DISABLED');
+
+				return;
+			}
+
+			if (
+				destination == 'secondary' &&
+				secondaryInventory.playerShop &&
+				!secondaryInventory.modifyShop
+			) {
+				if (props.canAddToShop()) {
+					props.onAddToShop({
+						...hover,
+						slotFrom: hover.Slot,
+						slotTo: props.slot,
+					});
+				} else {
+					Nui.send('FrontEndSound', 'DISABLED');
+				}
+				return;
+			}
+
+			if (
+				origin != destination &&
+				destination == 'player' &&
+				props.playerWeight + hoverData.weight * hover.Count >
+					props.playerCapacity
+			) {
+				Nui.send('FrontEndSound', 'DISABLED');
+				return;
+			}
+
+			if (
+				origin != destination &&
+				destination == 'secondary' &&
+				props.secondaryWeight + hoverData.weight * hover.Count >
+					props.secondaryCapacity
+			) {
+				Nui.send('FrontEndSound', 'DISABLED');
 				return;
 			}
 
@@ -307,13 +383,12 @@ export default connect()((props) => {
 				origin == 'secondary' &&
 				secondaryInventory.shop &&
 				Boolean(props?.data?.Name) &&
-				hoverOrigin.Name != props.data.Name
+				hoverOrigin.Name != props?.data?.Name
 			) {
 				Nui.send('FrontEndSound', 'DISABLED');
 				return;
 			}
 
-			soundEffect('drag');
 			const payload = {
 				origin: {
 					...hover,
@@ -484,6 +559,14 @@ export default connect()((props) => {
 									payload,
 								});
 							} else {
+								if (
+									secondaryInventory.playerShop &&
+									props?.data?.Price != hover?.Price
+								) {
+									Nui.send('FrontEndSound', 'DISABLED');
+									return;
+								}
+
 								mergeSlot(
 									hoverOrigin.owner,
 									props.owner,
@@ -569,6 +652,20 @@ export default connect()((props) => {
 				}
 			} else {
 				if (origin === 'player') {
+					if (secondaryInventory.playerShop) {
+						if (props.canAddToShop()) {
+							props.onAddToShop({
+								...hover,
+								slotFrom: hover.Slot,
+								slotTo: props.slot,
+							});
+							Nui.send('FrontEndSound', 'SHOP_ADD');
+						} else {
+							Nui.send('FrontEndSound', 'DISABLED');
+						}
+						return;
+					}
+
 					let destSlot = secondaryInventory.inventory.filter(
 						(s) => Boolean(s) && s.Slot == props.slot,
 					)[0];
@@ -629,7 +726,10 @@ export default connect()((props) => {
 									payload,
 								});
 							}
-						} else if (!secondaryInventory.shop) {
+						} else if (
+							!secondaryInventory.shop &&
+							!secondaryInventory.playerShop
+						) {
 							swapSlot(
 								hoverOrigin.owner,
 								props.owner,
@@ -748,7 +848,10 @@ export default connect()((props) => {
 									payload,
 								});
 							}
-						} else if (!secondaryInventory.shop) {
+						} else if (
+							!secondaryInventory.shop &&
+							!secondaryInventory.playerShop
+						) {
 							swapSlot(
 								hoverOrigin.owner,
 								props.owner,
@@ -809,13 +912,14 @@ export default connect()((props) => {
 				}
 			}
 			setAnchorEl(null);
+			soundEffect('drag');
 		}
 
-		props.dispatch({
+		dispatch({
 			type: 'SET_HOVER',
 			payload: null,
 		});
-		props.dispatch({
+		dispatch({
 			type: 'SET_HOVER_ORIGIN',
 			payload: null,
 		});
@@ -823,7 +927,7 @@ export default connect()((props) => {
 
 	const onMouseDown = (event) => {
 		event.preventDefault();
-		if (props.locked) return;
+		if (props.locked || (Boolean(itemData) && itemData.invalid)) return;
 		if (hoverOrigin == null) {
 			if (!Boolean(props.data?.Name)) return;
 			if (event.button !== 0 && event.button !== 1) return;
@@ -835,11 +939,11 @@ export default connect()((props) => {
 
 			if (event.button === 1) {
 				if (isUsable()) {
-					props.onUse(props.owner, props.data.Slot, props.invType);
+					props.onUse(props.owner, props?.data?.Slot, props.invType);
 					dispatch({
 						type: 'USE_ITEM_PLAYER',
 						payload: {
-							originSlot: props.data.Slot,
+							originSlot: props?.data?.Slot,
 						},
 					});
 				} else {
@@ -848,6 +952,28 @@ export default connect()((props) => {
 				}
 			} else {
 				if (event.shiftKey && showSecondary) {
+					if (
+						playerInventory.owner === props.owner &&
+						playerInventory.invType === props.invType &&
+						props.secondaryWeight +
+							itemData.weight * props?.data?.Count >
+							props.secondaryCapacity
+					) {
+						Nui.send('FrontEndSound', 'DISABLED');
+						return;
+					}
+
+					if (
+						secondaryInventory.owner === props.owner &&
+						secondaryInventory.invType === props.invType &&
+						props.playerWeight +
+							itemData.weight * props?.data?.Count >
+							props.playerCapacity
+					) {
+						Nui.send('FrontEndSound', 'DISABLED');
+						return;
+					}
+
 					let payload = {
 						origin: {
 							...props.data,
@@ -876,17 +1002,10 @@ export default connect()((props) => {
 							.sort((a, b) => a.Slot - b.Slot)
 							.every((slot) => {
 								if (
-									slot.Name == props.data.Name &&
+									slot.Name == props?.data?.Name &&
 									Boolean(itemData.isStackable) &&
-									props.data.Count + slot.Count <=
-										itemData.isStackable &&
-									(itemData.durability == null ||
-										Math.abs(
-											(props.data?.CreateDate ||
-												Date.now() / 1000) -
-												(slot?.CreateDate ||
-													Date.now() / 1000),
-										) <= 3600)
+									props?.data?.Count + slot.Count <=
+										itemData.isStackable
 								) {
 									payload.destination = slot;
 									payload.destSlot = slot.Slot;
@@ -909,6 +1028,19 @@ export default connect()((props) => {
 						}
 
 						if (Boolean(payload.destSlot)) {
+							if (secondaryInventory.playerShop) {
+								if (props.canAddToShop()) {
+									props.onAddToShop({
+										...props?.data,
+										slotFrom: props.slot,
+										slotTo: payload.destSlot,
+									});
+									Nui.send('FrontEndSound', 'SHOP_ADD');
+								} else {
+									Nui.send('FrontEndSound', 'DISABLED');
+								}
+								return;
+							}
 							soundEffect('drag');
 
 							if (
@@ -925,9 +1057,9 @@ export default connect()((props) => {
 									payload.destSlot,
 									props.invType,
 									secondaryInventory.invType,
-									props.data.Name,
-									props.data.Count,
-									props.data.Count,
+									props?.data?.Name,
+									props?.data?.Count,
+									props?.data?.Count,
 									false,
 									secondaryInventory.class,
 									false,
@@ -949,9 +1081,9 @@ export default connect()((props) => {
 									payload.destSlot,
 									props.invType,
 									secondaryInventory.invType,
-									props.data.Name,
-									props.data.Count,
-									props.data.Count,
+									props?.data?.Name,
+									props?.data?.Count,
+									props?.data?.Count,
 									false,
 									secondaryInventory.class,
 									false,
@@ -976,17 +1108,10 @@ export default connect()((props) => {
 							.sort((a, b) => a.Slot - b.Slot)
 							.every((slot) => {
 								if (
-									slot.Name == props.data.Name &&
+									slot.Name == props?.data?.Name &&
 									Boolean(itemData.isStackable) &&
-									props.data.Count + slot.Count <=
-										itemData.isStackable &&
-									(itemData.durability == null ||
-										Math.abs(
-											(props.data?.CreateDate ||
-												Date.now() / 1000) -
-												(slot?.CreateDate ||
-													Date.now() / 1000),
-										) <= 3600)
+									props?.data?.Count + slot.Count <=
+										itemData.isStackable
 								) {
 									payload.destination = slot;
 									payload.destSlot = slot.Slot;
@@ -1025,9 +1150,9 @@ export default connect()((props) => {
 									payload.destSlot,
 									props.invType,
 									1,
-									props.data.Name,
-									props.data.Count,
-									props.data.Count,
+									props?.data?.Name,
+									props?.data?.Count,
+									props?.data?.Count,
 									secondaryInventory.class,
 									false,
 									secondaryInventory.model,
@@ -1049,9 +1174,9 @@ export default connect()((props) => {
 									payload.destSlot,
 									props.invType,
 									1,
-									props.data.Name,
-									props.data.Count,
-									props.data.Count,
+									props?.data?.Name,
+									props?.data?.Count,
+									props?.data?.Count,
 									secondaryInventory.class,
 									false,
 									secondaryInventory.model,
@@ -1073,11 +1198,11 @@ export default connect()((props) => {
 					}
 					setAnchorEl(null);
 				} else if (event.ctrlKey) {
-					props.dispatch({
+					dispatch({
 						type: 'SET_HOVER',
 						payload: {
 							...props.data,
-							Count: Math.ceil(props.data.Count / 2),
+							Count: Math.ceil(props?.data?.Count / 2),
 							slot: props.slot,
 							owner: props.owner,
 							shop: props.shop,
@@ -1085,7 +1210,7 @@ export default connect()((props) => {
 							invType: props.invType,
 						},
 					});
-					props.dispatch({
+					dispatch({
 						type: 'SET_HOVER_ORIGIN',
 						payload: {
 							...props.data,
@@ -1099,7 +1224,7 @@ export default connect()((props) => {
 					});
 					setAnchorEl(null);
 				} else {
-					props.dispatch({
+					dispatch({
 						type: 'SET_HOVER',
 						payload: {
 							...props.data,
@@ -1108,9 +1233,10 @@ export default connect()((props) => {
 							shop: props.shop,
 							free: props.free,
 							invType: props.invType,
+							Count: draggingAmount <= props?.data?.Count && draggingAmount > 0 && draggingAmount !== '' ? Number(draggingAmount) : props?.data?.Count
 						},
 					});
-					props.dispatch({
+					dispatch({
 						type: 'SET_HOVER_ORIGIN',
 						payload: {
 							...props.data,
@@ -1169,6 +1295,12 @@ export default connect()((props) => {
 					isQualiDisabled || isWeaponDisabled || isOpenContainer
 						? ' disabled'
 						: ''
+				}${
+					Boolean(broken) &&
+					Boolean(itemData) &&
+					!Boolean(props.locked)
+						? ' broken'
+						: ''
 				}`}
 			>
 				{Boolean(itemData) && (
@@ -1182,40 +1314,58 @@ export default connect()((props) => {
 						}}
 					></div>
 				)}
-				{Boolean(itemData) && props.data.Count > 0 && (
-					<div className={classes.count}>{props.data.Count}</div>
+				{Boolean(itemData) && props?.data?.Count > 0 && (
+					<div className={classes.count}>{props?.data?.Count}</div>
 				)}
-				{Boolean(props.equipped) ? (
-					<div className={classes.equipped}>Equipped</div>
-				) : props.hotkeys && props.slot <= 4 ? (
+				{props.hotkeys && props.slot <= 5 && !Boolean(props?.data) && (
 					<div className={classes.hotkey}>
 						{Boolean(props.equipped) ? 'Equipped' : props.slot}
 					</div>
-				) : null}
+				)}
 				{props.shop &&
 					Boolean(itemData) &&
-					(props.free ? (
-						<div className={classes.price}>FREE</div>
+					!itemData?.invalid &&
+					(props.free ||
+					(props?.data?.Price ?? itemData.price) == 0 ? (
+						<div className={classes.free}>FREE</div>
 					) : (
 						<div className={classes.price}>
-							{FormatThousands(itemData.price * props.data.Count)}
-							{props.data.Count > 1 && (
-								<small>{FormatThousands(itemData.price)}</small>
+							{FormatThousands(
+								(props?.data?.Price ?? itemData.price) *
+									props?.data?.Count,
+							)}
+							{props?.data?.Count > 1 && (
+								<small>
+									{FormatThousands(
+										props?.data?.Price ?? itemData.price,
+									)}
+								</small>
 							)}
 						</div>
 					))}
+				{props.playerShop &&
+					Boolean(itemData) &&
+					!itemData?.invalid &&
+					(props?.data?.Price > 0 ? (
+						<div className={classes.price}>
+							{FormatThousands(
+								props?.data?.Price * props?.data?.Count,
+							)}
+							{props?.data?.Count > 1 && (
+								<small>
+									{FormatThousands(props?.data?.Price)}
+								</small>
+							)}
+						</div>
+					) : (
+						<div className={classes.free}>FREE</div>
+					))}
 				{Boolean(itemData?.durability) &&
 					Boolean(props?.data?.CreateDate) &&
-					(durability > 0 ? (
+					(!broken ? (
 						<LinearProgress
 							className={classes.durability}
-							color={
-								durability >= 75
-									? 'success'
-									: durability >= 50
-									? 'warning'
-									: 'error'
-							}
+							color="primary"
 							classes={{
 								determinate: classes.progressbar,
 								bar: classes.progressbar,
@@ -1224,18 +1374,7 @@ export default connect()((props) => {
 							variant="determinate"
 							value={durability}
 						/>
-					) : (
-						<LinearProgress
-							className={classes.durability}
-							classes={{
-								determinate: classes.broken,
-								bar: classes.broken,
-								bar1: classes.broken,
-							}}
-							variant="determinate"
-							value={100}
-						/>
-					))}
+					) : null)}
 				{Boolean(itemData) && (
 					<div className={classes.label}>
 						{getItemLabel(props.data, itemData)}
@@ -1243,7 +1382,7 @@ export default connect()((props) => {
 				)}
 				{Boolean(props.locked) && (
 					<div className={classes.loader}>
-						<CircularProgress color="inherit" size={30} />
+						<CircularProgress color="primary" size={30} />
 					</div>
 				)}
 			</div>
@@ -1257,16 +1396,30 @@ export default connect()((props) => {
 						open && !Boolean(hover) && !hidden && Boolean(anchorEl)
 					}
 					anchorEl={anchorEl}
-					anchorOrigin={{
-						vertical: 'center',
-						horizontal: 'right',
-					}}
-					transformOrigin={{
-						vertical: 'top',
-						horizontal: 'center',
-					}}
+					anchorOrigin={
+						props.secondary
+							? {
+									vertical: 'center',
+									horizontal: 'left',
+							  }
+							: {
+									vertical: 'center',
+									horizontal: 'right',
+							  }
+					}
+					transformOrigin={
+						props.secondary
+							? {
+									vertical: 'center',
+									horizontal: 'right',
+							  }
+							: {
+									vertical: 'center',
+									horizontal: 'left',
+							  }
+					}
 					onClose={tooltipClose}
-					disableRestoreFocus
+					transitionDuration={100}
 				>
 					<Tooltip
 						isEligible={!isWeaponDisabled}
@@ -1282,4 +1435,4 @@ export default connect()((props) => {
 			)}
 		</div>
 	);
-});
+};

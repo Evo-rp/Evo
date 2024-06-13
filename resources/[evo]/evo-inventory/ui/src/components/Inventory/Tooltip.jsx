@@ -27,14 +27,14 @@ const ignoredFields = [
 	'WeaponTint',
 	'CustomItemLabel',
 	'CustomItemImage',
+	'CustomItemAction',
 	'Items',
 	'Department',
 	'Scratched',
 	'PoliceWeaponId',
 	'Mugshot',
-	'MethTable',
 	'CustomAmt',
-	'spray_model'
+  'spray_model'
 ];
 
 const lua2json = (lua) =>
@@ -55,6 +55,8 @@ export default ({
 	isEligible = false,
 	isQualified = false,
 }) => {
+	const schematics = useSelector((state) => state.crafting.schematics);
+	const equipped = useSelector((state) => state.app.equipped);
 	const metadata = Boolean(instance?.MetaData)
 		? typeof instance?.MetaData == 'string'
 			? lua2json(instance.MetaData)
@@ -65,6 +67,7 @@ export default ({
 	const useStyles = makeStyles((theme) => ({
 		body: {
 			minWidth: 250,
+			maxWidth: 300,
 		},
 		itemName: {
 			fontSize: 24,
@@ -281,7 +284,7 @@ export default ({
 				return (
 					<span className={classes.metafield}>
 						<b>Date of Birth</b>:
-						<Moment date={value * 1000} format="YYYY/MM/DD" />
+						<Moment format="YYYY/MM/DD">{value}</Moment>
 					</span>
 				);
 			case 'EvidenceAmmoType':
@@ -420,6 +423,12 @@ export default ({
 						</ul>
 					</span>
 				);
+			case 'MethTable':
+				return (
+					<span className={classes.metafield}>
+						<b>Table ID</b>: {value}
+					</span>
+				)
 			default:
 				return (
 					<span className={classes.metafield}>
@@ -434,15 +443,15 @@ export default ({
 		<div className={classes.body}>
 			<div className={classes.itemName}>
 				{getItemLabel(instance, item)}
-				{shop && !free && (
+				{shop && !free && (instance?.Price ?? item.price) > 0 && (
 					<span className={classes.itemPrice}>
-						{FormatThousands(item.price)}
+						{FormatThousands(instance?.Price ?? item.price)}
 					</span>
 				)}
 			</div>
 			<div className={classes.itemType}>
 				{`${getRarityLabel()} ${getTypeLabel()}`}
-				{item.isUsable && (
+				{Boolean(item.isUsable) && (
 					<span className={classes.usable}>Usable</span>
 				)}
 			</div>
@@ -500,34 +509,36 @@ export default ({
 					</div>
 				)}
 
-			{Boolean(item?.component) && (
-				<div className={classes.attachFitment}>
-					<span className={classes.metafield}>
-						<b>Attachment Fits On</b>:{' '}
-						<ul className={classes.attchList}>
-							{Object.keys(item.component.strings).length <=
-							10 ? (
-								Object.keys(item.component.strings).map(
-									(weapon) => {
-										let wepItem = items[weapon];
-										if (!Boolean(wepItem)) return null;
-										return <li>{wepItem.label}</li>;
-									},
-								)
-							) : (
-								<span>Fits On Most Weapons</span>
-							)}
-						</ul>
-					</span>
-				</div>
-			)}
+			{Boolean(item?.component) &&
+				Boolean(equipped) &&
+				(Boolean(
+					item.component.strings[
+						items[equipped.Name].weapon ?? equipped.Name
+					],
+				) ? (
+					<div className={classes.attachFitment}>
+						<span className={classes.metafield}>
+							<b>Fits On Currently Equipped Weapon</b>
+						</span>
+					</div>
+				) : (
+					<div className={classes.attachFitment}>
+						<span className={classes.metafield}>
+							<b>Does Not Fit On Currently Equipped Weapon</b>
+						</span>
+					</div>
+				))}
 			{Boolean(item.schematic) &&
-				Boolean(items[item.schematic.result.name]) && (
+				Boolean(schematics[item.schematic]) &&
+				Boolean(items[schematics[item.schematic].result.name]) && (
 					<div className={classes.attachFitment}>
 						<span className={classes.metafield}>
 							<b>Teaches</b>:
-							{` Crafting x${item.schematic.result.count} ${
-								items[item.schematic.result.name].label
+							{` Crafting x${
+								schematics[item.schematic].result.count
+							} ${
+								items[schematics[item.schematic].result.name]
+									.label
 							}`}
 						</span>
 					</div>

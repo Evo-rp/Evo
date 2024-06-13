@@ -57,7 +57,7 @@ export default connect()((props) => {
 	return (
 		<Slide direction="up" in={hidden} className={classes.slide}>
 			<div>
-				{[...Array(4).keys()].map((value) => {
+				{[...Array(5).keys()].map((value) => {
 					return (
 						<Slot
 							mini
@@ -79,20 +79,6 @@ export default connect()((props) => {
 						/>
 					);
 				})}
-				{Boolean(equipped) && (
-					<Slot
-						mini
-						solid
-						equipped
-						inHotbar={true}
-						showing={showing}
-						owner={playerInventory.owner}
-						invType={playerInventory.invType}
-						slot={equipped.Slot}
-						hotkeys={false}
-						data={equipped}
-					/>
-				)}
 			</div>
 		</Slide>
 	);
