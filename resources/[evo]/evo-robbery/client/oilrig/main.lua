@@ -46,6 +46,8 @@ AddEventHandler("Robbery:Client:Setup", function()
     SpawnPeds = function()
         Callbacks:ServerCallback('Robbery:OilRig:ShouldSpawnPeds', {}, function(cb)
             if not cb then
+                Callbacks:ServerCallback('Robbery:OilRig:SetRobbed', {}, function(s2) end)
+
                 local oilGroupHash = GetHashKey('OIL')    
                 AddRelationshipGroup('OIL')
                 SetRelationshipBetweenGroups(0, oilGroupHash, oilGroupHash)

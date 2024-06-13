@@ -230,6 +230,10 @@ AddEventHandler("Robbery:Server:Setup", function()
 		cb(_OILRIG_ROBBED)
 	end)
 
+	Callbacks:RegisterServerCallback('Robbery:OilRig:SetRobbed', function(source, data, cb)
+		_OILRIG_ROBBED = true
+	end)
+
     Callbacks:RegisterServerCallback("Robbery:OilRig:CheckLoot", function(source, data, cb)
 		local pState = Player(source).state
 
