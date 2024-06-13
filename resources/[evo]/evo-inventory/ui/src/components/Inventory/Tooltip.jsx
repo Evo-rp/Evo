@@ -34,7 +34,7 @@ const ignoredFields = [
 	'PoliceWeaponId',
 	'Mugshot',
 	'CustomAmt',
-	'Inviter',
+  'spray_model'
 ];
 
 const lua2json = (lua) =>

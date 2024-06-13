@@ -47,7 +47,7 @@ AddEventHandler("Labor:Server:Startup", function()
         local repLevel = Reputation:GetLevel(source, "MoneyCleaning") or 0
         Reputation.Modify:Add(source, "MoneyCleaning", 125)
 
-        Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, _reputationMultiplier[repLevel] / 50 * math.random(1000, 7000),
+        Banking.Balance:Deposit(Banking.Accounts:GetPersonal(char:GetData("SID")).Account, _reputationMultiplier[repLevel] / 30 * math.random(4500, 7000),
             {
                 type = "deposit",
                 title = "Banking deposit",

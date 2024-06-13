@@ -29,7 +29,6 @@ Config = {
 		NoIdentifier = "Could Not Find A License Identifier, Relaunch FiveM and try again.",
 		NotReady = "The server has not yet finished loading, please try again in a few minutes.",
 		NotWhitelisted = "You Are Not Whitelisted For This Server - Apply Today At ",
-		NotWhitelisted = "You Are Not Whitelisted For This Server",
 		PrioAdd = "Added %s (%s) To Queue %s/%s With Priority %s",
 		PrioWaiting = "Waiting For Priority Player To Join Server",
 		Queued = "Position %s of %s - Time In Queue: %s%s",

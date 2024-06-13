@@ -23,3 +23,7 @@ RegisterNUICallback('Gangs:KickMember', function(data, cb)
 
     FetchGangApp()
 end)
+
+RegisterNUICallback('Gangs:LeaveGang', function(data, cb)
+    Callbacks:ServerCallback('GangSystem:Server:LeaveGang', {}, function(callback) end)
+end)

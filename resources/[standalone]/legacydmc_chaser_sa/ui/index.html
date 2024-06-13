@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital@0;1&family=Oswald:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Poppins:wght@600&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css" />
+    <script src="scripts/script.js" defer></script>
+    <title>chaser_speedo</title>
+  </head>
+  <body>
+    <div class="progress-bar-container" id="maindiv" style="display: none;">
+      <svg class="progress-ring" viewBox="0 0 200 200">
+          <circle class="rpm-bar" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
+          <circle class="rpm-redline" stroke-width="10" fill="transparent" r="90" cx="100" cy="100"/>
+          <svg class="speedometer" viewBox="0 0 200 200">
+          <!-- Ticks and numbers will be dynamically generated here -->
+          </svg>
+          <path id= "speedside" d="M 107 185 L 178 185 L 200 108 L 133 108 Z" fill="rgba(0, 0, 0, 0.65)"/>
+          <text id="speed" x="150" y="172"></text>
+          <text id="speedunit" x="136.5" y="182"></text>
+          <text id="transmissiontype" x="137" y="122" fill="white"></text>
+          <text id="atlock" x="149" y="116" fill="white"></text>
+          <text id="launchcontrol" x="180" y="122" fill="white"></text>
+          <text id="transmissiongear" x="160" y="145" fill="white"></text>
+          <circle class="speedo-assist-bar" stroke-width="1" fill="transparent" r="27.5" cx="100" cy="100"/>
+          <rect id ="tccircle" class="assist-circle" style = "display: hide;" stroke-width="1" fill="transparent" rx="2" x="85.5" y="135" width="25" height="12.5"/>
+          <text id="assisttc" class = "assisttc" x="98.5" y="144" style = "display: hide;" fill="white">TC</text>
+          <rect id ="esccircle" class="assist-circle" stroke-width="1" style = "display: hide;" fill="transparent" rx="2" x="85.5" y="152.5" width="25" height="12.5"/>
+          <text id="assistesc" class = "assisttc" x="98.5" y="161" style = "display: hide;" fill="white">ESC</text>
+          <circle id="needle-cap" cx="100" cy="100" r="10" fill="black" />
+          <path id= "speedometer-needle" d="M 100 100 L 102 100 L 102 20 L 101 12 L 100.7 10.5 L 100 9 L 99.3 10.5 L 99 12 L 98 20 L 98 100 Z" fill="red"/>
+          <circle id="needle-center-cap" cx="100" cy="100" r="2.1" fill="rgb(208, 65, 35)" />
+      </svg>
+  </div>
+  </body>
+</html>

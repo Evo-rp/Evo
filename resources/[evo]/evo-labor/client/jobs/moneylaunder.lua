@@ -1,5 +1,5 @@
 -- Fake checque item.
--- 50 rolls = 1 checkque. -- $1200 1/4 tax.
+-- 50 rolls = 1 checkque. -- $5000 1/4 tax.
 -- 5 bands = 1 checkque. -- $5000 1/4 tax.
 
 local timesDone = 0

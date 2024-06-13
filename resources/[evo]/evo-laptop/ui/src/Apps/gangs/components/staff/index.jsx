@@ -107,12 +107,12 @@ export default () => {
 						<Button
 							variant='contained'
 							color={isGangLeader() ? 'success' : 'error'}
-							onClick={() => {
+							onClick={async() => {
 								if (isGangLeader()) {
 									setShowingAdd(true)
+								} else {
+									await (await Nui.send("Gangs:LeaveGang", {})).json();
 								}
-
-								// Do leave gang logic
 							}}
 						>
 							{isGangLeader() ? 'Add Member' : 'Leave Gang'}

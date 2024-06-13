@@ -10,6 +10,8 @@ config/server.cfg
 resources/\[main\]/\[assets\]/\[RDH_POLICE\]/**
 resources/\[main\]/\[assets\]/\[RDH\]/**
 node_modules
+.replxx_history
+resources/[evo]/evo-base/package-lock.json
 resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/stream/mp_m_freemode_01_mp_m_chains2/mp_m_freemode_01_mp_m_chains2^teef_diff_001_a_uni.ytd
 resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/stream/mp_m_freemode_01_mp_m_chains2/mp_m_freemode_01_mp_m_chains2^teef_diff_000_a_uni.ytd
 resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/stream/mp_m_freemode_01_mp_m_chains2/mp_m_freemode_01_mp_m_chains2^teef_001_u.ydd
@@ -26,3 +28,5 @@ resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/fxmanifest.lua
 resources/\[main\]/\[assets\]/\[clothing\]/evo-chains/clothes_dump.json
 resources/\[evo\]/evo-base/components/cl_recoil.lua
 resources/\[evo\]/evo-base/components/cl_recoil.lua
+resources/\[src\]/**
+resources/[main]/[assets]/[cars]/

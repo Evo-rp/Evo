@@ -261,8 +261,6 @@ AddEventHandler("Core:Shared:Ready", function()
 				},
 			})
 		end, function()
-			print(LocalPlayer.state.onDuty)
-			print(LocalPlayer.state.isDead)
 			return LocalPlayer.state.onDuty == "police" and LocalPlayer.state.isDead
 		end)
 
