@@ -1233,7 +1233,7 @@ export default (props) => {
 							shop: props.shop,
 							free: props.free,
 							invType: props.invType,
-							Count: draggingAmount <= props?.data?.Count && draggingAmount !== 0 && draggingAmount !== '' ? Number(draggingAmount) : props?.data?.Count
+							Count: draggingAmount <= props?.data?.Count && draggingAmount > 0 && draggingAmount !== '' ? Number(draggingAmount) : props?.data?.Count
 						},
 					});
 					dispatch({
