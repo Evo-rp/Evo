@@ -1,4 +1,5 @@
 export const initialState = {
+	draggingAmount: 0,
 	player:
 		process.env.NODE_ENV == 'production'
 			? {
@@ -224,6 +225,11 @@ export const initialState = {
 
 const appReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'SET_DRAGGING_AMOUNT':
+			return {
+				...state,
+				draggingAmount: action.payload.amount
+			}
 		case 'UNLOAD_ITEMS':
 			return {
 				...state,

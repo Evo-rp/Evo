@@ -266,11 +266,12 @@ export default (props) => {
 	const settings = useSelector((state) => state.app.settings);
 	const mode = useSelector((state) => state.app.mode);
 	const playerInventory = useSelector((state) => state.inventory.player);
+	const draggingAmount = useSelector((state) => state.inventory.draggingAmount);
 	const secondaryInventory = useSelector(
 		(state) => state.inventory.secondary,
 	);
 	const showSecondary = useSelector((state) => state.inventory.showSecondary);
-	const showSplit = useSelector((state) => state.inventory.splitItem);
+	// const showSplit = useSelector((state) => state.inventory.splitItem);
 	const hover = useSelector((state) => state.inventory.hover);
 	const hoverOrigin = useSelector((state) => state.inventory.hoverOrigin);
 	const items = useSelector((state) => state.inventory.items);
@@ -567,7 +568,21 @@ export default (props) => {
 					<input
 						className={classes.amountInput}
 						placeholder='AMOUNT'
+						type='number'
+						value={draggingAmount}
+						maxLength={5}
+						min={0}
+						max={99999}
+						onChange={(e) => {
+							dispatch({
+								type: 'SET_DRAGGING_AMOUNT',
+								payload: {
+									amount: e.target.value
+								}
+							})
+						}}
 					/>
+
 					<div
 						className={`${classes.useBtn}${
 							!isUsable() ? ' disabled' : ''
@@ -942,7 +957,7 @@ export default (props) => {
 				</Box>
 			</Modal>
 
-			{showSplit != null ? (
+			{/* {showSplit != null ? (
 				<Menu
 					keepMounted
 					onClose={closeSplitContext}
@@ -955,7 +970,7 @@ export default (props) => {
 					<MenuItem disabled>Split Stack</MenuItem>
 					<Split data={showSplit} />
 				</Menu>
-			) : null}
+			) : null} */}
 
 			{Boolean(modifyingShop) && (
 				<Dialog

@@ -218,6 +218,8 @@ export default (props) => {
 	const hoverOrigin = useSelector((state) => state.inventory.hoverOrigin);
 	const inUse = useSelector((state) => state.inventory.inUse);
 	const showSecondary = useSelector((state) => state.inventory.showSecondary);
+	const draggingAmount = useSelector((state) => state.inventory.draggingAmount);
+
 	const secondaryInventory = useSelector(
 		(state) => state.inventory.secondary,
 	);
@@ -1231,6 +1233,7 @@ export default (props) => {
 							shop: props.shop,
 							free: props.free,
 							invType: props.invType,
+							Count: draggingAmount <= props?.data?.Count && draggingAmount !== 0 && draggingAmount !== '' ? Number(draggingAmount) : props?.data?.Count
 						},
 					});
 					dispatch({

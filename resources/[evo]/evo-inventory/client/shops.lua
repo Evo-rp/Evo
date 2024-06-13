@@ -84,6 +84,7 @@ AddEventHandler("Shop:Client:OpenShopNPC", function(data)
 end)
 
 AddEventHandler('Shop:Client:NPC', function(data, param)
+	if npcData[param.name] == nil then return end
 	-- if npcData[param.name] == nil then Logger:Error("Inventory", param.name .. ' does not exist on NPC dialog') return end
 	NPCDialog.Open(data.entity, {
 		first_name = npcData[param.name].first_name,

@@ -5,20 +5,16 @@ import { makeStyles } from '@mui/styles';
 
 import Slot from './Slot';
 import { getItemImage } from './item';
-import HotbarSlot from './HotbarSlot';
 
 const useStyles = makeStyles((theme) => ({
 	slide: {
 		position: 'absolute',
 		bottom: 0,
-		top: 0,
 		left: 0,
-		justifyContent: 'center',
-		gap: 8,
+		width: '100%',
 		display: 'flex',
-		flexFlow: 'column',
-		height: 'fit-content',
-		margin: 'auto',
+		justifyContent: 'center',
+		gap: 6,
 	},
 	equipped: {
 		marginRight: 20,
@@ -59,14 +55,21 @@ export default connect()((props) => {
 	if (!itemsLoaded || !Boolean(hbItems) || Object.keys(items).length == 0)
 		return null;
 	return (
-		<Slide direction="right" in={hidden} className={classes.slide}>
+		<Slide direction="up" in={hidden} className={classes.slide}>
 			<div>
 				{[...Array(5).keys()].map((value) => {
 					return (
-						<HotbarSlot
+						<Slot
+							mini
+							solid
+							inHotbar={true}
+							showing={showing}
 							key={value + 1}
 							slot={value + 1}
-							item={
+							owner={playerInventory.owner}
+							invType={playerInventory.invType}
+							hotkeys={true}
+							data={
 								hbItems.filter((s) => s.Slot == value + 1)
 									? hbItems.filter(
 											(s) => s.Slot == value + 1,
@@ -76,9 +79,6 @@ export default connect()((props) => {
 						/>
 					);
 				})}
-				{Boolean(equipped) && (
-					<HotbarSlot equipped inHotbar={true} item={equipped} />
-				)}
 			</div>
 		</Slide>
 	);
