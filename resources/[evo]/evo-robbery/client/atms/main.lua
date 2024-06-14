@@ -1,227 +1,198 @@
-local atmObjects = {
-    `prop_atm_01`,
-    `prop_atm_02`,
-    `prop_atm_03`,
-    `prop_fleeca_atm`,
-}
-
-local _atmZone
-local _blip
-
-local _phoneApp = {
-    color = '#247919',
-    label = 'Root',
-    icon = 'terminal',
+ATMRobbery = {
+    CreatedEntities = {},
+    DrillScenes = {},
+    DrillAnimations = {
+        {'intro', 'bag_intro', 'intro_drill_bit'},
+        {'drill_straight_start', 'bag_drill_straight_start', 'drill_straight_start_drill_bit'},
+        {'drill_straight_end_idle', 'bag_drill_straight_idle', 'drill_straight_idle_drill_bit'},
+        {'drill_straight_fail', 'bag_drill_straight_fail', 'drill_straight_fail_drill_bit'},
+        {'drill_straight_end', 'bag_drill_straight_end', 'drill_straight_end_drill_bit'},
+        {'exit', 'bag_exit', 'exit_drill_bit'},
+    }
 }
 
 AddEventHandler("Robbery:Client:Setup", function()
-    local atmRobbery = GlobalState["ATMRobberyTerminal"]
-    Targeting.Zones:AddBox("atm-robbery-terminal", "bug", atmRobbery.coords, atmRobbery.length, atmRobbery.width, atmRobbery.options, {
-        {
-            icon = "eye-evil",
-            text = "Do Illegal Things",
-            event = "Robbery:Client:ATM:UseTerminal",
-            item = "vpn",
-            data = {},
-            isEnabled = function(data, entity)
-                return not LocalPlayer.state.ATMRobbery or LocalPlayer.state.ATMRobbery <= 0
-            end,
-        },
-    }, 2.0)
+    Callbacks:RegisterClientCallback('Robbery:ATM:StartRobbing', function(data, callback)
+        local Target = Targeting:GetEntityPlayerIsLookingAt()
 
-    for k, v in ipairs(atmObjects) do
-        Targeting:AddObject(v, "money-from-bracket", {
-            {
-                text = "Run Exploit",
-                icon = 'eye-evil',
-                event = "Robbery:Client:ATM:StartHack",
-                data = {},
-                minDist = 2.0,
-                isEnabled = function(data, entity)
-                    if LocalPlayer.state.ATMRobbery and LocalPlayer.state.ATMRobbery > 0 then
-                        if _atmZone and #(_atmZone.coords - LocalPlayer.state.myPos) <= _atmZone.radius then
-                            return true
-                        end
-                    end
-                end,
-            },
-        }, 3.0)
-    end
-end)
-
-AddEventHandler("Robbery:Client:ATM:UseTerminal", function()
-    if GlobalState['Sync:IsNight'] then
-        if (not GlobalState["ATMRobberyStartCD"]) or (GlobalState["OS:Time"] > GlobalState["ATMRobberyStartCD"]) then
-            Minigame.Play:Memory(5, 1200, 9000, 5, 5, 5, 2, {
-                onSuccess = function(data)
-                    Callbacks:ServerCallback("Robbery:ATM:StartJob", true, function(success, locationId)
-                        if success then
-                            Phone.Notification:AddWithId("ATMRobbery", "Started - Good Luck", "Access an ATM in the highlighted area", GetCloudTimeAsInt() * 1000, -1, {
-                                color = '#247919',
-                                label = 'Root',
-                                icon = 'terminal',
-                            }, {
-                                accept = "dicks",
-                            }, nil)
-
-                            StartATMRobbery(locationId, true)
+        if not Target then callback(false) return end
+        if IsATMModel(Target.entity) then
+            if not data.Cooldown then
+                Callbacks:ServerCallback('Robbery:ATM:CanRobATM', Target.entity, function(cb)
+                    if cb then
+                        Callbacks:ServerCallback('Robbery:ATM:SetATMRobbed', Target.entity, function(cb) end)
+                        local distance = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), GetEntityCoords(Target.entity), true)
+    
+                        if distance < 2.0 then
+                            StartDrilling(Target.entity, {})
+                            callback(true)
                         else
-                            if locationId then
-                                Phone.Notification:Add("No More!", "You already have done too much today...", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-                            end
+                            callback(false)
                         end
-                    end)
-                end,
-                onFail = function(data)
-                    Callbacks:ServerCallback("Robbery:ATM:StartJob", false, function() end)
-
-                    Phone.Notification:Add("Not Today Failure", "Your skills are useless to us...", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-                end,
-            }, {
-                playableWhileDead = false,
-                animation = {
-                    animDict = "anim@heists@prison_heiststation@cop_reactions",
-                    anim = "cop_b_idle",
-                    flags = 17,
-                },
-            }, {})
+                    else
+                        callback(false)
+                        Notification:Error('This ATM has already been robbed.', 2500)
+                    end
+                end)
+            else                    
+                Notification:Error('You cannot rob an ATM right now.', 2500)
+                callback(false)
+            end
         else
-            Phone.Notification:Add("Busy at the Moment", "Sorry, please try again in a minute.", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-        end
-    else
-        Phone.Notification:Add("Come Back Later", "Sorry, please try again when it's dark.", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-    end
-end)
-
-function StartATMRobbery(locationId, firstLocation)
-    _atmZone = GlobalState["ATMRobberyAreas"][locationId]
-
-    if not _atmZone then return; end
-
-    if _blip then
-        RemoveBlip(_blip) 
-    end
-
-    _blip = AddBlipForRadius(_atmZone.coords.x, _atmZone.coords.y, _atmZone.coords.maxZ, _atmZone.radius + 0.0)
-    SetBlipColour(_blip, 1)
-    SetBlipAlpha(_blip, 90)
-
-    Blips:Add("ATMRobbery", "Target Area", _atmZone.coords, 521, 6, 1.5)
-
-    ClearGpsPlayerWaypoint()
-	SetNewWaypoint(_atmZone.coords.x, _atmZone.coords.y)
-
-    if not firstLocation then
-        Phone.Notification:AddWithId("ATMRobbery", "Well Done - Next!", "Access an ATM in the new highlighted area", GetCloudTimeAsInt() * 1000, -1, _phoneApp, {
-            accept = "dicks",
-        }, nil)
-    end
-end
-
-function EndATMRobbery()
-    RemoveBlip(_blip)
-    Blips:Remove("ATMRobbery")
-
-    _blip = nil
-
-    Phone.Notification:Remove("ATMRobbery")
-end
-
-function DoATMProgress(label, duration, canCancel, cb)
-    Progress:Progress({
-		name = "installing_atm_hack",
-		duration = (math.random(10) + 10) * 1000,
-		label = label,
-		useWhileDead = false,
-		canCancel = canCancel,
-        ignoreModifier = true,
-		controlDisables = {
-			disableMovement = true,
-			disableCarMovement = true,
-			disableMouse = false,
-			disableCombat = true,
-		},
-		animation = {
-			anim = "type",
-		},
-	}, function(status)
-        if cb then
-            cb(status)
+            callback(false)
         end
     end)
-end
+end)
 
-AddEventHandler('Robbery:Client:ATM:StartHack', function(entity)
-    local coords = GetEntityCoords(LocalPlayer.state.ped)
-    local alarm = false
+local ATMModels = {
+    [506770882],
+    [-870868698],
+    [-1364697528],
+    [-1126237515]
+}
 
-    if math.random(100) >= 75 then
-        alarm = true
+function IsATMModel(entity)
+    local model = GetEntityModel(entity)
 
-        Citizen.SetTimeout(8000, function()
-            Sounds.Play:Location(coords, 20.0, "house_alarm.ogg", 0.05)
-            TriggerServerEvent("Robbery:Server:ATM:AlertPolice", coords)
-        end)
+    if ATMModels[model] then
+        return true
     end
 
-    DoATMProgress("Connecting & Installing", (math.random(10) + 20) * 1000, true, function(status)
-        if status then return; end
+    return false
+end
 
-        local size = math.random(5, 7)
-        local toGet = math.random(4, 6)
+RequestAnim = function(animDict)
+    while not HasAnimDictLoaded(animDict) do
+        RequestAnimDict(animDict)
+        Wait(10)
+    end
+end
 
-        Minigame.Play:Memory(5, 1000, 8000, size, size, toGet, 1, {
-            onSuccess = function(data)
+RequestModelFunc = function(model)
+    while not HasModelLoaded(model) do
+        Wait(50)
+        RequestModel(model)
+    end
+end
 
-                while LocalPlayer.state.doingAction do -- Apparently this is dumb
-                    Citizen.Wait(100)
-                end
+reqControlOfEntity = function(entity)
+    NetworkRequestControlOfEntity(entity)
+    local timer = GetGameTimer()
+    while not NetworkHasControlOfEntity(entity) and GetGameTimer() - timer < 800 do
+        Citizen.Wait(0)
+    end
+end
 
-                DoATMProgress("Executing", (math.random(10) + 10) * 1000, false, function(status)
-                    Callbacks:ServerCallback("Robbery:ATM:HackATM", size, function(success, locationId)
-                        if success then
-                            DoATMProgress("Uninstalling", (math.random(5) + 10) * 1000, false)
-                            if locationId then
-                                StartATMRobbery(locationId, false)
-                            else
-                                Phone.Notification:Add("Done", "We hope to work with you more in the future.", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-                            end
-                        end
+StartDrilling = function(entity, itemData)
+    local pedCo = GetEntityCoords(ped)
 
-                        if not success or not locationId then
-                            EndATMRobbery()
-                        end
-                    end)
-                end)
-            end,
-            onFail = function(data)
-                Sounds.Play:Location(coords, 20.0, "house_alarm.ogg", 0.05)
+    TaskTurnPedToFaceEntity(PlayerPedId(), entity, -1)
+    Wait(1000)
 
-                while LocalPlayer.state.doingAction do -- Apparently this is dumb
-                    Citizen.Wait(100)
-                end
+    LocalPlayer.state.emotesDisabled = true
 
-                Callbacks:ServerCallback("Robbery:ATM:FailHackATM", {
-                    coords = coords,
-                    alarm = alarm,
-                }, function()
-                    DoATMProgress("Uninstalling", (math.random(5) + 10) * 1000, false)
+    local animDict = 'anim_heist@hs3f@ig9_vault_drill@laser_drill@'
+    RequestAnim(animDict)
 
-                    EndATMRobbery()
+    local bagModel = `hei_p_m_bag_var22_arm_s`
+    local laserDrillModel = `ch_prop_laserdrill_01a`
+    RequestModelFunc(bagModel)
+    RequestModelFunc(laserDrillModel)
 
-                    Phone.Notification:Add("Failed", "I can't believe you just did this.", GetCloudTimeAsInt() * 1000, 7500, _phoneApp, {}, nil)
-                end)
-            end,
-        }, {
-            playableWhileDead = false,
-            animation = {
-                anim = "type",
-            },
-        }, {})
+    while not RequestScriptAudioBank("DLC_HEIST3/CASINO_HEIST_FINALE_GENERAL_01", false) do
+        RequestScriptAudioBank("DLC_HEIST3/CASINO_HEIST_FINALE_GENERAL_01", false)
+        Wait(100)
+    end
+
+    while not HasNamedPtfxAssetLoaded('scr_ornate_heist') do
+        RequestNamedPtfxAsset('scr_ornate_heist')
+        Wait(50)
+    end
+
+    local bag = CreateObject(bagModel, pedCo.x, pedCo.y, pedCo.z, true, false, false)
+    local laserDrill = CreateObject(laserDrillModel, pedCo.x, pedCo.y, pedCo.z, true, false, false)
+    SetEntityAsMissionEntity(bag, true, true)
+    SetEntityAsMissionEntity(laserDrill, true, true)
+    table.insert(ATMRobbery.CreatedEntities, bag)
+    table.insert(ATMRobbery.CreatedEntities, laserDrill)
+
+    reqControlOfEntity(bag)
+    reqControlOfEntity(laserDrill)
+
+    local animpos = GetEntityCoords(entity)
+    local animrot = GetEntityRotation(entity)
+
+    for i = 1, #ATMRobbery.DrillAnimations do
+        ATMRobbery.DrillScenes[i] = NetworkCreateSynchronisedScene(animpos.x, animpos.y, animpos.z + 1.2, animrot.x, animrot.y, animrot.z, 2, true, false, 1065353216, 0, 1.3)
+        NetworkAddPedToSynchronisedScene(PlayerPedId(), ATMRobbery.DrillScenes[i], animDict, ATMRobbery.DrillAnimations[i][1], 4.0, -4.0, 1033, 0, 1000.0, 0)
+        NetworkAddEntityToSynchronisedScene(bag, ATMRobbery.DrillScenes[i], animDict, ATMRobbery.DrillAnimations[i][2], 1.0, -1.0, 1148846080)
+        NetworkAddEntityToSynchronisedScene(laserDrill, ATMRobbery.DrillScenes[i], animDict, ATMRobbery.DrillAnimations[i][3], 1.0, -1.0, 1148846080)
+    end
+
+    NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[1])
+    Wait(GetAnimDuration(animDict, 'intro') * 1000)
+
+    NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[2])
+    Wait(GetAnimDuration(animDict, 'drill_straight_start') * 1000)
+
+    NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[3])
+
+    UseParticleFxAsset('scr_ornate_heist')
+    local blowPtfx = StartParticleFxLoopedOnEntity('scr_heist_ornate_thermal_burn', laserDrill, 0.0, 0.40, -0.01, 0.0, 0.0, 0.0, 1.0, false, false, false)
+
+    local coords = GetEntityCoords(PlayerPedId())
+
+    -- if math.random(100) >= 75 then
+    --     SetTimeout(8000, function()
+    --         Sounds.Play:Location(coords, 20.0, "house_alarm.ogg", 0.05)
+    --         TriggerServerEvent("ATMTheft:AlertPolice", NetworkGetNetworkIdFromEntity(entity), "An ATM is being tampered with!")
+    --     end)
+    -- end
+
+    Drilling.Type = 'VAULT_LASER'
+    Drilling.Start(function(status)
+        if status then
+            StopParticleFxLooped(blowPtfx, false)
+            NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[5])
+            Wait(GetAnimDuration(animDict, 'drill_straight_end') * 1000)
+
+            NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[6])
+            Wait(GetAnimDuration(animDict, 'exit') * 1000)
+
+            ClearPedTasks(PlayerPedId())
+
+            reqControlOfEntity(bag)
+            SetEntityAsMissionEntity(bag, true, true)
+            DeleteObject(bag)
+
+            reqControlOfEntity(laserDrill)
+            SetEntityAsMissionEntity(laserDrill, true, true)
+            DeleteObject(laserDrill)
+
+            Callbacks:ServerCallback('Robbery:ATM:GetReward', {}, function(EvoRP) end)
+        else
+            StopParticleFxLooped(blowPtfx, false)
+
+            NetworkStartSynchronisedScene(ATMRobbery.DrillScenes[4])
+            Wait(GetAnimDuration(animDict, 'drill_straight_fail') * 1000 - 1500)
+
+            ClearPedTasks(PlayerPedId())
+
+            reqControlOfEntity(bag)
+            SetEntityAsMissionEntity(bag, true, true)
+            DeleteObject(bag)
+
+            reqControlOfEntity(laserDrill)
+            SetEntityAsMissionEntity(laserDrill, true, true)
+            DeleteObject(laserDrill)
+
+            -- if math.random(1, 3) == 3 then
+            --     TriggerServerEvent('ATMTheft:RemoveItem', itemData)
+            -- end
+        end
+
+        LocalPlayer.state.emotesDisabled = false
     end)
-end)
 
-RegisterNetEvent('Characters:Client:Logout')
-AddEventHandler('Characters:Client:Logout', function()
-    EndATMRobbery()
-end)
+    ATMRobbery.CreatedEntities = {}
+end
