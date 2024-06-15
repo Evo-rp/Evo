@@ -464,7 +464,7 @@ export default () => {
 							>
 								<FontAwesomeIcon
 									className={classes.avatarIcon}
-									icon={['fas', 'image-polaroid']}
+									icon={['fas', 'image']}
 								/>
 							</Avatar>
 						</Grid>
