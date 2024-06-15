@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import { Menu, MenuItem, Avatar, Badge } from '@mui/material';
+import { Menu, MenuItem, Avatar, Badge, Tooltip } from '@mui/material';
 import { makeStyles, withStyles } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //import NestedMenuItem from 'material-ui-nested-menu-item';
@@ -43,20 +43,18 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	appBtn: {
-		height: 100,
-		width: 85,
-		display: 'inline-block',
-		textAlign: 'center',
-		height: 'fit-content',
-		padding: 10,
-		borderRadius: 10,
-		position: 'relative',
 		zIndex: 5,
-		'&:hover:not(.fake)': {
-			transition: 'background ease-in 0.15s',
-			background: `${theme.palette.primary.main}40`,
-			cursor: 'pointer',
-		},
+		width: '4rem',
+		height: '4rem',
+		color: 'white',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: '0.6rem',
+		margin: '0.636rem',
+		transition: '0.25s ease-in-out',
+		cursor: 'pointer',
+		filter: 'drop-shadow(1px 2px 0px #00000041)'
 	},
 	appIcon: {
 		fontSize: 35,
@@ -71,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 		textOverflow: 'ellipsis',
 		textShadow: '0px 0px 5px #000000',
 		fontWeight: 'normal',
-		marginTop: 10,
+		marginTop: 5,
 		pointerEvents: 'none',
 	},
 }));
@@ -114,64 +112,51 @@ export default (props) => {
 			<div className={classes.grid}>
 				{Object.keys(apps).length > 0
 					? homeApps.map((app, i) => {
-							let data = apps[app];
-							if (data) {
-								return (
+						let data = apps[app];
+						if (data) {
+							return (
+								<Tooltip
+									title={data.label}
+									placement='bottom'
+								>
 									<div
-										key={i}
 										className={`${classes.appBtn} ${data.fake ? 'fake' : null}`}
-										title={data.label}
-										onClick={(e) => onClick(e, app)}
+										onClick={(e) => {
+											console.log('Clicking app')
+											onClick(e, app)
+										}}
+										style={{
+											backgroundColor: data.color,
+										}}
 									>
+										<FontAwesomeIcon
+											icon={data.icon}
+											style={{
+												fontSize: '2rem'
+											}}
+										/>
+
 										{data.unread > 0 ? (
 											<Badge
-												overlap="circle"
-												anchorOrigin={{
-													vertical: 'bottom',
-													horizontal: 'right',
-												}}
-												badgeContent={
-													<NotifCount
-														style={{
-															border: `2px solid ${data.color}`,
-														}}
-													>
-														{data.unread}
-													</NotifCount>
-												}
-											>
-												<Avatar
-													variant="rounded"
-													className={classes.appIcon}
-													style={{
-														background: `${data.color}`,
-													}}
-												>
-													<FontAwesomeIcon
-														icon={data.icon}
-													/>
-												</Avatar>
-											</Badge>
-										) : (
-											<Avatar
-												variant="rounded"
-												className={classes.appIcon}
+												color="secondary"
+												badgeContent={data.unread}
 												style={{
-													background: `${data.color}`,
+													color: 'white',
+													position: 'fixed',
+													bottom: '30px',
+													right: '0.5px',
+													fontSize: '15px',
+													marginBottom: '20px',
 												}}
-											>
-												<FontAwesomeIcon
-													icon={data.icon}
-												/>
-											</Avatar>
+											/>
+										) : (
+											<></>
 										)}
-										<div className={classes.appLabel}>
-											{data.label}
-										</div>
 									</div>
-								);
-							} else return null;
-					  })
+								</Tooltip>
+							);
+						} else return null;
+					})
 					: null}
 			</div>
 		</div>
