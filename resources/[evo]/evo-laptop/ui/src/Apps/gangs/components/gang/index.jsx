@@ -99,7 +99,7 @@ export default () => {
                 style={{
                     marginTop: "1%",
                     position: "absolute",
-                    marginLeft: "37%",
+                    marginLeft: "34.5%",
                     transform: "translate(50px, 0px)"
                 }}
             >
