@@ -56,7 +56,7 @@ export default () => {
                 style={{
                     zIndex: '1',
                     position: 'absolute',
-                    marginLeft: "7.5%",
+                    marginLeft: "4.5%",
                     marginTop: "6%",
                     transform: "translate(50px, 0px)"
                 }}
