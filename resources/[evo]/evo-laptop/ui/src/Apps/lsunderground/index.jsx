@@ -222,12 +222,12 @@ export default (props) => {
 							}
 						/>
 						<YPTab
-							icon={<FontAwesomeIcon icon={['fas', 'cart-shopping-fast']} />}
+							icon={<FontAwesomeIcon icon={['fas', 'cart-shopping']} />}
 						/>
 						<YPTab
 							icon={
 								<FontAwesomeIcon
-									icon={['fas', 'list-timeline']}
+									icon={['fas', 'list']}
 								/>
 							}
 						/>
