@@ -23,13 +23,12 @@ AddEventHandler('Businesses:Client:Startup', function()
         end
         
         if data.Type == 'Remove' then
-            Polyzone:Remove('FOR_SALE_BUSINESS_' .. data.Job)
-
             if _PURCHASE_CONFIG['FOR_SALE_BUSINESS_' .. data.Job].Object then
                 Targeting:RemoveEntity(_PURCHASE_CONFIG['FOR_SALE_BUSINESS_' .. data.Job].Object)
                 DeleteObject(_PURCHASE_CONFIG['FOR_SALE_BUSINESS_' .. data.Job].Object)
             end
 
+            Polyzone:Remove('FOR_SALE_BUSINESS_' .. data.Job)
             _PURCHASE_CONFIG['FOR_SALE_BUSINESS_' .. data.Job] = nil
         end
     end)
