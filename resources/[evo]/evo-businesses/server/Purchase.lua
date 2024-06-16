@@ -76,6 +76,15 @@ AddEventHandler("Businesses:Server:Startup", function()
                 local success = Jobs:GiveJob(Char:GetData('SID'), results[1].Job, false, Jobs:Get(data.Job).Grades[#Jobs:Get(data.Job).Grades].Id)
     
                 if success then
+                    Database.Game:deleteOne({
+                        collection = "available_businesses",
+                        query = {
+                            _id = data._id,
+                        },
+                    }, function(success, deleted)
+                        cb(success)
+                    end)
+
                     Callbacks:ClientCallback(-1, 'Businesses:Client:Purchase:SignSync', {
                         Type = 'Remove',
                         Job = results[1].Job,

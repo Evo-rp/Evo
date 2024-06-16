@@ -85,13 +85,13 @@ end)
 AddEventHandler('Polyzone:Enter', function(Id)
     if string.find(Id, 'FOR_SALE_BUSINESS_') then
         Logger:Info('Businesses', 'Creating a object for business ' .. _PURCHASE_CONFIG[Id].Name)
-        _PURCHASE_CONFIG[Id].Object = CreateObject('prop_forsale_dyn_01', vector3(_PURCHASE_CONFIG[Id].Prop.Coords.x, _PURCHASE_CONFIG[Id].Prop.Coords.y, _PURCHASE_CONFIG[Id].Prop.Coords.z), false, false, false)
+        _PURCHASE_CONFIG[Id].Object = CreateObject('prop_forsale_lrg_06', vector3(_PURCHASE_CONFIG[Id].Prop.Coords.x, _PURCHASE_CONFIG[Id].Prop.Coords.y, _PURCHASE_CONFIG[Id].Prop.Coords.z), false, false, false)
 
         SetEntityHeading(_PURCHASE_CONFIG[Id].Object, _PURCHASE_CONFIG[Id].Prop.Heading)
         SetEntityInvincible(_PURCHASE_CONFIG[Id].Object, true)
         FreezeEntityPosition(_PURCHASE_CONFIG[Id].Object, true)
 
-        Targeting:AddEntity(_PURCHASE_CONFIG[Id].Object, 'dollar-sign', {
+        Targeting:AddEntity(_PURCHASE_CONFIG[Id].Object, 'sign-hanging', {
             {
                 icon = "briefcase",
                 text = "View Business",
