@@ -245,7 +245,7 @@
 					<FirstPersonReticuleStyleHash/>
 					<PickupHash>PICKUP_WEAPON_COMBATPISTOL</PickupHash>
 					<MPPickupHash>PICKUP_AMMO_BULLET_MP</MPPickupHash>
-					<HumanNameHash>WEAPONUSP</HumanNameHash>
+					<HumanNameHash>WEAPON_USP</HumanNameHash>
 					<MovementModeConditionalIdle>MMI_1Handed</MovementModeConditionalIdle>
 					<StatName>CMBTPISTOL</StatName>
 					<KnockdownCount value="3"/>
