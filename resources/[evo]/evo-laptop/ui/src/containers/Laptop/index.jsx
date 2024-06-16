@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Slide } from '@mui/material';
+import { Zoom } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 import { Footer, Home, Alerts, Notifications } from '../../components';
@@ -72,7 +72,7 @@ export default (props) => {
 
 	if (!Boolean(player) || !Boolean(settings)) return null;
 	return (
-		<Slide direction="up" in={visible} mountOnEnter>
+		<Zoom in={visible}>
 			<div className={classes.wrapper}>
 				<div className={classes.laptop}>
 					<img
@@ -92,6 +92,6 @@ export default (props) => {
 					<Footer />
 				</div>
 			</div>
-		</Slide>
+		</Zoom>
 	);
 };
