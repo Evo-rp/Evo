@@ -67,18 +67,13 @@ AddEventHandler("Businesses:Server:Startup", function()
 			},
 		}, function(success, results)
 			if not success or not #results then
+                Logger:Error('Available Businesses', 'An error occoured when selecting the available business query.')
 				cb(false)
 				return
 			end
-			
-            local purchaseSuccessful = Banking.Balance:Charge(Char:GetData("BankAccount"), results[1].Price, {
-                type = 'bill',
-                title = 'Purchased a business',
-                description = string.format('Purchased business %s.', data.Name),
-            })
     
-            if purchaseSuccessful then
-                local success = Jobs:GiveJob(Char:GetData('SID'), results[1].Job, Jobs:Get(data.Job).Grades[#Jobs:Get(data.Job).Grades].Id, nil)
+            if Banking.Balance:Charge(Char:GetData("BankAccount"), results[1].Price, { type = 'bill', title = 'Purchased a business', description = string.format('Purchased business %s.', data.Name), }) then
+                local success = Jobs:GiveJob(Char:GetData('SID'), results[1].Job, false, Jobs:Get(data.Job).Grades[#Jobs:Get(data.Job).Grades].Id)
     
                 if success then
                     Callbacks:ClientCallback(-1, 'Businesses:Client:Purchase:SignSync', {
@@ -88,9 +83,11 @@ AddEventHandler("Businesses:Server:Startup", function()
 
                     cb(true)
                 else
+                    Logger:Error('Available Businesses', 'An error occoured with attempting to give the job bank payment.')
                     cb(false)
                 end
             else
+                Logger:Error('Available Businesses', 'Player doesnt have enough money.')
                 cb(false)
             end
         end)
