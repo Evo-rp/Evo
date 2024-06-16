@@ -43,7 +43,7 @@
 					<RecoilRecoveryRate value="1.000000"/>
 					<RecoilAccuracyToAllowHeadShotAI value="1000.000000"/>
 					<MinHeadShotDistancePlayer value="5.000000" />
-          <MaxHeadShotDistancePlayer value="255.000000" />
+          			<MaxHeadShotDistancePlayer value="255.000000" />
 					<HeadShotDamageModifierAI value="1000.000000"/>
 					<RecoilAccuracyToAllowHeadShotPlayer value="0.175000"/>
 					<MinHeadShotDistancePlayer value="5.000000"/>
