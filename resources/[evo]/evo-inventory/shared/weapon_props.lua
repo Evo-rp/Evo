@@ -9,6 +9,7 @@ WEAPON_PROPS = {
     { type = 'weapon', item = "WEAPON_ASSAULTRIFLE_MK2", model = `w_ar_assaultriflemk2`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
     { type = 'weapon', item = "WEAPON_CARBINERIFLE", model = `w_ar_carbinerifle`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
     { type = 'weapon', item = "WEAPON_CARBINERIFLE_MK2", model = `w_ar_carbineriflemk2`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
+    { type = 'weapon', item = "WEAPON_TX15", model = `w_ar_tx15`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
     { type = 'weapon', item = "WEAPON_BULLPUPRIFLE", model = `w_ar_bullpuprifle`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
     { type = 'weapon', item = "WEAPON_BULLPUPRIFLE_MK2", model = `w_ar_bullpupriflemk2`, x = 0.0, y = 0.0, z = 0.0, rx = 0.0, ry = 0.0, rz = 0.0 },
     { type = 'weapon', item = "WEAPON_MUSKET", model = `w_ar_musket`, override = true, x = 0.2, y = -0.155, z = 0.155, rx = 0.0, ry = 0.0, rz = 180.0 },
