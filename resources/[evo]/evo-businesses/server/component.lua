@@ -20,6 +20,8 @@ function RetrieveComponents()
 	Banking = exports["evo-base"]:FetchComponent("Banking")
 	MDT = exports["evo-base"]:FetchComponent("MDT")
 	StorageUnits = exports["evo-base"]:FetchComponent("StorageUnits")
+	ForSaleBusinesses = exports["evo-base"]:FetchComponent("ForSaleBusinesses")
+	Jobs = exports["evo-base"]:FetchComponent("Jobs")
 end
 
 AddEventHandler("Core:Shared:Ready", function()
