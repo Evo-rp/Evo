@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CWeaponModelInfo__InitDataList>
+	<InitDatas>
+		<!-- ### M45 FN509 Pistol | Heavy Pistol Base ### -->
+		<Item>
+			<modelName>w_pi_FN509</modelName>
+			<txdName>w_pi_FN509</txdName>
+			<ptfxAssetName>null</ptfxAssetName>
+			<lodDist value="50"/>
+		</Item>
+		<Item>
+			<modelName>w_pi_FN509_mag1</modelName>
+			<txdName>w_pi_FN509_mag1</txdName>
+			<ptfxAssetName>null</ptfxAssetName>
+			<lodDist value="50"/>
+		</Item>
+		<Item>
+			<modelName>w_pi_FN509_mag2</modelName>
+			<txdName>w_pi_FN509_mag2</txdName>
+			<ptfxAssetName>null</ptfxAssetName>
+			<lodDist value="50"/>
+		</Item>
+	</InitDatas>
+</CWeaponModelInfo__InitDataList>
