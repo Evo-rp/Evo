@@ -49,7 +49,6 @@ NPCDialog = {
 }
 
 RegisterNUICallback('NPCResponse', function(data, cb)
-    print(json.encode(data, {indent = true}))
     if data.close then
         NPCDialog:Close()
     end
