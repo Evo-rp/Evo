@@ -15,7 +15,9 @@ export default (state = initialState, action) => {
         case 'UI:Ammo:SetData':
             return {
                 ...state,
-                showing: action.payload.state,
+                Total: action.payload.total,
+                Clip: action.payload.clipAmmo,
+                onlyTotal: action.payload.onlyTotal,
             };
         default:
             return state;

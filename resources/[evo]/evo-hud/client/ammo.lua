@@ -1,6 +1,6 @@
-local lastweapon
-
 Ammo = {
+    LastWeapon = '',
+    Thread = false,
     ammoShown = false,
     lastammoupdate = 0,
     AmmoUpdate = 0,
@@ -8,7 +8,7 @@ Ammo = {
     SendAmmoToHud = function()
         if Ammo.lastammoupdate > GetGameTimer() or delayed then return end
         Ammo.lastammoupdate = GetGameTimer() + 100
-        if not IsPedArmed(PlayerPedId(), 7) or IsPedArmed(PlayerPedId(), 1) or lastweapon == unarmed then
+        if not IsPedArmed(PlayerPedId(), 7) or IsPedArmed(PlayerPedId(), 1) or Ammo.LastWeapon == unarmed then
             if not Ammo.ammoShown then return end
             Ammo.ammoShown = false
             SendNUIMessage({
@@ -21,10 +21,10 @@ Ammo = {
         end
 
         Ammo.ammoShown = true
-        local _, clipAmmo = GetAmmoInClip(PlayerPedId(), lastweapon)
-        local totalAmmo = GetAmmoInPedWeapon(PlayerPedId(), lastweapon)
+        local _, clipAmmo = GetAmmoInClip(PlayerPedId(), Ammo.LastWeapon)
+        local totalAmmo = GetAmmoInPedWeapon(PlayerPedId(), Ammo.LastWeapon)
         local ammoRemaining = math.floor(totalAmmo - clipAmmo)
-        local onlyTotal = GetMaxAmmoInClip(PlayerPedId(), lastweapon) == 1
+        local onlyTotal = GetMaxAmmoInClip(PlayerPedId(), Ammo.LastWeapon) == 1
 
         SendNUIMessage({
             type = "UI:Ammo:Visibility",
@@ -56,15 +56,25 @@ CreateThread(function()
     Ammo.HideAmmo()
 end)
 
-CreateThread = function()
-    while true do
-        Wait(1000)
+AddEventHandler('Hud:Client:Ammo', function(state)
+    if state.Type == 'Equip' then
+        Ammo.Thread = true
 
-        if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then        
-            Ammo.AmmoUpdate = Ammo.AmmoUpdate - 1
-    
-            lastweapon = GetSelectedPedWeapon(PlayerPedId())
-            Ammo.SendAmmoToHud()
+        CreateThread = function()
+            while Ammo.Thread do
+                Wait(1000)
+        
+                if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then        
+                    Ammo.AmmoUpdate = Ammo.AmmoUpdate - 1
+            
+                    Ammo.LastWeapon = GetSelectedPedWeapon(PlayerPedId())
+                    Ammo.SendAmmoToHud()
+                end
+            end
         end
     end
-end
+
+    if state.Type == 'Unequip' then
+        Ammo.Thread = false
+    end
+end)
