@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import { LinearProgress, Grid } from '@material-ui/core';
+import { LinearProgress, Grid, Paper, Typography, IconButton, Slider, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useSelector } from 'react-redux';
-//import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player';
 import Logo from './Logo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import bg from '../../bg.jpg';
 
 const useStyles = makeStyles((theme) => ({
 	background: {
@@ -63,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 		position: 'absolute',
 		bottom: 0,
 		left: 0,
+		zIndex: 5
 	},
 	effect: {
 		position: 'absolute',
@@ -71,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	bar: {
 		height: 10,
+		backgroundColor: '#333333'
 	},
 	dot1: {
 		color: '#7702e5',
@@ -80,26 +80,6 @@ const useStyles = makeStyles((theme) => ({
 	},
 	dot3: {
 		color: '#7702e5',
-	},
-	domain: {
-		position: 'absolute',
-		top: '1%',
-		right: '1%',
-		fontFamily: 'Oswald',
-		fontSize: 13,
-		'& svg': {
-			marginLeft: 10,
-		},
-	},
-	discord: {
-		position: 'absolute',
-		top: '1%',
-		left: '1%',
-		fontFamily: 'Oswald',
-		fontSize: 13,
-		'& svg': {
-			marginRight: 10,
-		},
 	},
 	information: {
 		position: 'absolute',
@@ -132,7 +112,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: 20,
 		fontFamily: 'Oswald',
 		'&::after': {
-			color: '#7702e5',
+			color: 'green',
 			content: '": COMPLETED,"',
 			marginRight: 24,
 		},
@@ -143,7 +123,7 @@ const useStyles = makeStyles((theme) => ({
 		fontSize: 20,
 		fontFamily: 'Oswald',
 		'&::after': {
-			color: '#7702e5',
+			color: 'red',
 			content: '": IN PROGRESS,"',
 			marginRight: 24,
 		},
@@ -188,40 +168,46 @@ export default () => {
 	const priority = useSelector(state => state.load.priority);
 	const priorityMessage = useSelector(state => state.load.priorityMessage);
 
+	const videos = [
+		'https://lobfile.com/file/Lbmftr94.mp4',
+		'https://lobfile.com/file/sPxtT6Ba.mp4',
+		'https://lobfile.com/file/dEtgvqzp.mp4',
+		'https://lobfile.com/file/MsY8byHR.mp4',
+		'https://lobfile.com/file/A7rDcU36.mp4',
+		'https://lobfile.com/file/KpU8vrmG.mp4',
+		'https://lobfile.com/file/2FPwzT89.mp4',
+		'https://lobfile.com/file/czmbu5gF.mp4',
+		'https://lobfile.com/file/UGx6gCn4.mp4'
+	];
+
+	const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+	const handleEnded = () => {
+		setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+	};
+
 	return (
 		<div className={classes.background}>
 			<Logo name={name} />
-			<div className={classes.domain}>
-				<FontAwesomeIcon icon={['fas', 'rocket']} />
-			</div>
-			<div className={classes.discord}>
-				<FontAwesomeIcon icon={['fab', 'discord']} /> 
-			</div>
-			{
-				(priority > 0 && priorityMessage) && (
-					<div className={classes.information}>
-						<div className={classes.informationTitle}>
-							Total Priority Boosts: <b>{priority}</b>
-						</div>
-						<div className={classes.informationMessage}>{priorityMessage}</div>
+			{priority > 0 && priorityMessage && (
+				<div className={classes.information}>
+					<div className={classes.informationTitle}>
+						Total Priority Boosts: <b>{priority}</b>
 					</div>
-				)
-			}
+					<div className={classes.informationMessage}>{priorityMessage}</div>
+				</div>
+			)}
 			<div className={classes.prog}>
 				<div className={classes.stageText}>
-					{Object.keys(completed).map((val) => {
-						return (
-							<span className={classes.completedStage}>
-								{val}
-							</span>
-						);
-					})}
+					{Object.keys(completed).map((val) => (
+						<span key={val} className={classes.completedStage}>
+							{val}
+						</span>
+					))}
 					{current != null ? (
 						<span className={classes.currentStage}>{current}</span>
 					) : pct >= 100 ? (
-						<span className={classes.currentStage}>
-							LOAD_MODELS
-						</span>
+						<span className={classes.currentStage}>LOAD_MODELS</span>
 					) : null}
 				</div>
 				<LinearProgress
@@ -230,16 +216,29 @@ export default () => {
 					value={pct <= 100 ? pct : 100}
 				/>
 			</div>
-			<img className={classes.backgroundImage} src={bg} />
-			{/* <ReactPlayer
-				url="https://media.alzar.dev/loadscreen.webm"
-				width="100vw"
-				height="100%"
-				controls={false}
-				loop
-				playing
-				muted
-			/> */}
+			<div style={{ position: 'relative', width: '100%', height: '100%' }}>
+				<ReactPlayer
+					url={videos[currentVideoIndex]}
+					width="100%"
+					height="100%"
+					controls={false}
+					loop={false}
+					playing
+					muted
+					onEnded={handleEnded}
+				/>
+				<div
+					className={classes.overlay}
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%',
+						backgroundColor: 'rgba(119, 2, 229, 0.5)'
+					}}
+				/>
+			</div>
 		</div>
 	);
 };
