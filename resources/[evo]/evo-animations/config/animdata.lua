@@ -3723,8 +3723,8 @@ AnimData.Emotes = {
 		},
 	},
 	["bandage"] = {
-		AnDictionary = "amb@world_human_clipboard@male@idle_a",
-		AnAnim = "idle_c",
+		AnDictionary = "items@clear@custom_anim",
+		AnAnim = "bandage",
 		AdditionalOptions = {
 			AvailableToChar = false,
 			EmoteMoving = true,
