@@ -60,15 +60,12 @@ AddEventHandler('Hud:Client:Ammo', function(state)
 
         CreateThread(function()
             while Ammo.Thread do
-                Wait(1000)
-        
-                if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then        
-                    Ammo.AmmoUpdate = Ammo.AmmoUpdate - 1
-            
                 if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then                   
                     Ammo.LastWeapon = GetSelectedPedWeapon(PlayerPedId())
                     Ammo.SendAmmoToHud()
                 end
+
+                Wait(1000)
             end
         end)
     end
