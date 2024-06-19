@@ -228,7 +228,7 @@ const App = ({ hidden }) => {
                 <DeathTexts />
                 <InfoOverlay />
                 <Overlay />
-                <Ammo />
+                {/* <Ammo /> */}
                 <Hud />
                 <NPCDialog />
                 <Notifications />
