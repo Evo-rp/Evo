@@ -46,7 +46,6 @@ Ammo = {
         while true do
             Wait(0)
             DisplayAmmoThisFrame(false)
-            HideHudComponentThisFrame(14)
         end
     end
 }
