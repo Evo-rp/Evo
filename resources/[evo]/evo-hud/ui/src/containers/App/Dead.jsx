@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { Fade } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-import { Location, Status, Vehicle } from '../../components';
-
 const useStyles = makeStyles((theme) => ({
     wrapper: {
         position: 'absolute',

@@ -36,6 +36,7 @@ import Arcade from '../Arcade';
 import Flashbang from './Flashbang';
 import Settings from '../Settings';
 import Ammo from '../../components/Ammo';
+import Compass from '../../components/Compass';
 
 library.add(fab, fas, far);
 
@@ -229,6 +230,7 @@ const App = ({ hidden }) => {
                 <InfoOverlay />
                 <Overlay />
                 <Ammo />
+                <Compass />
                 <Hud />
                 <NPCDialog />
                 <Notifications />

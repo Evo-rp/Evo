@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { Fade } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
-import { Location } from '../../../components';
 import {
     Default as VehicleDefault,
     Simple as VehicleSimple,
@@ -35,14 +34,12 @@ export default () => {
 
     const config = useSelector((state) => state.hud.config);
     const position = useSelector((state) => state.hud.position);
-    const isShifted = useSelector((state) => state.location.shifted);
-    const inVeh = useSelector((state) => state.vehicle.showing);
 
     const getVehicleLayout = () => {
         switch (config.vehicle) {
             case 'simple':
                 return <VehicleSimple />;
-            case 'gauge': 
+            case 'gauge':
                 return <VehicleGauge />;
             default:
                 return <VehicleDefault />;
@@ -53,23 +50,12 @@ export default () => {
         <Fade in={showing}>
             <div className={classes.wrapper}>
                 <div
-                    className={
-                        isShifted || inVeh ? classes.shifted : classes.standard
-                    }
-                    style={
-                        isShifted || inVeh
-                            ? {
-                                  left: `calc(${
-                                      position.rightX * 100
-                                  }% * 1.075)`,
-                              }
-                            : {
-                                  left: `calc(${position.leftX * 100}% * 1.4)`,
-                              }
-                    }
+                    className={classes.shifted}
+                    style={{
+                        left: `calc(${position.rightX * 100}% * 1.075)`,
+                    }}
                 >
                     <Status />
-                    <Location />
                 </div>
                 <Buffs />
                 {getVehicleLayout()}

@@ -5,7 +5,7 @@ import notifReducer from 'containers/Notifications/reducer';
 import actionReducer from './containers/Action/reducer';
 import hudReducer from './containers/Hud/reducer';
 import npcDialogReducer from './components/NPCDialog/reducer';
-import locationReducer from './components/Location/reducer';
+import compassReducer from './components/Compass/reducer';
 import statusReducer from './components/Status/reducer';
 import vehicleReducer from './components/Vehicle/reducer';
 import progressReducer from './components/Progress/reducer';
@@ -29,7 +29,7 @@ export default () =>
         interaction: interactionReducer,
         hud: hudReducer,
         NPCDialog: npcDialogReducer,
-        location: locationReducer,
+        Compass: compassReducer,
         status: statusReducer,
         vehicle: vehicleReducer,
         progress: progressReducer,

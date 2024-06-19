@@ -280,12 +280,6 @@ HUD = {
 			Hud.Vehicle:Hide()
 		end
 	end,
-	ShiftLocation = function(self, status)
-		SendNUIMessage({
-			type = "SHIFT_LOCATION",
-			data = { shift = status, position = GetMinimapAnchor() },
-		})
-	end,
 	Overlay = {
 		Show = function(self, data)
 			if _overlayToggled then
@@ -315,6 +309,7 @@ HUD = {
 				return
 			end
 
+			SendNUIMessage({ type = 'TOGGLE_LOC' })
 			SendNUIMessage({
 				type = "SHOW_VEHICLE",
 				data = {
@@ -329,15 +324,15 @@ HUD = {
 				return
 			end
 
+			SendNUIMessage({ type = 'TOGGLE_LOC' })
 			SendNUIMessage({
 				type = "HIDE_VEHICLE",
 			})
 			_vehToggled = false
 		end,
 		Toggle = function(self)
-			SendNUIMessage({
-				type = "TOGGLE_VEHICLE",
-			})
+			SendNUIMessage({ type = 'TOGGLE_LOC' })
+			SendNUIMessage({ type = "TOGGLE_VEHICLE" })
 			_vehToggled = not _vehToggled
 			if _vehToggled then
 				StartVehicleThreads()
@@ -533,15 +528,12 @@ AddEventHandler("Characters:Client:Updated", function(key)
 			DisplayRadar(
 				LocalPlayer.state.phoneOpen or hasValue(LocalPlayer.state.Character:GetData("States"), "GPS")
 			)
-			Hud:ShiftLocation(
-				LocalPlayer.state.phoneOpen or hasValue(LocalPlayer.state.Character:GetData("States"), "GPS")
-			)
 		end
 	end
 end)
 
 function GetLocation()
-	local pos = GetEntityCoords(LocalPlayer.state.ped)
+	local pos = GetEntityCoords(PlayerPedId())
 
 	if LocalPlayer.state?.tpLocation then
 		pos = vector3(
@@ -551,7 +543,7 @@ function GetLocation()
 		)
 	end
 
-	local direction = GetDirection(GetEntityHeading(LocalPlayer.state.ped))
+	local direction = GetEntityHeading(PlayerPedId())
 	local var1, var2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z, Citizen.ResultAsInteger(), Citizen.ResultAsInteger())
 	local area = GetLabelText(GetNameOfZone(pos.x, pos.y, pos.z))
 
@@ -559,20 +551,8 @@ function GetLocation()
 		main = GetStreetNameFromHashKey(var1),
 		cross = GetStreetNameFromHashKey(var2),
 		area = area,
-		direction = direction,
+		heading = math.ceil(direction)
 	}
-end
-
-function GetDirection(heading)
-	if (heading >= 0 and heading < 45) or (heading >= 315 and heading < 360) then
-		return "N"
-	elseif heading >= 45 and heading < 135 then
-		return "W"
-	elseif heading >= 135 and heading < 225 then
-		return "S"
-	elseif heading >= 225 and heading < 315 then
-		return "E"
-	end
 end
 
 function DrawText3D(position, text, r, g, b)
@@ -665,16 +645,15 @@ function StartThreads()
 				})
 
 				if _vehToggled then
-					SendNUIMessage({
-						type = "TOGGLE_VEHICLE",
-					})
+					SendNUIMessage({ type = 'TOGGLE_LOC' })
+					SendNUIMessage({ type = "TOGGLE_VEHICLE" })
 				end
 			end
 
 			if not _paused then
 				SendNUIMessage({
 					type = "UPDATE_LOCATION",
-					data = { location = GetLocation() },
+					data = { location = GetLocation(), heading = GetEntityHeading(PlayerPedId()) },
 				})
 				Citizen.Wait(200)
 				SendNUIMessage({
@@ -692,9 +671,8 @@ function StartThreads()
 					})
 
 					if _vehToggled then
-						SendNUIMessage({
-							type = "TOGGLE_VEHICLE",
-						})
+						SendNUIMessage({ type = 'TOGGLE_LOC' })
+						SendNUIMessage({ type = "TOGGLE_VEHICLE" })
 					end
 					_paused = false
 				end
@@ -865,4 +843,4 @@ CreateThread(function()
             Wait(1500)
         end
     end
-end) 
+end)

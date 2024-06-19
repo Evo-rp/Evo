@@ -4,7 +4,7 @@ lua54("yes")
 client_script("@evo-base/components/cl_error.lua")
 client_script("@evo-pwnzor/client/check.lua")
 
-data_file("SCALEFORM_DLC_FILE")("stream/int3232302352.gfx")
+data_file "SCALEFORM_DLC_FILE" "stream/int3232302352.gfx"
 
 client_scripts({
 	"config.lua",
@@ -25,5 +25,5 @@ files({
 	"ui/dist/*.js",
 	"ui/dist/*.mp3",
 	"ui/dist/*.ttf",
-	"stream/int3232302352.gfx",
+    "stream/int3232302352.gfx"
 })
