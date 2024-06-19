@@ -570,6 +570,7 @@ WEAPONS = {
 		local itemData = _items[item.Name]
 
 		-- print(string.format("Equipping Weapon, Total Ammo: %s, Clip: %s", item.MetaData.ammo or 0, item.MetaData.clip or 0))
+		TriggerEvent('Hud:Client:Ammo', 'Equip')
 		if LocalPlayer.state.onDuty == "police" then
 			if _equipped ~= nil then
 				Weapons:Unequip(_equipped)
@@ -631,6 +632,7 @@ WEAPONS = {
 		local hash = GetHashKey(_items[item.Name].weapon or item.Name)
 		local itemData = _items[item.Name]
 		UpdateAmmo(item, diff)
+		TriggerEvent('Hud:Client:Ammo', 'Unequip')
 		if LocalPlayer.state.onDuty == "police" then
 			anims.Cop:Holster(ped)
 		else

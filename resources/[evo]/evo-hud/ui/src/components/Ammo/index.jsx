@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
-    Dialog,
-    DialogActions,
-    DialogContent,
-    DialogTitle,
-    Button,
     Fade,
     Slide,
 } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import useKeypress from 'react-use-keypress';
-
-import Nui from '../../util/Nui';
-import { Sanitize } from '../../util/Parser';
 
 const useStyles = makeStyles((theme) => ({
     wrapper: {
+        position: 'absolute',
         width: '100%',
         height: '100%',
         userSelect: 'none',
@@ -24,14 +16,14 @@ const useStyles = makeStyles((theme) => ({
     },
     ammoWrapper: {
         position: 'absolute',
-        right: 0,
+        right: 20,
         top: 0,
         margin: '0.6vh',
     },
     ammoContainer: {
         display: 'inline-block',
         position: 'relative',
-        margin: '0.6vh',
+        margin: '0.3vh',
         fontSize: '4vh',
         fontVariant: 'all-small-caps',
         whiteSpace: 'nowrap',
@@ -53,11 +45,11 @@ export default () => {
             <Slide in={showing} direction="left" timeout={100} mountOnEnter unmountOnExit>
                 <div className={classes.ammoWrapper}>
                     <div className={classes.ammoContainer}>
-                        <div style={{ color: '#fff' }}>{!onlyTotal ? Clip : Total}</div>
+                        <div style={{ color: '#9e9e9e' }}>{!onlyTotal ? Clip : Total}</div>
                     </div>
                     <Fade in={!onlyTotal} mountOnEnter unmountOnExit>
                         <div className={classes.ammoContainer}>
-                            <div style={{ color: '#fff' }}>{onlyTotal ? Total : `/ ${Total}`}</div>
+                            <div style={{ color: '#9e9e9e' }}>{onlyTotal ? Total : `/ ${Total}`}</div>
                         </div>
                     </Fade>
                 </div>
