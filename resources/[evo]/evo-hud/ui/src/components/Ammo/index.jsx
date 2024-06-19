@@ -24,15 +24,15 @@ const useStyles = makeStyles((theme) => ({
     },
     ammoWrapper: {
         position: 'absolute',
-        right: '0',
-        top: '0',
+        right: 0,
+        top: 0,
         margin: '0.6vh',
     },
     ammoContainer: {
         display: 'inline-block',
         position: 'relative',
         margin: '0.6vh',
-        fontSize: '3vh',
+        fontSize: '4vh',
         fontVariant: 'all-small-caps',
         whiteSpace: 'nowrap',
         fontWeight: 800,
@@ -53,11 +53,11 @@ export default () => {
             <Slide in={showing} direction="left" timeout={100} mountOnEnter unmountOnExit>
                 <div className={classes.ammoWrapper}>
                     <div className={classes.ammoContainer}>
-                        <div style={{ color: '#9e9e9e' }}>{!onlyTotal ? Clip : Total}</div>
+                        <div style={{ color: '#fff' }}>{!onlyTotal ? Clip : Total}</div>
                     </div>
                     <Fade in={!onlyTotal} mountOnEnter unmountOnExit>
                         <div className={classes.ammoContainer}>
-                            <div style={{ color: '#9e9e9e' }}>{onlyTotal ? Total : `/ ${Total}`}</div>
+                            <div style={{ color: '#fff' }}>{onlyTotal ? Total : `/ ${Total}`}</div>
                         </div>
                     </Fade>
                 </div>
