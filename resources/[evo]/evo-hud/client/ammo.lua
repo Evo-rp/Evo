@@ -7,17 +7,6 @@ Ammo = {
     SendAmmoToHud = function()
         if Ammo.LastAmmoUpdate > GetGameTimer() then return end
         Ammo.LastAmmoUpdate = GetGameTimer() + 100
-        if not IsPedArmed(PlayerPedId(), 7) or IsPedArmed(PlayerPedId(), 1) then
-            if not Ammo.ammoShown then return end
-            Ammo.ammoShown = false
-            SendNUIMessage({
-                type = "UI:Ammo:Visibility",
-                data = {
-                    state = false
-                }
-            })
-            return
-        end
 
         Ammo.ammoShown = true
         local _, clipAmmo = GetAmmoInClip(PlayerPedId(), Ammo.LastWeapon)
@@ -72,5 +61,13 @@ AddEventHandler('Hud:Client:Ammo', function(state)
 
     if state == 'Unequip' then
         Ammo.Thread = false
+
+        Ammo.ammoShown = false
+        SendNUIMessage({
+            type = "UI:Ammo:Visibility",
+            data = {
+                state = false
+            }
+        })
     end
 end)
