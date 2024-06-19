@@ -20,7 +20,6 @@ AddEventHandler("Characters:Client:Spawn", function()
 	Hud:Show()
 
 	DisplayRadar(hasValue(LocalPlayer.state.Character:GetData("States"), "GPS"))
-	Hud:ShiftLocation(hasValue(LocalPlayer.state.Character:GetData("States"), "GPS"))
 end)
 
 RegisterNetEvent("UI:Client:Reset", function(manual)

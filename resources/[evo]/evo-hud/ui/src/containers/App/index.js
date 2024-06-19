@@ -23,7 +23,7 @@ import Input from '../../components/Input';
 import Confirm from '../../components/Confirm';
 import InfoOverlay from '../../components/InfoOverlay';
 import Overlay from '../../components/Overlay';
-import { ProgressBoxed, ProgressLegacy, ThirdEye, GemTable } from '../../components';
+import { ProgressBoxed, ThirdEye, GemTable } from '../../components';
 
 import Interaction from '../../components/Interaction';
 
@@ -201,15 +201,6 @@ const App = ({ hidden }) => {
         },
     });
 
-    const getProgressBar = () => {
-        switch (config.progressBar) {
-            case 'boxed':
-                return <ProgressBoxed />
-            default:
-                return <ProgressLegacy />;
-        }
-    }
-
     const getAction = () => {
         switch (config.actionStyle) {
             case 'boxed':
@@ -239,7 +230,7 @@ const App = ({ hidden }) => {
                 {isLis && <List />}
                 {isInp && <Input />}
                 {isConf && <Confirm />}
-                {progShowing && getProgressBar()}
+                {progShowing && <ProgressBoxed />}
                 <ThirdEye />
                 <Interaction />
                 <GemTable />

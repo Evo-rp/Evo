@@ -1,43 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { LinearProgress, Fade, Typography } from '@mui/material';
-import { makeStyles } from '@mui/styles';
-import { styled } from '@mui/material/styles';
-import { linearProgressClasses } from '@mui/material/LinearProgress';
+import { Grid, LinearProgress, Fade } from '@mui/material';
+import { withStyles, makeStyles } from '@mui/styles';
 import useInterval from 'react-useinterval';
 
 import Nui from '../../util/Nui';
 
 const useStyles = makeStyles((theme) => ({
-    container: {
+    wrapper: {
         width: '100%',
-        maxWidth: 400,
+        maxWidth: 500,
         height: 'fit-content',
         position: 'absolute',
-        bottom: 180,
+        bottom: '15%',
         left: 0,
         right: 0,
         margin: 'auto',
-    },
-    details: {
-        height: 40,
-        display: 'flex',
-        background: `${theme.palette.secondary.dark}80`,
-        paddingTop: 10,
-    },
-    timer: {
-        width: 75,
-        fontSize: 18,
-        textAlign: 'center',
-        lineHeight: '22px',
     },
     label: {
         color: theme.palette.text.main,
         fontSize: 18,
         textShadow: '0 0 5px #000',
-        paddingLeft: 15,
-        flex: 1,
-        borderRight: `1px solid ${theme.palette.border.divider}`,
     },
     progressbar: {
         transition: 'none !important',
@@ -58,20 +41,19 @@ export default connect(mapStateToProps)(
     ({ cancelled, finished, failed, label, duration, startTime, dispatch }) => {
         const classes = useStyles();
 
-        const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-            height: 10,
-            [`&.${linearProgressClasses.colorPrimary}`]: {
-                backgroundColor: theme.palette.secondary.dark,
+        const BorderLinearProgress = withStyles((theme) => ({
+            root: {
+                marginLeft: '0.8vh',
+                position: 'absolute',
+                paddingTop: '2vh',
+                borderRadius: '0.6vh',
+                height: '2.2vh',
+                width: '90%',
             },
-            [`& .${linearProgressClasses.bar}`]: {
-                backgroundColor:
-                    cancelled || failed
-                        ? theme.palette.primary.main
-                        : finished
-                        ? theme.palette.success.main
-                        : theme.palette.info.main,
+            colorPrimary: {
+                backgroundColor: 'rgba(18, 18, 18, 0.7)',
             },
-        }));
+        }))(LinearProgress);
 
         const [curr, setCurr] = useState(0);
         const [fin, setFin] = useState(true);
@@ -129,34 +111,30 @@ export default connect(mapStateToProps)(
         useInterval(tick, curr > duration ? null : 10);
         return (
             <Fade in={fin} duration={1000} onExited={hide}>
-                <div className={classes.container}>
-                    <div className={classes.details}>
-                        <div className={classes.label}>
+                <div className={classes.wrapper}>
+                    <Grid container className={classes.label}>
+                        <Grid item xs={5.5} style={{ marginLeft: '1vh' }}>
                             {finished
                                 ? 'Finished'
                                 : failed
-                                ? 'Failed'
-                                : cancelled
-                                ? 'Cancelled'
-                                : label}
-                        </div>
-                        <div className={classes.timer}>
-                            {!cancelled && !finished && !failed ? (
+                                    ? 'Failed'
+                                    : cancelled
+                                        ? 'Cancelled'
+                                        : label}
+                        </Grid>
+                        <Grid item xs={5} style={{ textAlign: 'right' }}>
+                            {!cancelled && !finished && !failed && (
                                 <small>
                                     {Math.round(curr / 1000)}s /{' '}
                                     {Math.round(duration / 1000)}s
                                 </small>
-                            ) : (
-                                <small>-</small>
                             )}
-                        </div>
-                    </div>
+                        </Grid>
+                    </Grid>
                     <BorderLinearProgress
                         variant="determinate"
                         classes={{
-                            determinate: classes.progressbar,
-                            bar: classes.progressbar,
-                            bar1: classes.progressbar,
+                            colorPrimary: classes.colorPrimary,
                         }}
                         value={
                             cancelled || finished || failed

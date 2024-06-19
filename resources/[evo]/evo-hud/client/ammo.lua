@@ -7,8 +7,8 @@ Ammo = {
     SendAmmoToHud = function()
         if Ammo.LastAmmoUpdate > GetGameTimer() then return end
         Ammo.LastAmmoUpdate = GetGameTimer() + 100
-
         Ammo.ammoShown = true
+
         local _, clipAmmo = GetAmmoInClip(PlayerPedId(), Ammo.LastWeapon)
         local totalAmmo = GetAmmoInPedWeapon(PlayerPedId(), Ammo.LastWeapon)
         local ammoRemaining = math.floor(totalAmmo - clipAmmo)
@@ -61,8 +61,8 @@ AddEventHandler('Hud:Client:Ammo', function(state)
 
     if state == 'Unequip' then
         Ammo.Thread = false
-
         Ammo.ammoShown = false
+
         SendNUIMessage({
             type = "UI:Ammo:Visibility",
             data = {

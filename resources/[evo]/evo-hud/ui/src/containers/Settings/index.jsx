@@ -52,17 +52,6 @@ const vehLayouts = [
     },
 ];
 
-const progBarLayouts = [
-    {
-        value: 'legacy',
-        label: 'Legacy',
-    },
-    {
-        value: 'boxed',
-        label: 'Boxed',
-    }
-];
-
 const actionLayouts = [
     {
         value: 'legacy',
@@ -362,34 +351,6 @@ export default () => {
                             </Grid>
                         </Grid>
                         {getVehicleLayoutForm()}
-                        <Grid item xs={12}>
-                            <div className={classes.header}>
-                                Progress Bar Settings
-                            </div>
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        select
-                                        className={classes.field}
-                                        onChange={onChange}
-                                        value={state.progressBar}
-                                        name="progressBar"
-                                        label="Progress Bar Style"
-                                        defaultValue="legacy"
-                                    >
-                                        {progBarLayouts.map((option) => (
-                                            <MenuItem
-                                                key={option.value}
-                                                value={option.value}
-                                            >
-                                                {option.label}
-                                            </MenuItem>
-                                        ))}
-                                    </TextField>
-                                </Grid>
-                            </Grid>
-                        </Grid>
                         <Grid item xs={12}>
                             <div className={classes.header}>
                                 Text Popup Settings
