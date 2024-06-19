@@ -60,13 +60,13 @@ RegisterNetEvent('Hud:Client:Ammo', function(state)
         Ammo.Thread = true
 
         CreateThread(function()
-            while Ammo.Thread do
-                Wait(1000)
-        
+            while Ammo.Thread do        
                 if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then                   
                     Ammo.LastWeapon = GetSelectedPedWeapon(PlayerPedId())
                     Ammo.SendAmmoToHud()
                 end
+
+                Wait(1000)
             end
         end)
     end
