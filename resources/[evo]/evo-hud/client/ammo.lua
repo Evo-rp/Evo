@@ -1,13 +1,12 @@
 Ammo = {
-    LastWeapon = '',
+    LastWeapon = nil,
     Thread = false,
     ammoShown = false,
-    lastammoupdate = 0,
-    AmmoUpdate = 0,
+    LastAmmoUpdate = 0,
 
     SendAmmoToHud = function()
-        if Ammo.lastammoupdate > GetGameTimer() or delayed then return end
-        Ammo.lastammoupdate = GetGameTimer() + 100
+        if Ammo.LastAmmoUpdate > GetGameTimer() then return end
+        Ammo.LastAmmoUpdate = GetGameTimer() + 100
         if not IsPedArmed(PlayerPedId(), 7) or IsPedArmed(PlayerPedId(), 1) or Ammo.LastWeapon == unarmed then
             if not Ammo.ammoShown then return end
             Ammo.ammoShown = false
@@ -56,25 +55,23 @@ CreateThread(function()
     Ammo.HideAmmo()
 end)
 
-AddEventHandler('Hud:Client:Ammo', function(state)
-    if state.Type == 'Equip' then
+RegisterNetEvent('Hud:Client:Ammo', function(state)
+    if state == 'Equip' then
         Ammo.Thread = true
 
-        CreateThread = function()
+        CreateThread(function()
             while Ammo.Thread do
                 Wait(1000)
         
-                if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then        
-                    Ammo.AmmoUpdate = Ammo.AmmoUpdate - 1
-            
+                if GetSelectedPedWeapon(PlayerPedId()) ~= GetHashKey("weapon_plasmap") then                   
                     Ammo.LastWeapon = GetSelectedPedWeapon(PlayerPedId())
                     Ammo.SendAmmoToHud()
                 end
             end
-        end
+        end)
     end
 
-    if state.Type == 'Unequip' then
+    if state == 'Unequip' then
         Ammo.Thread = false
     end
 end)

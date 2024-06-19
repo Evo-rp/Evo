@@ -35,6 +35,7 @@ import DeathTexts from './DeathTexts';
 import Arcade from '../Arcade';
 import Flashbang from './Flashbang';
 import Settings from '../Settings';
+import Ammo from '../../components/Ammo';
 
 library.add(fab, fas, far);
 
@@ -227,6 +228,7 @@ const App = ({ hidden }) => {
                 <DeathTexts />
                 <InfoOverlay />
                 <Overlay />
+                <Ammo />
                 <Hud />
                 <NPCDialog />
                 <Notifications />

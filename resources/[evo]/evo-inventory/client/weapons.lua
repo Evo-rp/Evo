@@ -595,7 +595,7 @@ WEAPONS = {
 		})
 
 		RunDegenThread()
-		TriggerEvent('Hud:Client:Ammo', { Type == 'Equip' })
+		TriggerEvent('Hud:Client:Ammo', 'Equip')
 	end,
 	UnequipIfEquipped = function(self)
 		if _equipped ~= nil then
@@ -656,7 +656,7 @@ WEAPONS = {
 				item = _equipped,
 			}
 		})
-		TriggerEvent('Hud:Client:Ammo', { Type == 'Unequip' })
+		TriggerEvent('Hud:Client:Ammo', 'Unequip')
 	end,
 	Ammo = {
 		Add = function(self, item)
