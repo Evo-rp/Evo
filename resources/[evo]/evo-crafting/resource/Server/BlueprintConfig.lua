@@ -7,7 +7,7 @@ _blueprintConfig['schematic_lockpick'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 2,
+            amount = 20,
         },
         {
             name = 'plastic',
@@ -22,12 +22,8 @@ _blueprintConfig['schematic_handcuffs'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 2,
+            amount = 20,
         },
-        {
-            name = 'plastic',
-            amount = 15
-        }
     }
 }
 _blueprintConfig['schematic_blindfold'] = {
@@ -41,6 +37,37 @@ _blueprintConfig['schematic_blindfold'] = {
         },
     }
 }
+_blueprintConfig['schematic_adv_electronics_kit'] = {
+    name = 'Hacking Kit',
+    Object = 'hei_prop_heist_card_hack',
+    icon = 'terminal',
+    Materials = {
+        {
+            name = 'goldbar',
+            amount = 1,
+        },
+        {
+            name = 'silverbar',
+            amount = 2,
+        },
+        {
+            name = 'electronic_parts',
+            amount = 30,
+        },
+        {
+            name = 'heavy_glue',
+            amount = 5,
+        },
+        {
+            name = 'plastic',
+            amount = 30,
+        },
+        {
+            name = 'copperwire',
+            amount = 20,
+        },
+    }
+}
 -- Robbery Tools
 _blueprintConfig['schematic_thermite'] = {
     name = 'Thermite',
@@ -49,27 +76,19 @@ _blueprintConfig['schematic_thermite'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 50,
+            amount = 100,
         },
         {
             name = 'electronic_parts',
-            amount = 75,
+            amount = 200,
         },
         {
             name = 'copperwire',
-            amount = 5
+            amount = 200
         }
         {
-            name = 'scrapmetal',
-            amount = 250
-        }
-        {
-            name = 'heavy_glue',
-            amount = 5
-        }
-        {
-            name = 'plastic',
-            amount = 15
+            name = 'gunpowder',
+            amount = 10
         }
     }
 }
@@ -80,28 +99,30 @@ _blueprintConfig['schematic_green_laptop'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 75,
+            amount = 25,
         },
         {
             name = 'electronic_parts',
-            amount = 450,
+            amount = 500,
         },
         {
             name = 'copperwire',
-            amount = 15
+            amount = 500
         }
         {
             name = 'scrapmetal',
-            amount = 100
-        }
-        {
-            name = 'silverbar',
-            amount = 2
+            amount = 500
         }
         {
             name = 'plastic',
-            amount = 15
+            amount = 500
         }
+        {
+            name = 'heavy_glue',
+            amount = 500
+        }
+        time = 5000,
+        cooldown = 1000 * 60 * 60 * 12
     }
 }
 _blueprintConfig['schematic_blue_laptop'] = {
@@ -115,23 +136,23 @@ _blueprintConfig['schematic_blue_laptop'] = {
         },
         {
             name = 'electronic_parts',
-            amount = 450,
+            amount = 750,
         },
         {
             name = 'copperwire',
-            amount = 15
+            amount = 750
         }
         {
             name = 'scrapmetal',
-            amount = 100
-        }
-        {
-            name = 'silverbar',
-            amount = 2
+            amount = 750
         }
         {
             name = 'plastic',
-            amount = 15
+            amount = 750
+        }
+        {
+            name = 'heavy_glue',
+            amount = 750
         }
     }
 }
@@ -146,23 +167,23 @@ _blueprintConfig['schematic_redlaptop'] = {
         },
         {
             name = 'electronic_parts',
-            amount = 450,
+            amount = 1000,
         },
         {
             name = 'copperwire',
-            amount = 15
+            amount = 1000
         }
         {
             name = 'scrapmetal',
-            amount = 100
-        }
-        {
-            name = 'silverbar',
-            amount = 2
+            amount = 1000
         }
         {
             name = 'plastic',
-            amount = 15
+            amount = 1000
+        }
+        {
+            name = 'heavy_glue',
+            amount = 1000
         }
     }
 }
@@ -173,27 +194,27 @@ _blueprintConfig['schematic_purple_laptop'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 75,
+            amount = 100,
         },
         {
             name = 'electronic_parts',
-            amount = 450,
+            amount = 1250,
         },
         {
             name = 'copperwire',
-            amount = 15
+            amount = 1250
         }
         {
             name = 'scrapmetal',
-            amount = 100
-        }
-        {
-            name = 'silverbar',
-            amount = 2
+            amount = 1250
         }
         {
             name = 'plastic',
-            amount = 15
+            amount = 1250
+        }
+        {
+            name = 'heavy_glue',
+            amount = 1250
         }
     }
 }
@@ -204,31 +225,27 @@ _blueprintConfig['schematic_yellow_laptop'] = {
     Materials = {
         {
             name = 'ironbar',
-            amount = 75,
+            amount = 125,
         },
         {
             name = 'electronic_parts',
-            amount = 500,
+            amount = 1500,
         },
         {
             name = 'copperwire',
-            amount = 15
+            amount = 1500
         }
         {
             name = 'scrapmetal',
-            amount = 100
-        }
-        {
-            name = 'silverbar',
-            amount = 2
-        }
-        {
-            name = 'goldbar',
-            amount = 1
+            amount = 1500
         }
         {
             name = 'plastic',
-            amount = 15
+            amount = 1500
+        }
+        {
+            name = 'heavy_glue',
+            amount = 1500
         }
     }
 }
@@ -236,15 +253,15 @@ _blueprintConfig['schematic_yellow_laptop'] = {
 _blueprintConfig['schematic_smg_ammo'] = {
     name = 'SMG Ammo',
     Object = 'hei_prop_hei_ammo_single', 
-    icon = 'smgammo', --idk
+    icon = 'magazine', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 2
+            amount = 6
         }
         {
             name = 'scrapmetal',
-            amount = 5
+            amount = 12
         }
         {
             name = 'gunpowder',
@@ -255,15 +272,15 @@ _blueprintConfig['schematic_smg_ammo'] = {
 _blueprintConfig['schematic_shotgun_ammo'] = {
     name = 'Shotgun Ammo',
     Object = 'hei_prop_hei_ammo_single', 
-    icon = 'shotgunammo', --idk
+    icon = 'magazine', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 2
+            amount = 6
         }
         {
             name = 'scrapmetal',
-            amount = 5
+            amount = 12
         }
         {
             name = 'gunpowder',
@@ -275,26 +292,22 @@ _blueprintConfig['schematic_shotgun_ammo'] = {
         }
     }
 }
-_blueprintConfig['schematic_shotgun_ammo'] = {
-    name = 'Shotgun Ammo',
+_blueprintConfig['schematic_ar_ammo'] = {
+    name = 'Assault Rifle Ammo',
     Object = 'hei_prop_hei_ammo_single', 
-    icon = 'shotgunammo', --idk
+    icon = 'magazine', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 2
+            amount = 12
         }
         {
             name = 'scrapmetal',
-            amount = 5
+            amount = 24
         }
         {
             name = 'gunpowder',
-            amount = 5
-        }
-        {
-            name = 'plastic',
-            amount = 5
+            amount = 10
         }
     }
 } 
@@ -302,11 +315,11 @@ _blueprintConfig['schematic_shotgun_ammo'] = {
 _blueprintConfig['schematic_mp5'] = {
     name = 'MP5 SMG',
     Object = 'w_sb_smg', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 75
+            amount = 85
         }
         {
             name = 'scrapmetal',
@@ -322,38 +335,7 @@ _blueprintConfig['schematic_mp5'] = {
         }
         {
             name = 'heavy_glue',
-            amount = 25
-        }
-        {
-            name = 'ironbar',
-            amount = 50
-        }
-    }
-} 
-_blueprintConfig['schematic_mp5'] = {
-    name = 'MP5 SMG',
-    Object = 'w_sb_smg', 
-    icon = 'pistol', --idk
-    Materials = {
-        {
-            name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
-        }
-        {
-            name = 'gunpowder',
             amount = 125
-        }
-        {
-            name = 'plastic',
-            amount = 500
-        }
-        {
-            name = 'heavy_glue',
-            amount = 25
         }
         {
             name = 'ironbar',
@@ -361,7 +343,42 @@ _blueprintConfig['schematic_mp5'] = {
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 300
+        }
+    }
+} 
+_blueprintConfig['schematic_smg'] = {
+    name = 'Sub Machine Gun',
+    Object = 'w_sb_smg', 
+    icon = 'pistol', 
+    Materials = {
+        {
+            name = 'copperwire',
+            amount = 85
+        }
+        {
+            name = 'scrapmetal',
+            amount = 250
+        }
+        {
+            name = 'gunpowder',
+            amount = 125
+        }
+        {
+            name = 'plastic',
+            amount = 500
+        }
+        {
+            name = 'heavy_glue',
+            amount = 125
+        }
+        {
+            name = 'ironbar',
+            amount = 75
+        }
+        {
+            name = 'rubber',
+            amount = 300
         }
         
     }
@@ -369,11 +386,11 @@ _blueprintConfig['schematic_mp5'] = {
 _blueprintConfig['schematic_appistol'] = {
     name = 'AP Pistol',
     Object = 'w_pi_appistol', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
+            amount = 170
         }
         {
             name = 'scrapmetal',
@@ -405,15 +422,11 @@ _blueprintConfig['schematic_appistol'] = {
 _blueprintConfig['schematic_miniuzi'] = {
     name = 'Mini Uzi',
     Object = 'w_sb_microsmg', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
+            amount = 170
         }
         {
             name = 'gunpowder',
@@ -425,15 +438,15 @@ _blueprintConfig['schematic_miniuzi'] = {
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 175
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 125
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 400
         }
         
     }
@@ -441,15 +454,11 @@ _blueprintConfig['schematic_miniuzi'] = {
 _blueprintConfig['schematic_mp9'] = {
     name = 'MP9',
     Object = 'W_PI_PistolSMG', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
+            amount = 170
         }
         {
             name = 'gunpowder',
@@ -461,15 +470,15 @@ _blueprintConfig['schematic_mp9'] = {
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 175
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 125
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 400
         }
         
     }
@@ -477,15 +486,11 @@ _blueprintConfig['schematic_mp9'] = {
 _blueprintConfig['schematic_mpx'] = {
     name = 'MPX',
     Object = 'w_sb_pdw', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
+            amount = 170
         }
         {
             name = 'gunpowder',
@@ -493,19 +498,19 @@ _blueprintConfig['schematic_mpx'] = {
         }
         {
             name = 'plastic',
-            amount = 500
+            amount = 600
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 225
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 175
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 500
         }
         
     }
@@ -513,14 +518,10 @@ _blueprintConfig['schematic_mpx'] = {
 _blueprintConfig['schematic_pp19'] = {
     name = 'PP19',
     Object = 'w_sb_smg2', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
             amount = 250
         }
         {
@@ -529,19 +530,19 @@ _blueprintConfig['schematic_pp19'] = {
         }
         {
             name = 'plastic',
-            amount = 500
+            amount = 600
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 225
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 175
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 500
         }
         
     }
@@ -549,14 +550,10 @@ _blueprintConfig['schematic_pp19'] = {
 _blueprintConfig['schematic_tec9'] = {
     name = 'TEC9',
     Object = 'w_sb_machinepistol', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 500
-        }
-        {
-            name = 'scrapmetal',
             amount = 250
         }
         {
@@ -565,19 +562,19 @@ _blueprintConfig['schematic_tec9'] = {
         }
         {
             name = 'plastic',
-            amount = 500
+            amount = 600
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 225
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 175
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 500
         }
         
     }
@@ -585,15 +582,11 @@ _blueprintConfig['schematic_tec9'] = {
 _blueprintConfig['schematic_ak74'] = {
     name = 'AK74',
     Object = 'w_ar_assaultrifle_luxe', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
             amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
         }
         {
             name = 'gunpowder',
@@ -601,19 +594,19 @@ _blueprintConfig['schematic_ak74'] = {
         }
         {
             name = 'plastic',
-            amount = 500
+            amount = 1100
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 500
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 300
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 1000
         }
         
     }
@@ -621,15 +614,11 @@ _blueprintConfig['schematic_ak74'] = {
 _blueprintConfig['schematic_ak47'] = {
     name = 'AK47',
     Object = 'w_ar_assaultrifle', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
             amount = 500
-        }
-        {
-            name = 'scrapmetal',
-            amount = 250
         }
         {
             name = 'gunpowder',
@@ -637,19 +626,19 @@ _blueprintConfig['schematic_ak47'] = {
         }
         {
             name = 'plastic',
-            amount = 500
+            amount = 1100
         }
         {
             name = 'heavy_glue',
-            amount = 25
+            amount = 500
         }
         {
             name = 'ironbar',
-            amount = 75
+            amount = 300
         }
         {
             name = 'rubber',
-            amount = 450
+            amount = 1000
         }
         
     }
@@ -657,15 +646,15 @@ _blueprintConfig['schematic_ak47'] = {
 _blueprintConfig['schematic_g45'] = {
     name = 'Glock 45',
     Object = 'w_pi_combatpistol', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 8
+            amount = 30
         }
         {
             name = 'scrapmetal',
-            amount = 5
+            amount = 25
         }
         {
             name = 'gunpowder',
@@ -673,19 +662,19 @@ _blueprintConfig['schematic_g45'] = {
         }
         {
             name = 'plastic',
-            amount = 6
+            amount = 100
         }
         {
             name = 'heavy_glue',
-            amount = 4
+            amount = 45
         }
         {
             name = 'ironbar',
-            amount = 3
+            amount = 10
         }
         {
             name = 'rubber',
-            amount = 8
+            amount = 100
         }
         
     }
@@ -693,15 +682,15 @@ _blueprintConfig['schematic_g45'] = {
 _blueprintConfig['schematic_l5'] = {
     name = 'Desert Eagle',
     Object = 'w_pi_pistol50', 
-    icon = 'pistol', --idk
+    icon = 'pistol', 
     Materials = {
         {
             name = 'copperwire',
-            amount = 8
+            amount = 30
         }
         {
             name = 'scrapmetal',
-            amount = 5
+            amount = 25
         }
         {
             name = 'gunpowder',
@@ -709,23 +698,19 @@ _blueprintConfig['schematic_l5'] = {
         }
         {
             name = 'plastic',
-            amount = 6
+            amount = 100
         }
         {
             name = 'heavy_glue',
-            amount = 4
+            amount = 45
         }
         {
             name = 'ironbar',
-            amount = 3
+            amount = 10
         }
         {
             name = 'rubber',
-            amount = 8
-        }
-        {
-            name = 'silver_bar',
-            amount = 1
+            amount = 100
         }
         
     }
