@@ -15,6 +15,7 @@ _blueprintConfig['schematic_lockpick'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_handcuffs'] = {
     name = 'Handcuffs',
     Object = 'prop_cs_cuffs_01',
@@ -26,6 +27,7 @@ _blueprintConfig['schematic_handcuffs'] = {
         },
     }
 }
+
 _blueprintConfig['schematic_blindfold'] = {
     name = 'Blindfold',
     Object = 'p_cs_sack_01_s',
@@ -37,6 +39,7 @@ _blueprintConfig['schematic_blindfold'] = {
         },
     }
 }
+
 _blueprintConfig['schematic_adv_electronics_kit'] = {
     name = 'Hacking Kit',
     Object = 'hei_prop_heist_card_hack',
@@ -68,7 +71,7 @@ _blueprintConfig['schematic_adv_electronics_kit'] = {
         },
     }
 }
--- Robbery Tools
+
 _blueprintConfig['schematic_thermite'] = {
     name = 'Thermite',
     Object = 'hei_prop_heist_thermite',
@@ -92,6 +95,7 @@ _blueprintConfig['schematic_thermite'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_green_laptop'] = {
     name = 'Green Laptop',
     Object = 'gr_prop_gr_laptop_01a',
@@ -125,6 +129,7 @@ _blueprintConfig['schematic_green_laptop'] = {
         cooldown = 1000 * 60 * 60 * 12
     }
 }
+
 _blueprintConfig['schematic_blue_laptop'] = {
     name = 'Blue Laptop',
     Object = 'gr_prop_gr_laptop_01a',
@@ -156,6 +161,7 @@ _blueprintConfig['schematic_blue_laptop'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_redlaptop'] = {
     name = 'Red Laptop',
     Object = 'gr_prop_gr_laptop_01a',
@@ -187,6 +193,7 @@ _blueprintConfig['schematic_redlaptop'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_purple_laptop'] = {
     name = 'Purple Laptop',
     Object = 'gr_prop_gr_laptop_01a',
@@ -218,6 +225,7 @@ _blueprintConfig['schematic_purple_laptop'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_yellow_laptop'] = {
     name = 'Yellow Laptop',
     Object = 'gr_prop_gr_laptop_01a',
@@ -249,7 +257,7 @@ _blueprintConfig['schematic_yellow_laptop'] = {
         }
     }
 }
--- Ammo
+
 _blueprintConfig['schematic_smg_ammo'] = {
     name = 'SMG Ammo',
     Object = 'hei_prop_hei_ammo_single', 
@@ -269,6 +277,7 @@ _blueprintConfig['schematic_smg_ammo'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_shotgun_ammo'] = {
     name = 'Shotgun Ammo',
     Object = 'hei_prop_hei_ammo_single', 
@@ -292,6 +301,7 @@ _blueprintConfig['schematic_shotgun_ammo'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_ar_ammo'] = {
     name = 'Assault Rifle Ammo',
     Object = 'hei_prop_hei_ammo_single', 
@@ -311,7 +321,7 @@ _blueprintConfig['schematic_ar_ammo'] = {
         }
     }
 } 
--- Weapons
+
 _blueprintConfig['schematic_mp5'] = {
     name = 'MP5 SMG',
     Object = 'w_sb_smg', 
@@ -346,7 +356,8 @@ _blueprintConfig['schematic_mp5'] = {
             amount = 300
         }
     }
-} 
+}
+
 _blueprintConfig['schematic_smg'] = {
     name = 'Sub Machine Gun',
     Object = 'w_sb_smg', 
@@ -383,6 +394,7 @@ _blueprintConfig['schematic_smg'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_appistol'] = {
     name = 'AP Pistol',
     Object = 'w_pi_appistol', 
@@ -419,6 +431,7 @@ _blueprintConfig['schematic_appistol'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_miniuzi'] = {
     name = 'Mini Uzi',
     Object = 'w_sb_microsmg', 
@@ -451,6 +464,7 @@ _blueprintConfig['schematic_miniuzi'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_mp9'] = {
     name = 'MP9',
     Object = 'W_PI_PistolSMG', 
@@ -483,6 +497,7 @@ _blueprintConfig['schematic_mp9'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_mpx'] = {
     name = 'MPX',
     Object = 'w_sb_pdw', 
@@ -515,6 +530,7 @@ _blueprintConfig['schematic_mpx'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_pp19'] = {
     name = 'PP19',
     Object = 'w_sb_smg2', 
@@ -547,6 +563,7 @@ _blueprintConfig['schematic_pp19'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_tec9'] = {
     name = 'TEC9',
     Object = 'w_sb_machinepistol', 
@@ -579,6 +596,7 @@ _blueprintConfig['schematic_tec9'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_ak74'] = {
     name = 'AK74',
     Object = 'w_ar_assaultrifle_luxe', 
@@ -611,6 +629,7 @@ _blueprintConfig['schematic_ak74'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_ak47'] = {
     name = 'AK47',
     Object = 'w_ar_assaultrifle', 
@@ -643,6 +662,7 @@ _blueprintConfig['schematic_ak47'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_g45'] = {
     name = 'Glock 45',
     Object = 'w_pi_combatpistol', 
@@ -679,6 +699,7 @@ _blueprintConfig['schematic_g45'] = {
         
     }
 } 
+
 _blueprintConfig['schematic_l5'] = {
     name = 'Desert Eagle',
     Object = 'w_pi_pistol50', 
@@ -715,7 +736,7 @@ _blueprintConfig['schematic_l5'] = {
         
     }
 } 
--- Attachments 
+
 _blueprintConfig['schematic_weapon_flashlight'] = {
     name = 'Weapon Flashlight',
     Object = 'w_at_ar_flash',
@@ -735,6 +756,7 @@ _blueprintConfig['schematic_weapon_flashlight'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_pistol_ext_mag'] = {
     name = 'Pistol Extended Magazine',
     Object = 'w_pi_pistol50_mag2',
@@ -754,6 +776,7 @@ _blueprintConfig['schematic_pistol_ext_mag'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_smg_ext_mag'] = {   
     name = 'SMG Extended Magazine',
     Object = 'w_sb_smg_mag2',
@@ -777,6 +800,7 @@ _blueprintConfig['schematic_smg_ext_mag'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_rifle_ext_mag'] = {   
     name = 'Rifle Extended Magazine',
     Object = 'w_ar_assaultrifle_mag2',
@@ -804,6 +828,7 @@ _blueprintConfig['schematic_rifle_ext_mag'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_drum_mag'] = {   
     name = 'Drum Magazine',
     Object = 'w_sb_compactsmg_boxmag',
@@ -831,6 +856,7 @@ _blueprintConfig['schematic_drum_mag'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_box_mag'] = {   
     name = 'Box Magazine',
     Object = 'w_mg_combatmg_mag1',
@@ -858,6 +884,7 @@ _blueprintConfig['schematic_box_mag'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_pistol_suppressor'] = {   
     name = 'Pistol Suppressor',
     Object = 'w_at_pi_supp',
@@ -885,6 +912,7 @@ _blueprintConfig['schematic_pistol_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_adv_pistol_suppressor'] = {   
     name = 'Advanced Pistol Suppressor',
     Object = 'w_at_pi_supp_2',
@@ -912,6 +940,7 @@ _blueprintConfig['schematic_adv_pistol_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_smg_suppressor'] = {   
     name = 'SMG Suppressor',
     Object = 'w_at_pi_supp',
@@ -939,6 +968,7 @@ _blueprintConfig['schematic_smg_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_adv_smg_suppressor'] = {   
     name = 'Advanced SMG Suppressor',
     Object = 'w_at_pi_supp_2',
@@ -966,6 +996,7 @@ _blueprintConfig['schematic_adv_smg_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_ar_suppressor'] = {   
     name = 'Assault Rifle Suppressor',
     Object = 'w_at_ar_supp',
@@ -993,6 +1024,7 @@ _blueprintConfig['schematic_ar_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_adv_ar_suppressor'] = {   
     name = 'Advanced Assault Rifle Suppressor',
     Object = 'w_at_ar_supp_02',
@@ -1020,6 +1052,7 @@ _blueprintConfig['schematic_adv_ar_suppressor'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_scope_reddot'] = {   
     name = 'Red Dot Sight',
     Object = 'w_at_scope_macro',
@@ -1047,6 +1080,7 @@ _blueprintConfig['schematic_scope_reddot'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_scope_small'] = {   
     name = 'Small Weapon Scope',
     Object = 'w_at_scope_small',
@@ -1074,6 +1108,7 @@ _blueprintConfig['schematic_scope_small'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_scope_med'] = {   
     name = 'Medium Weapon Scope',
     Object = 'w_at_scope_medium',
@@ -1101,6 +1136,7 @@ _blueprintConfig['schematic_scope_med'] = {
         }
     }
 }
+
 _blueprintConfig['schematic_scope_lrg'] = {   
     name = 'Large Weapon Scope',
     Object = 'w_at_scope_large',
