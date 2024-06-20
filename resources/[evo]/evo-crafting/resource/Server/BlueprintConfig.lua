@@ -396,7 +396,7 @@ _blueprintConfig['schematic_appistol'] = {
 
 _blueprintConfig['schematic_miniuzi'] = {
     name = 'Mini Uzi',
-    Object = 'w_sb_microsmg', 
+    Object = 'markomods-uzi', 
     icon = 'WEAPON_MINIUZI', 
     Materials = {
         {
@@ -429,7 +429,7 @@ _blueprintConfig['schematic_miniuzi'] = {
 
 _blueprintConfig['schematic_mp9'] = {
     name = 'MP9',
-    Object = 'W_PI_PistolSMG', 
+    Object = 'w_sb_mp9a', 
     icon = 'WEAPON_MP9A', 
     Materials = {
         {
@@ -462,7 +462,7 @@ _blueprintConfig['schematic_mp9'] = {
 
 _blueprintConfig['schematic_mpx'] = {
     name = 'MPX',
-    Object = 'w_sb_pdw', 
+    Object = 'mpx', 
     icon = 'WEAPON_MPX', 
     Materials = {
         {
@@ -495,7 +495,7 @@ _blueprintConfig['schematic_mpx'] = {
 
 _blueprintConfig['schematic_pp19'] = {
     name = 'PP19',
-    Object = 'w_sb_smg2', 
+    Object = 'pp19', 
     icon = 'WEAPON_PP19', 
     Materials = {
         {
@@ -561,7 +561,7 @@ _blueprintConfig['schematic_tec9'] = {
 
 _blueprintConfig['schematic_ak74'] = {
     name = 'AK74',
-    Object = 'w_ar_assaultrifle_luxe', 
+    Object = 'markomods-ak74', 
     icon = 'WEAPON_AK74', 
     Materials = {
         {
@@ -627,7 +627,7 @@ _blueprintConfig['schematic_ak47'] = {
 
 _blueprintConfig['schematic_g45'] = {
     name = 'Glock 45',
-    Object = 'w_pi_combatpistol', 
+    Object = 'markomods-glock45', 
     icon = 'WEAPON_G45', 
     Materials = {
         {
