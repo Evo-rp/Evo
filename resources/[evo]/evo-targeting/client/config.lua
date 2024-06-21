@@ -124,6 +124,21 @@ Config.VehicleMenu = {
 		end
 	},
 	{
+		icon = "store",
+		isEnabled = function(data, entityData)
+			return isNearTrunk(entityData.entity, 4.0, true)
+		end,
+		text = "Grab Package",
+		event = "Deliveries:Client:Grab",
+		model = `benson`,
+		tempjob = "Deliveries",
+		data = {},
+		minDist = 10.0,
+		isEnabled = function(data, entityData)
+			return not LocalPlayer.state.hasDeliveryPackage and LocalPlayer.state.inStoreZone
+		end
+	},
+	{
 		icon = "capsules",
 		text = "Handoff Contraband",
 		event = "OxyRun:Client:MakeSale",
