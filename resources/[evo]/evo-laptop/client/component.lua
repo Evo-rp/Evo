@@ -6,7 +6,6 @@ LAPTOP = {
 		Interaction:Hide()
 		LocalPlayer.state.laptopOpen = true
 		DisplayRadar(true)
-		Hud:ShiftLocation(true)
 		SendNUIMessage({ type = "LAPTOP_VISIBLE" })
 		SetNuiFocus(true, true)
 		FetchGangApp()
@@ -79,7 +78,6 @@ LAPTOP = {
 			DisplayRadar(false)
 		end
 
-		Hud:ShiftLocation(false)
 		SetNuiFocus(false, false)
 		--TriggerEvent("UI:Client:Close", "laptop")
 	end,
