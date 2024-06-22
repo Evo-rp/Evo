@@ -1,53 +1,74 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { Fragment, useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
+import { Slide } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
-	wrapper: {
-		height: 'fit-content',
-		width: 'fit-content',
-		background: theme.palette.secondary.dark,
+	container: {
 		position: 'absolute',
 		top: 48,
-		left: 0,
-		padding: 10,
-		fontSize: 22,
-		border: `1px solid ${theme.palette.border.divider}`,
-		borderRight: 'none',
+		right: 0,
+		margin: 'auto',
+		height: 40,
+		width: 'fit-content',
+		pointerEvents: 'none',
+		display: 'flex',
+		zIndex: 1,
+		background: `${theme.palette.secondary.dark}80`,
+		borderLeft: `4px solid ${theme.palette.info.main}`,
+		'& small': {
+			fontSize: 12,
+			display: 'block',
+			lineHeight: '40px',
+			padding: '0 5px',
+		},
 	},
-	text: {
+	label: {
 		color: theme.palette.text.main,
-		padding: 14,
-		fontSize: 16,
-		letterSpacing: 1,
-		textTransform: 'uppercase',
-		whiteSpace: 'nowrap',
-		textAlign: 'left',
-	},
-	key: {
-		color: theme.palette.primary.main,
-		fontWeight: 'bold',
+		fontSize: 18,
+		lineHeight: '40px',
+		textShadow: '0 0 5px #000',
+		paddingLeft: 5,
+		paddingRight: 15,
+		flex: 1,
+		borderLeft: `1px solid ${theme.palette.border.divider}`,
+		height: 'fit-content',
+		display: 'flex',
+
+		'& .highlight': {
+			color: theme.palette.primary.main,
+			fontWeight: 'bold',
+			marginRight: 4,
+			'&:not(:first-of-type)': {
+				marginLeft: 2,
+			},
+		},
+
+		'& .sep': {
+			marginLeft: 4,
+			marginRight: 4,
+			color: theme.palette.text.alt,
+		}
 	},
 }));
 
-export default (props) => {
+export default ({ message }) => {
 	const classes = useStyles();
-
 	return (
-		<div className={classes.wrapper}>
-			<div className={classes.text}>
-				<div>
-					<span className={classes.key}>Q</span>
-					<span>{` / `}</span>
-					<span className={classes.key}>E</span>: Rotate
-				</div>
-				<div>
-					<span className={classes.key}>Mousewheel</span>: Zoom
-				</div>
-				<div>
-					<span className={classes.key}>R</span>: Animation
+		<Slide direction="left" in={true}>
+			<div className={classes.container}>
+				<small>HELP</small>
+				<div className={classes.label}>
+					<span className="highlight">Q</span>/
+					<span className="highlight">E</span>
+					Rotate
+					<span className="sep">|</span>
+					<span className="highlight">Mousewheel</span>
+					Zoom
+					<span className="sep">|</span>
+					<span className="highlight">R</span>
+					Animation
 				</div>
 			</div>
-		</div>
+		</Slide>
 	);
 };

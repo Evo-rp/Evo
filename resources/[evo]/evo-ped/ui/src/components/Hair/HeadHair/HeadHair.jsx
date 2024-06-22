@@ -12,13 +12,11 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
     overflowX: 'hidden',
     overflowY: 'auto',
-    margin: 25,
+		margin: 0,
     display: 'grid',
     gridGap: 0,
     gridTemplateColumns: '20% 80%',
     justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
   },
   body2: {
     maxHeight: '100%',
@@ -28,8 +26,6 @@ const useStyles = makeStyles(theme => ({
     gridGap: 0,
 		gridTemplateColumns: '49% 49%',
     justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
   },
   color: {
     width: '50%',

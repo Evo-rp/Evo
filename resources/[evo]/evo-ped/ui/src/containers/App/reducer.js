@@ -1,6 +1,6 @@
 export const initialState = {
-	hidden: true,
-	state: '',
+	hidden: process.env.NODE_ENV == 'production',
+	state: process.env.NODE_ENV == 'production' ? '' : 'SURGERY',
 	loading: false,
 	camera: 0,
 	isNekked: false,
@@ -11,6 +11,8 @@ export const initialState = {
 		SHOP: 100,
 		TATTOO: 100,
 	},
+	tattoos: Array(),
+	whitelistedPeds: Array(),
 	ped: {
 		model: '',
 		customization: {
@@ -332,7 +334,7 @@ const appReducer = (state = initialState, action) => {
 				},
 			};
 		case 'UPDATE_PED_FACE_FEATURE':
-			const newFeatures = {...state.ped.customization.face.features};
+			const newFeatures = { ...state.ped.customization.face.features };
 			newFeatures[action.payload.index] = action.payload.value;
 			return {
 				...state,
@@ -558,6 +560,16 @@ const appReducer = (state = initialState, action) => {
 						}),
 					},
 				},
+			};
+		case 'SET_TATTOOS_DATA':
+			return {
+				...state,
+				tattoos: action.payload.data,
+			};
+		case 'SET_WL_PEDS':
+			return {
+				...state,
+				whitelistedPeds: action.payload.data,
 			};
 		case 'UI_RESET': {
 			return {

@@ -4,22 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Nui from '../../../util/Nui';
 import { Checkbox, Slider, Ticker } from '../../UIComponents';
-import { connect, useDispatch } from 'react-redux';
+import { connect, useDispatch, useSelector } from 'react-redux';
 import ElementBox from '../../UIComponents/ElementBox/ElementBox';
-import { Tattoos } from '../../Tattoos/Data';
 import { Button, IconButton } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
 		maxHeight: '100%',
 		overflow: 'hidden',
-		margin: 25,
+		margin: 0,
 		display: 'grid',
 		gridGap: 0,
 		gridTemplateColumns: '75% 25%',
 		justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
 	},
 	btnWrapper: {
 		position: 'relative',
@@ -36,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	add: {
 		marginTop: 0,
-        marginBottom: 15,
+		marginBottom: 15,
 		padding: 5,
 	},
 }));
@@ -44,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
 export default connect()((props) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const tattoos = Tattoos.filter(
+	const Tattoos = useSelector((state) => state.app.tattoos);
+	const tattoos = Tattoos?.filter(
 		(t) => t.Zone == props.data.type && Boolean(t),
 	);
 
@@ -61,9 +59,9 @@ export default connect()((props) => {
 
 	const onChange = (value, data, index) => {
 		return (d) => {
-            if (!Boolean(value) || !Boolean(tattoos[value])) return;
-			
-            let payload = {
+			if (!Boolean(value) || !Boolean(tattoos[value])) return;
+
+			let payload = {
 				type: props.data.type,
 				data: tattoos[value],
 				index,
@@ -99,7 +97,7 @@ export default connect()((props) => {
 			</Button>
 
 			{props.current.map((tattoo, k) => {
-                if (tattoo.Zone != props.data.type) return null;
+				if (tattoo.Zone != props.data.type) return null;
 				try {
 					let curr =
 						tattoo?.Name == ''

@@ -7,19 +7,17 @@ import { Checkbox, Ticker } from '../../UIComponents';
 import { SetPed } from '../../../actions/pedActions';
 import Nui from '../../../util/Nui';
 import PedModels from './peds';
-import { Alert } from '@mui/material';
+import { Alert, Select, FormControl, MenuItem, ListItemText, OutlinedInput } from '@mui/material';
 
 const useStyles = makeStyles((theme) => ({
 	body: {
 		maxHeight: '100%',
 		overflow: 'hidden',
-		margin: 25,
+		margin: 0,
 		display: 'grid',
 		gridGap: 0,
 		gridTemplateColumns: '100%',
 		justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
 	},
 }));
 
@@ -31,12 +29,45 @@ export default (props) => {
 	const curr =
 		peds.indexOf(props.model) == -1 ? 0 : peds.indexOf(props.model);
 
+	const whitelistedPeds = useSelector((state) => state.app.whitelistedPeds);
+	const [cPed, setCPed] = useState('none');
 	const [disabled, setDisabled] = useState(false);
+
+	useEffect(() => {
+		if (whitelistedPeds.find(p => p.model === props.model)) {
+			setCPed(props.model);
+		} else {
+			setCPed('none');
+		};
+	}, [props.model]);
 
 	const onChange = async (v, d) => {
 		try {
 			setDisabled(true);
 			const payload = { value: peds[v] };
+			let res = await (await Nui.send('SetPed', payload)).json();
+			if (res) {
+				dispatch({
+					type: 'UPDATE_PED',
+					payload,
+				});
+			}
+			setDisabled(false);
+		} catch (err) {
+			console.log(err);
+			setDisabled(false);
+		}
+	};
+
+	const onWLChange = async (ped) => {
+		if (ped === 'none') {
+			onChange(0);
+			return;
+		};
+
+		try {
+			setDisabled(true);
+			const payload = { value: ped };
 			let res = await (await Nui.send('SetPed', payload)).json();
 			if (res) {
 				dispatch({
@@ -71,6 +102,27 @@ export default (props) => {
 					onChange={onChange}
 				/>
 			</ElementBox>
+			{whitelistedPeds.length > 0 && <ElementBox label={'Whitelisted Ped Model'} bodyClass={classes.body}>
+				<Select
+					name="wlPed"
+					disabled={disabled}
+					fullWidth
+					value={cPed}
+					onChange={e => onWLChange(e.target.value)}
+					input={<OutlinedInput fullWidth />}
+				>
+					<MenuItem key="none" value="none">
+						<ListItemText primary="None" />
+					</MenuItem>
+					{whitelistedPeds.map(c => {
+						return (
+							<MenuItem key={c.model} value={c.model}>
+								<ListItemText primary={c.label} />
+							</MenuItem>
+						);
+					})}
+				</Select>
+			</ElementBox>}
 		</>
 	);
 };

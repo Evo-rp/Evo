@@ -10,13 +10,11 @@ const useStyles = makeStyles((theme) => ({
 	body: {
 		maxHeight: '100%',
 		overflow: 'hidden',
-		margin: 25,
+		margin: 0,
 		display: 'grid',
 		gridGap: 0,
 		gridTemplateColumns: '10% 45% 45%',
 		justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
 	},
 }));
 

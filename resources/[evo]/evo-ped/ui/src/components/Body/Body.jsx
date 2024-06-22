@@ -28,11 +28,7 @@ export default ({ armsOnly, blockPed }) => {
 	} else {
 		return (
 			<Wrapper>
-				<AppBar
-					position="static"
-					color="secondary"
-					style={{ paddingBottom: 15 }}
-				>
+				<AppBar position="static" color="secondary">
 					<Tabs
 						value={value}
 						onChange={handleChange}
@@ -55,9 +51,11 @@ export default ({ armsOnly, blockPed }) => {
 				<TabPanel value={value} index={1}>
 					<BodyOverlays />
 				</TabPanel>
-				{!blockPed && <TabPanel value={value} index={2}>
-					<Ped />
-				</TabPanel>}
+				{!blockPed && (
+					<TabPanel value={value} index={2}>
+						<Ped />
+					</TabPanel>
+				)}
 			</Wrapper>
 		);
 	}

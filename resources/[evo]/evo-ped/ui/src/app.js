@@ -24,21 +24,21 @@ const MOUNT_NODE = document.getElementById('app');
 const render = () => {
 	const muiTheme = createTheme({
 		typography: {
-			fontFamily: ['Oswald'],
+            fontFamily: ['Source Sans Pro'],
 		},
 		palette: {
 			primary: {
-				main: '#7702e5',
-				light: '#ff2100',
-				dark: '#7702e5',
-				contrastText: '#ffffff',
-			},
-			secondary: {
-				main: '#141414',
-				light: '#1c1c1c',
-				dark: '#0f0f0f',
-				contrastText: '#ffffff',
-			},
+                main: '#7702e5',
+                light: '#9035e6',
+                dark: '#9902e5',
+                contrastText: '#ffffff',
+            },
+            secondary: {
+                main: '#141414',
+                light: '#1c1c1c',
+                dark: '#0f0f0f',
+                contrastText: '#ffffff',
+            },
 			error: {
 				main: '#6e1616',
 				light: '#a13434',
@@ -109,11 +109,17 @@ const render = () => {
 							transition: 'background ease-in 0.15s',
 						},
 						'&::-webkit-scrollbar-thumb:hover': {
-							background: '#56000017',
+							background: '#9035e6',
 						},
 						'&::-webkit-scrollbar-track': {
 							background: 'transparent',
 						},
+					},
+					html: {
+						background:
+							process.env.NODE_ENV != 'production'
+								? '#1e1e1e'
+								: 'transparent',
 					},
 				},
 			},

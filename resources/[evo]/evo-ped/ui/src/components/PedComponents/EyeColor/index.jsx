@@ -11,10 +11,8 @@ const useStyles = makeStyles((theme) => ({
 		maxHeight: '100%',
 		overflowX: 'hidden',
 		overflowY: 'auto',
-		margin: 25,
+		margin: 0,
 		justifyContent: 'space-around',
-		background: theme.palette.secondary.light,
-		border: `2px solid ${theme.palette.border.divider}`,
 	},
 }));
 

@@ -30,13 +30,17 @@ export default (props) => {
 
 	useEffect(() => {
 		const e = async () => {
-			setLoading(true);
-			let res = await (
-				await Nui.send('ToggleNekked', isNekked || isForced)
-			).json();
-			setTimeout(() => {
-				setLoading(false);
-			}, 1000);
+			try {
+				setLoading(true);
+				let res = await (
+					await Nui.send('ToggleNekked', isNekked || isForced)
+				).json();
+				setTimeout(() => {
+					setLoading(false);
+				}, 1000);
+			} catch (err) {
+
+			}
 		};
 		e();
 	}, [isNekked, isForced]);

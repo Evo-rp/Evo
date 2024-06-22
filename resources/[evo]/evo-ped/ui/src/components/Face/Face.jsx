@@ -21,11 +21,7 @@ export default connect()(() => {
 
 	return (
 		<Wrapper>
-			<AppBar
-				position="static"
-				color="secondary"
-				style={{ paddingBottom: 15 }}
-			>
+			<AppBar position="static" color="secondary">
 				<Tabs
 					value={value}
 					onChange={handleChange}

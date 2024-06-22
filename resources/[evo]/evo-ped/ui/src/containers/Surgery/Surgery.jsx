@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Tab, Tabs, IconButton, Button, ButtonGroup, Tooltip } from '@mui/material';
+import { Tab, Tabs, IconButton, Button, ButtonGroup } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,33 +14,21 @@ import Naked from '../../components/PedComponents/Naked';
 import Nui from '../../util/Nui';
 
 const useStyles = makeStyles((theme) => ({
-	headerContainer: {
-		backgroundColor: '#141414',
-		height: 60,
-		width: '100%'
-	},
 	save: {
 		position: 'absolute',
-		right: 10,
-		top: 10,
-		transition: 'filter ease-in 0.15s',
+		bottom: '1%',
+		left: '.2%',
+		width: '7.5vh',
 		'& svg': {
 			marginLeft: 6,
 		},
-		'&:hover': {
-			filter: 'brightness(0.7)',
-		},
 	},
 	camBar: {
-		position: 'absolute',
 		background: theme.palette.secondary.dark,
-		width: 'fit-content',
 		height: 'fit-content',
-		right: 590
+		width: '100vw',
 	},
 	btnBar: {
-		position: 'absolute',
-		right: 0,
 		background: theme.palette.secondary.dark,
 		width: 'fit-content',
 		height: '100vh',
@@ -48,9 +36,9 @@ const useStyles = makeStyles((theme) => ({
 	panel: {
 		width: 500,
 		position: 'absolute',
-		right: 90,
-		top: 0,
-		height: 'calc(104.5vh - 48px)',
+		left: 90,
+		top: 48,
+		height: 'calc(100vh - 48px)',
 	},
 }));
 
@@ -98,54 +86,27 @@ export default (props) => {
 		<div>
 			<div className={classes.camBar}>
 				<Tabs
-					orientation='vertical'
+					centered
 					style={{ height: '100%' }}
 					value={camera}
 					onChange={onCamChange}
 					indicatorColor="primary"
 					textColor="primary"
 				>
-					<Tooltip
-						title={'Zoomed Out Camera'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={
-								<FontAwesomeIcon icon={['fas', 'person']} />
-							}
-						/>
-					</Tooltip>
-
-					<Tooltip
-						title={'Face Camera'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={<FontAwesomeIcon icon={['fas', 'face-smile']} />}
-						/>
-					</Tooltip>
-
-					<Tooltip
-						title={'Body Camera'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={
-								<FontAwesomeIcon icon={['fas', 'shirt']} />
-							}
-						/>
-					</Tooltip>
-
-					<Tooltip
-						title={'Shoe Camera'}
-						placement={'left'}
-						arrow
-					>
-						<Tab label={<FontAwesomeIcon icon={['fas', 'shoe-prints']} />} />
-					</Tooltip>
+					<Tab
+						label={
+							<FontAwesomeIcon icon={['fas', 'person']} />
+						}
+					/>
+					<Tab
+						label={<FontAwesomeIcon icon={['fas', 'face-smile']} />}
+					/>
+					<Tab
+						label={
+							<FontAwesomeIcon icon={['fas', 'shirt']} />
+						}
+					/>
+					<Tab label={<FontAwesomeIcon icon={['fas', 'shoe-prints']} />} />
 				</Tabs>
 			</div>
 			<div className={classes.btnBar}>
@@ -158,59 +119,22 @@ export default (props) => {
 					textColor="primary"
 					variant="scrollable"
 				>
-					<Tooltip
-						title={'Face Customisation'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={
-								<FontAwesomeIcon icon={['fas', 'smile']} />
-							}
-						/>
-					</Tooltip>
-
-					<Tooltip
-						title={'Body Customisation'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={
-								<FontAwesomeIcon icon={['fas', 'child-reaching']} />
-							}
-						/>
-					</Tooltip>
-
-					<Tooltip
-						title={'Hair Customisation'}
-						placement={'left'}
-						arrow
-					>
-						<Tab
-							label={<FontAwesomeIcon icon={['fas', 'scissors']} />}
-						/>
-					</Tooltip>
+					<Tab
+						label={
+							<FontAwesomeIcon icon={['fas', 'smile']} />
+						}
+					/>
+					<Tab
+						label={
+							<FontAwesomeIcon icon={['fas', 'child-reaching']} />
+						}
+					/>
+					<Tab
+						label={<FontAwesomeIcon icon={['fas', 'scissors']} />}
+					/>
 				</Tabs>
 			</div>
-
 			<div className={classes.panel} id="noHover">
-				<div
-					className={classes.headerContainer}
-				>
-					<Naked />
-					<ButtonGroup variant="contained" className={classes.save}>
-						<Button color="error" onClick={() => setCancelling(true)}>
-							Cancel
-							<FontAwesomeIcon icon={['fas', 'x']} />
-						</Button>
-						<Button color="success" onClick={() => setSaving(true)}>
-							Save
-							<FontAwesomeIcon icon={['fas', 'save']} />
-						</Button>
-					</ButtonGroup>
-				</div>
-
 				<TabPanel value={value} index={0}>
 					<Face />
 				</TabPanel>
@@ -221,6 +145,17 @@ export default (props) => {
 					<Hair />
 				</TabPanel>
 			</div>
+
+			<Naked />
+			<Button variant="contained" color="error" onClick={() => setCancelling(true)} className={classes.save}>
+				Exit
+				<FontAwesomeIcon icon={['fas', 'x']} />
+			</Button>
+
+			<Button variant="contained" color="success" onClick={() => setSaving(true)} className={classes.save} style={{ bottom: '6vh' }}>
+				Save
+				<FontAwesomeIcon icon={['fas', 'save']} />
+			</Button>
 
 			<Dialog
 				title="Cancel?"
