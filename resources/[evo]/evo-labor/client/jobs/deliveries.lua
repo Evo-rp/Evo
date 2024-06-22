@@ -45,13 +45,20 @@ AddEventHandler("Labor:Client:Setup", function()
 			}, 3.0, true)
 
 			local x, y, z = table.unpack(GetEntityCoords(PlayerPedId()))
-			loadAnimDict("anim@heists@box_carry@")
-			TaskPlayAnim(ped, "anim@heists@box_carry@", "idle", 6.0, -6.0, -1, 49, 0, 0, 0, 0)
-
 			DeliveryPackage = CreateObject(GetHashKey('hei_prop_heist_box'), x, y, z + 0.2, true, true, true)
 			AttachEntityToEntity(DeliveryPackage, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 60309), 0.025, 0.08, 0.255, -145.0, 290.0, 0.0, true, true, false, true, 1, true)
 		
 			Targeting.Zones:Refresh()
+
+			CreateThread(function()
+				while LocalPlayer.state.hasDeliveryPackage do
+					Wait(100)
+					if not IsEntityPlayingAnim(PlayerPedId(), 'anim@heists@box_carry@', 'idle', 3) then
+						loadAnimDict("anim@heists@box_carry@")
+						TaskPlayAnim(ped, "anim@heists@box_carry@", "idle", 6.0, -6.0, -1, 49, 0, 0, 0, 0)			
+					end
+				end
+			end)
 		elseif item == "DELIVER_PACKAGE" then
 			Targeting.Zones:RemoveZone('DELIVERIES_DROP_OFF')
 
@@ -61,7 +68,7 @@ AddEventHandler("Labor:Client:Setup", function()
 	end)
 end)
 
-GenerateNPCOptions = function()
+GenerateDeliveryOptions = function()
 	return {
 		{
 			text = "Start Work",
@@ -89,7 +96,7 @@ end
 RegisterNetEvent('Deliveries:NPC:Interact', function(entity)
 	Options = {}
 
-	for k, v in ipairs(GenerateNPCOptions()) do
+	for k, v in ipairs(GenerateDeliveryOptions()) do
 		if v.isEnabled then
 			table.insert(Options, {
 				label = v.text,
@@ -191,6 +198,7 @@ RegisterNetEvent("Deliveries:Client:OnDuty", function(joiner, time)
 		Callbacks:ServerCallback("Deliveries:DeliverPackage", {}, function(s)
 			if s then
 				LocalPlayer.state.hasDeliveryPackage = false
+				ClearPedTasks(PlayerPedId())
 			end
 		end)
 	end)

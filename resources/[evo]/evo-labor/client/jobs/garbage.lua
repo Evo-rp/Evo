@@ -61,7 +61,7 @@ loadAnimDict = function(dict)
 	end
 end
 
-GenerateNPCOptions = function()
+GenerateGarbageOptions = function()
 	return {
 		{
 			text = "Start Work",
@@ -139,7 +139,7 @@ end)
 RegisterNetEvent('Garbage:NPC:Interact', function(entity)
 	Options = {}
 
-	for k, v in ipairs(GenerateNPCOptions()) do
+	for k, v in ipairs(GenerateGarbageOptions()) do
 		if v.isEnabled then
 			table.insert(Options, {
 				label = v.text,
