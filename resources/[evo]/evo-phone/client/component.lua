@@ -9,7 +9,6 @@ PHONE = {
 		Interaction:Hide()
 		LocalPlayer.state.phoneOpen = true
 		DisplayRadar(true)
-		Hud:ShiftLocation(true)
 		PhonePlayIn()
 		SendNUIMessage({ type = "PHONE_VISIBLE" })
 		SetNuiFocus(true, true)
@@ -50,7 +49,6 @@ PHONE = {
 		if not IsPedInAnyVehicle(PlayerPedId(), true) then
 			DisplayRadar(false)
 		end
-		Hud:ShiftLocation(false)
 		if not Phone.Call:Status() or _limited then
 			PhonePlayOut()
 		end
