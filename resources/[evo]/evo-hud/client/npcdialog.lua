@@ -56,6 +56,8 @@ RegisterNUICallback('NPCResponse', function(data, cb)
     if data.event then
         TriggerEvent(data.event, data.params)
     end
+
+    cb(true)
 end)
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
