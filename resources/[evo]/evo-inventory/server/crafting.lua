@@ -331,35 +331,35 @@ function RegisterCraftingCallbacks()
 		cb(Crafting.Craft:Cancel(char:GetData("SID")))
 	end)
 
-	Callbacks:RegisterServerCallback("Crafting:GetSchematics", function(source, data, cb)
-		local plyr = Fetch:Source(source)
-		if plyr ~= nil then
-			local char = plyr:GetData("Character")
-			if char ~= nil then
-				local schems = Inventory.Items:GetAllOfType(char:GetData("SID"), 1, 17)
+	-- Callbacks:RegisterServerCallback("Crafting:GetSchematics", function(source, data, cb)
+	-- 	local plyr = Fetch:Source(source)
+	-- 	if plyr ~= nil then
+	-- 		local char = plyr:GetData("Character")
+	-- 		if char ~= nil then
+	-- 			local schems = Inventory.Items:GetAllOfType(char:GetData("SID"), 1, 17)
 
-				local list = {}
-				for k, v in ipairs(schems) do
-					local itemData = Inventory.Items:GetData(v.Name)
-					if itemData?.schematic ~= nil and not Crafting.Schematics:Has(data.id, v.Name) then
-						local result = Inventory.Items:GetData(itemData.schematic.result.name)
-						table.insert(list, {
-							label = itemData.label,
-							description = string.format("Makes: x%s %s", itemData.schematic.result.count, result.label),
-							event = "Crafting:Client:UseSchematic",
-							data = v,
-						})
-					end
-				end
+	-- 			local list = {}
+	-- 			for k, v in ipairs(schems) do
+	-- 				local itemData = Inventory.Items:GetData(v.Name)
+	-- 				if itemData?.schematic ~= nil and not Crafting.Schematics:Has(data.id, v.Name) then
+	-- 					local result = Inventory.Items:GetData(itemData.schematic.result.name)
+	-- 					table.insert(list, {
+	-- 						label = itemData.label,
+	-- 						description = string.format("Makes: x%s %s", itemData.schematic.result.count, result.label),
+	-- 						event = "Crafting:Client:UseSchematic",
+	-- 						data = v,
+	-- 					})
+	-- 				end
+	-- 			end
 
-				cb(list)
-			else
-				cb(false)
-			end
-		else
-			cb(false)
-		end
-	end)
+	-- 			cb(list)
+	-- 		else
+	-- 			cb(false)
+	-- 		end
+	-- 	else
+	-- 		cb(false)
+	-- 	end
+	-- end)
 
 	Callbacks:RegisterServerCallback("Crafting:UseSchematic", function(source, data, cb)
 		local plyr = Fetch:Source(source)

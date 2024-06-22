@@ -169,27 +169,27 @@ AddEventHandler("Crafting:Client:OpenCrafting", function(ent, data)
 	Crafting.Benches:Open(data.id)
 end)
 
-AddEventHandler("Crafting:Client:AddSchematic", function(ent, data)
-	Callbacks:ServerCallback("Crafting:GetSchematics", data, function(schematics)
-		if #schematics > 0 then
-			for k, v in ipairs(schematics) do
-				schematics[k].data = {
-					bench = data.id,
-					schematic = schematics[k].data,
-				}
-			end
+-- AddEventHandler("Crafting:Client:AddSchematic", function(ent, data)
+-- 	Callbacks:ServerCallback("Crafting:GetSchematics", data, function(schematics)
+-- 		if #schematics > 0 then
+-- 			for k, v in ipairs(schematics) do
+-- 				schematics[k].data = {
+-- 					bench = data.id,
+-- 					schematic = schematics[k].data,
+-- 				}
+-- 			end
 
-			ListMenu:Show({
-				main = {
-					label = "Crafting Schematics",
-					items = schematics,
-				},
-			})
-		else
-			Notification:Error("You Have No Schematics")
-		end
-	end)
-end)
+-- 			ListMenu:Show({
+-- 				main = {
+-- 					label = "Crafting Schematics",
+-- 					items = schematics,
+-- 				},
+-- 			})
+-- 		else
+-- 			Notification:Error("You Have No Schematics")
+-- 		end
+-- 	end)
+-- end)
 
 AddEventHandler("Crafting:Client:UseSchematic", function(data)
 	Progress:Progress({
