@@ -17,40 +17,10 @@ end
 AddEventHandler("Labor:Client:Setup", function()
 	PedInteraction:Add("DeliveryJob", GetHashKey("s_m_y_ammucity_01"), vector3(919.87, -1256.43, 24.52), 34.85, 25.0, {
 		{
-			icon = "store",
-			text = "Start Work",
-			event = "Deliveries:Client:StartJob",
+			icon = "person",
+			text = "Interact",
+			event = "Deliveries:NPC:Interact",
 			tempjob = "Deliveries",
-			isEnabled = function()
-				return not _working
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Borrow Delivery Truck",
-			event = "Deliveries:Client:DeliveriesSpawn",
-			tempjob = "Deliveries",
-			isEnabled = function()
-				return _working and _state == 1
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Return Delivery Truck",
-			event = "Deliveries:Client:DeliveriesSpawnRemove",
-			tempjob = "Deliveries",
-			isEnabled = function()
-				return _working and _state == 3
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Complete Job",
-			event = "Deliveries:Client:TurnIn",
-			tempjob = "Deliveries",
-			isEnabled = function()
-				return _working and _state == 4
-			end,
 		},
 	}, "store")
 
@@ -91,6 +61,57 @@ AddEventHandler("Labor:Client:Setup", function()
 	end)
 end)
 
+GenerateNPCOptions = function()
+	return {
+		{
+			text = "Start Work",
+			event = "Deliveries:Client:StartJob",
+			isEnabled = not _working
+		},
+		{
+			text = "Borrow Delivery Truck",
+			event = "Deliveries:Client:DeliveriesSpawn",
+			isEnabled = _working and _state == 1
+		},
+		{
+			text = "Return Delivery Truck",
+			event = "Deliveries:Client:DeliveriesSpawnRemove",
+			isEnabled = _working and _state == 3
+		},
+		{
+			text = "Complete Job",
+			event = "Deliveries:Client:TurnIn",
+			isEnabled = _working and _state == 4
+		},
+	}
+end
+
+RegisterNetEvent('Deliveries:NPC:Interact', function(entity)
+	Options = {}
+
+	for k, v in ipairs(GenerateNPCOptions()) do
+		if v.isEnabled then
+			table.insert(Options, {
+				label = v.text,
+				data = { close = true, event = v.event }
+			})
+		end
+	end
+
+	table.insert(Options, {
+		label = 'See you later',
+		data = { close = true }
+	})
+
+	NPCDialog.Open(entity.entity, {
+		first_name = 'James',
+		last_name = 'Jimmyson',
+		Tag = '💸',
+		description = 'Deliver packages to stores around the city.',
+		buttons = Options
+	})
+end)
+
 RegisterNetEvent("Deliveries:Client:OnDuty", function(joiner, time)
 	_joiner = joiner
 	DeleteWaypoint()
@@ -105,7 +126,7 @@ RegisterNetEvent("Deliveries:Client:OnDuty", function(joiner, time)
 			while _working do
 				if _route ~= nil then
 					local dist = #(vector3(LocalPlayer.state.myPos.x, LocalPlayer.state.myPos.y, LocalPlayer.state.myPos.z) - vector3(_route.coords.x, _route.coords.y, _route.coords.z))
-					if dist <= 10 then
+					if dist <= 25 then
 						LocalPlayer.state.inStoreZone = true
 					else
 						LocalPlayer.state.inStoreZone = false

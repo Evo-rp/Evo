@@ -60,43 +60,39 @@ loadAnimDict = function(dict)
 		Citizen.Wait(10)
 	end
 end
+
+GenerateNPCOptions = function()
+	return {
+		{
+			text = "Start Work",
+			event = "Garbage:Client:StartJob",
+			isEnabled = not _working,
+		},
+		{
+			text = "Borrow Garbage Truck",
+			event = "Garbage:Client:GarbageSpawn",
+			isEnabled = _working and _state == 1,
+		},
+		{
+			text = "Return Garbage Truck",
+			event = "Garbage:Client:GarbageSpawnRemove",
+			isEnabled = _working and _state == 3,
+		},
+		{
+			text = "Complete Job",
+			event = "Garbage:Client:TurnIn",
+			isEnabled = _working and _state == 4,
+		},
+	}
+end
+
 AddEventHandler("Labor:Client:Setup", function()
 	PedInteraction:Add("GarbageJob", GetHashKey("s_m_y_garbage"), vector3(-348.940, -1570.224, 24.228), 340.561, 25.0, {
 		{
-			icon = "trash",
-			text = "Start Work",
-			event = "Garbage:Client:StartJob",
+			icon = "person",
+			text = "Interact",
+			event = "Garbage:NPC:Interact",
 			tempjob = "Garbage",
-			isEnabled = function()
-				return not _working
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Borrow Garbage Truck",
-			event = "Garbage:Client:GarbageSpawn",
-			tempjob = "Garbage",
-			isEnabled = function()
-				return _working and _state == 1
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Return Garbage Truck",
-			event = "Garbage:Client:GarbageSpawnRemove",
-			tempjob = "Garbage",
-			isEnabled = function()
-				return _working and _state == 3
-			end,
-		},
-		{
-			icon = "handshake-angle",
-			text = "Complete Job",
-			event = "Garbage:Client:TurnIn",
-			tempjob = "Garbage",
-			isEnabled = function()
-				return _working and _state == 4
-			end,
 		},
 	}, "trash")
 
@@ -138,6 +134,32 @@ AddEventHandler("Labor:Client:Setup", function()
 			end
 		end
 	end)
+end)
+
+RegisterNetEvent('Garbage:NPC:Interact', function(entity)
+	Options = {}
+
+	for k, v in ipairs(GenerateNPCOptions()) do
+		if v.isEnabled then
+			table.insert(Options, {
+				label = v.text,
+				data = { close = true, event = v.event }
+			})
+		end
+	end
+
+	table.insert(Options, {
+		label = 'See you later',
+		data = { close = true }
+	})
+
+	NPCDialog.Open(entity.entity, {
+		first_name = 'Jeremy',
+		last_name = 'Trash',
+		Tag = '💸',
+		description = 'Do the dirty work around the city and collect some trash !',
+		buttons = Options
+	})
 end)
 
 RegisterNetEvent("Garbage:Client:OnDuty", function(joiner, time)
