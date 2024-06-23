@@ -361,66 +361,66 @@ function RegisterCraftingCallbacks()
 	-- 	end
 	-- end)
 
-	Callbacks:RegisterServerCallback("Crafting:UseSchematic", function(source, data, cb)
-		local plyr = Fetch:Source(source)
-		if plyr ~= nil then
-			local char = plyr:GetData("Character")
-			if char ~= nil then
-				if Inventory.Items:HasId(char:GetData("SID"), 1, data.schematic.id) then
-					local bench = _types[data.bench]
-					if bench ~= nil then
-						if
-							bench.canUseSchematics
-							and (
-								not bench.restrictions
-								or bench.restrictions.shared
-								or (bench.restrictions.interior ~= nil and bench.restrictions.interior == GlobalState[string.format(
-									"%s:House",
-									source
-								)])
-								or (bench.restrictions.char ~= nil and bench.restrictions.char == char:GetData("SID"))
-								or (bench.restrictions.job ~= nil and Jobs.Permissions:HasJob(
-									source,
-									bench.restrictions.job.id,
-									bench.restrictions.job.workplace,
-									bench.restrictions.job.grade,
-									false,
-									bench.restrictions.job.reqDuty,
-									bench.restrictions.job.permissionKey or "JOB_CRAFTING"
-								))
-								or (
-									bench.restrictions.rep ~= nil
-									and Reputation:GetLevel(source, bench.restrictions.rep.id)
-										>= bench.restrictions.rep.level
-								)
-							)
-						then
-							if Inventory.Items:RemoveId(char:GetData("SID"), 1, data.schematic) then
-								if Crafting.Schematics:Add(data.bench, data.schematic.Name) then
-									TriggerClientEvent("Crafting:Client:ForceBenchRefresh", source)
-									cb(true)
-								else
-									cb(false)
-								end
-							else
-								cb(false)
-							end
-						else
-							cb(false)
-						end
-					else
-						cb(false)
-					end
-				else
-					cb(false)
-				end
-			else
-				cb(false)
-			end
-		else
-			cb(false)
-		end
-	end)
+	-- Callbacks:RegisterServerCallback("Crafting:UseSchematic", function(source, data, cb)
+	-- 	local plyr = Fetch:Source(source)
+	-- 	if plyr ~= nil then
+	-- 		local char = plyr:GetData("Character")
+	-- 		if char ~= nil then
+	-- 			if Inventory.Items:HasId(char:GetData("SID"), 1, data.schematic.id) then
+	-- 				local bench = _types[data.bench]
+	-- 				if bench ~= nil then
+	-- 					if
+	-- 						bench.canUseSchematics
+	-- 						and (
+	-- 							not bench.restrictions
+	-- 							or bench.restrictions.shared
+	-- 							or (bench.restrictions.interior ~= nil and bench.restrictions.interior == GlobalState[string.format(
+	-- 								"%s:House",
+	-- 								source
+	-- 							)])
+	-- 							or (bench.restrictions.char ~= nil and bench.restrictions.char == char:GetData("SID"))
+	-- 							or (bench.restrictions.job ~= nil and Jobs.Permissions:HasJob(
+	-- 								source,
+	-- 								bench.restrictions.job.id,
+	-- 								bench.restrictions.job.workplace,
+	-- 								bench.restrictions.job.grade,
+	-- 								false,
+	-- 								bench.restrictions.job.reqDuty,
+	-- 								bench.restrictions.job.permissionKey or "JOB_CRAFTING"
+	-- 							))
+	-- 							or (
+	-- 								bench.restrictions.rep ~= nil
+	-- 								and Reputation:GetLevel(source, bench.restrictions.rep.id)
+	-- 									>= bench.restrictions.rep.level
+	-- 							)
+	-- 						)
+	-- 					then
+	-- 						if Inventory.Items:RemoveId(char:GetData("SID"), 1, data.schematic) then
+	-- 							if Crafting.Schematics:Add(data.bench, data.schematic.Name) then
+	-- 								TriggerClientEvent("Crafting:Client:ForceBenchRefresh", source)
+	-- 								cb(true)
+	-- 							else
+	-- 								cb(false)
+	-- 							end
+	-- 						else
+	-- 							cb(false)
+	-- 						end
+	-- 					else
+	-- 						cb(false)
+	-- 					end
+	-- 				else
+	-- 					cb(false)
+	-- 				end
+	-- 			else
+	-- 				cb(false)
+	-- 			end
+	-- 		else
+	-- 			cb(false)
+	-- 		end
+	-- 	else
+	-- 		cb(false)
+	-- 	end
+	-- end)
 end
 
 function RegisterTestBench()

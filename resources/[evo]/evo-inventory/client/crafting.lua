@@ -89,17 +89,17 @@ CRAFTING = {
 								},
 							}
 
-							if v.canUseSchematics then
-								table.insert(menu, {
-									icon = "memo-circle-check",
-									text = "Add Schematic To Bench",
-									event = "Crafting:Client:AddSchematic",
-									data = v,
-									isEnabled = function(data, entityData)
-										return Inventory.Items:HasType(17, 1)
-									end,
-								})
-							end
+							-- if v.canUseSchematics then
+							-- 	table.insert(menu, {
+							-- 		icon = "memo-circle-check",
+							-- 		text = "Add Schematic To Bench",
+							-- 		event = "Crafting:Client:AddSchematic",
+							-- 		data = v,
+							-- 		isEnabled = function(data, entityData)
+							-- 			return Inventory.Items:HasType(17, 1)
+							-- 		end,
+							-- 	})
+							-- end
 
 							if v.restrictions.job ~= nil then
 								menu.jobPerms = {
@@ -191,26 +191,26 @@ end)
 -- 	end)
 -- end)
 
-AddEventHandler("Crafting:Client:UseSchematic", function(data)
-	Progress:Progress({
-		name = "schematic_action",
-		duration = 8000,
-		label = "Using Schematic",
-		useWhileDead = false,
-		canCancel = true,
-		ignoreModifier = true,
-		controlDisables = {
-			disableMovement = true,
-			disableCarMovement = true,
-			disableMouse = false,
-			disableCombat = true,
-		},
-	}, function(cancelled)
-		if not cancelled then
-			Callbacks:ServerCallback("Crafting:UseSchematic", data, function(s) end)
-		end
-	end)
-end)
+-- AddEventHandler("Crafting:Client:UseSchematic", function(data)
+-- 	Progress:Progress({
+-- 		name = "schematic_action",
+-- 		duration = 8000,
+-- 		label = "Using Schematic",
+-- 		useWhileDead = false,
+-- 		canCancel = true,
+-- 		ignoreModifier = true,
+-- 		controlDisables = {
+-- 			disableMovement = true,
+-- 			disableCarMovement = true,
+-- 			disableMouse = false,
+-- 			disableCombat = true,
+-- 		},
+-- 	}, function(cancelled)
+-- 		if not cancelled then
+-- 			Callbacks:ServerCallback("Crafting:UseSchematic", data, function(s) end)
+-- 		end
+-- 	end)
+-- end)
 
 AddEventHandler("Proxy:Shared:RegisterReady", function()
 	exports["evo-base"]:RegisterComponent("Crafting", CRAFTING)
