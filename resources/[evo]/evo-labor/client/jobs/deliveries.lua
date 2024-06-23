@@ -198,6 +198,7 @@ RegisterNetEvent("Deliveries:Client:OnDuty", function(joiner, time)
 		Callbacks:ServerCallback("Deliveries:DeliverPackage", {}, function(s)
 			if s then
 				LocalPlayer.state.hasDeliveryPackage = false
+				Wait(1000)
 				ClearPedTasksImmediately(PlayerPedId())
 			end
 		end)
