@@ -13,7 +13,7 @@ Config = {
 				b = 255,
 				a = 255,
 			}
-		}
+		},
 		active = true
 	},
 	DefaultIcons = {
