@@ -53,9 +53,9 @@ function DrawSprites()
         local point = DrawPoints[i]
         SetDrawOrigin(point.coords.x, point.coords.y, point.coords.z)
 		if not hittingTargetData or hittingTargetData.id ~= point.id then
-			DrawSprite("shared", "emptydot_32", 0, 0, 0.02, 0.035, 0, Config.Sprite.color.InActive.r, Config.Sprite.color.InActive.g, Config.Sprite.color.InActive.b, Config.Sprite.color.a)
+			DrawSprite("shared", "emptydot_32", 0, 0, 0.02, 0.035, 0, 255, 255, 255, Config.Sprite.color.a)
         else
-        	DrawSprite("shared", "emptydot_32", 0, 0, 0.02, 0.035, 0, Config.Sprite.color.Active.r, Config.Sprite.color.Active.g, Config.Sprite.color.Active.b, Config.Sprite.color.a)
+        	DrawSprite("shared", "emptydot_32", 0, 0, 0.02, 0.035, 0, Config.Sprite.color.r, Config.Sprite.color.g, Config.Sprite.color.b, Config.Sprite.color.a)
 		end
 		ClearDrawOrigin()
     end
