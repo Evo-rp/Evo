@@ -154,6 +154,7 @@ function StartTargeting()
 					end
 				elseif hittingTarget then
 					hittingTarget = false
+					hittingTargetData = false
 					UpdateTargetingIcon(false)
 					if inTargetingMenu then
 						inTargetingMenu = false
