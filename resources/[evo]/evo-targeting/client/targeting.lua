@@ -165,7 +165,7 @@ function StartTargeting()
 			end
 		end)
 
-		CreateThread(function ()
+		CreateThread(function()
             while holdingTargeting do
                 table.wipe(DrawPoints)
 
