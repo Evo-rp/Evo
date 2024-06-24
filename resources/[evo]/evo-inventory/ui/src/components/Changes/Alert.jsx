@@ -1,63 +1,77 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeStyles } from '@mui/styles';
-import { Fade, Slide } from '@mui/material';
+import { Zoom } from '@mui/material';
 import { fallbackItem, getItemImage, getItemLabel } from '../Inventory/item';
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		width: 285,
-		height: 60,
 		pointerEvents: 'none',
-		display: 'flex',
 		zIndex: 1,
-		background: `${theme.palette.secondary.dark}80`,
-		borderLeft: `4px solid ${theme.palette.primary.main}`,
-		'&.add': {
-			borderColor: theme.palette.success.main,
-		},
-		'&.removed': {
-			borderColor: theme.palette.error.main,
-		},
-		'&.used': {
-			borderColor: theme.palette.info.main,
-		},
 	},
-	label: {
-		color: theme.palette.text.main,
-		fontSize: 18,
-		lineHeight: '20px',
-		textShadow: '0 0 5px #000',
-		flex: 1,
-		height: 'fit-content',
-		paddingTop: 15,
-		paddingLeft: 5,
-		paddingRight: 5,
-		width: 188,
-		'& small': {
-			fontSize: 12,
-			display: 'block',
-		},
-	},
-	image: {
-		height: 60,
-		width: 60,
+	img: {
+		height: 152,
+		width: '100%',
+		overflow: 'hidden',
+		zIndex: 3,
 		backgroundSize: '70%',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
-		borderRight: `1px solid ${theme.palette.border.divider}`,
+	},
+	label: {
+		bottom: 0,
+		left: 0,
+		position: 'absolute',
+		textAlign: 'center',
+		padding: '0 5px',
+		width: '100%',
+		maxWidth: '100%',
+		overflow: 'hidden',
+		whiteSpace: 'nowrap',
+		color: theme.palette.text.main,
+		background: theme.palette.secondary.light,
+		borderTop: `1px solid rgb(255 255 255 / 4%)`,
+		zIndex: 4,
+	},
+	slot: {
+		width: 132,
+		height: 152,
+		backgroundColor: `${theme.palette.secondary.light}61`,
+		border: `1px solid rgba(255, 255, 255, 0.04)`,
+		position: 'relative',
+		zIndex: 2,
+		// border: `1px solid ${theme.palette.border.divider}`,
+		// '&.add': {
+		// 	borderColor: theme.palette.success.main,
+		// },
+		// '&.removed': {
+		// 	borderColor: theme.palette.error.main,
+		// },
+		// '&.used': {
+		// 	borderColor: theme.palette.info.main,
+		// },
 	},
 	count: {
-		height: 60,
-		width: 48,
-		textAlign: 'center',
-		lineHeight: '60px',
-		borderLeft: `1px solid ${theme.palette.border.divider}`,
+		top: 0,
+		right: 0,
+		position: 'absolute',
+		textAlign: 'right',
+		padding: '0 5px',
+		textShadow: `0 0 5px ${theme.palette.secondary.dark}`,
+		color: theme.palette.text.main,
+		zIndex: 4,
 	},
-	itemName: {
-		whiteSpace: 'nowrap',
-		overflow: 'hidden',
-		textOverflow: 'ellipsis',
+	type: {
+		top: 0,
+		left: 0,
+		position: 'absolute',
+		padding: '0 5px',
+		color: theme.palette.text.main,
+		background: theme.palette.secondary.light,
+		borderRight: `1px solid ${theme.palette.border.divider}`,
+		borderBottom: `1px solid ${theme.palette.border.divider}`,
+		borderBottomRightRadius: 5,
+		zIndex: 4,
 	},
 }));
 
@@ -102,11 +116,11 @@ export default ({ alert }) => {
 	};
 
 	return (
-		<Slide direction="up" in={show} onExited={onAnimEnd}>
-			<div className={`${classes.container} ${alert.type}`}>
-				{Boolean(itemData) ? (
+		<Zoom in={show} timeout={500} onExited={onAnimEnd}>
+			<div className={classes.container}>
+				<div className={`${classes.slot} ${alert.type}`}>
 					<div
-						className={classes.image}
+						className={classes.img}
 						style={{
 							backgroundImage: `url(${getItemImage(
 								alert.item,
@@ -114,21 +128,17 @@ export default ({ alert }) => {
 							)})`,
 						}}
 					></div>
-				) : (
-					<div className={classes.image}></div>
-				)}
-				{Boolean(itemData) && (
-					<div className={classes.label}>
-						<div className={classes.itemName}>
+					{Boolean(itemData) && (
+						<div className={classes.label}>
 							{getItemLabel(alert.item, itemData)}
 						</div>
-						<small>{getTypeLabel()}</small>
-					</div>
-				)}
-				<div className={classes.count}>
-					{alert.count > 0 ? alert.count : '-'}
+					)}
+					<div className={classes.type}>{getTypeLabel()}</div>
+					{alert.count > 0 && (
+						<div className={classes.count}>{alert.count}</div>
+					)}
 				</div>
 			</div>
-		</Slide>
+		</Zoom>
 	);
 };

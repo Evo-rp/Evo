@@ -9,13 +9,15 @@ import Alert from './Alert';
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
 		position: 'absolute',
-		right: '20%',
-		bottom: 35,
+		left: 0,
+		right: 0,
+		bottom: 175,
 		margin: 'auto',
+		height: 152,
 		width: 'fit-content',
 		display: 'flex',
-		flexDirection: 'column',
-		gap: 4,
+		flexDirection: 'row',
+		gap: 20,
 		justifyContent: 'center',
 	},
 }));
