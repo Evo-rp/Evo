@@ -31,7 +31,7 @@ _blueprintConfig['schematic_handcuffs'] = {
 _blueprintConfig['schematic_blindfold'] = {
     name = 'Blindfold',
     Object = 'p_cs_sack_01_s',
-    icon = 'mask',
+    icon = 'blindfold',
     Materials = {
         {
             name = 'cloth',
@@ -43,7 +43,7 @@ _blueprintConfig['schematic_blindfold'] = {
 _blueprintConfig['schematic_adv_electronics_kit'] = {
     name = 'Hacking Kit',
     Object = 'hei_prop_heist_card_hack',
-    icon = 'terminal',
+    icon = 'adv_electronics_kit',
     Materials = {
         {
             name = 'goldbar',
