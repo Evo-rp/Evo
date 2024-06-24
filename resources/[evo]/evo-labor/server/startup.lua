@@ -128,13 +128,7 @@ AddEventHandler("Labor:Server:Startup", function()
 		{ label = "Rank 4", value = 10000 },
 		{ label = "Rank 5", value = 12000 },
 	})
-	-- Labor.Jobs:Register("Scubba", "Scubba", 0, 2000, 100, false, {
-	-- 	{ label = "Rank 1", value = 1500 },
-	-- 	{ label = "Rank 2", value = 3000 },
-	-- 	{ label = "Rank 3", value = 7000 },
-	-- 	{ label = "Rank 4", value = 10000 },
-	-- 	{ label = "Rank 5", value = 12000 },
-	-- })
+
 	Labor.Jobs:Register("Farming", "Farming", 0, 1200, 100)
 	Labor.Jobs:Register("Salvaging", "Salvaging", 0, 1200, 100)
 	Labor.Jobs:Register("Garbage", "Garbage", 0, 1500, 100, false, {
@@ -144,13 +138,8 @@ AddEventHandler("Labor:Server:Startup", function()
 		{ label = "Rank 4", value = 10000 },
 		{ label = "Rank 5", value = 12000 },
 	})
-	Labor.Jobs:Register("Deliveries", "Store Deliveries", 0, 2000, 500, false, {
-		{ label = "Rank 1", value = 1500 },
-		{ label = "Rank 2", value = 3000 },
-		{ label = "Rank 3", value = 7000 },
-		{ label = "Rank 4", value = 10000 },
-		{ label = "Rank 5", value = 12000 },
-	})
+	Labor.Jobs:Register("Deliveries", "Store Deliveries", 0, 2000, 100)
+
 	Labor.Jobs:Register("Fishing", "Fishing", 0, 1000, 100)
 
 	Labor.Jobs:Register("Coke", "THIS SHOULD NOT BE SEEN", 1, 0, 100, {
