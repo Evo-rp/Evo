@@ -48,7 +48,7 @@ Config.VehicleMenu = {
 	{
 		icon = "gas-pump",
 		isEnabled = function(data, entityData)
-			if Vehicles ~= nil and Vehicles.Fuel:CanBeFueled(entityData.entity) then
+			if Vehicles ~= nil and Vehicles.Fuel:CanBeFueled(entityData.entity) and Vehicles.Fuel:HasNozzle() then
 				return true
 			end
 			return false

@@ -25,6 +25,10 @@ FUEL = {
 			end
 			return false
 		end,
+
+		HasNozzle = function(self)
+			return _hasNozzle
+		end
 	},
 }
 

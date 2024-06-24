@@ -3,6 +3,8 @@ DRIVING_VEHICLE, VEHICLE_INSIDE = nil, nil
 local _fueling = false
 local _lowtick = 0
 local _engineShutoff = false
+local _Prop = 0
+_hasNozzle = false
 
 local pumpModels = {
 	`prop_gas_pump_1a`,
@@ -73,6 +75,24 @@ AddEventHandler("Core:Shared:Ready", function()
 						)
 					end,
 				},
+				{
+					text = "Grab Nozzle",
+					icon = "hand",
+					minDist = 3.0,
+					event = 'Fuel:Client:GrabNozzle',
+					isEnabled = function()
+						return not _hasNozzle
+					end
+				},
+				{
+					text = "Return Nozzle",
+					icon = "backward",
+					minDist = 3.0,
+					event = 'Fuel:Client:ReturnNozzle',
+					isEnabled = function()
+						return _hasNozzle
+					end
+				},
 			}, 3.0)
 		end
 	end)
@@ -99,6 +119,21 @@ AddEventHandler("Characters:Client:Spawn", function()
 	-- 		Blips:Add('fuel-station-'.. k, 'Fuel Station', v.center, 361, 64, 0.4)
 	-- 	end
 	-- end
+end)
+
+AddEventHandler('Fuel:Client:GrabNozzle', function()
+	_hasNozzle = true
+
+	_Prop = CreateObject(GetHashKey("prop_cs_fuel_nozle"), 0, 0, 0, true, true, true)
+	AttachEntityToEntity(_Prop, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 0xDEAD), 0.13, 0.04, -0.03, 80.0, 100.0, 190.0, true, true, false, true, 1, true)
+end)
+
+AddEventHandler('Fuel:Client:ReturnNozzle', function()
+	_hasNozzle = false
+	if DoesEntityExist(_Prop) then
+		DeleteEntity(_Prop)
+		_Prop = 0
+	end
 end)
 
 AddEventHandler("Fuel:Client:FillCan", function()
@@ -266,15 +301,9 @@ AddEventHandler("Vehicles:Client:StartFueling", function(entityData)
 			disableCombat = true,
 		},
 		animation = {
-			animDict = "timetable@gardener@filling_can",
-			anim = "gar_ig_5_filling_can",
+			animDict = "anim@heists@keycard@",
+			anim = "idle_a",
 			flags = 50,
-		},
-		prop = {
-			model = "prop_cs_fuel_nozle",
-			bone = 60309,
-			coords = { x = 0.07, y = 0.0125, z = 0.0125 },
-			rotation = { x = -80.0, y = -80.0, z = 15.0 },
 		},
 		disarm = true,
 	}, function()
@@ -490,3 +519,15 @@ AddEventHandler("Vehicles:Client:StartJerryFueling", function(entityData)
 end)
 
 -- TODO: Add Fuel Can
+
+RegisterNetEvent('Polyzone:Exit', function(zone)
+	if string.find(zone, 'fuel_') then
+		if _hasNozzle then
+			_hasNozzle = false
+			if DoesEntityExist(_Prop) then
+				DeleteEntity(_Prop)
+				_Prop = 0
+			end
+		end
+	end
+end)
