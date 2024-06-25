@@ -13,15 +13,14 @@ AddEventHandler("Labor:Server:Startup", function()
 		actionString = "Packaging",
 		icon = "cannabis",
 		poly = {
-			coords = vector3(1066.0316, -2439.1624, 29.7356),
-			w = 2.8,
-			l = 1.0,
-			options = {
-				name = "WeedPackaging",
-				heading = 0,
-				--debugPoly=true,
-				minZ = 28.39,
-				maxZ = 31.39,
+			coords = vector3(-1162.64, -1572.16, 4.66),
+		l = 2,
+		w = 3.2,
+		options = {
+			heading = 305,
+			--debugPoly=true,
+			minZ = 3.66,
+			maxZ = 6.06,
 			},
 		},
 	}, {}, {
@@ -40,7 +39,7 @@ AddEventHandler("Labor:Server:Startup", function()
 			result = { name = "weed_baggy", count = 1 },
 			items = {
 				{ name = "baggy", count = 1 },
-				{ name = "weed_bud", count = 2 },
+				{ name = "weed_bud", count = 4 },
 			},
 			time = 2000,
 			animation = "mechanic",

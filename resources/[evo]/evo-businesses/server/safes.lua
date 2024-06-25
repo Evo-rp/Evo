@@ -548,9 +548,9 @@ AddEventHandler("Businesses:Server:Startup", function()
 	Inventory.Poly:Create({
 		id = "weed_storage",
 		type = "box",
-		coords = vector3(-1162.64, -1572.16, 4.66),
-		length = 3.2,
-		width = 3.2,
+		coords = vector3(-1162.727, -1576.711, 4.660),
+		length = 1.5,
+		width = 1.1,
 		options = {
 			heading = 305,
 			--debugPoly=true,

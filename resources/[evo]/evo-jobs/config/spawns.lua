@@ -121,6 +121,21 @@ _jobSpawns = {
 			},
 		},
 	},
+	["weed"] = {
+		icon = "cannabis",
+		locations = {
+			{
+				label = "Smoke On The Water",
+				workplace = false,
+				location = {
+					x = -1170.168,
+					y = -1571.376,
+					z = 4.664,
+					h = 124.731,
+				},
+			},
+		},
+	},
 	["dgang"] = {
 		icon = "house-tree",
 		locations = {
