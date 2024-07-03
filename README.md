@@ -1,4 +1,4 @@
-Evo rp fivem server comes with evo-rp crafting and gang system and most of the arcade system
+Evo rp fivem server
 
 https://github.com/Evo-rp/evo-guns
 
