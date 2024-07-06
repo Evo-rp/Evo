@@ -149,26 +149,6 @@ _jobSpawns = {
 					h = 201.792,
 				},
 			},
-			{
-				label = "Eastside SAFD",
-				workplace = "safd",
-				location = {
-					x = 1216.6586,
-					y = -1474.5269,
-					z = 34.8570,
-					h = 92.1860,
-				},
-			},
-			{
-				label = "Southside SAFD",
-				workplace = "safd",
-				location = {
-					x = 217.46,
-					y = -1662.46,
-					z = 29.80,
-					h = 57.82,
-				},
-			},
 		},
 	},
 	["realestate"] = {
@@ -257,6 +237,21 @@ _jobSpawns = {
 					y = -1308.306,
 					z = 28.9,
 					h = 245.039,
+				},
+			},
+		},
+	},
+	["beanmachine"] = {
+		icon = "coffee",
+		locations = {
+			{
+				label = "Bean Machine",
+				workplace = false,
+				location = {
+					x = 124.710,
+					y = -1034.917,
+					z = 29.278,
+					h = 70.012,
 				},
 			},
 		},
@@ -355,13 +350,23 @@ _jobSpawns = {
 				},
 			},
 			{
-				label = "Davis PD",
+				label = "Mission Row PD", 
 				workplace = false,
 				location = {
-					x = 349.735,
-					y = -1599.298,
-					z = 29.292,
-					h = 135.608,
+					x = 427.408,
+					y = -973.764,
+					z = 30.690,
+					h = 218.849,
+				},
+			},
+			{
+				label = "Davis PD", 
+				workplace = false,
+				location = {
+					x = 372.910,
+					y = -1610.174,
+					z = 29.293,
+					h = 234.627,
 				},
 			},
 			{

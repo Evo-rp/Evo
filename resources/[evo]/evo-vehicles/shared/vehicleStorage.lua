@@ -16,7 +16,7 @@ _vehicleStorage = {
 			minZ = 25.96,
 			maxZ = 47.56,
 		},
-		spaces = {
+		spaces = { 
 			vector4(-477.534, -741.352, 44.724, 270.470),
 			vector4(-477.020, -744.283, 44.724, 269.507),
 			vector4(-477.017, -747.234, 44.724, 270.113),
@@ -494,11 +494,44 @@ _vehicleStorage = {
 			vector4(41.707, -1568.551, 28.811, 230.303),
 		},
 	},
+	
+	["alta_apartments"] = {
+		name = "Alta Apartment Parking",
+		vehType = 0,
+		coords = vector3(-321.919, -980.307, 42.359),
+		zone = {
+			type = "poly",
+			points = {
+				vector2(-295.046, -988.124),
+				vector2(-297.166, -994.272),
+				vector2(-345.666, -976.324),
+				vector2(-343.723, -970.472),
+			},
+			minZ = 27.0,
+			maxZ = 38.0,
+		},
+		spaces = {
+			vector4(-342.814, -973.309, 31.081, 168.133),
+			vector4(-339.917, -975.258, 31.081, 247.310),
+			vector4(-336.435, -976.690, 31.081, 247.776),
+			vector4(-332.868, -978.024, 31.081, 251.775),
+			vector4(-329.388, -979.087, 31.081, 254.723),
+			vector4(-325.895, -980.219, 31.081, 248.147),
+			vector4(-322.348, -981.618, 31.081, 248.843),
+			vector4(-318.742, -982.929, 31.081, 251.420),
+			vector4(-315.157, -984.215, 31.081, 248.792),
+			vector4(-311.620, -985.586, 31.081, 248.814),
+			vector4(-308.096, -986.935, 31.081, 249.327),
+			vector4(-304.561, -988.260, 31.081, 249.561),
+			vector4(-301.062, -989.514, 31.081, 251.437),
+			vector4(-297.653, -990.722, 31.081, 249.096),
+		},
+	},
 
 	["morningwood_blvd"] = {
 		name = "Morningwood Blvd Parking",
 		vehType = 0,
-		coords = vector3(-1225.888, -372.833, 37.290),
+		coords = vector3(-1225.888, -372.833, 33.290),
 		zone = {
 			type = "poly",
 			points = {
@@ -1767,7 +1800,6 @@ _vehicleStorage = {
 			vector4(-304.497, 6295.164, 31.492, 135.612),
 		},
 	},
-
 	["greycat_shipping_private"] = {
 		name = "Greycat Shipping Private Parking",
 		vehType = 0,
@@ -1862,6 +1894,29 @@ _vehicleStorage = {
 		},
 		spaces = {
 			vector4(-609.955, -1059.175, 21.305, 89.242),
+		},
+	},
+	["beanmachine"] = {
+		name = "Bean Machine Private Parking",
+		vehType = 0,
+		restricted = {
+			{ JobId = "beanmachine", WorkplaceId = false },
+		},
+		fleet = { -- HQ is where fleet vehicles originate from
+			{ JobId = "beanmachine", HQ = true },
+		},
+		coords = vector3(109.402, -1056.770, 29.193),
+		zone = {
+			type = "box",
+			center = vector3(108.750, -1055.931, 29.194),
+			length = 5.2,
+			width = 8.4,
+			heading = 69.571,
+			minZ = 26.79,
+			maxZ = 30.79,
+		},
+		spaces = {
+			vector4(108.728, -1056.113, 29.193, 69.571),
 		},
 	},
 

@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { LinearProgress } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { getItemImage, getItemLabel } from './item';
+import { fallbackItem, getItemImage, getItemLabel } from './item';
 
 const initialState = {
 	mouseX: null,
@@ -21,34 +21,41 @@ const useStyles = makeStyles((theme) => ({
 		width: '100%',
 		overflow: 'hidden',
 		zIndex: 3,
-		backgroundSize: '70%',
+		backgroundSize: '65%',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center center',
 	},
 	label: {
-		bottom: 0,
+		bottom: 7,
 		left: 0,
+		right: 0,
 		position: 'absolute',
 		textAlign: 'center',
 		padding: '0 5px',
 		width: '100%',
-		maxWidth: '100%',
-		overflow: 'hidden',
-		whiteSpace: 'nowrap',
-		color: theme.palette.text.main,
-		background: theme.palette.secondary.light,
-		borderTop: `1px solid ${theme.palette.border.divider}`,
 		zIndex: 4,
+		margin: 'auto',
+		maxWidth: '90%',
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+		whiteSpace: 'nowrap',
 	},
 	slot: {
 		width: 165,
 		height: 190,
-		backgroundColor: `${theme.palette.secondary.light}61`,
 		position: 'relative',
 		zIndex: 2,
+		border: '1px solid #1c1c1c6e',
 		'&.mini': {
 			width: 132,
 			height: 152,
+		},
+		'&:not(.broken)': {
+			backgroundColor: `${theme.palette.secondary.light}61`,
+		},
+		'&.broken': {
+			backgroundColor: `${theme.palette.error.dark}4a`,
+			borderColor: `${theme.palette.error.dark}6e`,
 		},
 	},
 	count: {
@@ -76,19 +83,15 @@ const useStyles = makeStyles((theme) => ({
 		},
 	},
 	durability: {
-		bottom: 30,
+		bottom: 0,
 		left: 0,
 		position: 'absolute',
 		width: '100%',
 		maxWidth: '100%',
 		overflow: 'hidden',
-		height: 7,
+		height: 4,
 		background: 'transparent',
 		zIndex: 4,
-	},
-	broken: {
-		backgroundColor: theme.palette.text.alt,
-		transition: 'none !important',
 	},
 	progressbar: {
 		transition: 'none !important',
@@ -112,8 +115,10 @@ const useStyles = makeStyles((theme) => ({
 export default (props) => {
 	const classes = useStyles();
 	const hover = useSelector((state) => state.inventory.hover);
-	const itemData = useSelector((state) => state.inventory.items)[hover?.Name];
+	const items = useSelector((state) => state.inventory.items);
 	const [state, setState] = React.useState(initialState);
+
+	const itemData = Boolean(hover) ? items[hover.Name] ?? fallbackItem : null;
 
 	const calcDurability = () => {
 		if (!Boolean(hover) || !Boolean(itemData?.durability)) null;
@@ -125,6 +130,8 @@ export default (props) => {
 		);
 	};
 	const durability = calcDurability();
+
+	const broken = durability <= 0;
 
 	const mouseMove = (event) => {
 		event.preventDefault();
@@ -153,7 +160,11 @@ export default (props) => {
 						: undefined
 				}
 			>
-				<div className={`${classes.slot} rarity-${itemData.rarity}`}>
+				<div
+					className={`${classes.slot} rarity-${itemData.rarity}${
+						Boolean(broken) ? ' broken' : ''
+					}`}
+				>
 					{Boolean(hover) && (
 						<div
 							className={classes.img}
@@ -174,41 +185,26 @@ export default (props) => {
 						<div className={classes.count}>{hover.Count}</div>
 					)}
 					{Boolean(itemData?.durability) &&
-						Boolean(hover?.CreateDate) &&
-						(durability > 0 ? (
-							<LinearProgress
-								className={classes.durability}
-								color={
-									durability >= 75
-										? 'success'
-										: durability >= 50
-										? 'warning'
-										: 'error'
-								}
-								classes={{
-									determinate: classes.progressbar,
-									bar: classes.progressbar,
-									bar1: classes.progressbar,
-								}}
-								variant="determinate"
-								value={durability}
-							/>
-						) : (
-							<LinearProgress
-								className={classes.durability}
-								classes={{
-									determinate: classes.broken,
-									bar: classes.broken,
-									bar1: classes.broken,
-								}}
-								color="secondary"
-								variant="determinate"
-								value={100}
-							/>
-						))}
+					Boolean(hover?.CreateDate) &&
+					!broken ? (
+						<LinearProgress
+							className={classes.durability}
+							color="primary"
+							classes={{
+								determinate: classes.progressbar,
+								bar: classes.progressbar,
+								bar1: classes.progressbar,
+							}}
+							variant="determinate"
+							value={durability}
+						/>
+					) : null}
 					{hover.shop && Boolean(itemData) && (
 						<div className={classes.price}>
-							{hover.free ? 'FREE' : itemData.price * hover.Count}
+							{hover.free ||
+							!Boolean(hover.Price ?? itemData.price)
+								? 'FREE'
+								: (hover.Price ?? itemData.price) * hover.Count}
 						</div>
 					)}
 				</div>

@@ -1,0 +1,4 @@
+disabledvehicles = {
+
+    sentinelsg3d
+}

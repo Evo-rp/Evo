@@ -357,6 +357,7 @@ _itemsSource["tools"] = {
 		label = "Parachute",
 		price = 1000,
 		isUsable = true,
+		qualification = "PD_AIR",
 		isRemoved = true,
 		isStackable = false,
 		isDestroyed = false,

@@ -82,6 +82,7 @@ export default React.forwardRef((props, ref) => {
 					label="Amount"
 					type="number"
 					value={val}
+					helperText="Use scroll wheel +/-"
 					inputProps={{
 						min: 0,
 						max:

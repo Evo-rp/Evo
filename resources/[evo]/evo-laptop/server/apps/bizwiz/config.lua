@@ -446,6 +446,10 @@ _bizWizConfig = {
 		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
 	},
+	beanmachine = {
+		logo = "https://lobfile.com/file/WTk7W5Rp.png",
+		type = "default",
+	},
 	gentry = {
 		logo = "https://lobfile.com/file/WTk7W5Rp.png",
 		type = "default",
